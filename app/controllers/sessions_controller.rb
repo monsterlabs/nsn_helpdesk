@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => :destroy
+  # before_filter :require_no_user, :only => [:new, :create]
+  # before_filter :require_user, :only => :destroy
   
   def new
-    @session = Session.new
+    @session = UserSession.new
   end
   
   def create
-    @session = Session.new(params[:session])
+    @session = UserSession.new(params[:user_session])
     if @session.save
       flash[:notice] = "Login successful!"
       redirect_back_or_default dashboard_path
     else
-      render :action => :new
+      render 'new'
     end
   end
   
