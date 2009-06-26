@@ -35,6 +35,11 @@ class Views::Layouts::Page < Erector::RailsWidget
     "page"
   end
 
+  # override me
+  def body_content
+    text "No action rendered"
+  end
+
   def content
     rawtext doctype
     html :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' do
@@ -45,11 +50,6 @@ class Views::Layouts::Page < Erector::RailsWidget
         body_content
       end
     end
-  end
-
-  # override me (or instantiate Page with a block)
-  def body_content
-    instance_eval(&@block) if @block
   end
 
   def head_content

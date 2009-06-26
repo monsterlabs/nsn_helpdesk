@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   # helper_method :current_user_session, :current_user
-  #  filter_parameter_logging :password, :password_confirmation
+  # filter_parameter_logging :password, :password_confirmation
   # 
   #  private
   def current_user_session

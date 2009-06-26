@@ -1,7 +1,9 @@
 require "#{RAILS_ROOT}/app/views/layouts/form"
 
 class Views::Sessions::New < Views::Layouts::Page
-  # needs :article
+  def page_title
+    "New Session"
+  end
 
   def body_content
     form_for @session, :session, :url => session_path do |f|
