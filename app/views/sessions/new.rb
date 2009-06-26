@@ -1,11 +1,19 @@
-require "#{RAILS_ROOT}/app/views/layouts/form"
-
 class Views::Sessions::New < Views::Layouts::Page
   def page_title
     "New Session"
   end
 
   def body_content
+    div :class => "prefix_1 grid_10" do
+      text "Text Placeholder"
+    end
+    div :class => "grid_4 suffix_1" do
+      login_form
+    end
+    div :class => "clear"
+  end
+
+  def login_form
     form_for @session, :session, :url => session_path do |f|
       p {
         rawtext f.label "Login"
@@ -20,5 +28,6 @@ class Views::Sessions::New < Views::Layouts::Page
       p { rawtext submit_tag "Sign In" }
     end
   end
-  
+
+
 end
