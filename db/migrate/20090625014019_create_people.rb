@@ -1,7 +1,7 @@
 class CreatePeople < ActiveRecord::Migration
   def self.up
     create_table :people do |t|
-      t.references :user#, :null => false
+      t.references :user, :null => false
       t.string     :firstname, :lastname1, :null => false
       t.string     :lastname2
       t.boolean    :gender#,             :null => false
