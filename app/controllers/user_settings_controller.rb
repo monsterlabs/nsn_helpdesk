@@ -1,8 +1,10 @@
 class UserSettingsController < ApplicationController
 
   def edit
+    @user = User.find(params[:id])
+
     respond_to do |format|
-      format.html {render :text => "Edit"}
+      format.html {render 'edit'}
     end    
   end
   
@@ -13,8 +15,10 @@ class UserSettingsController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:id])
+
     respond_to do |format|
-      format.html {render :text => "Show"}
+      format.html {render 'show'}
     end
   end
   

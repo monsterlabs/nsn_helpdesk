@@ -1,0 +1,9 @@
+<div>Name:<%= @user.person.firstname%></div>
+<div>Last name:<%= @user.person.lastname1%></div>
+<span id="photo_row">
+<% if @user.person.nil?%>
+  <div>Photo:<%= person.file_field :photo%></div>
+<% else%>
+  <%= render :partial => 'people/row_photo', :object => @user.person%>
+<% end%>
+<span>

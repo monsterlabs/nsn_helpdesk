@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resource :dashboard
   map.resource :user_settings
+  map.resource :people
 
   map.namespace :admin do |admin|
 #    admin.resource :session
