@@ -93,6 +93,7 @@ class Views::Layouts::Page < Erector::RailsWidget
   end
   
   css "grid"
+  js "prototype", "effects", "application"
   
 end
 
@@ -103,6 +104,14 @@ class Erector::Widget
       rawtext "$(document).ready(function(){\n"
       rawtext txt
       rawtext "\n});"
+    end
+  end
+  
+  def dom_id(record, prefix = nil)
+    if (record.id.nil?)
+      return "#{prefix}new_#{record.class.name.downcase}"
+    else
+      return "#{record.class.name.downcase}_#{record.id}"
     end
   end
 end

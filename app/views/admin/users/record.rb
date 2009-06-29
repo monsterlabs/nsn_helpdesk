@@ -3,13 +3,11 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   
   def content
     collection.each do |record|
-      div do
-      # dom_id is not working in erector, I should create a dom_id method
-      #div :id => dom_id(record) do
-        #rawtext dom_id(record)
-        #span do
-          #rawtext image_tag record.person.photo.url(:thumb)
-        #end
+      div :id => dom_id(record) do
+        rawtext dom_id(record)
+        span do
+          rawtext image_tag record.person.photo.url(:thumb)
+        end
         span { b { text "id" } }
         span { text record.id  }
         span { b { text "nombre" } }
