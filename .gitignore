@@ -9,3 +9,4 @@ tmp/*
 coverage
 public/pictures
 public/system
+.DS_Store
