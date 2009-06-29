@@ -1,3 +1,9 @@
 <% fields_for 'user[person_attributes]' do |person| %>
-  <div>Nombre:<%= person.text_field :first_name%></div>
+  <div>Name:<%= person.text_field :firstname%></div>
+  <div>Last name:<%= person.text_field :lastname1%></div>
+  <% if @user.person.nil?%>
+    <div>Photo:<%= person.file_field :photo%></div>
+  <% else%>
+    <div>Photo:<%= image_tag @user.person.photo.url(:thumb)%><%= link_to 'ChangePhoto', :action => 'change_photo', :controller => 'people'%></div>
+  <% end%>
 <% end%>

@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_settings
 
   map.namespace :admin do |admin|
-    admin.resource :session
+#    admin.resource :session
     admin.resources :users
   end  
 

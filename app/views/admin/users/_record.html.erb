@@ -1,0 +1,13 @@
+<div id=<%= dom_id(record)%>>
+<%= dom_id(record)%>
+<span><%= image_tag record.person.photo.url(:thumb)%></span>
+<span><b>id</b></span>
+<span><%= record.id%></span>
+<span><b>nombre</b></span>
+<span><%= record.person.firstname+ ' ' + record.person.lastname1%></span>
+<span><b>login</b></span>
+<span><%= record.login%></span>
+<span><b>email</b></span>
+<span><%= record.email%></span>
+<%=render :partial => 'actions', :locals => { :id => record.id}%>
+</div>
