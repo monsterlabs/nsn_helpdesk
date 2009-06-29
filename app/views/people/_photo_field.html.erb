@@ -1,0 +1,4 @@
+<div id="link">
+<%= file_field_tag :firstname%>
+<%= link_to_remote 'Update photo', :url => { :controller => 'people', :action => 'update_photo', :id => @person.id}%>
+</div>
