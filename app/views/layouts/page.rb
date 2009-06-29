@@ -34,12 +34,12 @@ class Views::Layouts::Page < Erector::RailsWidget
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
   end
 
-  # override me
+  # override me in a view
   def page_title
     "page"
   end
 
-  # override me
+  # override me in a layout
   def body_content
     text "No action rendered"
   end
@@ -49,9 +49,7 @@ class Views::Layouts::Page < Erector::RailsWidget
     html :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' do
       head { head_content }
       body do
-        div :class => "container_16" do
-          body_content
-        end
+        body_content
       end
     end
   end

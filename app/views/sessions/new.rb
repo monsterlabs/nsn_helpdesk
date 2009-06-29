@@ -1,16 +1,20 @@
-class Views::Sessions::New < Views::Layouts::Page
+class Views::Sessions::New < Views::Layouts::Application
   def page_title
     "New Session"
   end
 
+  # Changing the layout
   def body_content
-    div :class => "prefix_1 grid_10" do
-      text "Text Placeholder"
+    div :class => "container_16" do
+      header_bar
+      div :class => "prefix_1 grid_10" do
+        text "Text Placeholder"
+      end
+      div :class => "grid_4 suffix_1" do
+        login_form
+      end
+      div :class => "clear"
     end
-    div :class => "grid_4 suffix_1" do
-      login_form
-    end
-    div :class => "clear"
   end
 
   def login_form
