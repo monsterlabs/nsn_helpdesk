@@ -1,3 +1,0 @@
-<div id="photo_row">
-Photo:<%= image_tag row_photo.photo.url(:thumb)%><span id="link"><%= link_to_remote 'Change Photo', :url => {:action => 'change_photo', :controller => 'people', :id => row_photo.user.id}%></span>
-</div>
