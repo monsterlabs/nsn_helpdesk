@@ -112,3 +112,8 @@ class Erector::Widget
     end
   end
 end
+
+class Erector::RailsWidget
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::FormTagHelper
+end

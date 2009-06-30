@@ -1,1 +1,2 @@
-page.replace "link", :partial => "photo_field"
+page.replace "link", #:partial => "photo_field"
+  :inline => "<% Views::People::PhotoField.new(:person => @person).to_s(:helpers => self) %>"
