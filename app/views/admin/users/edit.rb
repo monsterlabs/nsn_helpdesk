@@ -5,7 +5,7 @@ class Views::Admin::Users::Edit < Views::Layouts::Application
   
   def view_content
     rawtext error_messages_for 'user'
-    form_for(:user, @user, :url => { :action => "update"}, :html => { :multipart => true}) do |f|
+    form_for(@user, :url => admin_user_path(@user), :html => { :multipart => true}) do |f|
       h2 do
         text 'Edit user'
       end

@@ -2,7 +2,7 @@ class Views::Admin::Users::Person < Erector::RailsWidget
   needs :f, :user
   
   def content
-    f.fields_for 'person_attributes' do |person|
+    f.fields_for 'person_attributes', user.person do |person|
       div do
         text "Name"
         rawtext person.text_field :firstname 

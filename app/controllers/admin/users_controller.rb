@@ -28,6 +28,18 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to :action => 'index' }
+      else
+        format.html { render :action => 'new' }        
+      end
+    end
+  end
+
   def edit
     @user = User.find(params[:id])
     
