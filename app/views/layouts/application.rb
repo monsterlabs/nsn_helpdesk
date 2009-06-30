@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
   
-  css "grid"
-  js "prototype", "effects", "application"
+  css "grid", "application", "ui-lightness/jquery-ui-1.7.2.custom"
+  js  "application", "jquery", "jquery-ui", "jrails"
   
   def body_content
     div :class => "container_16" do

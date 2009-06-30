@@ -1,0 +1,8 @@
+/* This is the custom css for the application*/
+
+
+a#button {	
+	font-size: 80%;
+	padding: 0.2em 0.5em;
+	text-decoration: none;
+}

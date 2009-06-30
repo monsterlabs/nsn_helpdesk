@@ -8,7 +8,7 @@ class Views::UserSettings::Edit < Views::Layouts::Application
     form_for(:user, :html => { :multipart => true}) do |f|
       widget Views::UserSettings::Form, :user => @user
       
-      rawtext f.submit 'Actualizar'
+      rawtext f.submit 'Update', as_button
     end
   end
 

@@ -111,6 +111,11 @@ class Erector::Widget
       return "#{record.class.name.downcase}_#{record.id}"
     end
   end
+  
+  def as_button
+    return {:class => "ui-state-default ui-corner-all", :id => "button"}
+  end
+  
 end
 
 class Erector::RailsWidget

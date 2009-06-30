@@ -14,7 +14,7 @@ class Views::UserSettings::Show < Views::Layouts::Application
       text "Username: #{@user.login}"
     end
     div do
-      rawtext link_to('Modificar', :action => 'edit', :id => @user.id)
+      rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, as_button)
     end
   end
 end
