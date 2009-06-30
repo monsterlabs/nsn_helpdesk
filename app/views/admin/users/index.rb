@@ -8,7 +8,7 @@ class Views::Admin::Users::Index < Views::Layouts::Application
     
     widget Views::Admin::Users::Record, :collection => @collection
 
-    rawtext link_to "Add user", {:action => 'new'}, as_button
+    rawtext link_to "Add user", {:action => 'new'}, ui_style(:button)
   end
 
 

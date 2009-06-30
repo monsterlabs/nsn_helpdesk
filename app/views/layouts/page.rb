@@ -112,8 +112,17 @@ class Erector::Widget
     end
   end
   
-  def as_button
-    return {:class => "ui-state-default ui-corner-all", :id => "button"}
+  def ui_style(*styles)
+    classes = []
+    ids =[]
+    styles.each do |style|
+      case style
+      when :button
+        classes << ["ui-state-default", "ui-corner-all"]
+        ids << "button"
+      end
+    end
+    return {:class => classes.flatten.join(" "), :id => ids.flatten}
   end
   
 end
