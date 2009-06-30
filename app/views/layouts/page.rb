@@ -92,9 +92,6 @@ class Views::Layouts::Page < Erector::RailsWidget
     end
   end
   
-  css "grid"
-  js "prototype", "effects", "application"
-  
 end
 
 class Erector::Widget

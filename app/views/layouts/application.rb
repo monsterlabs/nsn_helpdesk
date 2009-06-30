@@ -1,5 +1,8 @@
 class Views::Layouts::Application < Views::Layouts::Page
   
+  css "grid"
+  js "prototype", "effects", "application"
+  
   def body_content
     div :class => "container_16" do
       ## Create the layout
