@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resource :dashboard
   map.resources :user_settings
-  map.resources :people, :member => { :change_photo => :get }
+  map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
 
   map.namespace :admin do |admin|
 #    admin.resource :session
