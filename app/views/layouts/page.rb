@@ -118,11 +118,10 @@ class Erector::Widget
     styles.each do |style|
       case style
       when :button
-        classes << ["ui-state-default", "ui-corner-all"]
-        ids << "button"
+        classes << ["ui-state-default", "ui-corner-all", "button"]
       end
     end
-    return {:class => classes.flatten.join(" "), :id => ids.flatten}
+    return {:class => classes.flatten.join(" ")}
   end
   
 end

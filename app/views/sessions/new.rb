@@ -7,11 +7,13 @@ class Views::Sessions::New < Views::Layouts::Application
   def body_content
     div :class => "container_16" do
       header_bar
-      div :class => "prefix_1 grid_10" do
-        text "Text Placeholder"
+      div :class => "grid_10 ui-corner-all", :id => "new_session_main" do
+        
       end
-      div :class => "grid_4 suffix_1" do
-        login_form
+      div :class => "grid_6 ui-corner-all", :id => "login_box" do
+        div :class => "prefix_1 grid_4 suffix_1 alpha", :id => "login_form" do
+          login_form
+        end
       end
       div :class => "clear"
     end
@@ -29,7 +31,7 @@ class Views::Sessions::New < Views::Layouts::Application
         br      
         rawtext f.password_field :password
       }
-      p { rawtext submit_tag "Sign In" }
+      p { rawtext submit_tag "Sign In", ui_style(:button) }
     end
   end
 

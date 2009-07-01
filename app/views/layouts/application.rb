@@ -16,8 +16,8 @@ class Views::Layouts::Application < Views::Layouts::Page
   end
   
   def header_bar
-    div :class => "grid_16" do
-      text "Just a header"
+    div :class => "grid_16", :id => "header" do
+      text "HEADER"
     end
     
     div :class => "clear" 

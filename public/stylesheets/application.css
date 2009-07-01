@@ -1,8 +1,32 @@
 /* This is the custom css for the application*/
 
-
-a#button {	
+a.button {	
 	font-size: 80%;
 	padding: 0.2em 0.5em;
 	text-decoration: none;
+}
+
+/* Styles for content divs and elements*/
+
+body {
+	background: url("../images/background.png") white repeat-x;
+	height: 600px;
+}
+
+div#header {
+	height: 80px;
+}
+
+div#new_session_main {
+	background: url("../images/box_background.png") bottom left;
+	height: 300px;
+}
+
+div#login_box {
+	background: url("../images/box_background.png") bottom left;
+	height: 300px;
+}
+
+div#login_form {
+	padding-top: 50px;
 }
