@@ -10,15 +10,47 @@ a.button {
 /* Styles for content divs and elements*/
 
 body {
-	background: url("../images/background.png") white repeat-x;
+	background: white;
 	height: 600px;
+	margin: 0px;
 }
 
 div#header {
-	height: 80px;
+	background: url("../images/app_logo.png") top left no-repeat;
+	height: 90px;
 }
 
+div#footer {
+	background: url("../images/footer_background.png") repeat-x;
+	width: 100%;
+	height: 148px;
+	display: table;
+	position: absolute;
+	bottom: 0px;
+}
+
+div#footer p {
+	color: white;
+	height: 148px;
+	display: table-cell;
+    vertical-align: middle;
+	text-align: center;
+}
+
+div#dashboard {
+	background: url("../images/dashboard.png");
+	height: 60px;
+}
+
+div#feedback {
+	position:fixed
+}
+
+
+
+
 /* sessions/new */
+
 div#new_session_main, div#login_box {
 	background: url("../images/box_background.png") bottom left;
 	height: 300px;

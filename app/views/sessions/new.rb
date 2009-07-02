@@ -17,6 +17,7 @@ class Views::Sessions::New < Views::Layouts::Application
       end
       div :class => "clear"
     end
+    footer
   end
 
   def login_form

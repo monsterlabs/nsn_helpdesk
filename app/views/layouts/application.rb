@@ -12,23 +12,27 @@ class Views::Layouts::Application < Views::Layouts::Page
       div :class => "prefix_1 grid_14 suffix_1" do
         view_content
       end
+      div :class => "clear"
     end
+    footer
   end
   
   def header_bar
-    div :class => "grid_16", :id => "header" do
-      text "HEADER"
-    end
-    
+    div :class => "grid_16", :id => "header"
     div :class => "clear" 
   end
   
   def dashboard
-    div :class => "grid_16" do
-      text "Dashboard"
-    end
-    
+    div :class => "grid_16", :id => "dashboard"
     div :class => "clear" 
+  end
+  
+  def footer
+    div :id => "footer" do
+      p do
+        text "Copyright © 2009"
+      end
+    end
   end
 
 end

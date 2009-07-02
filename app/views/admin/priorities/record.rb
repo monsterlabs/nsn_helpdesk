@@ -1,15 +1,29 @@
 class Views::Admin::Priorities::Record < Erector::RailsWidget
   needs :collection
-  
+
   def content
-    collection.each do |record|
-      div :id => dom_id(record) do
-        rawtext dom_id(record)
-        span { b { text "name" } }
-        span { text record.name  }
-        # widget Views::Admin::Users::Actions, :record_id => record.id
-      end
+    table do
+      table_header
+      table_body
     end
   end
   
+  def table_header
+    thead do |variable|
+      th { text "id" }
+      th { text "name" }
+    end
+  end
+
+  def table_body
+    tbody do
+      collection.each do |record|
+        tr do
+          td { text record.id }
+          td { text record.name }
+        end
+      end
+    end
+  end
+
 end
