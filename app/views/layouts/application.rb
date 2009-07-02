@@ -1,6 +1,6 @@
 class Views::Layouts::Application < Views::Layouts::Page
   
-  css "grid", "application", "ui-lightness/jquery-ui-1.7.2.custom"
+  css "grid", "application", "custom-theme/jquery-ui-1.7.2.custom"
   js  "application", "jquery", "jquery-ui", "jrails"
   
   def body_content

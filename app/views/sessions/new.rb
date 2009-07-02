@@ -31,7 +31,7 @@ class Views::Sessions::New < Views::Layouts::Application
         br      
         rawtext f.password_field :password
       }
-      p { rawtext submit_tag "Sign In", ui_style(:button) }
+      p { rawtext submit_tag "Sign In", ui_style(:button, {:id => "login_button"}) }
     end
   end
 

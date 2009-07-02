@@ -112,6 +112,8 @@ class Erector::Widget
     end
   end
   
+  # ui_style(:button, {:id => "login_button"})
+  # => "class='ui-state-default ui-corner-all button' id='login_button'"
   def ui_style(*styles)
     classes = []
     ids =[]
@@ -119,9 +121,12 @@ class Erector::Widget
       case style
       when :button
         classes << ["ui-state-default", "ui-corner-all", "button"]
+      when Hash
+        ids << style[:id]
+        classes << style[:class]
       end
     end
-    return {:class => classes.flatten.join(" ")}
+    return {:class => classes.flatten.join(" "), :id => ids.flatten.join(" ")}
   end
   
 end

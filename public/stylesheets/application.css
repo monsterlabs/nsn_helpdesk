@@ -1,5 +1,6 @@
 /* This is the custom css for the application*/
 
+/* for use with ui_style(:button) */
 a.button {	
 	font-size: 80%;
 	padding: 0.2em 0.5em;
@@ -17,16 +18,19 @@ div#header {
 	height: 80px;
 }
 
-div#new_session_main {
-	background: url("../images/box_background.png") bottom left;
-	height: 300px;
-}
-
-div#login_box {
+/* sessions/new */
+div#new_session_main, div#login_box {
 	background: url("../images/box_background.png") bottom left;
 	height: 300px;
 }
 
 div#login_form {
 	padding-top: 50px;
+}
+
+input#login_button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 105%;
 }
