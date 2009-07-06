@@ -1,17 +1,19 @@
-class Views::Admin::Priorities::Record < Erector::RailsWidget
+class Views::Admin::SuperScaffold::Record < Erector::RailsWidget
   needs :collection
 
   def content
-    table do
+    table :id => "listing" do
       table_header
       table_body
     end
   end
   
   def table_header
-    thead do |variable|
-      th { text "id" }
-      th { text "name" }
+    thead :class => "ui-widget-header", :id => "listing-head" do
+      tr do
+        th { text "id" }
+        th { text "name" }
+      end
     end
   end
 
@@ -25,5 +27,4 @@ class Views::Admin::Priorities::Record < Erector::RailsWidget
       end
     end
   end
-
 end

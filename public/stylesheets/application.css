@@ -15,6 +15,11 @@ body {
 	margin: 0px;
 }
 
+div.container_16 {
+	margin-bottom: 40px;
+	min-height: 554px;
+}
+
 div#header {
 	background: url("../images/app_logo.png") top left no-repeat;
 	height: 90px;
@@ -22,16 +27,17 @@ div#header {
 
 div#footer {
 	background: url("../images/footer_background.png") repeat-x;
+	background-position-y: -35px;
 	width: 100%;
-	height: 148px;
+	height: 70px;
 	display: table;
-	position: absolute;
+/*	position: absolute;*/
 	bottom: 0px;
 }
 
 div#footer p {
 	color: white;
-	height: 148px;
+	height: inherit;
 	display: table-cell;
     vertical-align: middle;
 	text-align: center;
@@ -39,19 +45,23 @@ div#footer p {
 
 div#dashboard {
 	background: url("../images/dashboard.png");
+	background-position-x: -3px;
 	height: 60px;
 }
 
 div#feedback {
-	position:fixed
+	background: url("../images/feedback.png");
+	position:fixed;
+	height: 126px;
+	width: 37px;
+	right: 0px;
+	top: 35%;
 }
-
-
-
 
 /* sessions/new */
 
 div#new_session_main, div#login_box {
+	margin-top: 40px;
 	background: url("../images/box_background.png") bottom left;
 	height: 300px;
 }
@@ -65,4 +75,25 @@ input#login_button {
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 105%;
+}
+
+/* listings */
+table {
+	min-width: 100px	;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+thead#listing-head th {
+	height: 50px;
+	font-size: 1.2em;
+}
+
+/* errors */
+div.fieldWithErrors input {
+	border: 2px solid red;
+}
+
+div#errorExplanation {
+	padding: 10px 20px;
 }

@@ -4,6 +4,7 @@ class Views::Layouts::Application < Views::Layouts::Page
   js  "application", "jquery", "jquery-ui", "jrails"
   
   def body_content
+    feedback
     div :class => "container_16" do
       ## Create the layout
       header_bar
@@ -33,6 +34,10 @@ class Views::Layouts::Application < Views::Layouts::Page
         text "Copyright © 2009"
       end
     end
+  end
+
+  def feedback
+    div :id => "feedback"
   end
 
 end

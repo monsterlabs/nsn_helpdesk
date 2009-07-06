@@ -9,7 +9,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   end
   
   def table_header
-    thead do |variable|
+    thead do
       th { text "id" }
       th { text "photo" }
       th { text "name" }
@@ -27,7 +27,6 @@ class Views::Admin::Users::Record < Erector::RailsWidget
           td { text record.person.firstname + ' ' + record.person.lastname1 }
           td { text record.login }
           td { text record.email }
-          text record.person.firstname + ' ' + record.person.lastname1
         end
       end
     end
