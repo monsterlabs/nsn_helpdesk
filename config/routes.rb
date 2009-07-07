@@ -5,10 +5,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
 
   map.namespace :admin do |admin|
-#    admin.resource :session
     admin.resources :users
     admin.resources :priorities
     admin.resources :regions
+  end  
+
+  map.namespace :operator do |operator|
+    operator.resources :tickets
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
