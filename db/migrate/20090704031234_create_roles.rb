@@ -1,14 +1,8 @@
 class CreateRoles < ActiveRecord::Migration
   def self.up
     create_table :roles do |t|
-      t.column :title, :string
+      t.column :name, :string
       t.references :user
-      
-      # acl9 plugin requirements
-      # t.string   :name,              :limit => 40
-      # t.string   :authorizable_type, :limit => 40
-      # t.integer  :authorizable_id
-      
       t.timestamps
     end
   end

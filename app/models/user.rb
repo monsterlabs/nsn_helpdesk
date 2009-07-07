@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates_presence_of :login, :email
 
   acts_as_authentic
-  # using_access_control
+  using_access_control
   
   has_many :user_roles
   has_many :roles, :through => :user_roles
