@@ -1,8 +1,4 @@
-class Admin::StatusesController < SuperScaffoldController
+class Admin::StatusesController < ApplicationController
   filter_access_to :all
-  def initialize
-    @model = Status
-    @name_space = 'admin'
-    super
-  end
+  super_scaffold :model => "Status", :name_space => "admin"
 end

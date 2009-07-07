@@ -1,5 +1,5 @@
-class Views::Admin::SuperScaffold::Record < Erector::RailsWidget
-  needs :collection
+class Views::SuperScaffold::Record < Erector::RailsWidget
+  needs :collection, :columns
 
   def content
     table :id => "listing" do
@@ -12,7 +12,9 @@ class Views::Admin::SuperScaffold::Record < Erector::RailsWidget
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
         th { text "id" }
-        th { text "name" }
+        columns.keys.each do |column|
+          th { text column }
+        end
       end
     end
   end
@@ -22,7 +24,9 @@ class Views::Admin::SuperScaffold::Record < Erector::RailsWidget
       collection.each do |record|
         tr do
           td { text record.id }
-          td { text record.name }
+          columns.keys.each do |column|
+            td { text record.send(column) }
+          end
         end
       end
     end

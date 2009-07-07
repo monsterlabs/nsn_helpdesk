@@ -1,8 +1,4 @@
-class Admin::RegionsController < SuperScaffoldController
+class Admin::RegionsController < ApplicationController
   filter_access_to :all
-  def initialize
-    @model = Region
-    @name_space = 'admin'
-    super
-  end
+  super_scaffold :model => "Region", :name_space => "admin"
 end

@@ -1,4 +1,4 @@
-class Views::Admin::SuperScaffold::Edit < Views::Layouts::Application
+class Views::SuperScaffold::Edit < Views::Layouts::Application
   def page_title
     "Edit User"
   end
@@ -9,7 +9,7 @@ class Views::Admin::SuperScaffold::Edit < Views::Layouts::Application
       h2 do
         text "Edit #{@record.class}"
       end
-      widget Views::Admin::SuperScaffold::Form, :f => f, :record => @record
+      widget Views::SuperScaffold::Form, :f => f, :record => @record, :columns => @columns
       
       rawtext f.submit 'Update', ui_style(:button)
     end

@@ -1,4 +1,4 @@
-class Views::Admin::SuperScaffold::New < Views::Layouts::Application
+class Views::SuperScaffold::New < Views::Layouts::Application
   def page_title
     "Add #{@record.class}"
   end
@@ -9,7 +9,7 @@ class Views::Admin::SuperScaffold::New < Views::Layouts::Application
       h2 do
         text "Add #{@record.class}"
       end
-      widget Views::Admin::SuperScaffold::Form, :f => f, :record => @record
+      widget Views::SuperScaffold::Form, :f => f, :record => @record, :columns => @columns
       
       rawtext f.submit 'Create', ui_style(:button)
     end
