@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-
+  filter_access_to :all
   def index
     @collection = User.all
 
