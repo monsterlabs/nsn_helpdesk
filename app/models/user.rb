@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :person
   
   def role_symbols
-    roles.collect { |role| role.title.to_sym } 
+    roles.collect { |role| role.name.to_sym } 
   end
 end
