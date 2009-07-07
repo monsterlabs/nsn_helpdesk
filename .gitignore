@@ -10,3 +10,4 @@ coverage
 public/pictures
 public/system
 .DS_Store
+vendor/gems
