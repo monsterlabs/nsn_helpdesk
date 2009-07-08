@@ -134,4 +134,5 @@ end
 class Erector::RailsWidget
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::FormTagHelper
+  include ActionView::Helpers::UrlHelper
 end

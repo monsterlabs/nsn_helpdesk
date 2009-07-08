@@ -13,6 +13,7 @@ body {
 	background: white;
 	height: 600px;
 	margin: 0px;
+	font-family: "Helvetica Neue","Lucida Grande","Helvetica Neue", Arial, sans-serif;
 }
 
 div.container_16 {
@@ -43,11 +44,210 @@ div#footer p {
 	text-align: center;
 }
 
-div#dashboard {
-	background: url("../images/dashboard.png");
-	background-position-x: -3px;
-	height: 60px;
+div#toplinks {
+	text-align: right;
+	color: silver;
 }
+
+div#toplinks b {
+	color: #E13F0D;
+}
+
+div#toplinks a, a:visited {
+	text-decoration: none;
+	color: #2CACAC;
+}
+
+div#toplinks a:hover {
+	color: #36676A;
+}
+
+
+div#dashboard {
+  background: url("/images/dashboard.png");
+  background-position-x: -3px;
+  height: 60px;
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+}
+
+#dashboard ul, #action-nav ul {
+  list-style:  none;
+  width: 100%;
+}
+
+#dashboard #dashboard li {
+  display:  block;
+  float: left;
+  position: relative;
+}
+
+#dashboard li a {
+  padding: 8px 20px 7px 20px;
+  display: block;
+  float: left;
+  color: #666666;
+  border: none;
+  font-weight: bold;
+  position: relative;
+}
+
+#dashboard li a:hover {
+  padding: 7px 20px 6px 20px;
+  background-color: #07B;
+  color: #fff;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
+
+#dashboard li #current {
+  padding: 8px 18px 7px 18px;	
+  background-color: #069;
+  color: #fff;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#dashboard li a:hover#current {
+  padding: 7px 20px 6px 20px;
+  background-color: #07B;
+  color: #fff;
+  margin-bottom: 1px;
+
+}
+
+#dashboard li.selected a {
+  background-color: #5A9ECF;
+  color: #fff;
+}
+
+#first a, #t-proj a {
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+}
+
+
+#dashboard #t-menu a, #dashboard #t-proj a {
+  padding-right: 27px;
+}
+
+#t-menu em, #t-proj em {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  text-indent: -9999px;
+  right: 8px;
+  top: 11px;
+  background: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+#t-menu a:hover em, #t-proj a:hover em {
+  background-color: #fff;
+}
+
+#tmenu em:hover, #t-proj em:hover {
+  background-color: #fff;
+}
+
+#dashboard ul.submenu {
+  width: 230px;
+  background: #fff !important;
+  position: absolute;
+  border-bottom: 1px solid #4294CF;
+  border-left: 1px solid #4294CF;
+  border-right: 1px solid #4294CF;
+  top: 33px;
+  left: 0;
+  z-index: 0;
+}
+
+#dashboard ul.submenu li {
+  float: none;
+  display: block;
+  border-bottom: 1px solid #eee;
+  margin: 0 6px !important;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a {
+  color: #333;
+  float: none;
+  padding: 6px;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a:hover {
+  background: transparent;
+  color: #058;
+}
+
+#dashboard .submenu-tab a {
+  padding-right: 27px;
+}
+
+.submenu-tab em {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  text-indent: -9999px;
+  right: 8px;
+  top: 11px;
+  background: #000 url(/images/droparrow.gif) 5px 6px no-repeat;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.submenu-tab a:hover em {
+  background-color: #057;
+}
+
+#tmenu em:hover, .submenu-tab em:hover {
+  background-color: #C0DCF0;
+}
+
+#dashboard ul.submenu {
+  width: 110px;
+  background: #fff !important;
+  position: relative;
+  border-bottom: 1px solid #4294CF;
+  border-left: 1px solid #4294CF;
+  border-right: 1px solid #4294CF;
+  margin-left: 193px;
+  padding-left: 5px;
+  text-align: left;
+  padding-top: 5px;
+}
+
+#dashboard ul.submenu li {
+  float: none;
+  display: block;
+  border-bottom: 1px solid #eee;
+  margin: 0 6px !important;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a {
+  color: #333;
+  float: none;
+  padding: 0px 0px 6px 0px;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a:hover {
+  background: transparent;
+  color: #058;
+}
+
 
 div#feedback {
 	background: url("../images/feedback.png");
