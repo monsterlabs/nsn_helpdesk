@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :priorities
     admin.resources :regions
+    admin.resources :failures
   end  
 
   map.namespace :operator do |operator|
