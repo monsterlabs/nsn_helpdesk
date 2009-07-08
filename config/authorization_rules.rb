@@ -9,7 +9,7 @@ authorization do
   role :admin do
     has_permission_on :user_settings, :to => :manage
     has_permission_on :users, :to => :manage
-    has_permission_on [:regions, :priorities, :statuses], :to => :manage
+    has_permission_on [:regions, :priorities, :statuses, :failures], :to => :manage
   end
 end
 
