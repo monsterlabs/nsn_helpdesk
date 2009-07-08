@@ -12,7 +12,7 @@ Rails::Initializer.run do |config|
   # -- all .rb files in that directory are automatically loaded.
 
   # Add additional load paths for your own custom dirs
-   config.load_paths += %W( #{RAILS_ROOT}/clients)
+   config.load_paths += %W( #{RAILS_ROOT}/clients #{RAILS_ROOT}/lib)
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   # config.gem "bj"
@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'authlogic'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem "stffn-declarative_authorization", :lib => "declarative_authorization"
-  
+  config.gem 'searchlogic'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
