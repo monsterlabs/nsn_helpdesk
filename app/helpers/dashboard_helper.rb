@@ -9,26 +9,27 @@ module DashboardHelper
     ul do
       collection.collect do |record|
         unless record.has_children?
-            tab(record)
+          tab(record)
         else
-            tab_with_children(record)
-        #li record.controller.capitalize, :id => "t-proj"
-        #   set_dashboard(name_space, record.children)
+          li :id => "t-proj" do 
+            link_to_function record.controller.capitalize, "$('##{record.controller + '_children'}').toggle();",  :id => record.controller + '_link'
+            ul :class => "submenu", :style=>"display: none;", :id => (record.controller + '_children') do
+              record.children.collect do |child|
+                li do
+                  link_to child.controller, :controller => child.controller
+                end
+              end
+            end
+          end
         end
-     end
+      end
     end 
   end
-  
+
   def tab(record)
     li :id => "t-proj" do 
       link_to(record.controller.capitalize, :controller => record.controller)
     end
   end
-  
-  def tab_with_children(record)
-    li :id => "t-menu", :class => "submenu-tab" do 
-      link_to(record.controller.capitalize + '<em>more</em>', :controller => record.controller)
-    end
-  end
-  
+
 end

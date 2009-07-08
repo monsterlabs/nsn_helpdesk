@@ -62,27 +62,6 @@ div#toplinks a:hover {
 	color: #36676A;
 }
 
-.submenu-tab a:hover em {
-	background-color:#005577;
-}
-
-#tmenu em:hover, .submenu-tab em:hover {
-	background-color:#C0DCF0;
-}
-
-.submenu-tab em {
--moz-border-radius-bottomleft:2px;
--moz-border-radius-bottomright:2px;
--moz-border-radius-topleft:2px;
--moz-border-radius-topright:2px;
-background:#005577 url(/images/droparrow.gif) no-repeat scroll 5px 6px;
-height:14px;
-position:absolute;
-right:8px;
-text-indent:-9999px;
-top:11px;
-width:14px;
-}
 
 div#dashboard {
   background: url("/images/dashboard.png");
@@ -187,7 +166,7 @@ div#dashboard {
   border-right: 1px solid #4294CF;
   top: 33px;
   left: 0;
-  z-index: 9;
+  z-index: 0;
 }
 
 #dashboard ul.submenu li {
@@ -202,6 +181,65 @@ div#dashboard {
   color: #333;
   float: none;
   padding: 6px;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a:hover {
+  background: transparent;
+  color: #058;
+}
+
+#dashboard .submenu-tab a {
+  padding-right: 27px;
+}
+
+.submenu-tab em {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  text-indent: -9999px;
+  right: 8px;
+  top: 11px;
+  background: #000 url(/images/droparrow.gif) 5px 6px no-repeat;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.submenu-tab a:hover em {
+  background-color: #057;
+}
+
+#tmenu em:hover, .submenu-tab em:hover {
+  background-color: #C0DCF0;
+}
+
+#dashboard ul.submenu {
+  width: 110px;
+  background: #fff !important;
+  position: relative;
+  border-bottom: 1px solid #4294CF;
+  border-left: 1px solid #4294CF;
+  border-right: 1px solid #4294CF;
+  margin-left: 193px;
+  padding-left: 5px;
+  text-align: left;
+  padding-top: 5px;
+}
+
+#dashboard ul.submenu li {
+  float: none;
+  display: block;
+  border-bottom: 1px solid #eee;
+  margin: 0 6px !important;
+  background-color: #fff;
+}
+
+#dashboard ul.submenu li a {
+  color: #333;
+  float: none;
+  padding: 0px 0px 6px 0px;
   background-color: #fff;
 }
 
