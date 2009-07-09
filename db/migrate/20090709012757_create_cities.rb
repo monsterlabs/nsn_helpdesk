@@ -2,8 +2,7 @@ class CreateCities < ActiveRecord::Migration
   def self.up
     create_table :cities do |t|
       t.string :name
-      t.integer :region_id
-
+      t.references :state, :region
       t.timestamps
     end
   end

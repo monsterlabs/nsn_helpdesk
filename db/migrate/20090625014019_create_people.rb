@@ -3,9 +3,12 @@ class CreatePeople < ActiveRecord::Migration
     create_table :people do |t|
       t.references :user, :null => false
       t.string     :firstname, :lastname1, :null => false
-      t.string     :lastname2
-      t.boolean    :gender#,             :null => false
-      t.references :moduser, :class_name => 'User', :foreign_key => "moduser_id"
+      t.string     :lastname2, :job_title
+      t.boolean    :gender, :null => false, :default => true
+      t.text       :notes
+      # FIX IT: Check the follow relationship
+      t.references :company, :region
+            
       # Plugin requirement: attributes required by paperclip
       t.string     :photo_file_name, :photo_content_type
       t.integer    :photo_file_size
