@@ -10,7 +10,6 @@ class LoadCustomers < ActiveRecord::Migration
       company_name = 'Otro' if company_name.empty?
       company = Company.exists?(:name=> company_name) ? Company.find_by_name(company_name) : Company.create!(:name => company_name)
 
-
       region_name =row[18].to_s.strip  
       region =  region_name.empty? ? nil : (Region.exists?(:name=> region_name) ? Region.find_by_name(region_name) : Region.create!(:name => region_name))
 
@@ -32,9 +31,7 @@ class LoadCustomers < ActiveRecord::Migration
         @user.roles << Role.find_by_name('customer')
         
         @user.save
-
       end
-#      puts @user.email unless @user.valid?
     end
   end
 
