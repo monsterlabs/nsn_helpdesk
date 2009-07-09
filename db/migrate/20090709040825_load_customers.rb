@@ -28,7 +28,9 @@ class LoadCustomers < ActiveRecord::Migration
         address_params = { :location => nil, :city_id => nil, :country_id => 484, :state_id => nil, :zipcode => nil, :business_phone => row[6].to_s.strip, :home_phone => nil, :fax_number => nil}
         address_params.merge(:city_id => city.id) unless city.nil?
         @user.address_attributes = address_params
-
+        
+        @user.roles << Role.find_by_name('customer')
+        
         @user.save
 
       end
