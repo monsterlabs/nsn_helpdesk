@@ -2,8 +2,6 @@ class Views::Layouts::Application < Views::Layouts::Page
 
   css "grid", "application", "custom-theme/jquery-ui-1.7.2.custom"
   js  "application", "jquery", "jquery-ui", "jrails"
-<<<<<<< HEAD:app/views/layouts/application.rb
-  
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
@@ -18,12 +16,8 @@ class Views::Layouts::Application < Views::Layouts::Page
         resizable: false
       });
     Str
-  
-=======
 
   include DashboardHelper
-
->>>>>>> f2db12ce43717bb0b847b5a769ed1608b863b176:app/views/layouts/application.rb
   def body_content
     feedback
     div :class => "container_16" do
@@ -74,14 +68,10 @@ class Views::Layouts::Application < Views::Layouts::Page
   def feedback
     div :id => "feedback"
   end
-<<<<<<< HEAD:app/views/layouts/application.rb
-  
+
   def dialog
     div :id => "feedback-dialog", :title => "Send your feedback" do
       widget Views::Feedback::Form
     end
   end
-
-=======
->>>>>>> f2db12ce43717bb0b847b5a769ed1608b863b176:app/views/layouts/application.rb
 end
