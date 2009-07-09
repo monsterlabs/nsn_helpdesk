@@ -2,7 +2,6 @@ class CreatePriorities < ActiveRecord::Migration
   def self.up
     create_table :priorities do |t|
       t.string :name, :null => false
-
       t.timestamps
     end
   end
