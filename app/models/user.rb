@@ -6,8 +6,10 @@ class User < ActiveRecord::Base
   
   has_many :user_roles
   has_many :roles, :through => :user_roles
-  has_one :person
+  has_one  :person
   accepts_nested_attributes_for :person
+  has_one  :address
+  accepts_nested_attributes_for :address
   
   def role_symbols
     roles.collect { |role| role.name.to_sym } 

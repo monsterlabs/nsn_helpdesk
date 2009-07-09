@@ -5,7 +5,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :location
       t.string :zipcode
       t.references :city, :state, :country
-      t.string :bussiness_phone
+      t.string :business_phone
       t.string :home_phone
       t.string :mobile_phone
       t.string :fax_number

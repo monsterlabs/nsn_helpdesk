@@ -2,8 +2,7 @@ class CreatePeople < ActiveRecord::Migration
   def self.up
     create_table :people do |t|
       t.references :user, :null => false
-      t.string     :firstname, :lastname1, :null => false
-      t.string     :lastname2, :job_title
+      t.string     :firstname, :lastname, :job_title
       t.boolean    :gender, :null => false, :default => true
       t.text       :notes
       # FIX IT: Check the follow relationship
