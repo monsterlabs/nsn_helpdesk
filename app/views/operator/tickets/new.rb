@@ -6,10 +6,11 @@ class Views::Operator::Tickets::New < Views::Layouts::Application
   def view_content
     rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
     form_for(:ticket, @ticket, :url => { :action => "create"}) do |f|
-#       h2 do
-#         text 'Add user'
-#       end
-#       widget Views::Admin::Users::Form, :f => f, :user => @user
+       h2 do
+         text 'Case details'
+      end
+
+      widget Views::Operator::Tickets::Form, :f => f
       
       rawtext f.submit 'Create', ui_style(:button)
      end

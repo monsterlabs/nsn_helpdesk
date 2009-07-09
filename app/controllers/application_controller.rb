@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   # Authorization with DeclarativeAuthorization
   def set_current_user
-    Authorization.current_user = User.first
+    Authorization.current_user = User.find(1)
   end
 
   def store_location

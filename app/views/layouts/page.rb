@@ -91,7 +91,9 @@ class Views::Layouts::Page < Erector::RailsWidget
       end
     end
   end
-  
+  def request
+    @controller.request
+  end
 end
 
 class Erector::Widget
@@ -128,11 +130,22 @@ class Erector::Widget
     end
     return {:class => classes.flatten.join(" "), :id => ids.flatten.join(" ")}
   end
-  
+
+  def paginator(collection)
+    total_pages = (collection.total_entries / collection.per_page) + 1
+    (1..total_pages).each do |index|
+      # prev_page = index - 1
+      #  link_to 'Previous', :controller => 'admin/regions', :page => prev_page unless( prev_page == 0)
+      link_to index, :controller => 'admin/regions', :page => index unless index == collection.current_page
+      # next_page =  index + 1
+      # link_to 'Next', :controller => 'admin/regions', :page => next_page if next_page < (total_pages -1)
+    end
+  end
 end
 
 class Erector::RailsWidget
   include ActionView::Helpers::TagHelper
   include ActionView::Helpers::FormTagHelper
   include ActionView::Helpers::UrlHelper
+  include WillPaginate::ViewHelpers
 end

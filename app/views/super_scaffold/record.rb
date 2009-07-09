@@ -11,7 +11,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        th { text "id" }
+#        th { text "id" }
         columns.keys.each do |column|
           th { text column }
         end
@@ -23,7 +23,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
     tbody do
       collection.each do |record|
         tr do
-          td { text record.id }
+#          td { text record.id }
           columns.keys.each do |column|
             td { text record.send(column) }
           end
