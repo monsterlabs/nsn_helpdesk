@@ -7,7 +7,9 @@ class CreateTickets < ActiveRecord::Migration
       t.references :opened_by, :class_name => 'User'
       t.references :assigned_to, :class_name => 'User'
       t.references :reported_by, :class_name => 'User'
+      t.references :region, :class_name => 'Region'
       t.references :priority, :status
+      t.references :ticket_type
       t.timestamps # Opened_date, Resolved_date
     end
   end
