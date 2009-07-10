@@ -27,7 +27,8 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
    rawtext f.select(:status_id, Status.all.collect {|p| [ p.name, p.id ] })
    text "Due date"
    text "Resolved date"
-
+   text "Comment"
+   rawtext f.text_area :body, :rows => 4
  end
 
 end
