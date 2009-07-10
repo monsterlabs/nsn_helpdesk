@@ -11,7 +11,7 @@ class Views::Admin::Users::Edit < Views::Layouts::Application
       end
       widget Views::Admin::Users::Form, :f => f, :user => @user
       
-      rawtext f.submit 'Create', ui_style(:button)
+      rawtext f.submit 'Save', ui_style(:button)
     end
   end
 

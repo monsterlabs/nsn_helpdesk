@@ -1,8 +1,7 @@
 class Admin::UsersController < ApplicationController
   filter_access_to :all
   def index
-    @collection = User.all
-
+    @collection = User.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
       format.html { render :action => 'index' }
     end
@@ -10,15 +9,13 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-
     respond_to do |format|
       format.html { render 'new' }
     end
   end
 
   def create
-    @user = User.new(params[:user])
-    
+    @user = User.new(params[:user])    
     respond_to do |format|
       if @user.save
         format.html { redirect_to :action => 'index' }
@@ -30,7 +27,6 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }
@@ -42,19 +38,24 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    
     respond_to do |format|
       format.html { render 'edit' }
     end
   end
 
-  def delete
+  def show
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html { render 'show' }
+    end
+  end
+
+  def destroy
     @user = User.find(params[:id])
     @user.destroy
-    
     respond_to do |format|
-      format.js { render 'delete.rjs' }
-    end    
+      format.html { redirect_to :action => 'index' }
+     end    
   end
 
 end

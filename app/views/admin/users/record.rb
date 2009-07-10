@@ -10,11 +10,12 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   
   def table_header
     thead do
-      th { text "id" }
-      th { text "photo" }
-      th { text "name" }
-      th { text "login" }
-      th { text "email" }
+      th { text "Photo" }
+      th { text "Fullname" }
+      th { text "Login" }
+      th { text "Email" }
+      th { text "Actions" }
+      
     end
   end
 
@@ -22,11 +23,17 @@ class Views::Admin::Users::Record < Erector::RailsWidget
     tbody do
       collection.each do |record|
         tr do
-          td { text record.id }
-          td { rawtext image_tag record.person.photo.url(:thumb) }
-          td { text record.person.firstname + ' ' + record.person.lastname1 }
+          td { rawtext image_tag record.person.photo.url(:thumb)  unless record.person.nil? }
+          td { text record.person.fullname unless record.person.nil? }
           td { text record.login }
           td { text record.email }
+          td do 
+                  link_to 'Edit', :action => :edit, :id => record.id
+                  text ' | '
+                  link_to 'Show', :action => :show, :id => record.id
+                  text ' | '
+                  link_to 'Destroy', {:action => :destroy, :id => record.id}, :method => :delete, :confirm => 'Do you want to delete this record ?'
+          end
         end
       end
     end

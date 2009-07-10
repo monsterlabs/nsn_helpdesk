@@ -7,7 +7,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
       table_body
     end
   end
-  
+
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
@@ -32,7 +32,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
             link_to 'Show', :action => :show, :id => record.id
             text ' | '
             link_to 'Destroy', {:action => :destroy, :id => record.id}, :method => :delete, :confirm => 'Do you want to delete this record ?'
-        end
+          end
         end
       end
     end

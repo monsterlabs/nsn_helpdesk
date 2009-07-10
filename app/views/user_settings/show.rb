@@ -1,4 +1,5 @@
 class Views::UserSettings::Show < Views::Layouts::Application
+  
   def page_title
     "Show User"
   end
