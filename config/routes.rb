@@ -6,7 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :dashboard
   map.resource :user_setting
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
-
+  map.resources :feedbacks
+  
   map.namespace :admin do |admin|
     admin.resources :users
     admin.resources :priorities

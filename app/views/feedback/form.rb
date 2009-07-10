@@ -1,7 +1,7 @@
 class Views::Feedback::Form < Erector::RailsWidget
   
   def content
-    form_tag('feedback') do
+   form_tag('/feedbacks') do
       rawtext label { text "Title" }
       br
       rawtext text_field_tag('title')
