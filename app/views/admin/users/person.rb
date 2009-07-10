@@ -3,22 +3,22 @@ class Views::Admin::Users::Person < Erector::RailsWidget
   
   def content
     f.fields_for 'person_attributes', user.person do |person|
-      div do
-        text "Name"
+       div :class => 'field' do
+        label "Firstname"
         rawtext person.text_field :firstname 
       end
-      div do
-        text "Last name"
+       div :class => 'field' do
+        label "Lastname"
         rawtext person.text_field :lastname
       end
       if user.person.nil?
-        div do
-          text "Photo"
+         div :class => 'field' do
+          label "Photo"
           rawtext person.file_field :photo
         end
       else
-        div do
-          text "Photo"
+         div :class => 'field' do
+          label "Photo"
           rawtext image_tag user.person.photo.url(:thumb)
         end
       end
