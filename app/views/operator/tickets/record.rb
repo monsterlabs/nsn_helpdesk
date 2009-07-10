@@ -19,10 +19,11 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
         div :class => 'cell_region' do
           rawtext ticket.region.name
         end
-        div :class => 'cell_actions' do 
-          
+        div :class => 'cell_actions' do
+          widget Views::Operator::Tickets::Actions, :ticket_id => ticket.id
         end
       end
+
     end
   end
 end

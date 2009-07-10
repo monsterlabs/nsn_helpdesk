@@ -352,7 +352,7 @@ div#paginator {
 	vertical-align: top;
 }
 
-/* CSS for Operator/Ticket/Index*/
+/* CSS for Operator/Ticket/Form|Index*/
 .row_record {
     width: 800px;
     display: inline-block;
@@ -384,7 +384,25 @@ div#paginator {
     display: inline-block;    
 }
 
-.cell_comment {
+.cell_actions {
     width: 150px;
     display: inline-block;    
 }
+
+/* CSS for Operator/Ticket/New*/
+.ticket_container {
+    width: 800px;
+    border: 1px solid blue;
+    font-size: 14px;
+}
+
+.row_subject {
+    display: inline-block;
+    width: 300px;
+}
+
+.row_region {
+    display: inline-block;
+    width: 200px;
+}
+
