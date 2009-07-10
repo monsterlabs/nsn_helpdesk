@@ -30,6 +30,7 @@ module SuperScaffoldController
 
         def show
           @record = #{options[:model]}.find(params[:id])
+          @columns = #{options[:columns].inspect}
           render 'super_scaffold/show'
         end
 
@@ -51,9 +52,8 @@ module SuperScaffoldController
         def destroy
           @record = #{options[:model]}.find(params[:id])
           if @record.destroy
-            redirect_to #{options[:model]}.controller_url('#{options[:name_space]}')
+            redirect_to :controller => #{options[:model]}.controller_url('#{options[:name_space]}')
           end
-          render 'super_scaffold/index'
         end
       EOV
     end
