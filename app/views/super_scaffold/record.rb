@@ -15,6 +15,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
         columns.keys.each do |column|
           th { text column }
         end
+        th { text 'Actions' }
       end
     end
   end
@@ -23,10 +24,16 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
     tbody do
       collection.each do |record|
         tr do
-#          td { text record.id }
           columns.keys.each do |column|
             td { text record.send(column) }
           end
+          td do 
+            link_to 'Edit', :action => :edit, :id => record.id
+            text ' | '
+            link_to 'Show', :action => :show, :id => record.id
+            text ' | '
+            link_to 'Destroy', :action => :show, :id => record.id
+        end
         end
       end
     end

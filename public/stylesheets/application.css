@@ -1,9 +1,13 @@
 /* This is the custom css for the application*/
 
 /* for use with ui_style(:button) */
-a.button {	
-	font-size: 80%;
-	padding: 0.2em 0.5em;
+a.button, a.button:visited{	
+	color: white;
+	font-family: Optima,Verdana,Arial,sans-serif;
+	font-size: 0.7em; 
+	padding: 0.09em 0.8em;
+	margin: .7em 0 0 0;
+	margin-left: 10px;
 	text-decoration: none;
 }
 
