@@ -8,7 +8,7 @@ class Views::UserSettings::Show < Views::Layouts::Application
     table :id => "show" do
       tr do 
           td { b 'Photo' }
-          td { rawtext image_tag @user.person.photo.url(:thumb) }
+          td { rawtext image_tag @user.person.photo.url(:thumb) unless @user.person.nil? }
        end
 
        tr do 
@@ -23,22 +23,22 @@ class Views::UserSettings::Show < Views::Layouts::Application
 
        tr do 
            td { b 'Firstname' }
-           td { rawtext @user.person.firstname }
+           td { rawtext @user.person.firstname unless @user.person.nil? }
        end
 
        tr do 
            td { b 'Lastname' }
-           td { rawtext @user.person.lastname }
+           td { rawtext @user.person.lastname unless @user.person.nil? }
        end
 
        tr do 
            td { b 'Company' }
-           td { rawtext @user.person.company.name unless @user.person.company.nil? }
+           td { rawtext @user.person.company.name if !@user.person.nil? and !@user.person.company.nil? }
        end
 
        tr do 
            td { b 'Region' }
-           td { rawtext @user.person.region.name unless @user.person.region.nil? }
+           td { rawtext @user.person.region.name if !@user.person.nil? and !@user.person.region.nil? }
        end
        
     end
