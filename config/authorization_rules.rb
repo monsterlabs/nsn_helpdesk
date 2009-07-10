@@ -19,7 +19,7 @@ authorization do
     has_permission_on :users, :to => :manage
     has_permission_on :tickets, :to => :manage
     has_permission_on :feedbacks, :to => :write
-    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products], :to => :manage
+    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products, :roles], :to => :manage
   end
 end
 
