@@ -24,5 +24,30 @@ class Operator::TicketsController < ApplicationController
       end
     end        
   end
+  
+  def show
+    @ticket = Ticket.find(params[:id])
+    respond_to do |format|    
+      format.html { render :action => 'show'}
+    end    
+  end
+
+  def edit
+    @ticket = Ticket.find(params[:id])    
+    respond_to do |format|    
+      format.html { render :action => 'edit'}
+    end
+  end
+
+  def update
+    @ticket = Ticket.find(params[:id])
+    respond_to do |format|    
+      if @ticket.update_attributes(params[:ticket])
+        format.html { redirect_to :action => 'index'}
+      else
+        format.html { render :action => 'edit'}
+      end
+    end   
+  end
 
 end
