@@ -10,7 +10,7 @@ authorization do
     has_permission_on :user_settings, :to => :manage
     has_permission_on :user_setting, :to => :manage
     has_permission_on :users, :to => :manage
-    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies], :to => :manage
+    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products], :to => :manage
   end
 end
 
