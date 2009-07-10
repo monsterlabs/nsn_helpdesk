@@ -20,8 +20,18 @@ class Views::Admin::Users::Person < Erector::RailsWidget
          div :class => 'field' do
           label "Photo"
           rawtext image_tag user.person.photo.url(:thumb)
-        end
+          rawtext person.file_field :photo
+          end
       end
+      div :class => 'field' do
+        label "Company"
+        rawtext person.collection_select :company_id, Company.all, :id, :name
+      end
+       div :class => 'field' do
+        label "Region"
+        rawtext person.collection_select :region_id, Region.all, :id, :name
+      end
+      
     end
   end
   
