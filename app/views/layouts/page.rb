@@ -132,15 +132,19 @@ class Erector::Widget
   end
 
   def paginator(collection)
-    total_pages = (collection.total_entries / collection.per_page) + 1
-    (1..total_pages).each do |index|
-      # prev_page = index - 1
-      #  link_to 'Previous', :controller => 'admin/regions', :page => prev_page unless( prev_page == 0)
-      link_to index, :controller => 'admin/regions', :page => index unless index == collection.current_page
-      # next_page =  index + 1
-      # link_to 'Next', :controller => 'admin/regions', :page => next_page if next_page < (total_pages -1)
+    div :class => "paginator", :id => "paginator" do
+      (1..collection.total_pages).collect do |page|
+        link_to 'Previous', :action => :index, :page => collection.previous_page if !collection.previous_page.nil? and page == 1
+        if page == collection.current_page
+          rawtext content_tag(:span, page, :class => 'current')
+        else
+          link_to page, :action => :index, :page => page unless page == collection.current_page
+        end
+        link_to 'Next', :action => :index, :page => collection.next_page if !collection.next_page.nil? and page == collection.total_pages
+      end
     end
   end
+
 end
 
 class Erector::RailsWidget
