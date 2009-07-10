@@ -4,7 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => "sessions", :action => "destroy"
   
   map.resource :dashboard
-  map.resources :user_settings
+#  map.resources :user_settings 
+  map.resource :user_setting
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
 
   map.namespace :admin do |admin|
@@ -14,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :failures
     admin.resources :ticket_types
     admin.resources :alarm_types
+    admin.resources :companies
   end  
 
   map.namespace :operator do |operator|

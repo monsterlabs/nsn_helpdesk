@@ -18,6 +18,7 @@ class Views::Layouts::Application < Views::Layouts::Page
     Str
 
   include DashboardHelper
+  
   def body_content
     feedback
     div :class => "container_16" do
@@ -44,7 +45,7 @@ class Views::Layouts::Application < Views::Layouts::Page
     div :class => "grid_16", :id => "toplinks" do
           text b(current_user.login)
           text ' | ' 
-          link_to 'My account', user_settings_path
+          link_to 'My account', user_setting_path
           text ' | ' 
           link_to 'Sign out', logout_url
     end

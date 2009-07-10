@@ -8,8 +8,9 @@ authorization do
   # Permissions for admin here
   role :admin do
     has_permission_on :user_settings, :to => :manage
+    has_permission_on :user_setting, :to => :manage
     has_permission_on :users, :to => :manage
-    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types], :to => :manage
+    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies], :to => :manage
   end
 end
 

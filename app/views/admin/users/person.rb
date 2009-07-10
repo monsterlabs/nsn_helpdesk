@@ -9,7 +9,7 @@ class Views::Admin::Users::Person < Erector::RailsWidget
       end
       div do
         text "Last name"
-        rawtext person.text_field :lastname1
+        rawtext person.text_field :lastname
       end
       if user.person.nil?
         div do

@@ -340,3 +340,14 @@ div#paginator {
 	border-style: solid;
 	border-width: 1px;
 }
+.field {
+	width: 100%;
+	text-align: left;
+	display: block;
+	vertical-align: top;
+}
+.field label {
+	display: inline-block;
+	width: 100px;
+	vertical-align: top;
+}

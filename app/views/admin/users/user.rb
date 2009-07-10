@@ -12,11 +12,11 @@ class Views::Admin::Users::User < Erector::RailsWidget
     end
     div do
       text "password"
-      rawtext f.text_field :password
+      rawtext f.password_field :password
     end
     div do
       text "password"
-      rawtext f.text_field :password_confirmation
+      rawtext f.password_field :password_confirmation
     end
   end
   

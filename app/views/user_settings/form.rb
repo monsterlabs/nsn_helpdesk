@@ -1,20 +1,11 @@
 class Views::UserSettings::Form < Erector::RailsWidget
-  needs :user
+  needs :f, :record
   
   def content
     div do
-      text "Name:" + user.person.firstname
-      text "Lastname:" + user.person.lastname1
-      span do
-        if user.person.nil?
-          div :id => "photo_row" do 
-            text "Photo"
-            person.file_field :photo
-          end
-        else
-          widget Views::People::RowPhoto, :person => user.person
-        end
-      end
+    widget Views::Admin::Users::User, :f => f  
+     widget Views::Admin::Users::Person, :f => f, :user => @record
+
     end
   end
   
