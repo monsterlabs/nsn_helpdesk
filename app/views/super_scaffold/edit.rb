@@ -12,7 +12,7 @@ class Views::SuperScaffold::Edit < Views::Layouts::Application
       widget Views::SuperScaffold::Form, :f => f, :record => @record, :columns => @columns
       
       rawtext f.submit 'Update', ui_style(:button)
-      link_to  'Cancel', {:action => :index},  ui_style(:button)
+      link_to  'Cancel', { :action => :index },  ui_style(:button)
     end
   end
 
