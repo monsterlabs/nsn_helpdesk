@@ -1,7 +1,7 @@
 class Operator::TicketsController < ApplicationController
 
   def index
-    @tickets = Ticket.all
+    @collection = Ticket.all
     respond_to do |format|
       format.html { render :action => 'index'}
     end    
@@ -15,8 +15,13 @@ class Operator::TicketsController < ApplicationController
   end
 
   def create
+    @ticket = Ticket.new(params[:ticket])
     respond_to do |format|
-      format.html { render :action => 'index'}
+      if @ticket.save
+        format.html { render :action => 'index'}
+      else
+        format.html { render :action => 'new'}
+      end
     end        
   end
 

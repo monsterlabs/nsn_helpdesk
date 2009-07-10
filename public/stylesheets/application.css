@@ -351,3 +351,40 @@ div#paginator {
 	width: 100px;
 	vertical-align: top;
 }
+
+/* CSS for Operator/Ticket/Index*/
+.row_record {
+    width: 800px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.cell_id {
+    width: 20px;
+    display: inline-block;
+}
+
+.cell_subject {
+    width: 200px;
+    display: inline-block;
+}
+
+.cell_ticket_type {
+    width: 130px;
+    display: inline-block;
+}
+
+.cell_priority {
+    width: 80px;
+    display: inline-block;
+}
+
+.cell_region {
+    width: 70px;
+    display: inline-block;    
+}
+
+.cell_comment {
+    width: 150px;
+    display: inline-block;    
+}
