@@ -5,12 +5,19 @@ authorization do
     has_permission_on [:user_settings, :user_settings, :people], :to => :read_and_update
     has_permission_on :feedbacks, :to => :write
   end
+
+  role :field_manager do
+    has_permission_on :tickets, :to => :read_and_update
+    has_permission_on [:user_settings, :user_settings, :people], :to => :read_and_update
+    has_permission_on :feedbacks, :to => :write
+  end
   
   # Permissions for admin here
   role :admin do
     has_permission_on :user_settings, :to => :manage
     has_permission_on :user_setting, :to => :manage
     has_permission_on :users, :to => :manage
+    has_permission_on :tickets, :to => :manage
     has_permission_on :feedbacks, :to => :write
     has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products], :to => :manage
   end

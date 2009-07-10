@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Edit < Views::Layouts::Application
+class Views::Admin::Tickets::Edit < Views::Layouts::Application
   def page_title
     "Edit Ticket"
   end
@@ -10,10 +10,10 @@ class Views::Operator::Tickets::Edit < Views::Layouts::Application
          text 'Case details'
       end
 
-      widget Views::Operator::Tickets::Form, :f => f
+      widget Views::Admin::Tickets::Form, :f => f
       
       rawtext f.submit 'Update', ui_style(:button)
-      link_to 'Cancel', {:action => :index},  ui_style(:button)      
+      link_to 'Cancel', {:action => :index},  ui_style(:button)            
      end
   end
 end

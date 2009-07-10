@@ -1,4 +1,5 @@
-name
-Active
-Resolved
-Closed
+id,name
+1,Open
+2,Assigned
+3,Resolved
+4,Closed

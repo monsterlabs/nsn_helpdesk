@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::New < Views::Layouts::Application
+class Views::FieldManager::Tickets::New < Views::Layouts::Application
   def page_title
     "Add Ticket"
   end
@@ -10,11 +10,10 @@ class Views::Operator::Tickets::New < Views::Layouts::Application
          text 'Case details'
       end
 
-      widget Views::Operator::Tickets::Form, :f => f
+      widget Views::FieldManager::Tickets::Form, :f => f
       
       rawtext f.submit 'Create', ui_style(:button)
-      link_to 'Cancel', {:action => :index},  ui_style(:button)      
-      
+      link_to 'Cancel', {:action => :index},  ui_style(:button)    
      end
   end
 

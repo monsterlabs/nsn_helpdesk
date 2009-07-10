@@ -2,8 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.login '/login', :controller => "sessions", :action => "new"
   map.logout '/logout', :controller => "sessions", :action => "destroy"
-  
-  map.resource :dashboard
+
   map.resource :user_setting
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
   map.resources :feedbacks
@@ -17,10 +16,15 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
+    admin.resources :tickets
   end  
 
   map.namespace :operator do |operator|
     operator.resources :tickets
+  end  
+
+  map.namespace :field_manager do |field_manager|
+    field_manager.resources :tickets
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @session = UserSession.new(params[:user_session])
     if @session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default dashboard_path
+      redirect_back_or_default :controller => current_user.roles.first.name + '/tickets'
     else
       render 'new'
     end

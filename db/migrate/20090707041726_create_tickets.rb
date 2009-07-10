@@ -3,12 +3,14 @@ class CreateTickets < ActiveRecord::Migration
     create_table :tickets do |t|
       t.string     :subject, :null => false
       t.text       :body
+      t.references :product
       t.references :link # Links:  :frequency_tx, :frequecy_rx
       t.references :opened_by, :class_name => 'User'
       t.references :assigned_to, :class_name => 'User'
       t.references :reported_by, :class_name => 'User'
       t.references :region, :class_name => 'Region', :null => false
-      t.references :priority, :status, :null => false
+      t.references :priority, :null => false
+      t.references :status, :null => false, :default => 1
       t.references :ticket_type, :null => false
       t.timestamps # Opened_date, Resolved_date
     end

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   validates_presence_of :login, :email
-
+  
+  named_scope :customers, :conditions => "roles.name = 'customer'", :include => { :user_roles => :role }
+  named_scope :technicians, :conditions => "roles.name = 'technician'", :include => { :user_roles => :role }
   acts_as_authentic
   using_access_control
   

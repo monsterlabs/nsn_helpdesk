@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Form < Erector::RailsWidget
+class Views::FieldManager::Tickets::Form < Erector::RailsWidget
   needs :f
   
   def content
@@ -16,6 +16,16 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
       div :class => 'field' do
         label "Reported by"
         rawtext f.select :reported_by_id, User.customers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+      end
+
+      div :class => 'field' do
+        label "Assigned to"
+        rawtext f.select :assigned_to_id, User.technicians.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+      end
+
+      div :class => 'field' do
+        label "Status"
+        rawtext f.collection_select :status_id, Status.all, :id, :name, {:prompt => '-- Select --'}  
       end
 
       div :class => 'field' do

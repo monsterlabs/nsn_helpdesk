@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Record < Erector::RailsWidget
+class Views::FieldManager::Tickets::Record < Erector::RailsWidget
   needs :collection
 
   def content
@@ -29,7 +29,7 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
           td { rawtext ticket.opened_by.email }
           td { rawtext ticket.priority.name}
           td { rawtext ticket.region.name}
-          td { widget Views::Operator::Tickets::Actions, :ticket_id => ticket.id }
+          td { widget Views::FieldManager::Tickets::Actions, :ticket_id => ticket.id }
         end
       end
     end
