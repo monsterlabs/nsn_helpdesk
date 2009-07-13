@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'active_support/inflector'
 module SuperScaffoldController
   def self.included(base)
     base.extend(ClassMethods)
@@ -5,7 +7,7 @@ module SuperScaffoldController
 
   module ClassMethods
     def set_class_name(class_name)
-      ActiveSupport::Inflector.classify(class_name).constantize
+      ActiveSupport::Inflector.tableize(class_name).classify.constantize
     end
 
     def super_scaffold(options = {})

@@ -5,7 +5,7 @@ class Views::SuperScaffold::Edit < Views::Layouts::Application
   
   def view_content
     rawtext error_messages_for 'record', :class => 'ui-state-error ui-corner-all'
-    form_for(@record, :url => {:action => 'update'}) do |f|
+    form_for(@record, :url => {:action => 'update', :id => @record.id}) do |f|
       h2 do
         text "Edit #{@record.class}"
       end

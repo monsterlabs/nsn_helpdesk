@@ -1,2 +1,3 @@
 class Site < ActiveRecord::Base
+    add_controller_routes
 end
