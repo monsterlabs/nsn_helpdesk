@@ -20,24 +20,28 @@ class Views::Admin::Users::Show < Views::Layouts::Application
             td { rawtext @user.email}
         end
 
-        tr do 
-            td { b 'Firstname' }
-            td { rawtext @user.person.firstname }
-        end
+        if @user.person 
 
-        tr do 
-            td { b 'Lastname' }
-            td { rawtext @user.person.lastname }
-        end
-
-        tr do 
-            td { b 'Company' }
-            td { rawtext @user.person.company.name unless @user.person.company.nil? }
-        end
-
-        tr do 
-            td { b 'Region' }
-            td { rawtext @user.person.region.name unless @user.person.region.nil? }
+          tr do 
+              td { b 'Firstname' }
+              td { rawtext @user.person.firstname }
+          end
+          
+          tr do 
+              td { b 'Lastname' }
+              td { rawtext @user.person.lastname }
+          end
+          
+          tr do 
+              td { b 'Company' }
+              td { rawtext @user.person.company.name unless @user.person.company.nil? }
+          end
+          
+          tr do 
+              td { b 'Region' }
+              td { rawtext @user.person.region.name unless @user.person.region.nil? }
+          end
+        
         end
 
      end
