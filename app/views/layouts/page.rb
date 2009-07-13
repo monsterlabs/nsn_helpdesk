@@ -152,4 +152,5 @@ class Erector::RailsWidget
   include ActionView::Helpers::FormTagHelper
   include ActionView::Helpers::UrlHelper
   include WillPaginate::ViewHelpers
+  include ActionView::Helpers::FormOptionsHelper
 end

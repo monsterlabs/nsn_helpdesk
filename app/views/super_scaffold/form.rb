@@ -12,7 +12,7 @@ class Views::SuperScaffold::Form < Erector::RailsWidget
         when 'text'
           rawtext f.text_area key
         when 'select'
-          rawtext f.collection_select key, ActiveSupport::Inflector.humanize(key).constantize.all, :id, :name
+          rawtext f.option_groups_from_collection_for_select key, ActiveSupport::Inflector.humanize(key).constantize.all, :id, :name
         end
       end
       end
