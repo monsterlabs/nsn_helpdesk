@@ -19,7 +19,6 @@ class Views::Admin::Users::Person < Erector::RailsWidget
       else
          div :class => 'field' do
           label "Photo"
-          rawtext image_tag user.person.photo.url(:thumb)
           rawtext person.file_field :photo
           end
       end
