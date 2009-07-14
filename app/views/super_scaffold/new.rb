@@ -5,7 +5,7 @@ class Views::SuperScaffold::New < Views::Layouts::Application
   
   def view_content
     rawtext error_messages_for 'record', :class => 'ui-state-error ui-corner-all'
-    form_for(@record.class.to_s.downcase.to_sym, @record, :url => {:action => 'create'} ) do |f|
+    form_for(@record.class.to_s.underscore.to_sym, @record, :url => {:action => 'create'} ) do |f|
       h2 do
         text "Add #{@record.class}"
       end
