@@ -4,7 +4,8 @@ class CreateTickets < ActiveRecord::Migration
       t.string     :subject, :null => false
       t.text       :body
       t.references :product
-      t.references :link # Links:  :frequency_tx, :frequecy_rx
+      t.references :link
+      t.string     :freqtx, :freqrx
       t.references :opened_by, :class_name => 'User'
       t.references :assigned_to, :class_name => 'User'
       t.references :reported_by, :class_name => 'User'

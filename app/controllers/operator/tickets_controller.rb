@@ -18,6 +18,7 @@ class Operator::TicketsController < ApplicationController
     @ticket = Ticket.new(params[:ticket].merge(:opened_by_id => current_user.id))
     respond_to do |format|
       if @ticket.save
+        Notifier.deliver_ticket_sent(@ticket)
         format.html { redirect_to :action => 'index' }
       else
         format.html { render :action => 'new'}

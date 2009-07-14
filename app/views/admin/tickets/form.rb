@@ -22,6 +22,16 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
         label "Product"
         rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  
       end
+
+      div :class => 'field' do
+        label "Frequency TX"
+        rawtext f.text_field :freqtx
+      end
+
+      div :class => 'field' do
+        label "Frequency RX"
+        rawtext f.text_field :freqrx
+      end
       
       div :class => 'field' do
         label "Region"
@@ -41,6 +51,12 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
         label "Priority"
         rawtext f.collection_select :priority_id, Priority.all, :id, :name, {:prompt => '-- Select --'}  
       end
+
+      div :class => 'field' do
+        label "Call phone attended by"
+        rawtext f.select :opened_by_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+      end
+
     end
   end
 end

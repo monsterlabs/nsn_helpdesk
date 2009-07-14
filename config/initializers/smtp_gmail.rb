@@ -1,14 +1,16 @@
-# This file is automatically copied into RAILS_ROOT/initializers
-
-require "smtp_tls"
-
-config_file = "#{RAILS_ROOT}/config/smtp_gmail.yml"
-raise "Sorry, you must have #{config_file}" unless File.exists?(config_file)
-
-config_options = YAML.load_file(config_file) 
-ActionMailer::Base.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}.merge(config_options) # Configuration options override default options
+require 'smtp_tls'
+ 
+#Action Mailer configuration for use Gmail as SMTP server
+  if RAILS_ENV != 'test'
+    begin
+      mail_settings = YAML.load(File.read("#{RAILS_ROOT}/config/mail.yml"))
+      ActionMailer::Base.delivery_method = mail_settings['method'].to_sym
+      ActionMailer::Base.default_charset = mail_settings['charset']
+      ActionMailer::Base.smtp_settings = mail_settings['settings']
+      ActionMailer::Base.perform_deliveries = true
+      ActionMailer::Base.raise_delivery_errors = true
+    rescue
+      # Fall back to using sendmail by default
+      ActionMailer::Base.delivery_method = :sendmail
+    end
+  end
