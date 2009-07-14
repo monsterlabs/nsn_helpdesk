@@ -27,11 +27,10 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
             td { text record.send(column) }
           end
           td do 
-            link_to 'Edit', :action => :edit, :id => record.id
-            text ' | '
-            link_to 'Show', :action => :show, :id => record.id
-            text ' | '
-            link_to 'Destroy', {:action => :destroy, :id => record.id}, :method => :delete, :confirm => 'Do you want to delete this record ?'
+            link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
+            link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
+            link_to 'Destroy', {:action => :destroy, :id => record.id}, 
+                {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
           end
         end
       end
