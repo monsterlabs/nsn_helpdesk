@@ -23,16 +23,19 @@ class Views::Admin::Users::Record < Erector::RailsWidget
     tbody do
       collection.each do |record|
         tr do
-          td { rawtext image_tag record.person.photo.url(:thumb)  unless record.person.nil? }
+          if record.person.nil? 
+              td { rawtext image_tag "/photos/thumb/missing.png" }
+          else
+              td { rawtext image_tag record.person.photo.url(:thumb) }
+          end
           td { text record.person.fullname unless record.person.nil? }
           td { text record.login }
           td { text record.email }
           td do 
-                  link_to 'Edit', :action => :edit, :id => record.id
-                  text ' | '
-                  link_to 'Show', :action => :show, :id => record.id
-                  text ' | '
-                  link_to 'Destroy', {:action => :destroy, :id => record.id}, :method => :delete, :confirm => 'Do you want to delete this record ?'
+              link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
+              link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
+              link_to 'Destroy', {:action => :destroy, :id => record.id}, 
+                  {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
           end
         end
       end
