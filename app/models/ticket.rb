@@ -9,4 +9,11 @@ class Ticket < ActiveRecord::Base
   belongs_to :reported_by, :class_name => 'User'
   belongs_to :opened_by, :class_name => 'User'
   belongs_to :assigned_to, :class_name => 'User'
+
+  def convert_to_date(date_params)
+    year =  date_params['data(1i)'].to_i
+    month = date_params['data(2i)'].to_i
+    day = date_params['data(3i)'].to_i
+    Date.new(year, month, day)
+  end
 end

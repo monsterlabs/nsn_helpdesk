@@ -25,12 +25,14 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
 
       div :class => 'field' do
         label "Frequency TX"
-        rawtext f.text_field :freqtx
+        rawtext f.text_field :freqtx, :size => 5
+        label "MHz"
       end
 
       div :class => 'field' do
         label "Frequency RX"
-        rawtext f.text_field :freqrx
+        rawtext f.text_field :freqrx, :size => 5
+        label "MHz"
       end
       
       div :class => 'field' do
@@ -54,7 +56,12 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
 
       div :class => 'field' do
         label "Call phone attended by"
-        rawtext f.select :opened_by_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+        rawtext f.select :attended_by_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+      end
+
+      div :class => 'field' do
+        label "Due Date"
+        rawtext date_select('date', 'data', :order => [:day, :month, :year], :start_year => Date.today.year)
       end
 
     end

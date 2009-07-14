@@ -6,6 +6,10 @@ class Person < ActiveRecord::Base
   belongs_to :company
   belongs_to :region
   
+  def self.fullname_by_user_id(id)
+    Person.find_by_user_id(id).fullname
+  end
+
   def fullname
     self.firstname + " " + self.lastname
   end

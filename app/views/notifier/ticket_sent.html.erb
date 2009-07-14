@@ -5,14 +5,14 @@
 Report number: <%= @ticket.id%>
 
 Subject: <%= @ticket.subject%>
-Reported_by: <%= Person.find_by_user_id(@ticket.reported_by_id).fullname%>
+Reported_by: <%= Person.fullname_by_user_id(@ticket.reported_by_id)%>
 Product: <%= @ticket.product.name%>
 Region: <%= @ticket.region.name%>
 Link: <%= Site.find(@ticket.link_id).name%>
 Frequency TX: <%= @ticket.freqtx%> MHZ
 Frequency RX: <%= @ticket.freqrx%> MHZ
 
-Your report has been attended by phone for: <%= @ticket.opened_by_id%>
+Your report has been attended by phone for: <%= User.find(@ticket.opened_by_id).email%>
 
 --This message has been generated automatically, please do not reply.
 

@@ -16,6 +16,7 @@ class Operator::TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(params[:ticket].merge(:opened_by_id => current_user.id))
+    @ticket.due_date = @ticket.convert_to_date(params[:date])
     respond_to do |format|
       if @ticket.save
         Notifier.deliver_ticket_sent(@ticket)
@@ -42,6 +43,7 @@ class Operator::TicketsController < ApplicationController
 
   def update
     @ticket = Ticket.find(params[:id])
+    @ticket.due_date = @ticket.convert_to_date(params[:date])
     respond_to do |format|    
       if @ticket.update_attributes(params[:ticket])
         format.html { redirect_to :action => 'index' }

@@ -50,6 +50,11 @@ class Views::Admin::Tickets::Show < Views::Layouts::Application
             td { rawtext @ticket.region.name }
         end
 
+        tr do 
+            td { b 'Due date' }
+            td { rawtext @ticket.due_date :short }
+        end
+
      end
      div do
        rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
