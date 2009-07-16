@@ -1,0 +1,19 @@
+**********************************************************************
+*******************   SOSBOX  TICKET ATTENDED ************************
+**********************************************************************
+
+You has been attended by phone a ticket with the following features:
+
+Report number: <%= @ticket.id%>
+
+Subject: <%= @ticket.subject%>
+Reported_by: <%= Person.fullname_by_user_id(@ticket.reported_by_id)%>
+Product: <%= @ticket.product.name%>
+Region: <%= @ticket.region.name%>
+Link: <%= Site.find(@ticket.link_id).name%>
+Frequency TX: <%= @ticket.freqtx%> MHZ
+Frequency RX: <%= @ticket.freqrx%> MHZ
+
+--This message has been generated automatically, please do not reply.
+
+**********************************************************************

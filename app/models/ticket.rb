@@ -9,6 +9,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :reported_by, :class_name => 'User'
   belongs_to :opened_by, :class_name => 'User'
   belongs_to :assigned_to, :class_name => 'User'
+  belongs_to :attended_by, :class_name => 'User'
 
   def convert_to_date(date_params)
     year =  date_params['data(1i)'].to_i

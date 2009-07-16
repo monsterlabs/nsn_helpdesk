@@ -19,7 +19,7 @@ class Operator::TicketsController < ApplicationController
     @ticket.due_date = @ticket.convert_to_date(params[:date])
     respond_to do |format|
       if @ticket.save
-        Notifier.deliver_ticket_sent(@ticket)
+        Notifier.deliver_ticket_notifications(@ticket)
         format.html { redirect_to :action => 'index' }
       else
         format.html { render :action => 'new'}

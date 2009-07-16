@@ -54,7 +54,7 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
         rawtext f.collection_select :priority_id, Priority.all, :id, :name, {:prompt => '-- Select --'}  
       end
       
-#       f.fields_for :priority do |p|
+#       f.fields_for 'priority_attributes' do |p|
 #         div :class => 'field' do
 #           label "Alarm type"
 #           rawtext  p.collection_select :alarm_type_id, AlarmType.all, :id, :name, {:prompt => '-- Select --'}  
