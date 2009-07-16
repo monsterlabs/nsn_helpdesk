@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/domid_gum"]
 	path = vendor/plugins/domid_gum
 	url = git://github.com/nazgum/domid_gum.git
+[submodule "vendor/plugins/jclock"]
+	path = vendor/plugins/jclock
+	url = git://github.com/dsparling/jclock.git

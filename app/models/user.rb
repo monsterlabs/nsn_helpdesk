@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   
   named_scope :customers, :conditions => "roles.name = 'customer'", :include => { :user_roles => :role }
   named_scope :field_managers, :conditions => "roles.name = 'field_manager'", :include => { :user_roles => :role }
+  named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
+
   acts_as_authentic
   using_access_control
   
