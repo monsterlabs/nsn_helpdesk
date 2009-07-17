@@ -3,7 +3,8 @@ class Views::Admin::Users::Person < Erector::RailsWidget
   
   def content
     f.fields_for 'person_attributes', user.person do |person|
-       div :class => 'field' do
+      rawtext person.hidden_field :id
+      div :class => 'field' do
         label "Firstname"
         rawtext person.text_field :firstname 
       end

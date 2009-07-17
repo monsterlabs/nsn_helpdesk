@@ -9,7 +9,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   end
   
   def table_header
-    thead do
+    thead :class => "ui-widget-header", :id => "listing-head" do
       th { text "Photo" }
       th { text "Fullname" }
       th { text "Login" }
