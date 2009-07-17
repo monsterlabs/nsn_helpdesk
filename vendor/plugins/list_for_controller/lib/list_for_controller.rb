@@ -20,7 +20,7 @@ module ListForController
           def list_by_#{model}
             @collection = #{set_class_name(class_name)}.#{foreign_key(model)}_equals(params[:id]).paginate :page => 1, :per_page => 10
             respond_to do |format|
-              format.js { render 'filter_js'}
+              format.js { render 'list_js'}
             end
         end
         EOV
