@@ -1,3 +1,4 @@
+require 'machinist/active_record'
 require 'forgery'
 # Temporary Forgery reference: http://github.com/sevenwire/forgery/tree/1c00079ca0bbf74465b3d0b31c74d09e38bea2d2/lib/forgeries
 
