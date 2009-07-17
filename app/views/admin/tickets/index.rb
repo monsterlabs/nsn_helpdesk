@@ -8,19 +8,26 @@ class Views::Admin::Tickets::Index < Views::Layouts::Application
     div do
       label "Search by key:"
       rawtext text_field_tag 'search', '', :size => 7, :maxlength => 8
-      label "  List tickets by:"
-      rawtext select 'filter', 'filter_id', Filter.all.collect {|p| [p.name, p.id]}, {:prompt => '-- Select --'}
-      rawtext observe_field :filter_filter_id, :url => {:action => :filter_tickets, :id => "$('filter_filter_id').value".to_i}, :with => "'id='+$('filter_filter_id').value" #, :loading => "$('ticket_form').update(''); $('tickets_loader_indicator').show();", :complete => "$('tickets_loader_indicator').hide();"
-#      image_tag('progress_bar.gif', :id => "tickets_loader_indicator", :style => 'display: none')
+      label "  Order by:"
+      rawtext filter_select(:priority)
+      rawtext filter_select(:status)
+      rawtext filter_select(:region)
       span :id => 'filter_selected' do
       end
     end    
 
-    span :id=>"ticket_records" do
+    span :id =>"ticket_collection", :class => 'collection' do
       widget Views::Admin::Tickets::Record, :collection => @collection
-      paginator @collection
+      paginator @collection 
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    
   end
 
+  def filter_select(class_name)
+    collection_select(:filter, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
+  end
+
+  def classify(class_name)
+     ActiveSupport::Inflector.tableize(class_name).classify
+  end
 end

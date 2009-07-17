@@ -29,7 +29,6 @@ class Views::Admin::Tickets::Record < Erector::RailsWidget
            td { rawtext ticket.opened_by.email }
            td { rawtext ticket.priority.name}
            td { rawtext ticket.region.name}
-           td { widget Views::Admin::Tickets::Actions, :ticket_id => ticket.id }
          end
        end
     end

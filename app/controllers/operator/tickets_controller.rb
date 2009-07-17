@@ -1,4 +1,5 @@
 class Operator::TicketsController < ApplicationController
+  list_for :ticket, :include => [:priority, :status, :region]
 
   def index
     @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
@@ -6,7 +7,7 @@ class Operator::TicketsController < ApplicationController
       format.html { render :action => 'index'}
     end    
   end
-
+  
   def new
     @ticket = Ticket.new
     respond_to do |format|
@@ -52,11 +53,4 @@ class Operator::TicketsController < ApplicationController
       end
     end   
   end
-
-  def filter_tickets
-    respond_to do |format|    
-      format.js { render 'record.rjs'}
-    end    
-  end
-
 end

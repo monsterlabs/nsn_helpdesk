@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
-    admin.resources :tickets
+    admin.resources :tickets, :collection => { :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get }
   end  
 
   map.namespace :operator do |operator|
