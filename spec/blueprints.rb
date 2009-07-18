@@ -22,3 +22,7 @@ end
 Region.blueprint do
   name { LoremIpsumForgery.word }
 end
+
+Failure.blueprint do
+  title { LoremIpsumForgery.sentence }
+end
