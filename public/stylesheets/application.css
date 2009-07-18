@@ -280,6 +280,14 @@ thead#listing-head th {
 	font-size: 1.2em;
 }
 
+table#profile-info tr {
+	background-color: #fff;
+}
+
+table#profile-info td b{
+	margin-right: 10px;
+}
+
 /* errors */
 div.fieldWithErrors input {
 	border: 2px solid red;
