@@ -35,7 +35,6 @@ class Views::Layouts::Application < Views::Layouts::Page
       end
       div :class => "clear"
     end
-    footer
   end
 
   def header_bar
@@ -58,14 +57,6 @@ class Views::Layouts::Application < Views::Layouts::Page
         text mydashboard
     end
     div :class => "clear" 
-  end
-
-  def footer
-    div :id => "footer" do
-      p do
-        text "Copyright © 2009"
-      end
-    end
   end
 
   def feedback
