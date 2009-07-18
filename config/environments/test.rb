@@ -35,7 +35,7 @@ config.gem 'builder', :lib => false
 config.gem 'rspec', :lib => false, :version => '= 1.2.8'
 config.gem 'rspec-rails', :lib => false, :version => '= 1.2.7.1'
 config.gem 'webrat', :lib => 'webrat', :version => '= 0.4.4'
-config.gem 'cucumber', :version => '= 0.3.1'
+config.gem 'cucumber', :version => '= 0.3.11'
 config.gem 'remarkable_rails', :lib => false
 config.gem 'spicycode-rcov', :lib => 'rcov', :source => 'http://gems.github.com'
 config.gem 'bmabey-email_spec', :lib => 'email_spec', :source => 'http://gems.github.com', :version => '>= 0.1.3'
