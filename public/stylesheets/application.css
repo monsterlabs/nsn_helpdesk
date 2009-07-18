@@ -49,21 +49,23 @@ div#footer p {
 }
 
 div#toplinks {
+	font-size: 90%;
 	text-align: right;
 	color: silver;
 }
 
 div#toplinks b {
-	color: #E13F0D;
+	color: #f04807;
 }
 
 div#toplinks a, a:visited {
 	text-decoration: none;
-	color: #2CACAC;
+	color: #0033de;
 }
 
 div#toplinks a:hover {
-	color: #36676A;
+	color: #0033de;
+	text-decoration: underline;
 }
 
 
@@ -269,7 +271,7 @@ table {
 }
 
 table tbody tr.odd {
-	background-color: #85DADE;
+	background-color: #bdc6ca;
 	height: 50px;
 }
 
