@@ -317,9 +317,9 @@ div#paginator {
 }
 
 #paginator span.current {
-	background: #262626;
+	background: #d44817;
 	color: #ffffff;
-	border-color: #262626; 
+	border-color: #d44817; 
 
 	font-weight: bold; 
 	padding: 2px 5px;
