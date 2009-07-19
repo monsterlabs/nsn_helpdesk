@@ -42,7 +42,7 @@
 * jQuery UI CSS Framework
 * Copyright (c) 2009 AUTHORS.txt (http://jqueryui.com/about)
 * Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
-* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=segoe%20ui,%20Arial,%20sans-serif&fwDefault=normal&fsDefault=1.3em&cornerRadius=4px&bgColorHeader=dedede&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=75&borderColorHeader=c2c2c1&fcHeader=433f38&iconColorHeader=5f5849&bgColorContent=f6f4ee&bgTextureContent=04_highlight_hard.png&bgImgOpacityContent=75&borderColorContent=cfcfcf&fcContent=312e25&iconColorContent=808080&bgColorDefault=39880c&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=50&borderColorDefault=38840b&fcDefault=ffffff&iconColorDefault=eeeeee&bgColorHover=5ebe19&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=00&borderColorHover=49a512&fcHover=ffffff&iconColorHover=ffffff&bgColorActive=fafafa&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=100&borderColorActive=c0c1be&fcActive=3d8703&iconColorActive=57a617&bgColorHighlight=e26103&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=25&borderColorHighlight=e26103&fcHighlight=ffffff&iconColorHighlight=ddd803&bgColorError=ddd803&bgTextureError=02_glass.png&bgImgOpacityError=25&borderColorError=ddd803&fcError=791706&iconColorError=c94f03&bgColorOverlay=20201d&bgTextureOverlay=05_inset_soft.png&bgImgOpacityOverlay=15&opacityOverlay=90&bgColorShadow=cccccc&bgTextureShadow=04_highlight_hard.png&bgImgOpacityShadow=95&opacityShadow=20&thicknessShadow=10px&offsetTopShadow=-10px&offsetLeftShadow=-10px&cornerRadiusShadow=8px
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=segoe%20ui,%20Arial,%20sans-serif&fwDefault=normal&fsDefault=1.3em&cornerRadius=12px&bgColorHeader=cddfdf&bgTextureHeader=12_gloss_wave.png&bgImgOpacityHeader=75&borderColorHeader=c2c9c9&fcHeader=433f38&iconColorHeader=5f5849&bgColorContent=e0efef&bgTextureContent=04_highlight_hard.png&bgImgOpacityContent=75&borderColorContent=cfcfcf&fcContent=312e25&iconColorContent=808080&bgColorDefault=39880c&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=50&borderColorDefault=38840b&fcDefault=ffffff&iconColorDefault=eeeeee&bgColorHover=39880c&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=00&borderColorHover=38840b&fcHover=1fe208&iconColorHover=ffffff&bgColorActive=3fef0b&bgTextureActive=04_highlight_hard.png&bgImgOpacityActive=100&borderColorActive=c0c1be&fcActive=254809&iconColorActive=57a617&bgColorHighlight=e26103&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=25&borderColorHighlight=e26103&fcHighlight=ffffff&iconColorHighlight=ddd803&bgColorError=ddd803&bgTextureError=02_glass.png&bgImgOpacityError=25&borderColorError=ddd803&fcError=791706&iconColorError=c94f03&bgColorOverlay=20201d&bgTextureOverlay=05_inset_soft.png&bgImgOpacityOverlay=15&opacityOverlay=90&bgColorShadow=cccccc&bgTextureShadow=04_highlight_hard.png&bgImgOpacityShadow=95&opacityShadow=20&thicknessShadow=10px&offsetTopShadow=-10px&offsetLeftShadow=-10px&cornerRadiusShadow=12px
 */
 
 
@@ -50,19 +50,19 @@
 ----------------------------------*/
 .ui-widget { font-family: segoe ui, Arial, sans-serif; font-size: 1.3em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: segoe ui, Arial, sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #cfcfcf; background: #f6f4ee url(images/ui-bg_highlight-hard_75_f6f4ee_1x100.png) 50% top repeat-x; color: #312e25; }
+.ui-widget-content { border: 1px solid #cfcfcf; background: #e0efef url(images/ui-bg_highlight-hard_75_e0efef_1x100.png) 50% top repeat-x; color: #312e25; }
 .ui-widget-content a { color: #312e25; }
-.ui-widget-header { border: 1px solid #c2c2c1; background: #dedede url(images/ui-bg_gloss-wave_75_dedede_500x100.png) 50% 50% repeat-x; color: #433f38; font-weight: bold; }
+.ui-widget-header { border: 1px solid #c2c9c9; background: #cddfdf url(images/ui-bg_gloss-wave_75_cddfdf_500x100.png) 50% 50% repeat-x; color: #433f38; font-weight: bold; }
 .ui-widget-header a { color: #433f38; }
 
 /* Interaction states
 ----------------------------------*/
 .ui-state-default, .ui-widget-content .ui-state-default { border: 1px solid #38840b; background: #39880c url(images/ui-bg_highlight-hard_50_39880c_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #ffffff; outline: none; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #ffffff; text-decoration: none; outline: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #49a512; background: #5ebe19 url(images/ui-bg_highlight-soft_00_5ebe19_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #ffffff; outline: none; }
-.ui-state-hover a, .ui-state-hover a:hover { color: #ffffff; text-decoration: none; outline: none; }
-.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #c0c1be; background: #fafafa url(images/ui-bg_highlight-hard_100_fafafa_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #3d8703; outline: none; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #3d8703; outline: none; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus { border: 1px solid #38840b; background: #39880c url(images/ui-bg_highlight-soft_00_39880c_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #1fe208; outline: none; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #1fe208; text-decoration: none; outline: none; }
+.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #c0c1be; background: #3fef0b url(images/ui-bg_highlight-hard_100_3fef0b_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #254809; outline: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #254809; outline: none; text-decoration: none; }
 
 /* Interaction Cues
 ----------------------------------*/
@@ -268,19 +268,19 @@
 ----------------------------------*/
 
 /* Corner radius */
-.ui-corner-tl { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; }
-.ui-corner-tr { -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; }
-.ui-corner-bl { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; }
-.ui-corner-br { -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; }
-.ui-corner-top { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; }
-.ui-corner-bottom { -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; }
-.ui-corner-right {  -moz-border-radius-topright: 4px; -webkit-border-top-right-radius: 4px; -moz-border-radius-bottomright: 4px; -webkit-border-bottom-right-radius: 4px; }
-.ui-corner-left { -moz-border-radius-topleft: 4px; -webkit-border-top-left-radius: 4px; -moz-border-radius-bottomleft: 4px; -webkit-border-bottom-left-radius: 4px; }
-.ui-corner-all { -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+.ui-corner-tl { -moz-border-radius-topleft: 12px; -webkit-border-top-left-radius: 12px; }
+.ui-corner-tr { -moz-border-radius-topright: 12px; -webkit-border-top-right-radius: 12px; }
+.ui-corner-bl { -moz-border-radius-bottomleft: 12px; -webkit-border-bottom-left-radius: 12px; }
+.ui-corner-br { -moz-border-radius-bottomright: 12px; -webkit-border-bottom-right-radius: 12px; }
+.ui-corner-top { -moz-border-radius-topleft: 12px; -webkit-border-top-left-radius: 12px; -moz-border-radius-topright: 12px; -webkit-border-top-right-radius: 12px; }
+.ui-corner-bottom { -moz-border-radius-bottomleft: 12px; -webkit-border-bottom-left-radius: 12px; -moz-border-radius-bottomright: 12px; -webkit-border-bottom-right-radius: 12px; }
+.ui-corner-right {  -moz-border-radius-topright: 12px; -webkit-border-top-right-radius: 12px; -moz-border-radius-bottomright: 12px; -webkit-border-bottom-right-radius: 12px; }
+.ui-corner-left { -moz-border-radius-topleft: 12px; -webkit-border-top-left-radius: 12px; -moz-border-radius-bottomleft: 12px; -webkit-border-bottom-left-radius: 12px; }
+.ui-corner-all { -moz-border-radius: 12px; -webkit-border-radius: 12px; }
 
 /* Overlays */
 .ui-widget-overlay { background: #20201d url(images/ui-bg_inset-soft_15_20201d_1x100.png) 50% bottom repeat-x; opacity: .90;filter:Alpha(Opacity=90); }
-.ui-widget-shadow { margin: -10px 0 0 -10px; padding: 10px; background: #cccccc url(images/ui-bg_highlight-hard_95_cccccc_1x100.png) 50% top repeat-x; opacity: .20;filter:Alpha(Opacity=20); -moz-border-radius: 8px; -webkit-border-radius: 8px; }/* Accordion
+.ui-widget-shadow { margin: -10px 0 0 -10px; padding: 10px; background: #cccccc url(images/ui-bg_highlight-hard_95_cccccc_1x100.png) 50% top repeat-x; opacity: .20;filter:Alpha(Opacity=20); -moz-border-radius: 12px; -webkit-border-radius: 12px; }/* Accordion
 ----------------------------------*/
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
 .ui-accordion .ui-accordion-li-fix { display: inline; }
