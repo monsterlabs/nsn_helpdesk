@@ -1,5 +1,3 @@
-require 'smtp_tls'
- 
 #Action Mailer configuration for use Gmail as SMTP server
   if RAILS_ENV != 'test'
     begin

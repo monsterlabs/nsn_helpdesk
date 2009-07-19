@@ -18,4 +18,19 @@ class User < ActiveRecord::Base
   def role_symbols
     roles.collect { |role| role.name.to_sym } 
   end
+  
+  def send_random_password
+    new_password = User.random_password(10)
+    self.password = self.password_confirmation = new_password
+    self.save
+    Notifier.deliver_random_password(self, new_password)
+  end
+  
+  private
+  
+  def self.random_password(length)
+    chars = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
+    (0...length).map{ chars[rand(chars.size)] }.join
+  end
+  
 end

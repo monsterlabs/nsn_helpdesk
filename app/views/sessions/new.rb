@@ -1,4 +1,19 @@
 class Views::Sessions::New < Views::Layouts::Application
+  jquery <<-Str
+      $('#forgot').click(function() {
+        $('#forgot-dialog').dialog('open');
+      });
+      
+      $("#forgot-dialog").dialog({
+        bgiframe: true,
+        height: 200,
+        modal: true,
+        autoOpen: false,
+        draggable: false,
+        resizable: false
+      });
+    Str
+  
   def page_title
     "New Session"
   end
@@ -16,6 +31,9 @@ class Views::Sessions::New < Views::Layouts::Application
         end
       end
       div :class => "clear"
+      div :id => "forgot-dialog", :title => "Recover your password" do
+        widget Views::Sessions::RecoverPassword
+      end
     end
   end
 
@@ -31,7 +49,12 @@ class Views::Sessions::New < Views::Layouts::Application
         br      
         rawtext f.password_field :password
       }
-      p { rawtext submit_tag "Sign In", ui_style(:button, {:id => "login_button"}) }
+      p {
+        rawtext submit_tag "Sign In", ui_style(:button, {:id => "login_button"}) 
+        div :id => "forgot" do 
+          text "Forgot your password?" 
+        end
+      }
     end
   end
 
