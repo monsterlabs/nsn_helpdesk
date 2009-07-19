@@ -100,8 +100,18 @@ div#toplinks a:hover {
 }
 
 #dashboard li #current {
+  background: url("../images/active_dashboard_corner.gif") no-repeat;
+  padding-left: 7px;
+  display:  block;
+  float: left;
+  position: relative;
+}
+
+#dashboard li a #current {
+  font-size: 80%;
+  background: url("../images/active_dashboard_bg.gif") no-repeat;
+  background-position-x: 100%;
   padding: 8px 18px 7px 18px;	
-  background-color: #069;
   color: #fff;
   margin-right: 2px;
   margin-left: 2px;
@@ -207,7 +217,7 @@ div#toplinks a:hover {
   border-bottom: 1px solid #4294CF;
   border-left: 1px solid #4294CF;
   border-right: 1px solid #4294CF;
-  margin-left: 193px;
+  margin-left: 30px;
   padding-left: 5px;
   text-align: left;
   padding-top: 5px;
@@ -218,14 +228,14 @@ div#toplinks a:hover {
   display: block;
   border-bottom: 1px solid #eee;
   margin: 0 6px !important;
-  background-color: #fff;
+  background: #fff;
 }
 
 #dashboard ul.submenu li a {
   color: #333;
   float: none;
   padding: 0px 0px 6px 0px;
-  background-color: #fff;
+  background: #fff;
 }
 
 #dashboard ul.submenu li a:hover {
@@ -303,8 +313,8 @@ div#paginator {
 }
 
 #paginator a {
-	color: #262626;
-	border-color: #262626; 
+	color: #d44817;
+	border-color: #666666; 
 	padding: 2px 5px;
 	margin-right: 5px;
 	border-style: solid;
@@ -314,7 +324,7 @@ div#paginator {
 
 #paginator a:hover {
 	color: #ffffff;
-	background: #262626; 
+	background: #777777; 
 }
 
 #paginator span {
