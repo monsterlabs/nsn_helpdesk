@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
   
   def recover_password
     if request.post?
-      u= User.find_by_email(params[:user][:email])
+      u= User.find_by_email(params[:email])
       if u and u.send_random_password
         flash[:message]  = "A new password has been sent by email."
         redirect_to :action => 'new'

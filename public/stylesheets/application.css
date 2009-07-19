@@ -64,7 +64,6 @@ div#toplinks a, a:visited {
 }
 
 div#toplinks a:hover {
-	color: #0033de;
 	text-decoration: underline;
 }
 
@@ -243,6 +242,12 @@ div#toplinks a:hover {
   color: #058;
 }
 
+/* dialogs */
+
+input#main {
+	margin-top: 30px;
+	float: right;
+}
 
 div#feedback {
 	background: url("../images/feedback.png");
@@ -265,7 +270,7 @@ div#login_form {
 	padding-top: 50px;
 }
 
-div#login_form p#actions input#login_button {
+div#login_form input#login_button {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -273,8 +278,13 @@ div#login_form p#actions input#login_button {
 	font-size: 105%;
 }
 
-div#login_form p#actions {
+div#login_form div#forgot {
+	color: #0033de;
 	text-align: center
+}
+
+div#login_form div#forgot:hover {
+	text-decoration: underline
 }
 
 /* listings */
