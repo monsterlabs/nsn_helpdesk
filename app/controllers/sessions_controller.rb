@@ -21,4 +21,16 @@ class SessionsController < ApplicationController
     flash[:notice] = "Logout successful!"
     redirect_back_or_default new_session_url
   end
+  
+  def recover_password
+    if request.post?
+      u= User.find_by_email(params[:user][:email])
+      if u and u.send_random_password
+        flash[:message]  = "A new password has been sent by email."
+        redirect_to :action => 'new'
+      else
+        flash[:warning]  = "Couldn't send password"
+      end
+    end
+  end
 end

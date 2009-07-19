@@ -17,4 +17,12 @@ class Notifier < ActionMailer::Base
     @body       = { :ticket => ticket}
   end
 
+  def random_password(user, password)
+    @subject    = '[SOSBOX] Your password has been reset'
+    @recipients = user.email
+    @from       = 'noreply@sosbox.com'
+    @sent_on    = Time.now
+    @body       = { :user => user, :password => password}
+  end
+
 end

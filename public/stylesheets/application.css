@@ -265,11 +265,16 @@ div#login_form {
 	padding-top: 50px;
 }
 
-input#login_button {
+div#login_form p#actions input#login_button {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 15px;
 	font-size: 105%;
+}
+
+div#login_form p#actions {
+	text-align: center
 }
 
 /* listings */
