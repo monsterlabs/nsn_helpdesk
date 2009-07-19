@@ -1,14 +1,21 @@
 /* This is the custom css for the application*/
 
 /* for use with ui_style(:button) */
-a.button, a.button:visited{	
+.button, .button:visited{	
+	display: block;
+	float: left;
 	color: white;
 	font-family: Optima,Verdana,Arial,sans-serif;
 	font-size: 0.7em; 
-	padding: 0.09em 0.8em;
+	padding: 0.45em 0.8em;
 	margin: .7em 0 0 0;
 	margin-left: 10px;
 	text-decoration: none;
+}
+
+.action {	
+	display: block;
+	float: left;
 }
 
 /* Styles for content divs and elements*/
@@ -76,13 +83,14 @@ div#toplinks a:hover {
 #dashboard li {
   background: url("../images/inactive_dashboard_corner.gif") no-repeat;
   padding-left: 7px;
+  height: 27px;
   display:  block;
   float: left;
   position: relative;
 }
 
 #dashboard li a {
-  font-size: 80%;
+  font-size: 78%;
   background: url("../images/inactive_dashboard_bg.gif") no-repeat;
   background-position-x: 100%;
   padding: 8px 7px 7px 0px;
@@ -151,18 +159,6 @@ div#toplinks a:hover {
   background-color: #fff;
 }
 
-#dashboard ul.submenu {
-  width: 230px;
-  background: #fff !important;
-  position: absolute;
-  border-bottom: 1px solid #4294CF;
-  border-left: 1px solid #4294CF;
-  border-right: 1px solid #4294CF;
-  top: 33px;
-  left: 0;
-  z-index: 0;
-}
-
 #dashboard ul.submenu li {
   float: none;
   display: block;
@@ -212,14 +208,14 @@ div#toplinks a:hover {
 #dashboard ul.submenu {
   width: 110px;
   background: #fff !important;
-  position: relative;
+  position: absolute;
   border-bottom: 1px solid #4294CF;
   border-left: 1px solid #4294CF;
   border-right: 1px solid #4294CF;
-  margin-left: 30px;
-  padding-left: 5px;
-  text-align: left;
-  padding-top: 5px;
+  padding-left: 0px;
+  top: 33px;
+  left: 0;
+  z-index: 0;
 }
 
 #dashboard ul.submenu li {

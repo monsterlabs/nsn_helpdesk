@@ -31,11 +31,11 @@ class Views::Admin::Users::Record < Erector::RailsWidget
           td { text record.person.fullname unless record.person.nil? }
           td { text record.login }
           td { text record.email }
-          td do 
-              link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
-              link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
-              link_to 'Destroy', {:action => :destroy, :id => record.id}, 
-                  {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
+          td do
+            link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
+            link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
+            link_to 'Destroy', {:action => :destroy, :id => record.id}, 
+               {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
           end
         end
       end

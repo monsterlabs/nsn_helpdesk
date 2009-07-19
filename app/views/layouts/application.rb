@@ -17,6 +17,7 @@ class Views::Layouts::Application < Views::Layouts::Page
       });
       
       $("tr:nth-child(odd)").addClass("odd");
+      
     Str
 
   include DashboardHelper
