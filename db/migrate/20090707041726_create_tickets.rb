@@ -15,6 +15,7 @@ class CreateTickets < ActiveRecord::Migration
       t.references :status, :null => false, :default => 1
       t.references :ticket_type, :null => false
       t.datetime   :opened_at
+      t.string     :key
       t.timestamps # Opened_date, Resolved_date
     end
   end
