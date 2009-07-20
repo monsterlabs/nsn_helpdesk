@@ -40,6 +40,7 @@ class Views::Layouts::Application < Views::Layouts::Page
         dialog
       end
       div :class => "clear"
+      footer
     end
   end
 
@@ -74,4 +75,11 @@ class Views::Layouts::Application < Views::Layouts::Page
       widget Views::Feedback::Form
     end
   end
+  
+  def footer
+    div :id => "footer" do
+      p { text "Copyright ©2009 Nokia. Todos los derechos reservados" }
+    end
+  end
+  
 end

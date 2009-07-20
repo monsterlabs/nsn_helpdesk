@@ -34,6 +34,7 @@ class Views::Sessions::New < Views::Layouts::Application
       div :id => "forgot-dialog", :title => "Recover your password" do
         widget Views::Sessions::RecoverPassword
       end
+      footer
     end
   end
 
@@ -57,6 +58,5 @@ class Views::Sessions::New < Views::Layouts::Application
       }
     end
   end
-
 
 end
