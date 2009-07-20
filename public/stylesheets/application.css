@@ -294,8 +294,8 @@ table {
 
 table tbody tr.odd {
 	background-color: #bdc6ca;
-	height: 40px;
-	font-size: 90%;
+	height: 50px;
+	
 }
 
 thead#listing-head th {
@@ -306,14 +306,12 @@ thead#listing-head th {
 
 table#profile-info tr {
 	background-color: #fff;
-	padding-left: 5px;
 	height: 28px;
 	font-size: 90%;
 }
 
 table#profile-info td b{
 	margin-right: 10px;
-	padding-left:5px;
 	font-size: 90%;
 }
 
