@@ -1,12 +1,11 @@
 class CreateLinks < ActiveRecord::Migration
   def self.up
     create_table :links do |t|
-      t.integer :region_id
-      t.string :city_id
-      t.integer :site_a_id
-      t.integer :site_b_id
-      t.text :other
-
+      t.references :region, :city
+      t.references :site_a, :class_name => 'Site'
+      t.references :site_b, :class_name => 'Site'
+      t.string     :time_zone
+      t.text       :other
       t.timestamps
     end
   end

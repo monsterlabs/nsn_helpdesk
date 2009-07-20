@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_one  :address
   accepts_nested_attributes_for :address
   
+  has_many :user_regions
+  has_many :regions, :through => :user_regions
+    
   def role_symbols
     roles.collect { |role| role.name.to_sym } 
   end

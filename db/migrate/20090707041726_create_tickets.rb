@@ -5,7 +5,7 @@ class CreateTickets < ActiveRecord::Migration
       t.text       :body
       t.references :product
       t.references :link
-      t.string     :freqtx, :freqrx
+      t.string     :frequency_tx, :frequency_rx
       t.references :opened_by, :class_name => 'User'
       t.references :assigned_to, :class_name => 'User'
       t.references :reported_by, :class_name => 'User'
@@ -14,7 +14,7 @@ class CreateTickets < ActiveRecord::Migration
       t.references :priority, :null => false
       t.references :status, :null => false, :default => 1
       t.references :ticket_type, :null => false
-      t.datetime   :due_date
+      t.datetime   :opened_at
       t.timestamps # Opened_date, Resolved_date
     end
   end
