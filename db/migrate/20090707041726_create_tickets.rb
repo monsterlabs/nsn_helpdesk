@@ -1,6 +1,7 @@
 class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
+      t.string     :ip_address
       t.string     :subject, :null => false
       t.text       :body
       t.references :product
