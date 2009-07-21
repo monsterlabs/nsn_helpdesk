@@ -16,7 +16,8 @@ class Operator::TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket].merge(:opened_by_id => current_user.id))
+    @ticket = Ticket.new(params[:ticket].merge(:opened_by_id => current_user.id, :ip_address => request.remote_addr))
+    puts logger.info(request.env.inspect)
     respond_to do |format|
       if @ticket.save
 #        Notifier.deliver_ticket_notifications(@ticket)
