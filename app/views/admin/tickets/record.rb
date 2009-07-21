@@ -3,21 +3,11 @@ class Views::Admin::Tickets::Record < Erector::RailsWidget
 
   def content
     table :id => "listing" do
-      table_header
+      table_header %w(Id Subject Status ReportedBy OpenedBy Priority Region Actions)
       table_body
     end
   end
 
-  def table_header
-    thead :class => "ui-widget-header", :id => "listing-head" do
-      tr do
-        %w(Id Subject Status ReportedBy OpenedBy Priority Region Actions).each  do |column|
-          th { text column }
-        end
-      end
-    end
-  end
-  
   def table_body
     tbody do    
        @collection.each do |ticket|

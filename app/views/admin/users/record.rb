@@ -3,19 +3,8 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   
   def content
     table do
-      table_header
+      table_header %w(Photo Fullname Login Email Actions)
       table_body
-    end
-  end
-  
-  def table_header
-    thead :class => "ui-widget-header", :id => "listing-head" do
-      th { text "Photo" }
-      th { text "Fullname" }
-      th { text "Login" }
-      th { text "Email" }
-      th { text "Actions" }
-      
     end
   end
 

@@ -162,6 +162,16 @@ class Erector::Widget
   def link_to_page(label, page)
       link_to label, :action => :index, :page => page
   end
+  
+  def table_header(columns)
+      thead :class => "ui-widget-header", :id => "listing-head" do
+        tr do
+            columns.each  do |column|
+              th { text column }
+            end
+      end
+    end
+  end
 end
 
 class Erector::RailsWidget
