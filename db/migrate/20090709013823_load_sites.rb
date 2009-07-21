@@ -18,18 +18,13 @@ class LoadSites < ActiveRecord::Migration
           other = city_name
           city_name = nil
         end
-        site_name_a = row[2].split('-').first.strip
-        site_name_b = row[2].split('-').last.strip
         region = Region.exists?(:name => region_name) ? Region.find_by_name(region_name) : Region.create!(:name => region_name)
-
-        site_a = Site.exists?(:name => site_name_a) ? Site.find_by_name(site_name_a) : Site.create!(:name => site_name_a)
-        site_b = Site.exists?(:name => site_name_b) ? Site.find_by_name(site_name_b) : Site.create!(:name => site_name_b)
 
         unless city_name.nil?
           city = City.exists?(:name => city_name, :region_id => region.id) ?  City.find_by_name_and_region_id(city_name, region.id) : City.create!(:name => city_name, :region_id => region.id)
-          Link.create(:region_id => region.id, :city_id => city.id, :site_a_id => site_a.id, :site_b_id => site_b.id)
+          Link.create(:region_id => region.id, :city_id => city.id, :sites => row[2].strip )
         else
-          Link.create(:region_id => region.id, :other => other, :site_a_id => site_a.id, :site_b_id => site_b.id)
+          Link.create(:region_id => region.id, :other => other, :sites => row[2].strip )
         end
       end
     end
@@ -38,7 +33,6 @@ class LoadSites < ActiveRecord::Migration
   def self.down
       if ENV['RAILS_ENV'] != 'test'
           City.destroy_all
-          Site.destroy_all
           Region.destroy_all
           Failure.destroy_all
           Priority.destroy_all

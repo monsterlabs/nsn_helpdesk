@@ -4,7 +4,7 @@ class CreateTickets < ActiveRecord::Migration
       # Data provided by customers
       t.references :reported_by, :class_name => 'User' # The region is an attribute available from user_regions and links tables
       t.references :link # if we save only this field, we will indicating that the 2 sites are failing
-      t.references :site # if we specify this, we will indicate that one site is failing
+      t.string     :site # if we specify this, we will indicate that one site is failing
       
       t.text       :frequency_tx, :frequency_rx      
       t.references :product
