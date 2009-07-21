@@ -53,6 +53,7 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
 
      div do
        rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
+       rawtext link_to('Cancel', {:action => 'index'}, ui_style(:button))
      end
 
      max_index = @ticket.versions.size - 1     
