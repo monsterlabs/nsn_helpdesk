@@ -1,6 +1,6 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
-  css "grid", "application", "custom-theme/jquery-ui-1.7.2.custom"
+  css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom"
   js  "jquery", "jquery-ui", "jrails", "application"
   jquery <<-Str
       $('#feedback').click(function() {
@@ -45,8 +45,7 @@ class Views::Layouts::Application < Views::Layouts::Page
   end
 
   def header_bar
-    div :class => "grid_16", :id => "header"
-    div :class => "clear" 
+    div :class => "grid_16 clearfix", :id => "header"
   end
   
   def toplinks

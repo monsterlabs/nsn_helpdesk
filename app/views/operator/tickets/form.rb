@@ -4,16 +4,6 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
   def content
     fieldset do
       div :class => 'field' do
-        label "Subject"
-        rawtext f.text_field :subject
-      end
-
-      div :class => 'field' do
-        label "Message"
-        rawtext f.text_area :body
-      end
-
-      div :class => 'field' do
         label "Reported by"
         rawtext f.select :reported_by_id, User.customers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
       end
@@ -21,8 +11,7 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
       div :class => 'field' do
         label "Product"
         rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  
-      end
-      
+      end      
       div :class => 'field' do
         label "Region"
         rawtext f.collection_select :region_id, Region.all, :id, :name, {:prompt => '-- Select --'}  

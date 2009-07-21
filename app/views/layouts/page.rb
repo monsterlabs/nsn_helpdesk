@@ -172,6 +172,15 @@ class Erector::Widget
       end
     end
   end
+  
+  def filter_select(class_name)
+    collection_select(:filter, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
+  end
+
+  def classify(class_name)
+     ActiveSupport::Inflector.tableize(class_name).classify
+  end
+  
 end
 
 class Erector::RailsWidget
