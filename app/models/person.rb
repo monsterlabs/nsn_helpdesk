@@ -11,7 +11,11 @@ class Person < ActiveRecord::Base
   end
 
   def fullname
-    self.firstname + " " + self.lastname
+    if self.firstname.nil?
+    ""
+else
+(self.firstname + " " + self.lastname) 
+end
   end
 
 end

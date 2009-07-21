@@ -49,8 +49,42 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
             td { b 'Region' }
             td { rawtext @ticket.region.name }
         end
-
      end
+
+     max_index = @ticket.versions.size - 1     
+     if max_index > 0
+       table :id => "header" do
+         tr do 
+           td { label h3 "This ticket has been modified #{max_index} time(s)."}
+         end
+       end
+       
+       (1..max_index).each do |i|
+         table :id => "versions" do
+           version = @ticket.versions[i]
+           tr do
+             td {label "Modification #{version.index}:"}
+           end
+           tr do
+             td {label "Modified by:"}
+             td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
+           end
+           tr do
+             td {label "IP Address:"}
+             td {rawtext version.created_at :short}
+           end
+           tr do
+             td {label "Modified at"}
+             td {rawtext version.created_at :short}
+           end
+           tr do
+             td {label "Event"}
+             td {rawtext version.event}
+           end
+         end
+       end
+     end
+
      div do
        rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
      end

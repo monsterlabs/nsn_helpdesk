@@ -20,7 +20,7 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
 
       div :class => 'field' do
         label "Assigned to"
-        rawtext f.select :assigned_to_id, User.technicians.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+        rawtext f.select :assigned_to_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
       end
 
       div :class => 'field' do

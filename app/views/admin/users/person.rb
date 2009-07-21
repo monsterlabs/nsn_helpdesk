@@ -27,11 +27,6 @@ class Views::Admin::Users::Person < Erector::RailsWidget
         label "Company"
         rawtext person.collection_select :company_id, Company.all, :id, :name
       end
-       div :class => 'field' do
-        label "Region"
-        rawtext person.collection_select :region_id, Region.all, :id, :name
-      end
-      
     end
   end
   
