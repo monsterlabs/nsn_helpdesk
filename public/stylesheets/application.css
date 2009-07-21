@@ -375,3 +375,9 @@ div#paginator {
 	vertical-align: top;
 }
 
+/*Field Manager*/
+.field_manager_row {
+    background-color: #DCDCDC;
+    width: 500px;
+    text-align: center;
+}
