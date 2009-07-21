@@ -12,7 +12,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :attended_by, :class_name => 'User'
   
   belongs_to :link  
-  belongs_to :linkable, :polymorphic => true
+  belongs_to :site
 
   default_scope :order => 'tickets.created_at DESC'
 
