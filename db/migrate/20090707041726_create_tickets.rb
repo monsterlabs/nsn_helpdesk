@@ -2,7 +2,7 @@ class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
       # Data provided by customers
-      t.references :reported_by, :class_name => 'User' # The region is an attribute available from user_regions
+      t.references :reported_by, :class_name => 'User' # The region is an attribute available from user_regions and links tables
       t.references :link
       t.integer    :linkable_id
       t.string     :linkable_type
