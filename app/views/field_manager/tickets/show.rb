@@ -51,6 +51,10 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
         end
      end
 
+     div do
+       rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
+     end
+
      max_index = @ticket.versions.size - 1     
      if max_index > 0
        table :id => "header" do
@@ -59,7 +63,7 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
          end
        end
        
-       (1..max_index).each do |i|
+       (1..max_index).to_a.reverse.each do |i|
          table :id => "versions" do
            version = @ticket.versions[i]
            tr do
@@ -71,22 +75,22 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
            end
            tr do
              td {label "IP Address:"}
-             td {rawtext version.created_at :short}
+             td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| part.split[1] if part.match(/ip_address/)}}
            end
            tr do
-             td {label "Modified at"}
-             td {rawtext version.created_at :short}
+             td {label "Status:"}
+             td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| Status.find(part.split[1]).name if part.match(/status/)}}
            end
            tr do
              td {label "Event"}
              td {rawtext version.event}
            end
+           tr do
+             td {label "Modified at"}
+             td {rawtext version.created_at :short}
+           end
          end
        end
-     end
-
-     div do
-       rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
      end
    end
 end
