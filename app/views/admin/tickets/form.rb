@@ -25,14 +25,12 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
 
       div :class => 'field' do
         label "Frequency TX"
-        rawtext f.text_field :freqtx, :size => 5
-        label "MHz"
+        rawtext f.text_field :frequency_tx, :size => 5
       end
 
       div :class => 'field' do
         label "Frequency RX"
-        rawtext f.text_field :freqrx, :size => 5
-        label "MHz"
+        rawtext f.text_field :frequency_rx, :size => 5
       end
       
       div :class => 'field' do
