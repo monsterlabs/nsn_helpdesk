@@ -22,6 +22,6 @@ class Ticket < ActiveRecord::Base
   before_save :prepare_case_id
 
   def prepare_case_id
-   case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + (Ticket.daily.size + 1).to_s
+   self.case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + (Ticket.daily.size + 1).to_s
   end
 end
