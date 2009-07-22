@@ -1,22 +1,28 @@
 class FieldManager::TicketsController < Operator::TicketsController
 
-  def show_field_managers
+  def change_status
     @ticket = Ticket.find(params[:id])
     respond_to do |format|
-      format.html { render :action => 'show_field_managers'}
+      format.html { render :action => 'change_status'}
     end    
   end
   
-  def assign_field_manager
+  def assign_ticket
     @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     @ticket = Ticket.find(params[:id])
     respond_to do |format|
-      if @ticket.update_attribute(:assigned_to_id, params[:ticket]['assigned_to_id'])
+      if @ticket.update_attributes(params[:ticket].merge(:status_id => 2))
         format.html { render :action => 'index'}
       else
-        format.html { render :action => 'show_field_managers'}
+        format.html { render :action => 'change_status'}
       end
     end        
+  end
+
+  def solve_ticket
+  end
+
+  def close_ticket
   end
 
 end

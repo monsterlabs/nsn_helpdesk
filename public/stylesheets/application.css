@@ -376,8 +376,7 @@ div#paginator {
 }
 
 /*Field Manager*/
-.field_manager_row {
+.assign_attributes {
     background-color: #DCDCDC;
-    width: 500px;
-    text-align: center;
+    width: 700px;
 }

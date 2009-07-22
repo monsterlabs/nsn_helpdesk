@@ -36,7 +36,7 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
               text ' | '
               link_to 'Show', :action => 'show', :id => ticket.id
               text ' | '
-              link_to 'Assign', :action => 'show_field_managers', :id => ticket.id
+              link_to 'Change status', :action => 'change_status', :id => ticket.id
              }
 
         end

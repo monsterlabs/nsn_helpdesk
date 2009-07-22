@@ -17,7 +17,7 @@ class Ticket < ActiveRecord::Base
 
   default_scope :order => 'tickets.created_at DESC'
 
-  named_scope :daily, :conditions => { :created_at => (Time.today..Time.now) }, :order => 'created_at'
+  named_scope :daily, :conditions => { :created_at => (Time.now.midnight..Time.now) }, :order => 'created_at'
   
   before_save :prepare_case_id
 
