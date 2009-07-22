@@ -22,14 +22,23 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
     tbody do    
       @collection.each do |ticket|
         tr :id => ticket.dom_id do
+#          td { rawtext ticket.case_id  }
           td { rawtext ticket.id  }
-          td { rawtext ticket.subject }
+          td { rawtext ticket.failure.class }
           td { rawtext ticket.status.name }
           td { rawtext ticket.reported_by.person.fullname }
-          td { rawtext ticket.opened_by.email }
+          ticket.opened_by_id.nil? ? td {label "Not opened"} : td { rawtext ticket.opened_by.person.fullname }
           td { rawtext ticket.priority.name}
-          td { rawtext ticket.region.name}
-          td { widget Views::FieldManager::Tickets::Actions, :ticket_id => ticket.id }
+          td { rawtext ticket.link.region.name}
+
+          td {
+              link_to 'Edit', :action => 'edit', :id => ticket.id 
+              text ' | '
+              link_to 'Show', :action => 'show', :id => ticket.id
+              text ' | '
+              link_to 'Assign', :action => 'show_field_managers', :id => ticket.id
+             }
+
         end
       end
     end

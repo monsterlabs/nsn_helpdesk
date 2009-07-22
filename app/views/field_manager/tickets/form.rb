@@ -3,15 +3,6 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
   
   def content
     fieldset do
-      div :class => 'field' do
-        label "Subject"
-        rawtext f.text_field :subject
-      end
-
-      div :class => 'field' do
-        label "Message"
-        rawtext f.text_area :body
-      end
 
       div :class => 'field' do
         label "Reported by"
@@ -19,38 +10,50 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
       end
 
       div :class => 'field' do
-        label "Assigned to"
-        rawtext f.select :assigned_to_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
+        label "Link"
+        rawtext f.collection_select :link_id, Link.all, :id, :sites, {:prompt => '-- Select --'}  
       end
 
       div :class => 'field' do
-        label "Status"
-        rawtext f.collection_select :status_id, Status.all, :id, :name, {:prompt => '-- Select --'}  
+        label "Frequency TX"
+        rawtext f.text_field :frequency_tx
+      end
+
+      div :class => 'field' do
+        label "Frequency RX"
+        rawtext f.text_field :frequency_rx
       end
 
       div :class => 'field' do
         label "Product"
         rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  
       end
-      
+
       div :class => 'field' do
-        label "Region"
-        rawtext f.collection_select :region_id, Region.all, :id, :name, {:prompt => '-- Select --'}  
+        label "Priority reported by user"
+        rawtext f.collection_select :reported_priority_id, Priority.all, :id, :name, {:prompt => '-- Select --'}  
       end
+
       div :class => 'field' do
-        label "Link"
-        rawtext f.collection_select :link_id, Site.all, :id, :name, {:prompt => '-- Select --'}  
+        label "Failure description"
+        rawtext f.collection_select :failure_id, Failure.all, :id, :title, {:prompt => '-- Select --'}  
       end
-      
+
       div :class => 'field' do
-        label "Ticket type"
-        rawtext f.collection_select :ticket_type_id, TicketType.all, :id, :name, {:prompt => '-- Select --'}  
+        label "Alarm description"
+        rawtext f.text_field :alarm
+      end
+
+      div :class => 'field' do
+        label "Attended by"
+        rawtext f.select :attended_by_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  
       end
 
       div :class => 'field' do
         label "Priority"
-        rawtext f.collection_select :priority_id, Priority.all, :id, :name, {:prompt => '-- Select --'}  
+        rawtext f.select :priority_id, Priority.all.collect { |record| [record.name, record.id ]}, {:prompt => '-- Select --'}  
       end
+
     end
   end
 end

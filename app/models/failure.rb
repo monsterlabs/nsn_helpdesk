@@ -5,4 +5,6 @@ class Failure < ActiveRecord::Base
   validates_uniqueness_of :title
   
   default_scope :order => 'title ASC'
+
+  has_many :tickets
 end

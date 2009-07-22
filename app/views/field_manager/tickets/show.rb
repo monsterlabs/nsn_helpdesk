@@ -5,50 +5,72 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
 
    def view_content
      table :id => "show" do
+
        tr do 
-           td { b 'Id' }
-           td { rawtext @ticket.id }
+           td { b 'Key' }
+           td { rawtext @ticket.case_id }
         end
 
-        tr do 
-            td { b 'Subject' }
-            td { rawtext @ticket.subject }
-        end
-
-        tr do 
-            td { b 'Message' }
-            td { rawtext  @ticket.body }
-        end
-
-        tr do 
-            td { b 'Status' }
-            td { rawtext @ticket.status.name }
-        end
+       tr do 
+         td { b 'Product' }
+         td { rawtext @ticket.product.name }
+       end
 
         tr do 
             td { b 'Reported by' }
             td { rawtext @ticket.reported_by.person.fullname }
         end
 
-        tr do 
-            td { b 'Company' }
-            td { rawtext @ticket.reported_by.person.company.name }
-        end
+         tr do 
+             td { b 'Link' }
+             td { rawtext  @ticket.link.sites }
+         end
 
-        tr do 
-            td { b 'Opened by' }
-            td { rawtext @ticket.opened_by.email }
-        end
+         tr do 
+             td { b 'Frequency TX' }
+             td { rawtext @ticket.frequency_tx }
+         end
 
-        tr do 
-            td { b 'Priority' }
-            td { rawtext @ticket.priority.name }
-        end
+         tr do 
+             td { b 'Frequency RX' }
+             td { rawtext @ticket.frequency_rx }
+         end
 
-        tr do 
-            td { b 'Region' }
-            td { rawtext @ticket.region.name }
-        end
+         tr do 
+             td { b 'Priority reported by user' }
+             td { rawtext @ticket.reported_priority_id }
+         end
+
+         tr do 
+             td { b 'Problem description' }
+             td { rawtext @ticket.failure.title }
+         end
+
+         tr do 
+             td { b 'Alarm description' }
+             td { rawtext @ticket.alarm }
+         end
+
+         tr do 
+             td { b 'Special instructions' }
+             td { rawtext @ticket.special_instructions }
+         end
+
+         tr do 
+             td { b 'Status' }
+             td { rawtext @ticket.status.name }
+         end
+
+         tr do 
+             td { b 'Attended by' }
+             td { rawtext @ticket.attended_by.person.fullname }
+         end
+
+         tr do 
+             td { b 'Priority suggested by Field Manager' }
+             td { rawtext @ticket.priority.name }
+         end
+
      end
 
      div do
@@ -56,41 +78,37 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
        rawtext link_to('Cancel', {:action => 'index'}, ui_style(:button))
      end
 
-     max_index = @ticket.versions.size - 1     
-     if max_index > 0
        table :id => "header" do
          tr do 
-           td { label h3 "This ticket has been modified #{max_index} time(s)."}
+           td { label h3 "This ticket has #{@ticket.versions.size} version(s)."}
          end
        end
        
-       (1..max_index).to_a.reverse.each do |i|
+       @ticket.versions.reverse.each do |version|
          table :id => "versions" do
-           version = @ticket.versions[i]
            tr do
-             td {label "Modification #{version.index}:"}
+             td {label "Version #{version.index + 1}:"}
            end
-           tr do
-             td {label "Modified by:"}
-             td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
-           end
-           tr do
-             td {label "IP Address:"}
-             td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| part.split[1] if part.match(/ip_address/)}}
-           end
-           tr do
-             td {label "Status:"}
-             td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| Status.find(part.split[1]).name if part.match(/status/)}}
-           end
-           tr do
-             td {label "Event"}
-             td {rawtext version.event}
-           end
-           tr do
-             td {label "Modified at"}
-             td {rawtext version.created_at :short}
-           end
-         end
+            tr do
+              td {label "Created by:"}
+              td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
+            end
+#            tr do
+#              td {label "IP Address:"}
+#              td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| part.split[1] if part.match(/ip_address/)}}
+#            end
+#            tr do
+#              td {label "Status:"}
+#              td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| Status.find(part.split[1]).name if part.match(/status/)}}
+#            end
+            tr do
+              td {label "Event"}
+              td {rawtext version.event}
+            end
+            tr do
+              td {label "Created at"}
+              td {rawtext version.created_at :short}
+            end
        end
      end
    end

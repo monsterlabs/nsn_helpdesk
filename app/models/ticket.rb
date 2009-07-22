@@ -10,6 +10,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :opened_by, :class_name => 'User'
   belongs_to :assigned_to, :class_name => 'User'
   belongs_to :attended_by, :class_name => 'User'
+  belongs_to :failure
   
   belongs_to :link  
   belongs_to :site
