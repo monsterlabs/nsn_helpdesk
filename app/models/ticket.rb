@@ -17,11 +17,11 @@ class Ticket < ActiveRecord::Base
 
   default_scope :order => 'tickets.created_at DESC'
 
-  named_scope :daily, :conditions => { :created_at => (Time.now.midnight..Time.now) }, :order => 'created_at'
+  named_scope :daily, lambda { {:conditions => { :created_at => (Time.zone.now.midnight..Time.zone.now) }, :order => 'created_at ASC'} }
   
   before_save :prepare_case_id
 
   def prepare_case_id
-   self.case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + (Ticket.daily.size + 1).to_s
+   self.case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + Ticket.daily.last.case_id.match(/.{13}(.*)/)[1].next
   end
 end
