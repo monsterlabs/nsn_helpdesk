@@ -173,8 +173,8 @@ class Erector::Widget
     end
   end
   
-  def filter_select(class_name)
-    collection_select(:filter, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
+  def filter_select(class_name, dom_id = "filter")
+    collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
   end
 
   def classify(class_name)

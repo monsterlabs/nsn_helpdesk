@@ -11,7 +11,7 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(Id Subject Status ReportedBy OpenedBy Priority Region Actions).each  do |column|
+        %w(CaseId Id Subject Status ReportedBy OpenedBy Priority Region Actions).each  do |column|
           th { text column }
         end
       end
@@ -22,7 +22,7 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
     tbody do    
       @collection.each do |ticket|
         tr :id => ticket.dom_id do
-#          td { rawtext ticket.case_id  }
+          td { rawtext ticket.case_id  }
           td { rawtext ticket.id  }
           td { rawtext ticket.failure.class }
           td { rawtext ticket.status.name }
@@ -35,8 +35,6 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
               link_to 'Edit', :action => 'edit', :id => ticket.id 
               text ' | '
               link_to 'Show', :action => 'show', :id => ticket.id
-              text ' | '
-              link_to 'Change status', :action => 'change_status', :id => ticket.id
              }
 
         end

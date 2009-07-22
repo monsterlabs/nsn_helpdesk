@@ -15,6 +15,9 @@ class Ticket < ActiveRecord::Base
   belongs_to :link  
   belongs_to :site
 
+  has_many   :ticket_comments
+  accepts_nested_attributes_for :ticket_comments
+
   default_scope :order => 'tickets.created_at DESC'
 
   named_scope :daily, lambda { {:conditions => { :created_at => (Time.zone.now.midnight..Time.zone.now) }, :order => 'created_at ASC'} }
@@ -22,6 +25,10 @@ class Ticket < ActiveRecord::Base
   before_save :prepare_case_id
 
   def prepare_case_id
-   self.case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + Ticket.daily.last.case_id.match(/.{13}(.*)/)[1].next
+    date = Date.today.strftime "%d%m%Y"
+    last = Ticket.daily.last
+    serial = last.case_id.match(/.{13}(.*)/)[1].next if last
+    serial ||= 1 
+    self.case_id = "NSNCT#{date}#{serial}"
   end
 end

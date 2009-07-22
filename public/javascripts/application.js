@@ -26,5 +26,13 @@ $(document).ready(function(){
 	    return false;
 	 });
 	
-    $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",{mustMatch: true});
+        $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",{mustMatch: true});
+
+	$("#customer_filter_region_id").change(function(){
+		$.ajax({
+		        url: "tickets/list_by_region/" + $("#customer_filter_region_id").val(),
+				success: function(data){ $("#ticket_collection").html(data); }
+	    });
+	    return false;
+	 });
 });
