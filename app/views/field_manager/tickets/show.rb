@@ -93,14 +93,16 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
               td {label "Created by:"}
               td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
             end
-#            tr do
-#              td {label "IP Address:"}
-#              td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| part.split[1] if part.match(/ip_address/)}}
-#            end
-#            tr do
-#              td {label "Status:"}
-#              td {rawtext @ticket.versions[i].object.split(/\n/).map {|part| Status.find(part.split[1]).name if part.match(/status/)}}
-#            end
+         unless version.object.nil?
+            tr do
+              td {label "IP Address:"}
+              td {rawtext version.object.split(/\n/).map {|part| part.split[1] if part.match(/ip_address/)}}
+            end
+            tr do
+              td {label "Status:"}
+              td {rawtext version.object.split(/\n/).map {|part| Status.find(part.split[1]).name if part.match(/status/)}}
+            end
+         end
             tr do
               td {label "Event"}
               td {rawtext version.event}
