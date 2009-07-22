@@ -24,7 +24,7 @@ body {
 	background: white;
 	height: 600px;
 	margin: 0px;
-	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
 
 div.container_16 {
@@ -33,7 +33,7 @@ div.container_16 {
 }
 
 div#header {
-	background: url("../images/nokia_telcel.png") top left no-repeat;
+	background: url("../images/header.png") top left no-repeat;
 	height: 90px;
 }
 
@@ -48,7 +48,7 @@ div#footer {
 }
 
 div#footer p {
-	color: #444444;
+	color: #ff7f01;
 	height: inherit;
 	display: table-cell;
     vertical-align: middle;
@@ -62,12 +62,12 @@ div#toplinks {
 }
 
 div#toplinks b {
-	color: #f04807;
+	color: #89258e;
 }
 
 div#toplinks a, a:visited {
 	text-decoration: none;
-	color: #0033de;
+	color: #ff7f01;
 }
 
 div#toplinks a:hover {
@@ -81,7 +81,12 @@ div#toplinks a:hover {
 }
 
 #dashboard li {
-  background: url("../images/inactive_dashboard_corner.gif") no-repeat;
+  border: 1px;
+  border color: #cccccc;
+  background: #f7f7f7 url(images/ui-bg_glass_75_f7f7f7_1x400.png) 50% 50% repeat-x; 
+  font-weight: bold; 
+  color: #3d3d3d; 
+  outline: none;
   padding-left: 7px;
   height: 27px;
   display:  block;
@@ -91,7 +96,6 @@ div#toplinks a:hover {
 
 #dashboard li a {
   font-size: 78%;
-  background: url("../images/inactive_dashboard_bg.gif") no-repeat;
   background-position-x: 100%;
   padding: 8px 7px 7px 0px;
   display: block;
@@ -276,7 +280,7 @@ div#login_form input#login_button {
 }
 
 div#login_form div#forgot {
-	color: #0033de;
+	color: #ff7f01;
 	text-align: center
 }
 
