@@ -1,5 +1,4 @@
 class Views::Layouts::Page < Erector::RailsWidget
-  
   # Array of javascript files
   @@js = []  
   def self.js(*files)
@@ -97,6 +96,8 @@ class Views::Layouts::Page < Erector::RailsWidget
 end
 
 class Erector::Widget
+  prettyprint_default = true
+  
   def jquery(txt)
     javascript do
       rawtext "\n"
