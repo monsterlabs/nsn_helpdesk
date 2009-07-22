@@ -24,7 +24,7 @@ class Ticket < ActiveRecord::Base
   def prepare_case_id
     date = Date.today.strftime "%d%m%Y"
     last = Ticket.daily.last
-    serial = Ticket.daily.last.case_id.match(/.{13}(.*)/)[1].next if last
+    serial = last.case_id.match(/.{13}(.*)/)[1].next if last
     serial ||= 1 
     self.case_id = "NSNCT#{date}#{serial}"
   end
