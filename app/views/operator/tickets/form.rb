@@ -11,6 +11,7 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
         label "Region"
         rawtext filter_select(:region, :customer_filter)
       end
+      div :id => 'details'
       # div :class => 'field' do
       #   label "Ticket type"
       #   rawtext f.collection_select :ticket_type_id, TicketType.all, :id, :name, {:prompt => '-- Select --'}  

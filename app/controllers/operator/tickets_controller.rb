@@ -1,6 +1,8 @@
 class Operator::TicketsController < ApplicationController
   list_for :ticket, :include => [:priority, :status, :region]
-
+  multiple_auto_complete_for :person, [:lastname, :firstname]
+  multiple_auto_complete_for :link, [:sites]
+  
   def index
     @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
@@ -53,4 +55,11 @@ class Operator::TicketsController < ApplicationController
       end
     end   
   end
+  
+  def details
+    respond_to do |format|
+      format.js { render 'details_js' }
+    end
+  end
+  
 end

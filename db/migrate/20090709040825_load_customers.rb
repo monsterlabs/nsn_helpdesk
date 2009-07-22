@@ -27,8 +27,8 @@ class LoadCustomers < ActiveRecord::Migration
               @user = User.create!(:email => email, :login => email.split('@').first, :password => 'qw12..', :password_confirmation => 'qw12..')
 
               person_params = { :firstname => row[3].to_s.strip, :lastname => row[2].to_s.strip, :job_title => row[5].to_s.strip, :notes => row[16].to_s.strip, :company_id => company.id }
-#              person_params.merge!(:region_id => region.id) unless region.nil?
-              @user.regions << region unless region.nil?
+              person_params.merge!(:region_id => region.id) unless region.nil?
+              #@user.regions << region unless region.nil?
               @user.person_attributes = person_params
 
               city_name = row[11].to_s.strip

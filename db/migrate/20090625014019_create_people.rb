@@ -6,7 +6,7 @@ class CreatePeople < ActiveRecord::Migration
       t.boolean    :gender, :null => false, :default => true
       t.text       :notes
       # FIX IT: Check the follow relationship
-      t.references :company            
+      t.references :company, :region
       # Plugin requirement: attributes required by paperclip
       t.string     :photo_file_name, :photo_content_type
       t.integer    :photo_file_size
@@ -15,10 +15,10 @@ class CreatePeople < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :user_regions do |t|
-      t.references :user, :region, :null => false
-      t.timestamps
-    end
+    # create_table :user_regions do |t|
+    #   t.references :user, :region, :null => false
+    #   t.timestamps
+    # end
   end
 
   def self.down
