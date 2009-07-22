@@ -27,6 +27,8 @@ class CreateTickets < ActiveRecord::Migration
       # After ticket registration
       t.references :assigned_to, :class_name => 'User'
       t.references :ticket_type
+      #Who accepts ticket closing?
+      t.references :accepts_closing, :class_name => 'User'
       t.timestamps 
     end
   end

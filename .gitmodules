@@ -16,3 +16,6 @@
 [submodule "vendor/plugins/jclock"]
 	path = vendor/plugins/jclock
 	url = git://github.com/dsparling/jclock.git
+[submodule "vendor/plugins/auto_complete_jquery"]
+	path = vendor/plugins/auto_complete_jquery
+	url = git://github.com/alexjr85/auto_complete_jquery.git
