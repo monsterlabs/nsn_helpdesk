@@ -31,7 +31,7 @@ $(document).ready(function(){
 		        url: "details/" + $("#customer_filter_region_id").val(),
 						success: function(data){ $("#details").html(data); },
 						complete: function(){ 
-							$("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
+					$("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
 								{mustMatch: true,
 								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val()} }); }
 	    });

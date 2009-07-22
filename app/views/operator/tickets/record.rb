@@ -22,13 +22,12 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
     tbody do    
       @collection.each do |ticket|
         tr :id => ticket.dom_id do
-          td { rawtext ticket.id  }
-          td { rawtext ticket.subject }
+          td { rawtext ticket.case_id  }
           td { rawtext ticket.status.name }
           td { rawtext ticket.reported_by.person.fullname }
-          td { rawtext ticket.opened_by.email }
+
           td { rawtext ticket.priority.name}
-          td { rawtext ticket.region.name}
+
           td { widget Views::Operator::Tickets::Actions, :ticket_id => ticket.id }
         end
       end

@@ -27,7 +27,9 @@ ActionController::Routing::Routes.draw do |map|
   end  
 
   map.namespace :field_manager do |field_manager|
-    field_manager.resources :tickets
+    field_manager.resources :tickets, :member => {:details => :get},
+    :collection => {:auto_complete_for_person_lastname_firstname => :get,
+                    :auto_complete_for_link_sites => :get}
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
