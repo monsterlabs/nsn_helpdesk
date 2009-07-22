@@ -26,4 +26,5 @@ $(document).ready(function(){
 	    return false;
 	 });
 	
+    $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",{mustMatch: true});
 });
