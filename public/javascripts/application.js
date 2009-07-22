@@ -26,4 +26,12 @@ $(document).ready(function(){
 	    return false;
 	 });
 	
+	$("#customer_filter_region_id").change(function(){
+		$.ajax({
+		        url: "tickets/list_by_region/" + $("#customer_filter_region_id").val(),
+				success: function(data){ $("#ticket_collection").html(data); }
+	    });
+	    return false;
+	 });
+	
 });
