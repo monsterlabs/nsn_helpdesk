@@ -17,4 +17,11 @@ class Ticket < ActiveRecord::Base
 
   default_scope :order => 'tickets.created_at DESC'
 
+  named_scope :daily, :conditions => { :created_at => (Time.today..Time.now) }, :order => 'created_at'
+  
+  before_save :prepare_case_id
+
+  def prepare_case_id
+   case_id = 'NSNCT'+ (Date.today.strftime "%d%m%Y") + (Ticket.daily.size + 1).to_s
+  end
 end
