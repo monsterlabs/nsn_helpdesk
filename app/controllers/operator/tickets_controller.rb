@@ -16,7 +16,7 @@ class Operator::TicketsController < ApplicationController
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_addr))
+    @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_ip))
     puts logger.info(request.env.inspect)
     respond_to do |format|
       if @ticket.save
