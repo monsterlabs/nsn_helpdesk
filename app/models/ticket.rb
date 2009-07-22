@@ -15,6 +15,9 @@ class Ticket < ActiveRecord::Base
   belongs_to :link  
   belongs_to :site
 
+  has_many   :ticket_comments
+  accepts_nested_attributes_for :ticket_comments
+
   default_scope :order => 'tickets.created_at DESC'
 
   named_scope :daily, lambda { {:conditions => { :created_at => (Time.zone.now.midnight..Time.zone.now) }, :order => 'created_at ASC'} }

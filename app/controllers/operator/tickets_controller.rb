@@ -20,6 +20,7 @@ class Operator::TicketsController < ApplicationController
     puts logger.info(request.env.inspect)
     respond_to do |format|
       if @ticket.save
+        @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
 #        Notifier.deliver_ticket_notifications(@ticket)
         format.html { redirect_to :action => 'index' }
       else
