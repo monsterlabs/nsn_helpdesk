@@ -20,6 +20,8 @@ class CreateUsers < ActiveRecord::Migration
       # Attributes required by Lattice
       t.string    :homepage  # webpage
 
+      #decide if the user must to receive sms and email
+      t.boolean   :sms_enable, :default => false
       t.timestamps
     end
   end

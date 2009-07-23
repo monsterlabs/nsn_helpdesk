@@ -10,7 +10,7 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
       end      
       div :class => 'field' do
         label "Region"
-        rawtext filter_select(:region, :customer_filter)
+        rawtext filter_select :region, :customer_filter
       end
       div :id => 'details'
       div :class => 'field' do
