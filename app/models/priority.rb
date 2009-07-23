@@ -7,5 +7,4 @@ class Priority < ActiveRecord::Base
   default_scope :order => 'name ASC' 
 
   has_many :tickets
-  belongs_to :alarm_type
 end

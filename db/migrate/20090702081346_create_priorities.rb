@@ -2,8 +2,7 @@ class CreatePriorities < ActiveRecord::Migration
   def self.up
     create_table :priorities do |t|
       t.string      :name, :null => false
-      t.references  :alarm_type_id
-      t.float       :time_alarm
+      t.integer     :time_limit
       t.timestamps
     end
   end

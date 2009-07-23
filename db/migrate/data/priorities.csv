@@ -1,4 +1,5 @@
-name
-0+0 Crítica
-1+0 Media
-1+1 Menor
+name, time_limit
+0+0 Crítica, 7200
+1+0 Media, 864000
+1+1 Menor, 864000
+
