@@ -36,7 +36,7 @@ $(document).ready(function(){
 								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
 								});
 								$("input#person_lastname_firstname").result(function(event, data, formatted) {
-										var hidden = $("#reported_by_id");
+										var hidden = $("#ticket_reported_by_id");
 										hidden.val(data[1]);
 								});
 								$("input#link_sites").autocomplete("auto_complete_for_link_sites",
@@ -44,7 +44,7 @@ $(document).ready(function(){
 								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
 								 }); 
 								$("input#link_sites").result(function(event, data, formatted) {
-										var hidden = $("#link_id");
+										var hidden = $("#ticket_link_id");
 										hidden.val(data[1]);
 								});
 								

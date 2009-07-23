@@ -6,27 +6,24 @@ class Operator::TicketsController < ApplicationController
   def index
     @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
-      format.html { render :action => 'index'}
+      format.html { render 'index' }
     end    
   end
   
   def new
-    @ticket = Ticket.new
+    @ticket = Ticket.new(:opened_at => Time.now)
     respond_to do |format|
-      format.html { render :action => 'new'}
+      format.html { render 'new' }
     end    
   end
 
   def create
-    @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_ip))
-    puts logger.info(request.env.inspect)
+    @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_ip, :opened_by_id => current_user.id))
     respond_to do |format|
       if @ticket.save
-        @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
-#        Notifier.deliver_ticket_notifications(@ticket)
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to operator_tickets_url }
       else
-        format.html { render :action => 'new'}
+        format.html { render 'new' }
       end
     end        
   end
@@ -34,14 +31,14 @@ class Operator::TicketsController < ApplicationController
   def show
     @ticket = Ticket.find(params[:id])
     respond_to do |format|    
-      format.html { render :action => 'show'}
+      format.html { render 'show' }
     end    
   end
 
   def edit
     @ticket = Ticket.find(params[:id])    
     respond_to do |format|    
-      format.html { render :action => 'edit'}
+      format.html { render 'edit' }
     end
   end
 
@@ -49,9 +46,9 @@ class Operator::TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     respond_to do |format|    
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to operator_tickets_url }
       else
-        format.html { render :action => 'edit'}
+        format.html { render  'edit'}
       end
     end   
   end
@@ -61,5 +58,4 @@ class Operator::TicketsController < ApplicationController
       format.js { render 'details_js' }
     end
   end
-  
 end

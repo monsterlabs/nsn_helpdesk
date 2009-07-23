@@ -12,14 +12,10 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
         rawtext filter_select(:region, :customer_filter)
       end
       div :id => 'details'
-      # div :class => 'field' do
-      #   label "Ticket type"
-      #   rawtext f.collection_select :ticket_type_id, TicketType.all, :id, :name, {:prompt => '-- Select --'}  
-      # end
-      # div :class => 'field' do
-      #   label "Priority"
-      #   rawtext f.collection_select :priority_id, Priority.all, :id, :name, {:prompt => '-- Select --'}  
-      # end
+      div :class => 'field' do
+        rawtext f.hidden_field :opened_at
+      end      
+      
     end
   end
 end
