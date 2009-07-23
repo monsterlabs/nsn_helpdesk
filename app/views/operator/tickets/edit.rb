@@ -10,7 +10,7 @@ class Views::Operator::Tickets::Edit < Views::Layouts::Application
          text 'Case details'
       end
 
-      widget Views::Operator::Tickets::Form, :f => f
+      widget Views::Operator::Tickets::EditForm, :f => f
       
       rawtext f.submit 'Update', ui_style(:button)
       link_to 'Cancel', {:action => :index},  ui_style(:button)      
