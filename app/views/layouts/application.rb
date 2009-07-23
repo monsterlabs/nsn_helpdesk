@@ -77,8 +77,9 @@ class Views::Layouts::Application < Views::Layouts::Page
   
   def footer
     div :id => "footer" do
-      p { text "Copyright ©2009 Nokia. Todos los derechos reservados" }
+      p { text "Copyright ©2009 Nokia. Todos los derechos reservados." }
+          rawtext "<br/>"
+      p { text "This application runs on Firefox, Chrome, Safari." }
     end
   end
-  
 end
