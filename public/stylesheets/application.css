@@ -69,13 +69,12 @@ div#toplinks b {
 
 div#toplinks a, a:visited {
 	text-decoration: none;
-	color: #ff7f01;
+	
 }
 
 div#toplinks a:hover {
 	text-decoration: underline;
 }
-
 
 #dashboard ul, #action-nav ul {
   list-style:  none;
