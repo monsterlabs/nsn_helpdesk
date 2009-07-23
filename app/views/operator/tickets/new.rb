@@ -1,4 +1,5 @@
 class Views::Operator::Tickets::New < Views::Layouts::Application
+  
   def page_title
     "Add Ticket"
   end

@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
   css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete", "thickbox"
-  js  "jquery", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "thickbox-compressed", "jquery.autocomplete", "application"
+  js  "jquery", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "thickbox-compressed", "jquery.autocomplete", "application"
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');

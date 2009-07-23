@@ -3,6 +3,7 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
   
   def content
     fieldset do
+      div :id => 'timer'
       div :class => 'field' do
         label "Product"
         rawtext simple_select :ticket, :product
