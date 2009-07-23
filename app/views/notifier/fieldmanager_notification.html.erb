@@ -16,7 +16,7 @@ Customer's E-mail:                   <%= @ticket.reported_by.email%>
 
 EME Case ID:                         <%= @ticket.case_id%>
 
-NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname%>
+NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname unless @ticket.opened_by.person.nil? %>
 
 NSN Engineer ID Number:              61329521
 
@@ -30,7 +30,7 @@ Network Element:                     <%= @ticket.product.name%>
 
 Name of Site/Hostname:               <%= @ticket.link.region.name%>
 
-Problem Description:                 <%= @ticket.failure.title%>
+Problem Description:                 <%= @ticket.failure.name%>
 Status:                              <%= Priority.find(@ticket.reported_priority_id).name%>
 
 Links:                               <%= @ticket.link.sites%>

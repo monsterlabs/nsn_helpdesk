@@ -5,17 +5,9 @@ class Person < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   belongs_to :region
-  
-  def self.fullname_by_user_id(id)
-    Person.find_by_user_id(id).fullname
-  end
 
   def fullname
-    if self.firstname.nil?
-    ""
-else
-(self.firstname + " " + self.lastname) 
-end
+    [self.firstname, self.lastname].join(' ')
   end
 
 end

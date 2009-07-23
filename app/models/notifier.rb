@@ -14,7 +14,7 @@ class Notifier < ActionMailer::Base
   end
 
   def fieldmanager_notification(ticket, email)
-    ticket.priority_id == 2021924194? (prefix='EME Case') : (prefix='Case')
+    ticket.priority.name == '0+0 High' ? (prefix='EME Case') : (prefix='Case')
     @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
     @recipients = 'fereyji@hotmail.com' #email
     @from       = 'noreply@notification.com'
