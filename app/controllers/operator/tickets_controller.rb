@@ -16,7 +16,7 @@ class Operator::TicketsController < ApplicationController
       format.html { render 'new' }
     end    
   end
-
+  
   def create
     @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_ip, :opened_by_id => current_user.id))
     respond_to do |format|
@@ -57,5 +57,16 @@ class Operator::TicketsController < ApplicationController
     respond_to do |format|
       format.js { render 'details_js' }
     end
+  end
+
+  def search_by_case_id
+    @ticket = Ticket.find_by_case_id(params[:q][:case_id])
+    respond_to do |format|    
+      if @ticket.nil?
+        format.html { redirect_to :action => :index }
+      else
+        format.html { render 'show' }
+      end
+    end    
   end
 end

@@ -24,7 +24,9 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :operator do |operator|
     operator.resources :tickets, :member => { :details => :get}, 
       :collection => {:auto_complete_for_person_lastname_firstname => :get,
-                      :auto_complete_for_link_sites => :get}
+                      :auto_complete_for_link_sites => :get,
+                      },
+    :member  =>    { :search_by_case_id => :post}
   end  
 
   map.namespace :field_manager do |field_manager|

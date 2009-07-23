@@ -96,6 +96,7 @@ class Views::Operator::Tickets::Show < Views::Layouts::Application
      end
      div do
        rawtext link_to('Modify', {:action => 'edit', :id => @ticket.id}, ui_style(:button))
+       rawtext link_to 'Back', {:action => 'index'}, ui_style(:button)    
      end
    end
 end

@@ -6,12 +6,16 @@ class Views::Admin::Tickets::Index < Views::Layouts::Application
 
   def view_content
     div do
-      label "Search by key:"
-      rawtext text_field_tag 'search', '', :size => 7, :maxlength => 8
+      form_for(:q, :url => { :action => 'search_by_case_id'}) do |f|
+        label "Search by key:"
+      
+        rawtext f.text_field :case_id, :size => 15
+      end
+
       label "  Order by:"
       rawtext filter_select(:priority)
       rawtext filter_select(:status)
-      rawtext filter_select(:region)
+#      rawtext filter_select(:region)
       span :id => 'filter_selected' do
       end
     end    
