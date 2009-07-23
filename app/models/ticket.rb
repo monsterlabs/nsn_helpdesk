@@ -31,4 +31,17 @@ class Ticket < ActiveRecord::Base
     serial ||= 1 
     self.case_id = "NSNCT#{date}#{serial}"
   end
+  
+  def affected_sites
+    affected_site.to_s.empty? ? 'Both' : affected_site
+  end
+  
+  def summary
+    [ case_id, 'Priority: ' + priority.name, 'Region: ' + link.region.name, 'Link: ' + link.sites, 
+    'Affected sites: ' + affected_sites, 'Created at: ' + created_at.to_s(:short) ].join(', ')
+  end
+  
+  def emergency_phone_number
+    '5522159641'
+  end
 end

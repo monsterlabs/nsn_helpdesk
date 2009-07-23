@@ -6,8 +6,8 @@
 	$message = $argv[2];
 	$ret=$calixta->enviaMensaje($phone_number, $message);
 	if ( $ret===0 ){
-		echo 'Mensaje enviado con éxito.';
+		echo 't';
 	}else{
-		echo 'Ocurrió un error al enviar el mensaje (',$ret,')';
+		echo 'f';
 	}
 ?>
