@@ -1,1 +1,0 @@
-../../vendor/plugins/jrails/javascripts/jquery.js
