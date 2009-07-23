@@ -1,19 +1,24 @@
 **********************************************************************
-*******************   SOSBOX  TICKET SENT   **************************
+*******************   SOSBOX  TICKET OPEN   **************************
 **********************************************************************
 
-Report number: <%= @ticket.id%>
+You report has been received!
 
-Subject: <%= @ticket.subject%>
-Reported_by: <%= Person.fullname_by_user_id(@ticket.reported_by_id)%>
+Case ID: <%= @ticket.case_id%>
+
 Product: <%= @ticket.product.name%>
-Region: <%= @ticket.region.name%>
-Link: <%= Site.find(@ticket.link_id).name%>
-Frequency TX: <%= @ticket.freqtx%> MHZ
-Frequency RX: <%= @ticket.freqrx%> MHZ
+Reported_by: <%= @ticket.reported_by.person.fullname%>
+Link: <%= @ticket.link.sites%>
+Affected site: <%= @ticket.affected_site%>
 
-Your report has been attended by phone for: <%= User.find(@ticket.opened_by_id).email%>
+Frequency TX: <%= @ticket.frequency_tx%> MHz
+Frequency RX: <%= @ticket.frequency_rx%> MHz
+Description of problem: <%= @ticket.failure.title%>
+Alarm(s): <%= @ticket.alarm%>
+Special instruction(s): <%= @ticket.special_instructions%>
 
---This message has been generated automatically, please do not reply.
+Your report was attended by Engineer NSN <%= @ticket.attended_by.person.fullname%>.
+
+--This message has been generated automatically, please do not reply.--
 
 **********************************************************************

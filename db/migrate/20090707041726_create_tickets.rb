@@ -8,7 +8,7 @@ class CreateTickets < ActiveRecord::Migration
       t.string     :affected_site # if we specify this, we will indicate that one site is failing
       
       t.text       :frequency_tx, :frequency_rx
-      t.references :reported_priority, :class_name => 'Priority'
+      t.references :reported_priority, :class_name => 'Priority' # Priority suggested by customer
       t.string     :case_id # =>  NSNCTddmmyyyyn
       t.references :failure # Problem description
       t.text       :alarm # Alarm description

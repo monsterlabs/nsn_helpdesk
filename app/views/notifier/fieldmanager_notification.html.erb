@@ -1,18 +1,49 @@
 **********************************************************************
-*******************   SOSBOX  TICKET ATTENDED ************************
+******************* TICKET PRIORITY HIGH (0 + 0) *********************
 **********************************************************************
 
-You has been attended by phone a ticket with the following features:
+Field Managers:
 
-Report number: <%= @ticket.id%>
+An Emergency Case for <%= @ticket.reported_by.person.company.name%> has been created.
 
-Subject: <%= @ticket.subject%>
-Reported_by: <%= Person.fullname_by_user_id(@ticket.reported_by_id)%>
-Product: <%= @ticket.product.name%>
-Region: <%= @ticket.region.name%>
-Link: <%= Site.find(@ticket.link_id).name%>
-Frequency TX: <%= @ticket.freqtx%> MHZ
-Frequency RX: <%= @ticket.freqrx%> MHZ
+Customer's Name:                     <%= @ticket.reported_by.person.company.name%>
+
+Customer's Contact Phone:            +52 1 7222647451
+
+Customer's Contact Time:             11:50 am CR - Time / 12:50 Mexico - Time
+
+Customer's E-mail:                   <%= @ticket.reported_by.email%>
+
+EME Case ID:                         <%= @ticket.case_id%>
+
+NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname%>
+
+NSN Engineer ID Number:              61329521
+
+NSN Engineer Contact Time:           11:56 am CR - Time / 12:56 Mexico - Time
+
+Call handle time:                    5 min
+
+RESOLVE handle time:                 5 min
+
+Network Element:                     <%= @ticket.product.name%>
+
+Name of Site/Hostname:               <%= @ticket.link.region.name%>
+
+Problem Description:                 <%= @ticket.failure.title%>
+Status:                              <%= Priority.find(@ticket.reported_priority_id).name%>
+
+Links:                               <%= @ticket.link.sites%>
+More affected:                       <%= @ticket.frequency_tx%> MHz
+Tramission:                          <%= @ticket.frequency_rx%> MHz
+Reception:
+Alarms:                              <%= @ticket.alarm%>
+
+Special Instruction:                 <%= @ticket.special_instructions%>
+
+
+Nokia Siemens.
+
 
 --This message has been generated automatically, please do not reply.
 
