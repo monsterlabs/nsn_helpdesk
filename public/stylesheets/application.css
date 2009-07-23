@@ -67,8 +67,9 @@ div#toplinks b {
 	color: #89258e;
 }
 
-div#toplinks a, a:visited {
+div#toplinks a{
 	text-decoration: none;
+	color: #ff7f01;
 	
 }
 
