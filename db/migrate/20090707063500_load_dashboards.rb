@@ -3,7 +3,7 @@ class LoadDashboards < ActiveRecord::Migration
     # Dashboard for admin
     if ENV['RAILS_ENV'] != 'test'
       @admin_role = Role.find_by_name('admin')
-      [:tickets, :users, :catalogs].each do |item|
+      [:tickets, :users, :catalogs, :mobile_messages].each do |item|
         Dashboard.create(:controller => item.to_s, :role_id => @admin_role.id)
       end
 

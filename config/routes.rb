@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :companies
     admin.resources :products
     admin.resources :tickets, :collection => { :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get }
+    admin.resources :mobile_messages
   end  
 
   map.namespace :operator do |operator|

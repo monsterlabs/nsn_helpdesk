@@ -4,6 +4,7 @@ class CreateMobileMessages < ActiveRecord::Migration
       t.string :phone_number
       t.text :body
       t.references :ticket
+      t.boolean :status
       t.timestamps
     end
   end
