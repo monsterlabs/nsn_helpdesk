@@ -83,18 +83,20 @@ div#toplinks a:hover {
 }
 
 #dashboard li {
-  border: 1px;
   font-weight: bold; 
   outline: none;
   padding-left: 7px;
-  height: 27px;
+  height: 35px;
   display:  block;
   float: left;
   position: relative;
+  border: 1px solid #d7d7d7;
+  background: #d7d7d7 url(images/ui-bg_highlight-soft_100_d7d7d7_1x100.png) 50% top repeat-x;
+  color: #3d3d3d;
 }
 
 #dashboard li a {
-  font-size: 78%;
+  font-size: 100%;
   background-position-x: 100%;
   padding: 8px 7px 7px 0px;
   display: block;
@@ -102,13 +104,22 @@ div#toplinks a:hover {
   border: none;
   position: relative;
   text-decoration: none;
+  color: #444444;
 }
 
 #dashboard li a:hover {
+	border: 1px solid #cdcdcd;
+	background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ef8c08;
+	outline: none;
 }
 
 #dashboard li #current {
-  background: url("../images/active_dashboard_corner.gif") no-repeat;
+  border: 1px solid #eb8f00;
+  background: #eb8f00 url(images/ui-bg_highlight-hard_50_eb8f00_1x100.png) 50% 50% repeat-x;
+  font-weight: bold;
+  color: #ffffff;
   padding-left: 7px;
   display:  block;
   float: left;
@@ -116,15 +127,13 @@ div#toplinks a:hover {
 }
 
 #dashboard li a #current {
-  font-size: 80%;
-  background-position-x: 100%;
+  /*background-position-x: 100%;*/
   padding: 8px 18px 7px 18px;	
-  color: #fff;
   margin-right: 2px;
   margin-left: 2px;
 }
 
-#dashboard li a:hover#current {
+#dashboard li a:hover #current {
   padding: 7px 20px 6px 20px;
   margin-bottom: 1px;
 
@@ -148,7 +157,7 @@ div#toplinks a:hover {
 }
 
 #t-menu a:hover em, #t-proj a:hover em {
-  background-color: #fff;
+  	border: 1px solid #cdcdcd;
 }
 
 #tmenu em:hover, #t-proj em:hover {
@@ -167,11 +176,11 @@ div#toplinks a:hover {
   color: #333;
   float: none;
   padding: 6px;
-  background-color: #fff;
+  background-color: #cdcdcd;
 }
 
 #dashboard ul.submenu li a:hover {
-  background: transparent;
+  background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
   color: #058;
 }
 
@@ -203,11 +212,13 @@ div#toplinks a:hover {
 
 #dashboard ul.submenu {
   width: 110px;
-  background: #fff !important;
+  background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
+  font-weight: bold;
+  color: #ef8c08;
+  outline: none;
   position: absolute;
-  border-bottom: 1px solid #4294CF;
-  border-left: 1px solid #4294CF;
-  border-right: 1px solid #4294CF;
+  border-left: 1px solid #cbcbcb;
+  border-right: 1px solid #cbcbcb;
   padding-left: 0px;
   top: 33px;
   left: 0;
@@ -217,21 +228,18 @@ div#toplinks a:hover {
 #dashboard ul.submenu li {
   float: none;
   display: block;
-  border-bottom: 1px solid #eee;
   margin: 0 6px !important;
-  background: #fff;
 }
 
 #dashboard ul.submenu li a {
   color: #333;
   float: none;
   padding: 0px 0px 6px 0px;
-  background: #fff;
 }
 
 #dashboard ul.submenu li a:hover {
-  background: transparent;
-  color: #058;
+  background: #bbbbbb;
+  color: #ff7f04;
 }
 
 /* dialogs */
@@ -289,8 +297,8 @@ table {
 }
 
 table tbody tr.odd {
-	background-color: #bdc6ca;
-	height: 50px;
+	background-color: #cdcdcd;
+	height: 35px;
 	
 }
 
@@ -305,12 +313,14 @@ table#profile-info tr {
 	background-color: #fff;
 	height: 28px;
 	font-size: 90%;
+	padding-bottom:5px;
 }
 
 table#profile-info td b{
-	background-color: #eee;
+	background-color: #cdcdcd;
 	margin-right: 10px;
 	font-size: 90%;
+	padding-bottom:5px;
 }
 
 /* errors */
