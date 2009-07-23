@@ -7,9 +7,9 @@ class Notifier < ActionMailer::Base
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
 
-#    User.field_managers.each do |field_manager|
-#      Notifier.deliver_fieldmanager_notification(ticket, field_manager.email)
-#    end
+    User.field_managers.each do |field_manager|
+      Notifier.deliver_fieldmanager_notification(ticket, field_manager.email)
+    end
 
   end
 
