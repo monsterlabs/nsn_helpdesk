@@ -43,7 +43,7 @@ class Views::FieldManager::Tickets::Show < Views::Layouts::Application
 
          tr do 
              td { b 'Problem description' }
-             td { rawtext @ticket.failure.title }
+             td { rawtext @ticket.failure.name }
          end
 
          tr do 

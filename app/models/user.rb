@@ -35,5 +35,9 @@ class User < ActiveRecord::Base
     chars = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
     (0...length).map{ chars[rand(chars.size)] }.join
   end
+
+  def self.field_managers_collection
+    field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
+  end
   
 end

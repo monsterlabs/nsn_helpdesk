@@ -44,4 +44,15 @@ class Ticket < ActiveRecord::Base
   def emergency_phone_number
     '5522159641'
   end
+
+  def capture_time
+    time = self.created_at - self.opened_at
+    time = format("%.2f", time)
+    time = time.to_s + " seconds"
+  end
+  
+  def due_date
+    self.priority.name == "0+0 High" ? self.created_at + 2.hours : due_date = self.created_at + 10.days 
+  end
+
 end

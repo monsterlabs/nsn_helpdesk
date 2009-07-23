@@ -5,7 +5,7 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
     fieldset do
       div :class => 'field' do
         label "Subject"
-        rawtext f.text_field :subject
+        rawtext f.text_field :failure
       end
 
       div :class => 'field' do
