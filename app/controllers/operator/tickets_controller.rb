@@ -21,7 +21,7 @@ class Operator::TicketsController < ApplicationController
     @ticket = Ticket.new(params[:ticket].merge(:ip_address => request.remote_ip, :opened_by_id => current_user.id))
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to operator_tickets_url }
+        format.html { redirect_to :action => :index }
       else
         format.html { render 'new' }
       end
@@ -46,7 +46,7 @@ class Operator::TicketsController < ApplicationController
     @ticket = Ticket.find(params[:id])
     respond_to do |format|    
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to operator_tickets_url }
+        format.html { redirect_to :action => :index }
       else
         format.html { render  'edit'}
       end
