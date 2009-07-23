@@ -1,10 +1,8 @@
-class Failure < ActiveRecord::Base
+class Failure < ActiveRecord::Base  
+  validates_presence_of :name
+  validates_uniqueness_of :name
   
-  
-  validates_presence_of :title
-  validates_uniqueness_of :title
-  
-  default_scope :order => 'title ASC'
+  default_scope :order => 'name ASC'
 
   has_many :tickets
 end

@@ -5,7 +5,7 @@ class Views::Operator::Tickets::Form < Erector::RailsWidget
     fieldset do
       div :class => 'field' do
         label "Product"
-        rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  
+        rawtext simple_select :ticket, :product
       end      
       div :class => 'field' do
         label "Region"

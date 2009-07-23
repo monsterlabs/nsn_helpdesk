@@ -31,12 +31,25 @@ $(document).ready(function(){
 		        url: "details/" + $("#customer_filter_region_id").val(),
 						success: function(data){ $("#details").html(data); },
 						complete: function(){ 
-					$("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
+								$("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
+								{ mustMatch: true,
+								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
+								});
+								$("input#person_lastname_firstname").result(function(event, data, formatted) {
+										var hidden = $("#reported_by_id");
+										hidden.val(data[1]);
+								});
+								$("input#link_sites").autocomplete("auto_complete_for_link_sites",
 								{mustMatch: true,
-								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val()} });
-					$("input#link_sites").autocomplete("auto_complete_for_link_sites",
-								{mustMatch: true,
-								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val()} }); }
+								 extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
+								 }); 
+								$("input#link_sites").result(function(event, data, formatted) {
+										var hidden = $("#link_id");
+										hidden.val(data[1]);
+								});
+								
+								}
+								
 	    });
 	    return false;
 	 });
