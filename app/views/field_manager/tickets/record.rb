@@ -34,11 +34,11 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
             td { rawtext ticket.reported_by.person.fullname } 
             td { rawtext ticket.attended_by.person.fullname}
             td { rawtext ticket.opened_at}
-#            ticket.opened_by.person == nil ? td { rawtext ""} : td { rawtext ticket.opened_by.person.fullname}
+            td { rawtext ticket.opened_by.person.fullname}
             td { rawtext ticket.due_date }
             td { rawtext ticket.status.name }
             ticket.status.id > 2 ? td { rawtext ticket.updated_at } : td { rawtext ""}
-#           td { rawtext ticket.capture_time }
+            td { rawtext ticket.capture_time }
            td {
                link_to 'Edit', :action => 'edit', :id => ticket.id 
                text ' | '

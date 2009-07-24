@@ -62,10 +62,13 @@ class Ticket < ActiveRecord::Base
     '5522159641'
   end
 
+  # Fix It: Change method name to capture_duration
   def capture_time
-    time = self.created_at - self.opened_at
-    time = format("%.2f", time)
-    time = time.to_s + " seconds"
+    if !created_at.nil? and !opened_at.nil?
+      # Fix It: Calculate duration
+      min, sec = ((created_at - opened_at ) / 60).to_s.split('.')
+      "#{min} min. #{sec[0,1]} sec."
+    end
   end
   
   def due_date

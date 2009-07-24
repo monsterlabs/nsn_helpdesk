@@ -31,7 +31,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
     end
 
     div :class => 'field' do
-      label "Priority reported by user"
+      label "Priority reported by customer"
       rawtext simple_select :ticket, :priority, :reported_priority_id, {:prompt => true}
     end
     
@@ -51,7 +51,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
     end
     
     div :class => 'field' do
-      label "Priority"
+      label "Recommended priority"
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
   end

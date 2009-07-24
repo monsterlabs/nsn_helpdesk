@@ -13,6 +13,7 @@ class Views::Admin::Tickets::Form < Erector::RailsWidget
         rawtext filter_select :region, :customer_filter
       end
       div :id => 'details'
+      
       div :class => 'field' do
         rawtext f.hidden_field :opened_at
       end      

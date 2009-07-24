@@ -1,6 +1,7 @@
 class Views::Admin::Tickets::Details < Erector::RailsWidget
 
   def content
+    fieldset do
     div :class => 'field' do
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, nil, :size => 30
@@ -31,7 +32,7 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     end
 
     div :class => 'field' do
-      label "Priority reported by user"
+      label "Priority reported by customer"
       rawtext simple_select :ticket, :priority, :reported_priority_id, {:prompt => true}
     end
     
@@ -44,15 +45,16 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
       label "Alarm description"
       rawtext text_area_tag :alarm
     end
-
+  
     div :class => 'field' do
       label "Attended by"
       rawtext select :ticket, :attended_by_id, User.field_managers_collection.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --"
     end
     
     div :class => 'field' do
-      label "Priority"
+      label "Recommended Priority"
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
+    
   end
 end

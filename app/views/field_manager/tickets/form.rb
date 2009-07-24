@@ -3,7 +3,6 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
   
   def content
     fieldset do
-
       div :class => 'field' do
         label "Product"
         rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  
@@ -13,44 +12,9 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
         rawtext filter_select(:region, :customer_filter)
       end
       div :id => 'details'
-
-#       div :class => 'field' do
-#         label "Priority"
-#         rawtext f.select :priority_id, Priority.all.collect { |record| [record.name, record.id ]}, {:prompt => '-- Select --'}  
-#       end
-
-#       h2 do
-#         text 'Assign ticket to Field Manager'
-#       end
-
-#       div :class => 'assign_attributes' do
-#         span :class => 'field_manager' do
-#           label b "Field Manager:"
-#           rawtext f.select :assigned_to_id, User.field_managers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}
-#         end
-        
-#         span :class => 'ticket_type' do
-#           label b "Ticket Type:"
-#           rawtext f.select :ticket_type_id, TicketType.all.collect { |record| [record.name, record.id ]}, {:prompt => '-- Select --'}
-#         end
-#       end
-
-#       h2 do
-#         text 'Status'
-#       end
-
-#       div do
-#         rawtext f.select :status_id, Status.all.collect { |record| [record.name, record.id]}, {:prompt => '-- Select --'}
-#       end
-
-#       h2 do
-#         text 'User that accepts Ticket closing'
-#       end
-
-#       div do
-#         rawtext f.select :reported_by_id, User.customers.collect { |record| [record.person.fullname, record.id ]}, {:prompt => '-- Select --'}  #add selected id
-#       end
-
+      div :class => 'field' do
+          rawtext f.hidden_field :opened_at
+      end
     end
   end
 end
