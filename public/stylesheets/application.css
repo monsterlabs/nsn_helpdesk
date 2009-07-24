@@ -85,20 +85,18 @@ div#toplinks a:hover {
 #dashboard li {
   font-weight: bold; 
   outline: none;
-  padding-left: 7px;
   height: 35px;
   display:  block;
   float: left;
   position: relative;
-  border: 1px solid #d7d7d7;
-  background: #d7d7d7 url(images/ui-bg_highlight-soft_100_d7d7d7_1x100.png) 50% top repeat-x;
+  background: #d7d7d7 url(custom-theme/images/ui-bg_highlight-soft_100_d7d7d7_1x100.png) 50% top repeat-x;
   color: #3d3d3d;
 }
 
 #dashboard li a {
   font-size: 100%;
   background-position-x: 100%;
-  padding: 8px 7px 7px 0px;
+  padding: 8px 7px 7px 7px;
   display: block;
   float: left;
   border: none;
@@ -108,8 +106,7 @@ div#toplinks a:hover {
 }
 
 #dashboard li a:hover {
-	border: 1px solid #cdcdcd;
-	background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x;
+	background: #cdcdcd url(custom-theme/images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x;
 	font-weight: bold;
 	color: #ef8c08;
 	outline: none;
@@ -117,7 +114,7 @@ div#toplinks a:hover {
 
 #dashboard li #current {
   border: 1px solid #eb8f00;
-  background: #eb8f00 url(images/ui-bg_highlight-hard_50_eb8f00_1x100.png) 50% 50% repeat-x;
+  background: #eb8f00 url(custom-theme/images/ui-bg_highlight-hard_50_eb8f00_1x100.png) 50% 50% repeat-x;
   font-weight: bold;
   color: #ffffff;
   padding-left: 7px;
@@ -176,12 +173,11 @@ div#toplinks a:hover {
   color: #333;
   float: none;
   padding: 6px;
-  background-color: #cdcdcd;
 }
 
 #dashboard ul.submenu li a:hover {
-  background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
-  color: #058;
+  background: #cdcdcd url(custom-theme/images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
+  color: #ef8c08;
 }
 
 #dashboard .submenu-tab a {
@@ -229,17 +225,6 @@ div#toplinks a:hover {
   float: none;
   display: block;
   margin: 0 6px !important;
-}
-
-#dashboard ul.submenu li a {
-  color: #333;
-  float: none;
-  padding: 0px 0px 6px 0px;
-}
-
-#dashboard ul.submenu li a:hover {
-  background: #bbbbbb;
-  color: #ff7f04;
 }
 
 /* dialogs */
