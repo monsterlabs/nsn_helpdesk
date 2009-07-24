@@ -54,7 +54,7 @@ class Ticket < ActiveRecord::Base
       'Phone: ' + phone_number,
       'Case ID: ' + case_id, 
       'NSN Engineer: '  + call_attended_by_user,
-      'Created at: ' + created_at.to_s(:short) 
+      'Sent at: ' + created_at.to_s(:short) 
       ].join(', ')
   end
   
