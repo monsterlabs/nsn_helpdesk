@@ -18,9 +18,11 @@ class Views::FieldManager::Tickets::Index < Views::Layouts::Application
 #      rawtext filter_select(:region)
 #      span :id => 'filter_selected' do
 #      end
+      rawtext link_to 'Show all', {:action => 'index'}
+
     end    
     span :id =>"ticket_collection", :class => 'collection' do
-      widget Views::Operator::Tickets::Record, :collection => @collection
+      widget Views::FieldManager::Tickets::Record, :collection => @collection
       paginator @collection
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    

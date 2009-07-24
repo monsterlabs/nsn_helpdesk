@@ -51,6 +51,7 @@ class Views::UserSettings::Show < Views::Layouts::Application
     
     div do
       rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
+#      link_to 'Back'
     end
   end
 end

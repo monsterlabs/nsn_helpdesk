@@ -12,6 +12,7 @@ class Views::Admin::Users::Edit < Views::Layouts::Application
       widget Views::Admin::Users::Form, :f => f, :user => @user
       
       rawtext f.submit 'Save', ui_style(:button)
+      link_to 'Cancel', {:action => :index},  ui_style(:button)
     end
   end
 

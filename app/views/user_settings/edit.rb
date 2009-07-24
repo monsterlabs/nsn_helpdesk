@@ -10,7 +10,7 @@ class Views::UserSettings::Edit < Views::Layouts::Application
         widget Views::UserSettings::Form, :f => f, :record => @user
       end
       rawtext f.submit 'Update', ui_style(:button)
-      
+#      link_to 'Cancel'
     end
   end
 

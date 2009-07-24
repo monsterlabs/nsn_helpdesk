@@ -1,4 +1,4 @@
-class Views::FieldManager::Tickets::Details < Erector::RailsWidget
+class Views::Admin::Tickets::Details < Erector::RailsWidget
 
   def content
     div :class => 'field' do

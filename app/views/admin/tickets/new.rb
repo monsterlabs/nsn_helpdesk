@@ -11,7 +11,7 @@ class Views::Admin::Tickets::New < Views::Layouts::Application
          text 'Case details'
       end
 
-      widget Views::Operator::Tickets::Form, :f => f
+      widget Views::Admin::Tickets::Form, :f => f
       
       rawtext f.submit 'Create', ui_style(:button)
       link_to 'Cancel', {:action => :index},  ui_style(:button)      
