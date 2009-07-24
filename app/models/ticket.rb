@@ -1,8 +1,9 @@
 class Ticket < ActiveRecord::Base
-  
   has_paper_trail 
-    
+
   belongs_to :ticket_type
+  belongs_to :reported_priority, :class_name => 'Priority'
+  
   belongs_to :priority
   belongs_to :status
   belongs_to :product
@@ -37,8 +38,24 @@ class Ticket < ActiveRecord::Base
   end
   
   def summary
-    [ case_id, 'Priority: ' + priority.name, 'Region: ' + link.region.name, 'Link: ' + link.sites, 
-    'Affected sites: ' + affected_sites, 'Created at: ' + created_at.to_s(:short) ].join(', ')
+    reported_by_user = reported_by.person.nil? ? reported_by.email : reported_by.person.fullname
+    unless reported_by.address.nil?
+      phone_number = reported_by.address.business_phone || reported_by.address.mobile_phone
+    else
+      phone_number = 'Not available'
+    end
+    call_attended_by_user = attended_by.person.nil? ? attended_by.email : attended_by.person.fullname
+    [ 'Link: ' + link.sites, 
+      'Affected sites: ' + affected_sites,
+      'Region: ' + link.region.name,
+      'Status: ' + status.name,
+      'Priority: ' + reported_priority.name,
+      'Reported by: ' + reported_by_user,
+      'Phone: ' + phone_number,
+      'Case ID: ' + case_id, 
+      'NSN Engineer: '  + call_attended_by_user,
+      'Created at: ' + created_at.to_s(:short) 
+      ].join(', ')
   end
   
   def emergency_phone_number
