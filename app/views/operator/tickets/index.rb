@@ -8,7 +8,7 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
     div do
       form_for(:q, :url => { :action => 'search_by_case_id'}) do |f|
         label "Search by key:"
-      
+
         rawtext f.text_field :case_id, :size => 15
       end
 
@@ -17,7 +17,6 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
         rawtext filter_select(:priority)
         rawtext filter_select(:status)
         rawtext link_to 'Show all', {:action => 'index'}
-#        rawtext filter_select(:region)
       end
 
       span :id => 'filter_selected' do

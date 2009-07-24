@@ -7,7 +7,7 @@ authorization do
   end
 
   role :field_manager do
-    has_permission_on :tickets, :to => :read_and_update
+    has_permission_on :tickets, :to => :manage
     has_permission_on [:user_settings, :user_settings, :people], :to => :read_and_update
     has_permission_on :feedbacks, :to => :write
   end

@@ -8,18 +8,16 @@ class Views::FieldManager::Tickets::Index < Views::Layouts::Application
     div do
       form_for(:q, :url => { :action => 'search_by_case_id'}) do |f|
         label "Search by key:"
-      
+
         rawtext f.text_field :case_id, :size => 15
       end
 
-#      label "  Order by:"
-#      rawtext filter_select(:priority)
-#      rawtext filter_select(:status)
-#      rawtext filter_select(:region)
-#      span :id => 'filter_selected' do
-#      end
-      rawtext link_to 'Show all', {:action => 'index'}
-
+      div do 
+        label "  Order by:"
+        rawtext filter_select(:priority)
+        rawtext filter_select(:status)
+        rawtext link_to 'Show all', {:action => 'index'}
+      end
     end    
     span :id =>"ticket_collection", :class => 'collection' do
       widget Views::FieldManager::Tickets::Record, :collection => @collection

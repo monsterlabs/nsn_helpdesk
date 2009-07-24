@@ -17,22 +17,32 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
-    admin.resources :tickets, :collection => { :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get }
+    admin.resources :tickets, 
+      :member => { :details => :get, :search_by_case_id => :post}, 
+      :collection => { :auto_complete_for_person_lastname_firstname => :get,
+                       :auto_complete_for_link_sites => :get,
+                       :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get
+                      }
     admin.resources :mobile_messages
   end  
 
   map.namespace :operator do |operator|
-    operator.resources :tickets, :member => { :details => :get}, 
+    operator.resources :tickets, 
+      :member => { :details => :get, :search_by_case_id => :post}, 
       :collection => {:auto_complete_for_person_lastname_firstname => :get,
                       :auto_complete_for_link_sites => :get,
-                      },
-    :member  =>    { :search_by_case_id => :post}
+                      :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get
+                      }
   end  
 
   map.namespace :field_manager do |field_manager|
-    field_manager.resources :tickets, :member => {:details => :get},
-    :collection => {:auto_complete_for_person_lastname_firstname => :get,
-                    :auto_complete_for_link_sites => :get}
+    field_manager.resources :tickets, 
+      :member =>     { :details => :get, :search_by_case_id => :post },
+      :collection => { :auto_complete_for_person_lastname_firstname => :get,
+                       :auto_complete_for_link_sites => :get, 
+                       :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get 
+                       }
+
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
