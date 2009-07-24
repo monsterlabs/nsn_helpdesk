@@ -1,7 +1,6 @@
 class Views::Admin::Tickets::Details < Erector::RailsWidget
 
   def content
-    fieldset do
     div :class => 'field' do
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, nil, :size => 30

@@ -9,7 +9,7 @@ set :deploy_to, "/var/rails/#{application}"
 default_run_options[:pty] = true
 set :use_sudo, true
 set :user, "deployer"
-set :runner, "root"
+set :runner, "www-data"
 
 ##
 # Git
