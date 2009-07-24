@@ -11,7 +11,7 @@ class MobileMessage < ActiveRecord::Base
   end
   
   def send_message
-    if `/usr/bin/php #{RAILS_ROOT}/tools/CalixtaClient.php #{phone_number} '#{body}'` == 't'
+    if `/opt/local/bin/php #{RAILS_ROOT}/tools/CalixtaClient.php #{phone_number} '#{body}'` == 't'
       update_attribute(:status, true)
     else
       update_attribute(:status, false)
