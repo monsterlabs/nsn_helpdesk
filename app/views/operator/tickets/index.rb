@@ -12,10 +12,14 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
         rawtext f.text_field :case_id, :size => 15
       end
 
-      label "  Order by:"
-      rawtext filter_select(:priority)
-      rawtext filter_select(:status)
-#      rawtext filter_select(:region)
+      div do 
+        label "  Order by:"
+        rawtext filter_select(:priority)
+        rawtext filter_select(:status)
+        rawtext link_to 'Show all', {:action => 'index'}
+#        rawtext filter_select(:region)
+      end
+
       span :id => 'filter_selected' do
       end
     end    
