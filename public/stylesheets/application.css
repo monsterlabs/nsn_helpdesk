@@ -146,9 +146,8 @@ div#dashboard ul li a:hover {
 
 div#dashboard ul li ul.submenu {
 	position: absolute;
-	z-index: 100;
-	left: 0;
-	top: 159px;
+	width: 940px;
+  z-index: 100;
 	font-size: 90%;
 	clear: both;
 }
