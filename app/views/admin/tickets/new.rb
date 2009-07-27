@@ -1,5 +1,12 @@
 class Views::Admin::Tickets::New < Views::Layouts::Application
   
+  def setup
+    @@jqueries << <<-S
+      $('#timer').epiclock({mode: EC_COUNTUP, target: "#{@ticket.opened_at}"}); 
+      $('#timer').clocks(EC_RUN);
+    S
+  end
+  
   def page_title
     "Add Ticket"
   end

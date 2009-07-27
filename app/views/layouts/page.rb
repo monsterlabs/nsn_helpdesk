@@ -42,8 +42,14 @@ class Views::Layouts::Page < Erector::RailsWidget
   def body_content
     text "No action rendered"
   end
+  
+  # override me
+  def setup
+    text "No setup"
+  end
 
   def content
+    setup
     rawtext doctype
     html :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' do
       head { head_content }

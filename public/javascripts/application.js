@@ -53,7 +53,4 @@ $(document).ready(function(){
 	    });
 	    return false;
 	 });
-	 
-     $('#timer').epiclock({mode: EC_COUNTUP, target: $("#ticket_opened_at").val()}); 
-     $('#timer').clocks(EC_RUN);
 });
