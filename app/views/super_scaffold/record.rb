@@ -9,7 +9,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
   end
 
   def table_header
-    thead :class => "ui-widget-header", :id => "listing" do
+    thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
         columns.keys.each do |column|
           th { text ActiveSupport::Inflector.humanize(column) }

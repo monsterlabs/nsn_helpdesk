@@ -57,11 +57,11 @@ $(document).ready(function(){
     function(){
       $('#catalogs_children').css({top: $(this).parent().offset().top + 35, left: $(this).parent().offset().left});
       $('#catalogs_children').fadeIn();
-      $('#dashboard').css({"margin-bottom": 60});
+      $('#dashboard').css({"margin-bottom": 45});
     },
     function(){
       $('#catalogs_children').fadeOut("slow");
-      $('#dashboard').css({"margin-bottom": 35});
+      $('#dashboard').css({"margin-bottom": 15});
     }
   );
 

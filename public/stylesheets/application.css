@@ -120,7 +120,7 @@ div#toplinks a:hover {
 /* Dashboard */
 
 div#dashboard {
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 }
 
 div#dashboard ul, #action-nav ul{
@@ -150,6 +150,7 @@ div#dashboard ul li ul.submenu {
   z-index: 100;
 	font-size: 90%;
 	clear: both;
+	padding-bottom: 5px;
 }
 
 /* dialogs */
@@ -241,6 +242,10 @@ thead#listing-head th {
 	vertical-align: middle;
 	font-size: 1em;
 	padding: 8px 5px;
+}
+
+th#affected_site, th#opened_date {
+  width: 90px;
 }
 
 table#profile-info tr {
