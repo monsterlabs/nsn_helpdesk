@@ -9,7 +9,6 @@ set :deploy_to, "/var/rails/#{application}"
 default_run_options[:pty] = true
 set :use_sudo, true
 set :user, "deployer"
-set :runner, "www-data"
 
 ##
 # Git
@@ -27,6 +26,10 @@ role :web, domain
 role :app, domain
 
 namespace :deploy do
+  task :after_update_code, :roles => :app do
+    run "ln -nfs #{deploy_to}/shared/system/database.yml #{release_path}/config/database.yml"
+  end
+  
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_path}/tmp/restart.txt"
