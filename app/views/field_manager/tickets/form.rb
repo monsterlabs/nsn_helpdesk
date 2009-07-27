@@ -3,6 +3,10 @@ class Views::FieldManager::Tickets::Form < Erector::RailsWidget
   
   def content
     fieldset do
+      div :class => "field" do
+        label "Time"
+        span :id => 'timer'        
+      end
       div :class => 'field' do
         label "Product"
         rawtext f.collection_select :product_id, Product.all, :id, :name, {:prompt => '-- Select --'}  

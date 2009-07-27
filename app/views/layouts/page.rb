@@ -45,7 +45,7 @@ class Views::Layouts::Page < Erector::RailsWidget
   
   # override me
   def setup
-    text "No setup"
+    # No setup
   end
 
   def content

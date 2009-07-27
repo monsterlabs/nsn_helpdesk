@@ -2,7 +2,7 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
   needs :collection
 
   def content
-    table :id => "listing" do
+    table :id => "listing", :class => "tickets-table" do
       table_header
       table_body
     end
@@ -11,8 +11,8 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(CaseID Region Link Affected Site Status Alarms Customer OpenedDate).each  do |column|
-          th { text column }
+        %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
+          th { text ActiveSupport::Inflector.humanize(column) }
         end
       end
     end
@@ -25,12 +25,12 @@ class Views::Operator::Tickets::Record < Erector::RailsWidget
           td { rawtext ticket.case_id  }
           td { rawtext ticket.link.region.name}
           td { rawtext ticket.link.sites}
-          td { rawtext ticket.affected_site }
+          td { if ticket.affected_site.empty? then text "Both" else text ticket.affected_site end }
           td { rawtext ticket.status.name }
           td { rawtext ticket.alarm }
           td { rawtext ticket.reported_by.person.fullname }
           td { rawtext ticket.opened_at}
-          td { rawtext link_to 'Show', :action => 'show', :id => ticket.id }
+          td { rawtext link_to 'Show', {:action => 'show', :id => ticket.id}, ui_style(:button) }
         end
       end
     end

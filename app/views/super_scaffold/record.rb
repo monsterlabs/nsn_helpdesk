@@ -9,10 +9,10 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
   end
 
   def table_header
-    thead :class => "ui-widget-header", :id => "listing-head" do
+    thead :class => "ui-widget-header", :id => "listing" do
       tr do
         columns.keys.each do |column|
-          th { text column }
+          th { text ActiveSupport::Inflector.humanize(column) }
         end
         th { text 'Actions' }
       end
@@ -26,7 +26,7 @@ class Views::SuperScaffold::Record < Erector::RailsWidget
           columns.keys.each do |column|
             td { text record.send(column) }
           end
-          td do 
+          td :class => "actions_column" do 
             link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
             link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
             link_to 'Destroy', {:action => :destroy, :id => record.id}, 

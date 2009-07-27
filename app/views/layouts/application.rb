@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
-  css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete", "thickbox"
-  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "thickbox-compressed", "jquery.autocomplete.min", "application"
+  css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete"
+  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "application"
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
@@ -77,7 +77,7 @@ class Views::Layouts::Application < Views::Layouts::Page
   
   def footer
     div :id => "footer" do
-      p { text "Copyright ©2009 Nokia. Todos los derechos reservados." }
+      p { text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." }
           rawtext "<br/>"
       p { text "This application runs on Firefox, Chrome, Safari." }
     end

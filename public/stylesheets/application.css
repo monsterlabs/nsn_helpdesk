@@ -1,5 +1,10 @@
 /* This is the custom css for the application*/
 
+html {
+	font-size: 14px;
+}
+
+
 /* for use with ui_style(:button) */
 .button, .button:visited{	
 	display: block;
@@ -11,10 +16,40 @@
 	margin-left: 10px;
 	text-decoration: none;
 }
-
+div#filter .button, div#filter .button:visited {
+	font-weight:bold;
+	margin-top: -5px;
+	margin-bottom: 10px;
+	display: inline;
+	float: none;
+}
 .action {	
 	display: block;
 	float: left;
+}
+
+.field {
+	width: 100%;
+	text-align: left;
+	display: block;
+	vertical-align: middle;
+	margin-top: 8px;
+	margin-bottom: 10px;
+}
+.field label {
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	padding-right: 10px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+div#filter, #search {
+	display:block;
+	font-weight:bold;
+	color: #7705a8;
+	*/
 }
 
 /* Styles for content divs and elements*/
@@ -40,7 +75,10 @@ div#header {
 }
 
 div#footer {
-	border-top: #444444;
+	
+	margin-top: 20px;
+	border-top: 1px solid;
+	color: #cccccc;
 	width: 100%;
 	height: 25px;
 	padding-top: 40px;
@@ -51,6 +89,7 @@ div#footer {
 
 div#footer p {
 	color: #ff7f01;
+	font-size:95%;
 	height: inherit;
 	display:block;
     vertical-align: middle;
@@ -58,9 +97,10 @@ div#footer p {
 }
 
 div#toplinks {
-	font-size: 90%;
+	font-size: 100%;
 	text-align: right;
 	color: silver;
+	padding-right: 15px;
 }
 
 div#toplinks b {
@@ -77,154 +117,40 @@ div#toplinks a:hover {
 	text-decoration: underline;
 }
 
-#dashboard ul, #action-nav ul {
-  list-style:  none;
-  width: 100%;
+/* Dashboard */
+
+div#dashboard {
+	margin-bottom: 30px;
 }
 
-#dashboard li {
-  font-weight: bold; 
-  outline: none;
-  height: 35px;
-  display:  block;
-  float: left;
-  position: relative;
-  background: #d7d7d7 url(custom-theme/images/ui-bg_highlight-soft_100_d7d7d7_1x100.png) 50% top repeat-x;
-  color: #3d3d3d;
+div#dashboard ul, #action-nav ul{
+	list-style: none;
+	width: 100%;
 }
 
-#dashboard li a {
-  font-size: 100%;
-  background-position-x: 100%;
-  padding: 8px 7px 7px 7px;
-  display: block;
-  float: left;
-  border: none;
-  position: relative;
-  text-decoration: none;
-  color: #444444;
-}
-
-#dashboard li a:hover {
-	background: #cdcdcd url(custom-theme/images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x;
+div#dashboard ul li a {
+	background: url(custom-theme/images/ui-bg_highlight-soft_100_d7d7d7_1x50.png);
+	color: #444;
 	font-weight: bold;
+	text-decoration: none;
+	line-height: 35px;
+	padding: 0px 7px;
+	display: block;
+	float: left;
+}
+
+div#dashboard ul li a:hover {
+	background: url(custom-theme/images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50%;
 	color: #ef8c08;
-	outline: none;
 }
 
-#dashboard li #current {
-  border: 1px solid #eb8f00;
-  background: #eb8f00 url(custom-theme/images/ui-bg_highlight-hard_50_eb8f00_1x100.png) 50% 50% repeat-x;
-  font-weight: bold;
-  color: #ffffff;
-  padding-left: 7px;
-  display:  block;
-  float: left;
-  position: relative;
-}
-
-#dashboard li a #current {
-  /*background-position-x: 100%;*/
-  padding: 8px 18px 7px 18px;	
-  margin-right: 2px;
-  margin-left: 2px;
-}
-
-#dashboard li a:hover #current {
-  padding: 7px 20px 6px 20px;
-  margin-bottom: 1px;
-
-}
-
-#dashboard li.selected a {
-}
-
-#t-menu em, #t-proj em {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  text-indent: -9999px;
-  right: 8px;
-  top: 11px;
-  background: #fff;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-#t-menu a:hover em, #t-proj a:hover em {
-  	border: 1px solid #cdcdcd;
-}
-
-#tmenu em:hover, #t-proj em:hover {
-  background-color: #fff;
-}
-
-#dashboard ul.submenu li {
-  float: none;
-  display: block;
-  border-bottom: 1px solid #eee;
-  margin: 0 6px !important;
-  background-color: #fff;
-}
-
-#dashboard ul.submenu li a {
-  color: #333;
-  float: none;
-  padding: 6px;
-}
-
-#dashboard ul.submenu li a:hover {
-  background: #cdcdcd url(custom-theme/images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
-  color: #ef8c08;
-}
-
-#dashboard .submenu-tab a {
-  padding-right: 27px;
-}
-
-.submenu-tab em {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  text-indent: -9999px;
-  right: 8px;
-  top: 11px;
-  background: #000 url(/images/droparrow.gif) 5px 6px no-repeat;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-}
-
-.submenu-tab a:hover em {
-  background-color: #057;
-}
-
-#tmenu em:hover, .submenu-tab em:hover {
-  background-color: #C0DCF0;
-}
-
-#dashboard ul.submenu {
-  width: 110px;
-  background: #cdcdcd url(images/ui-bg_inset-hard_100_cdcdcd_1x100.png) 50% 50% repeat-x repeat-y;
-  font-weight: bold;
-  color: #ef8c08;
-  outline: none;
-  position: absolute;
-  border-left: 1px solid #cbcbcb;
-  border-right: 1px solid #cbcbcb;
-  padding-left: 0px;
-  top: 33px;
-  left: 0;
-  z-index: 0;
-}
-
-#dashboard ul.submenu li {
-  float: none;
-  display: block;
-  margin: 0 6px !important;
+div#dashboard ul li ul.submenu {
+	position: absolute;
+	z-index: 100;
+	left: 0;
+	top: 159px;
+	font-size: 90%;
+	clear: both;
 }
 
 /* dialogs */
@@ -264,48 +190,70 @@ div#login_form input#login_button {
 	font-size: 105%;
 }
 
+}
+
 div#login_form div#forgot {
 	color: #ff7f01;
-	text-align: center
+	text-align: center;
 }
 
 div#login_form div#forgot:hover {
-	text-decoration: underline
+	text-decoration: underline:
 }
 
 /* listings */
 table {
+	margin-top: 20px;
 	border-spacing: 0px 2px;
-	min-width: 120px;
+	min-width: 350px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-table tbody tr.odd {
-	background-color: #cdcdcd;
-	height: 35px;
-	
+table#listing {
+	width: 700px;
+	font-size: 90%;
+	color: #333;
+}
+
+table#listing.tickets-table {
+	width: 900px;
+}
+
+table#listing tbody tr {
+	border-bottom: solid 1px silver;
+}
+
+table#listing tbody tr.odd {
+	background-color: #eeeeee;
+	vertical-align: middle;
+}
+
+table#listing td {
+	vertical-align: middle;
+	padding-left: 10px;
+}
+
+table#listing td.actions_column {
+	width: 170px;
 }
 
 thead#listing-head th {
-	padding-left:8px;
-	height: 35px;
+	vertical-align: middle;
 	font-size: 1em;
-	padding-top:12px;
+	padding: 8px 5px;
 }
 
 table#profile-info tr {
 	background-color: #fff;
-	height: 28px;
+	height: 30px;
 	font-size: 90%;
-	padding-bottom:5px;
+	vertical-align: middle;
+	padding-left: 10px;
 }
 
 table#profile-info td b{
-	background-color: #cdcdcd;
 	margin-right: 10px;
-	font-size: 90%;
-	padding-bottom:5px;
 }
 
 /* errors */
@@ -356,20 +304,22 @@ div#paginator {
 	border-style: solid;
 	border-width: 1px;
 }
-.field {
-	width: 100%;
-	text-align: left;
-	display: block;
-	vertical-align: top;
-}
-.field label {
-	display: inline-block;
-	width: 100px;
-	vertical-align: top;
-}
 
 /*Field Manager*/
 .assign_attributes {
     background-color: #DCDCDC;
     width: 700px;
+}
+
+/* Epiclock */
+span.epiclock {
+	color: #89258e;
+}
+
+span.epiclock-digit {
+	font-weight: bold;
+}
+
+span.epiclock-spacer {
+	padding: 0px 2px;
 }

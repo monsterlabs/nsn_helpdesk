@@ -2,7 +2,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   needs :collection
   
   def content
-    table do
+    table :id => "listing" do
       table_header %w(Photo Fullname Login Email Actions)
       table_body
     end
@@ -20,7 +20,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
           td { text record.person.fullname unless record.person.nil? }
           td { text record.login }
           td { text record.email }
-          td do
+          td :class => "actions_column" do
             link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
             link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
             link_to 'Destroy', {:action => :destroy, :id => record.id}, 

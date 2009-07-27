@@ -1,7 +1,7 @@
 class Views::FieldManager::Tickets::New < Views::Layouts::Application
   def setup
     @@jqueries << <<-S
-      $('#timer').epiclock({mode: EC_COUNTUP, target: "#{@ticket.opened_at}"}); 
+      $('#timer').epiclock({mode: EC_COUNTUP, target: "#{@ticket.opened_at}", format: "Q {years} K {days} x:i:s"}); 
       $('#timer').clocks(EC_RUN);
     S
   end
@@ -13,7 +13,7 @@ class Views::FieldManager::Tickets::New < Views::Layouts::Application
   def view_content
     rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
     form_for(:ticket, @ticket, :url => { :action => "create"}) do |f|
-       h2 do
+      h2 do
          text 'Case details'
       end
 
