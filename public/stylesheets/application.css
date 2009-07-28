@@ -80,14 +80,13 @@ div#header {
 	
 }
 
-div#footer {
-	
+div#footer {	
 	margin-top: 20px;
 	border-top: 1px solid;
-	color: #cccccc;
+	font-size: 95%;
 	width: 100%;
-	height: 25px;
-	padding-top: 40px;
+	height: 50px;
+	padding-top: 35px;
 	display: table;
 /*	position: absolute;*/
 	bottom: 0px;
@@ -96,10 +95,56 @@ div#footer {
 div#footer p {
 	color: #ff7f01;
 	font-size:95%;
-	height: inherit;
-	display:block;
     vertical-align: middle;
 	text-align: center;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+div#footer .browsers {
+	display: block;
+	
+}
+
+div#text {
+	height: 30px;
+	color: #ff7f01;
+	font-size:95%;
+    vertical-align: top;
+	text-align: center;
+	padding-left: 10px;
+	margin-right: 6px;
+	
+}
+
+div#footer .browser_link {
+	display: inline;
+	float: none;
+	min-height: 40px;
+}
+
+div#footer .browser_link a {
+	text-decoration: none;
+	color: transparent;
+	padding: 18px 4px;
+	margin: 0px 3px;
+	text-align: middle;
+}
+
+div#safari {
+	margin-left: 10px;
+}
+
+div#safari a {
+	background: url('../images/safari.png') no-repeat;
+}
+
+div#firefox a {
+	background: url('../images/firefox.png') no-repeat;
+}
+
+div#chrome a {
+	background: url('../images/google-chrome.png') no-repeat;
 }
 
 div#toplinks {
