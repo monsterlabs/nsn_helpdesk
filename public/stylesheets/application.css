@@ -16,6 +16,12 @@ html {
 	margin-left: 10px;
 	text-decoration: none;
 }
+
+.no_float {
+  display: inline;
+  float: none;
+}
+
 div#filter .button, div#filter .button:visited {
 	font-weight:bold;
 	margin-top: -5px;
