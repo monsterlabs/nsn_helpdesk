@@ -90,6 +90,7 @@ div#footer {
 	display: table;
 /*	position: absolute;*/
 	bottom: 0px;
+	color: silver;
 }
 
 div#footer p {
