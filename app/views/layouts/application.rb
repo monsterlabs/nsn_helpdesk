@@ -78,8 +78,21 @@ class Views::Layouts::Application < Views::Layouts::Page
   def footer
     div :id => "footer" do
       p { text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." }
-          rawtext "<br/>"
-      p { text "This application runs on Firefox, Chrome, Safari." }
+      div :class => "browsers", :id => 'text' do
+        text 'This application runs on:'
+        div :class => 'browser_link', :id => 'safari' do
+          link_to 'safari', 'http://www.apple.com/safari/'
+        end
+        div :class => 'browser_link', :id => 'firefox' do
+          link_to 'firefox', 'http://www.mozilla.com/firefox/'
+        end
+        div :class => 'browser_link', :id => 'chrome' do
+          link_to 'chrome', 'http://www.google.com/chrome/'
+          end
+        end
+        # link_to 'safari', 'http://www.apple.com/safari/', {:class => "browser_link", :id => "safari"}
+        # link_to 'firefox', 'http://www.mozilla.com/firefox/', {:class => "browser_link", :id => "firefox"}
+        # link_to 'chrome', 'http://www.google.com/chrome/', {:class => "browser_link", :id => "chrome"}
     end
   end
 end
