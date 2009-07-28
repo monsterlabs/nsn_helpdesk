@@ -12,7 +12,7 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
       toplinks
       dashboard
       ## This is where the view sets its content
-      div :class => "grid_15 suffix_1" do
+      div :class => "grid_16" do
         view_content
         dialog
       end
@@ -39,8 +39,10 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
       span :id => 'filter_selected' do
       end
     end    
+
+    widget Views::Operator::Tickets::Record, :collection => @collection
+    
     span :id =>"ticket_collection", :class => 'collection' do
-      widget Views::Operator::Tickets::Record, :collection => @collection
       paginator @collection
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    

@@ -12,7 +12,7 @@ class Views::FieldManager::Tickets::Index < Views::Layouts::Application
       toplinks
       dashboard
       ## This is where the view sets its content
-      div :class => "grid_15 suffix_1" do
+      div :class => "grid_16" do
         view_content
         dialog
       end

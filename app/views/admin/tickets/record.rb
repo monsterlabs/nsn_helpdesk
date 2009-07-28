@@ -12,7 +12,9 @@ class Views::Admin::Tickets::Record < Erector::RailsWidget
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
         %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
-          th { text ActiveSupport::Inflector.humanize(column) }
+          th :id => column do
+            text ActiveSupport::Inflector.humanize(column)
+          end
         end
       end
     end

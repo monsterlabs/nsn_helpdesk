@@ -11,8 +11,10 @@ class Views::FieldManager::Tickets::Record < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(CaseID Region Link AffectedSites FrequencyTX FrequencyRX Priority Failure Alarms ReportedByCustomer FieldManager OpenedDate OpenedBy DueDate Status ResolvedDate CallsHandleTime Actions).each  do |column|
-          th { text column }
+        %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
+          th :id => column do
+            text ActiveSupport::Inflector.humanize(column)
+          end
         end
       end
     end
