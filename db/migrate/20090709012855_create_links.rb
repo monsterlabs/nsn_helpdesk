@@ -18,6 +18,6 @@ class CreateLinks < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :links
+    drop_table :time_zones, :links
   end
 end
