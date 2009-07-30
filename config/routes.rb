@@ -42,7 +42,8 @@ ActionController::Routing::Routes.draw do |map|
                        :auto_complete_for_link_sites => :get, 
                        :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get 
                        }
-
+    field_manager.resources :users
+    field_manager.resources :links
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.

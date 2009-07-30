@@ -1,9 +1,9 @@
 class Notifier < ActionMailer::Base
 
   def ticket_notifications(ticket)
-    @subject    = 'Ticket has been sent'
+    @subject    = '[NSNCallCenter] Ticket has been sent'
     @recipients = 'alexjr85@gmail.com' # @ticket.reported_by.email
-    @from       = 'noreply@sosbox.com'
+    @from       = 'noreply@nokia.call.center.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
 
@@ -17,17 +17,32 @@ class Notifier < ActionMailer::Base
     ticket.priority.name == '0+0 High' ? (prefix='EME Case') : (prefix='Case')
     @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
     @recipients = 'alexjr85@gmail.com' #email
-    @from       = 'noreply@notification.com'
+    @from       = 'noreply@nokia.call.center.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
   end
 
   def random_password(user, password)
-    @subject    = '[SOSBOX] Your password has been reset'
+    @subject    = '[NSNCallCenter] Your password has been reset'
     @recipients = user.email
-    @from       = 'noreply@sosbox.com'
+    @from       = 'noreply@nokia.call.center.com'
     @sent_on    = Time.now
     @body       = { :user => user, :password => password}
+  end
+
+  def link_notifications(link)
+    @subject    = '[NSNCallCenter] Link updated'
+    @recipients = 'fereyji@gmail.com' #field_managers_recipients
+    @from       = 'noreply@nokia.call.center.com'
+    @sent_on    = Time.now
+    @body       = {:link => link }
+  end
+
+  def field_managers_recipients
+    manager = Array.new
+    User.field_managers_collection.each do |field_manager|
+      managers << field_manager.email
+    end
   end
 
 end

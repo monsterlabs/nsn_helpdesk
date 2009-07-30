@@ -1,7 +1,7 @@
 class Ticket < ActiveRecord::Base
   has_paper_trail 
 
-  validates_presence_of :product_id, :reported_by_id, :link_id, :frequency_tx, :frequency_rx, :reported_priority_id, :failure, :attended_by_id
+  validates_presence_of :product_id, :reported_by_id, :link_id, :reported_priority_id, :failure, :attended_by_id
   
   belongs_to :ticket_type
   belongs_to :reported_priority, :class_name => 'Priority'
