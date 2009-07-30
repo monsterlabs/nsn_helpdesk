@@ -7,7 +7,6 @@ class CreateTickets < ActiveRecord::Migration
       t.references :link # if we save only this field, we will indicating that the 2 sites are failing
       t.string     :affected_site # if we specify this, we will indicate that one site is failing
       
-      t.text       :frequency_tx, :frequency_rx
       t.references :reported_priority, :class_name => 'Priority' # Priority suggested by customer
       t.string     :case_id # =>  NSNCTddmmyyyyn
       t.references :failure # Problem description
