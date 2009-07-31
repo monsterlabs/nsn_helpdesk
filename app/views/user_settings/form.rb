@@ -5,6 +5,7 @@ class Views::UserSettings::Form < Erector::RailsWidget
     div do
       widget Views::Admin::Users::User, :f => f  
       widget Views::Admin::Users::Person, :f => f, :user => @record
+      widget Views::Admin::Users::Address, :f => f, :user => @record
     end
   end
   

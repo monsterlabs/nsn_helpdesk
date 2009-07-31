@@ -45,6 +45,53 @@ class Views::UserSettings::Show < Views::Layouts::Application
                  td { rawtext @user.person.region.name if !@user.person.nil? and !@user.person.region.nil? }
              end
              
+             unless @user.address.nil?
+             tr do 
+                 td { b 'Location:' }
+                 td { rawtext @user.address.location }
+             end
+             tr do 
+                  td { b 'Country:' }
+                  td { rawtext @user.address.country.name unless @user.address.country.nil? }
+              end
+
+              tr do 
+                  td { b 'State:' }
+                  td { rawtext @user.address.state.name unless @user.address.state.nil? }
+              end
+
+              tr do 
+                  td { b 'City:' }
+                  td { rawtext @user.address.city.name unless @user.address.city.nil? }
+              end
+
+              tr do 
+                  td { b 'Zipcode:' }
+                  td { rawtext @user.address.zipcode }
+              end
+
+              tr do 
+                  td { b 'Business phone:' }
+                  td { rawtext @user.address.business_phone }
+              end
+
+              tr do 
+                  td { b 'Home phone:' }
+                  td { rawtext @user.address.home_phone }
+              end
+
+              tr do 
+                  td { b 'Mobile phone:' }
+                  td { rawtext @user.address.mobile_phone }
+              end
+
+              tr do 
+                  td { b 'Fax:' }
+                  td { rawtext @user.address.fax_number }
+              end
+             
+             
+            end
           end
     end
     div :class => 'clear'
