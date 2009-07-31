@@ -38,6 +38,16 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     div :class => 'field' do
       label "Failure"
       rawtext simple_select :ticket, :failure
+      div ui_style(:button, {:class => "no_float", :id => "add_failure"}) do
+        text "Add"
+      end
+      div :id => "add_failure_dialog", :title => "Add a failure" do
+        form_remote_tag(:url => "/admin/failures/create", :complete => "$('#add_failure_dialog').dialog('close'); $('#ticket_failure_id').html(request);") do
+          label "Name"
+          rawtext text_field_tag 'failure[name]'
+          rawtext submit_tag 'Create', ui_style(:button)
+        end
+      end
     end
     
     div :class => 'field' do

@@ -28,6 +28,18 @@ $(document).ready(function(){
           var hidden = $("#ticket_link_id");
           hidden.val(data[1]);
         });
+        $('#add_failure').click(function() {
+          $('#add_failure_dialog').dialog('open');
+        });
+
+        $("#add_failure_dialog").dialog({
+          bgiframe: true,
+          height: 280,
+          modal: true,
+          autoOpen: false,
+          draggable: false,
+          resizable: false
+        });
       }
 
     });
