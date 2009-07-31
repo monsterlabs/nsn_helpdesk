@@ -28,22 +28,10 @@ class Views::Operator::Tickets::Index < Views::Layouts::Application
 
         rawtext f.text_field :case_id, :size => 15
       end
-
-      div :id => "filter" do 
-        label "  Order by:"
-        rawtext filter_select(:priority)
-        rawtext filter_select(:status)
-        rawtext link_to 'Show all', {:action => 'index'}, ui_style(:button)
-      end
-
-      span :id => 'filter_selected' do
-      end
     end    
-
-    widget Views::Operator::Tickets::Record, :collection => @collection
     
     span :id =>"ticket_collection", :class => 'collection' do
-      paginator @collection
+      widget Views::Operator::Tickets::Table, :collection => @collection
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    
   end
