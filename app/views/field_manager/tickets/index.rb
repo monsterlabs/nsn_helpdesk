@@ -28,17 +28,10 @@ class Views::FieldManager::Tickets::Index < Views::Layouts::Application
 
         rawtext f.text_field :case_id, :size => 15
       end
-
-      div :id => "filter" do 
-        label "  Order by:"
-        rawtext filter_select(:priority)
-        rawtext filter_select(:status)
-        rawtext link_to 'Show all', {:action => 'index'}, ui_style(:button)
-      end
     end    
+    
     span :id =>"ticket_collection", :class => 'collection' do
-      widget Views::FieldManager::Tickets::Record, :collection => @collection
-      paginator @collection
+      widget Views::FieldManager::Tickets::Table, :collection => @collection
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    
   end

@@ -58,6 +58,19 @@ div#filter, #search {
 	*/
 }
 
+/*  Filters  */
+tr#filter_row input#filter_case_id {
+  width: 100px;
+}
+
+tr#filter_row select#filter_region_id {
+  width: 55px;
+}
+
+tr#filter_row input#filter_site {
+  width: 80px;
+}
+
 /* Styles for content divs and elements*/
 
 body {

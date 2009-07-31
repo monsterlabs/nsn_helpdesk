@@ -25,6 +25,11 @@ class Ticket < ActiveRecord::Base
 
   named_scope :daily, lambda { {:conditions => { :created_at => (Time.zone.now.midnight..Time.zone.now) }, :order => 'created_at ASC'} }
   
+  named_scope :region_id_equals, lambda { |id|
+    { :conditions => { 'links.region_id' => id }, 
+      :joins => 'left join links on links.id = tickets.link_id' }
+  }
+  
   before_save :prepare_case_id
 
   def prepare_case_id

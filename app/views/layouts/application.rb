@@ -16,8 +16,6 @@ class Views::Layouts::Application < Views::Layouts::Page
         resizable: false
       });
       
-      $("tr:nth-child(odd)").addClass("odd");
-      
       $(".ui-state-default").hover(
         function() { $(this).addClass('ui-state-hover'); },
         function() { $(this).removeClass('ui-state-hover'); }

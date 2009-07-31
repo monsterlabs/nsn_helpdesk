@@ -69,4 +69,27 @@ class Operator::TicketsController < ApplicationController
       end
     end    
   end
+  
+  def filter
+    @collection = Ticket
+    if !(value = params[:filter][:case_id]).blank?
+      @collection = @collection.case_id_like(value)
+    end
+    if !(value = params[:filter][:status_id]).blank?
+      @collection = @collection.status_id_equals(value)
+    end
+    if !(value = params[:filter][:region_id]).blank?
+      @collection = @collection.region_id_equals(value)
+    end
+    if !(value = params[:filter][:affected_site]).blank?
+      @collection = @collection.affected_site_like(value)
+    end
+    
+    @collection = @collection.paginate :page => 1, :per_page => 10
+    
+    respond_to do |format|
+      format.js { render 'list_js'}
+    end
+  end
+  
 end
