@@ -9,7 +9,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :home_phone
       t.string :mobile_phone
       t.string :fax_number
-
+      t.references :modified_by, :class_name => 'User' # Who has changed each record?
+      t.string     :ip_address
       t.timestamps
     end
   end

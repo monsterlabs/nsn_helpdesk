@@ -9,6 +9,8 @@ class UserSettingsController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.person_attributes.merge!(:modified_by_id => current_user.id)
+    @user.address_attributes.merge!(:modified_by_id => current_user.id)
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to user_setting_path }

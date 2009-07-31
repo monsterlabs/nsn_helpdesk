@@ -32,5 +32,8 @@ class Views::People::Show < Views::Layouts::Application
         end
       end
     end
+    
+    widget Views::People::ShowLog, :person => @person
+    
   end
 end

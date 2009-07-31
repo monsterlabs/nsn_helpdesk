@@ -111,7 +111,7 @@ class Views::Operator::Tickets::Show < Views::Layouts::Application
            end
             tr do
               td {label "Created by:"}
-              td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
+              td {rawtext Person.find_by_modified_by_id(version.whodunnit).fullname unless Person.find_by_modified_by_id(version.whodunnit).nil?}
             end
          unless version.object.nil?
             tr do

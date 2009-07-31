@@ -27,8 +27,8 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.address.attributes.merge(:modified_by_id => current_user.id, :ip_address => request.remote_ip)
-    @user.person.attributes.merge(:modified_by_id => current_user.id, :ip_address => request.remote_ip)
+    @user.address.attributes.merge!(:modified_by_id => current_user.id, :ip_address => request.remote_ip)
+    @user.person.attributes.merge!(:modified_by_id => current_user.id, :ip_address => request.remote_ip)
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }

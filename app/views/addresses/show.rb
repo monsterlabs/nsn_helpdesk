@@ -60,5 +60,8 @@ class Views::Addresses::Show < Views::Layouts::Application
         end
       end
       end
+
+    widget Views::Addresses::ShowLog, :addr => @addr
+
     end
   end

@@ -13,7 +13,8 @@ class CreateLinks < ActiveRecord::Migration
       t.string     :current_status # 0 + 0, 1 + 0., 1 + 1
       t.references :time_zone
       t.text       :other
-      t.references :user # Who has changed each record?
+      t.references :modified_by, :classname => User # Who has changed each record?
+      t.string     :ip_address
       t.timestamps
     end
   end
