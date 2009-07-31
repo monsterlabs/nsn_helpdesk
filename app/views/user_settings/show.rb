@@ -11,7 +11,6 @@ class Views::UserSettings::Show < Views::Layouts::Application
       widget Views::Addresses::Show, :addr => @user.address
     end
     div :class => 'clear'
-    
     div do
       rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
     end

@@ -28,30 +28,30 @@ class Views::Addresses::Show < Views::Layouts::Application
             td { rawtext @addr.city.name }
           end
         end
-        unless @addr.zipcode.strip.empty?
+        unless @addr.zipcode.to_s.strip.empty?
           tr do 
             td { b 'Zipcode:' }
             td { rawtext @addr.zipcode }
           end
         end
-        unless @addr.business_phone.strip.empty?
+        unless @addr.business_phone.to_s.strip.empty?
           tr do 
             td { b 'Business phone:' }
             td { rawtext @addr.business_phone }
           end
-          unless @addr.home_phone.strip.empty?
+          unless @addr.home_phone.to_s.strip.empty?
             tr do 
               td { b 'Home phone:' }
               td { rawtext @addr.home_phone }
             end
           end
-          unless @addr.mobile_phone.strip.empty?
+          unless @addr.mobile_phone.to_s.strip.empty?
             tr do 
               td { b 'Mobile phone:' }
               td { rawtext @addr.mobile_phone }
             end
           end
-          unless @addr.fax_number.strip.empty?
+          unless @addr.fax_number.to_s.strip.empty?
             tr do 
               td { b 'Fax:' }
               td { rawtext @addr.fax_number }
