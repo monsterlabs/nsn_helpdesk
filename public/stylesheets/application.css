@@ -48,7 +48,7 @@ div#filter .button, div#filter .button:visited {
 	text-align: right;
 	padding-right: 10px;
 	font-weight: bold;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 div#filter, #search {
