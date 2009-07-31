@@ -166,6 +166,7 @@ div#toplinks {
 	text-align: right;
 	color: silver;
 	padding-right: 15px;
+	margin-bottom: 10px;
 }
 
 div#toplinks b {
@@ -186,6 +187,7 @@ div#toplinks a:hover {
 
 div#dashboard {
 	margin-bottom: 15px;
+	background: url(custom-theme/images/ui-bg_highlight-soft_100_d7d7d7_1x50.png);
 }
 
 div#dashboard ul, #action-nav ul{
