@@ -49,6 +49,7 @@ class Views::Layouts::Page < Erector::RailsWidget
   end
 
   def content
+    controller_setup
     setup
     rawtext doctype
     html :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' do
@@ -99,6 +100,24 @@ class Views::Layouts::Page < Erector::RailsWidget
   def request
     @controller.request
   end
+  
+  def controller_name
+    @@controller_name 
+  end
+
+  def action_name
+    @@action_name 
+  end
+
+  def params
+    @@params
+  end
+
+  def controller_setup
+    @@controller_name = @controller.controller_name
+    @@action_name = @controller.action_name
+    @@params = @controller.request.params
+  end
 end
 
 class Erector::Widget
@@ -138,38 +157,7 @@ class Erector::Widget
     return {:class => classes.flatten.join(" "), :id => ids.flatten.join(" ")}
   end
 
-  def paginator(collection)
-    div :class => "paginator", :id => "paginator" do
-      if collection.total_pages > 1
-        (1..collection.total_pages).collect do |page|
-          previous_page(collection, page)
-          current_page(collection, page)
-          next_page(collection, page)
-        end
-      end
-    end
-  end
-  
-  def previous_page(collection, page)
-      link_to_page 'Previous', collection.previous_page if !collection.previous_page.nil? and page == 1
-  end
-  
-  def current_page(collection, page)
-    if page == collection.current_page
-      rawtext content_tag(:span, page, :class => 'current')
-    else
-      link_to_page page, page unless page == collection.current_page
-    end
-  end
-  
-  def next_page(collection, page)
-      link_to_page 'Next',  collection.next_page if !collection.next_page.nil? and page == collection.total_pages
-  end
-  
-  def link_to_page(label, page)
-      link_to label, :action => :index, :page => page
-  end
-  
+
   def table_header(columns)
       thead :class => "ui-widget-header", :id => "listing-head" do
         tr do
@@ -180,6 +168,44 @@ class Erector::Widget
     end
   end
   
+  def paginator(collection)
+    div :class => "paginator", :id => "paginator" do
+      if collection.total_pages > 1
+        # Fix It: divide collections using ranges of 20 items per paginator
+        start_range = 1
+        end_range = collection.total_pages
+        (start_range..end_range).collect do |page|
+          previous_page(collection, page)
+          current_page(collection, page)
+          next_page(collection, page)
+        end
+      end
+    end
+  end
+
+  def previous_page(collection, page)
+    link_to_page 'Anterior', collection.previous_page if !collection.previous_page.nil? and page == 1
+  end
+
+  def current_page(collection, page)
+    if page == collection.current_page
+      rawtext content_tag(:span, page, :class => 'current')
+    else
+      link_to_page page, page unless page == collection.current_page
+    end
+  end
+
+  def next_page(collection, page)
+    link_to_page 'Siguiente', collection.next_page  if !collection.next_page.nil? and page == collection.total_pages
+  end
+
+  def link_to_page(label, page)
+    # Fix it: Clean code for link_to_page for paginator
+    params.delete(:page)
+    params.delete(:per_page)
+    link_to label, :controller => controller_name, :action => action_name, :params => params, :page => page
+  end
+
   def filter_select(class_name, dom_id = "filter")
     collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
   end
