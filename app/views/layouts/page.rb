@@ -171,20 +171,25 @@ class Erector::Widget
   def paginator(collection)
     div :class => "paginator", :id => "paginator" do
       if collection.total_pages > 1
-        # Fix It: divide collections using ranges of 20 items per paginator
+        limit = 10
         start_range = 1
         end_range = collection.total_pages
-        (start_range..end_range).collect do |page|
-          previous_page(collection, page)
-          current_page(collection, page)
-          next_page(collection, page)
+        if collection.total_pages > limit      
+          start_range = collection.current_page > limit ? (collection.current_page - limit) : collection.current_page
+          paginator_limit = start_range + limit
+          end_range = paginator_limit > collection.total_pages ? (paginator_limit - collection.total_pages) : paginator_limit
         end
+        previous_page(collection)
+        (start_range..end_range).collect do |page|
+          current_page(collection, page)
+        end
+        next_page(collection)
       end
     end
   end
 
-  def previous_page(collection, page)
-    link_to_page 'Anterior', collection.previous_page if !collection.previous_page.nil? and page == 1
+  def previous_page(collection)
+    link_to_page 'Anterior', collection.previous_page if !collection.previous_page.nil?
   end
 
   def current_page(collection, page)
@@ -195,8 +200,8 @@ class Erector::Widget
     end
   end
 
-  def next_page(collection, page)
-    link_to_page 'Siguiente', collection.next_page  if !collection.next_page.nil? and page == collection.total_pages
+  def next_page(collection)
+    link_to_page 'Siguiente', collection.next_page  if !collection.next_page.nil? 
   end
 
   def link_to_page(label, page)
