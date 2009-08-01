@@ -1,5 +1,6 @@
 class Views::Admin::Failures::CreateJs < Views::Layouts::ApplicationJs
   def js_content
-    rawtext simple_select :ticket, :failure
+    # I'm not using simple_select to make a custom selection on the newly created record
+    rawtext select(:ticket, :failure_id, options_from_collection_for_select(Failure.all, 'id', 'name', @record.id))
   end
 end

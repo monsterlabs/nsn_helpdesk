@@ -30,7 +30,7 @@ module DashboardHelper
   end
 
   def tab(name_space, record)
-    li :id => "t-proj" do 
+    li :class => "t-proj" do 
       link_to(record.controller.humanize, :controller => name_space + '/' + record.controller)
     end
   end
