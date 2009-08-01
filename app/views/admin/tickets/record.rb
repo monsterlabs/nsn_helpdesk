@@ -9,7 +9,7 @@ class Views::Admin::Tickets::Record < Erector::RailsWidget
         td { rawtext ticket.link.sites}
         td { if ticket.affected_site.empty? then text "Both" else text ticket.affected_site end }
         td { rawtext ticket.status.name }
-        td { rawtext ticket.alarm }
+        td { rawtext ticket.priority.name }
         td { rawtext ticket.reported_by.person.fullname }
         td { rawtext ticket.opened_at}
         td :class => "actions_column" do

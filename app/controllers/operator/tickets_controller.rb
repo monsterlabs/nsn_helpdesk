@@ -84,6 +84,9 @@ class Operator::TicketsController < ApplicationController
     if !(value = params[:filter][:affected_site]).blank?
       @collection = @collection.affected_site_like(value)
     end
+    if !(value = params[:filter][:priority_id]).blank?
+      @collection = @collection.priority_id_equals(value)
+    end
     
     @collection = @collection.paginate :page => 1, :per_page => 10
     

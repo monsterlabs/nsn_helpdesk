@@ -9,6 +9,7 @@ $(document).ready(function(){
         autocomplete_reporter();
         autocomplete_link();
         add_failure_dialog();
+        set_button_behaviour();
       }
 
     });
@@ -44,6 +45,7 @@ function set_button_behaviour() {
     function() { $(this).addClass('ui-state-hover'); },
     function() { $(this).removeClass('ui-state-hover'); }
   );
+  $(".ui-state-default").css("cursor", "pointer");
 }
 
 // Failure dialog

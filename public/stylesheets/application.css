@@ -395,3 +395,19 @@ span.epiclock-digit {
 span.epiclock-spacer {
 	padding: 0px 2px;
 }
+
+div#reporter_details p {
+  margin: 10px 0px;
+}
+
+div#link_details p {
+  margin: 10px 0px;
+}
+
+div#reporter_details p b {
+  padding-right: 10px;
+}
+
+div#link_details p b {
+  padding-right: 10px;
+}
