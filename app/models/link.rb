@@ -6,5 +6,6 @@ class Link < ActiveRecord::Base
   belongs_to :city
   belongs_to :time_zone
   belongs_to :user
+  belongs_to :link
 
 end

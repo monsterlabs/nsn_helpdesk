@@ -6,7 +6,7 @@ class LoadSites < ActiveRecord::Migration
     if ENV['RAILS_ENV'] != 'test'
       # It requires rake db:fixtures:load
       data_path = RAILS_ROOT + '/db/migrate/data'
-      [:failures, :priorities, :regions].each do |file|
+      [:failures, :priorities, :regions, :time_zones].each do |file|
         Fixtures.create_fixtures(data_path, file)
       end
       filename = data_path + '/sites.csv'

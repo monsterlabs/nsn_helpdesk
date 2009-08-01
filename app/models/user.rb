@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def self.field_managers_collection
-    field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
+#    field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
   end
   
 end

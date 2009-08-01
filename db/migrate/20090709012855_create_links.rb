@@ -2,7 +2,7 @@ class CreateLinks < ActiveRecord::Migration
   def self.up
     
     create_table :time_zones do |t|
-      t.string :name      
+      t.text :name, :null => false      
       t.timestamps
     end
     
