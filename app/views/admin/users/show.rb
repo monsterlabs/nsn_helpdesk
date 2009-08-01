@@ -14,5 +14,8 @@ class Views::Admin::Users::Show < Views::Layouts::Application
         rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
         link_to 'Back', {:action => :index},  ui_style(:button)
       end
+      4.times { br }
+      widget Views::Shared::ShowLog, :record => @user.person
+      widget Views::Shared::ShowLog, :record => @user.address
    end
 end
