@@ -189,7 +189,7 @@ class Erector::Widget
   end
 
   def previous_page(collection)
-    link_to_page 'Anterior', collection.previous_page if !collection.previous_page.nil?
+    link_to_page 'Previous', collection.previous_page if !collection.previous_page.nil?
   end
 
   def current_page(collection, page)
@@ -201,7 +201,7 @@ class Erector::Widget
   end
 
   def next_page(collection)
-    link_to_page 'Siguiente', collection.next_page  if !collection.next_page.nil? 
+    link_to_page 'Next', collection.next_page  if !collection.next_page.nil? 
   end
 
   def link_to_page(label, page)
