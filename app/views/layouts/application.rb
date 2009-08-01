@@ -16,11 +16,6 @@ class Views::Layouts::Application < Views::Layouts::Page
         resizable: false
       });
       
-      $(".ui-state-default").hover(
-        function() { $(this).addClass('ui-state-hover'); },
-        function() { $(this).removeClass('ui-state-hover'); }
-      );
-      
     Str
 
   include DashboardHelper

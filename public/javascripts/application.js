@@ -6,40 +6,9 @@ $(document).ready(function(){
       url: "details/" + $("#customer_filter_region_id").val(),
       success: function(data){ $("#details").html(data); },
       complete: function(){ 
-        $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
-        { mustMatch: true,
-          extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
-                         'select': "company.name user.email"},
-          formatItem: function(row) {
-                        return row[0] + " " + 
-                              "<span class='ac_company'>" + row[2] + "</span>" +
-                              "<span class='ac_email'>" + row[3] + "</span>";
-                      }
-        });
-        $("input#person_lastname_firstname").result(function(event, data, formatted) {
-          var hidden = $("#ticket_reported_by_id");
-          hidden.val(data[1]);
-        });
-        $("input#link_sites").autocomplete("auto_complete_for_link_sites",
-        {mustMatch: true,
-          extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
-        }); 
-        $("input#link_sites").result(function(event, data, formatted) {
-          var hidden = $("#ticket_link_id");
-          hidden.val(data[1]);
-        });
-        $('#add_failure').click(function() {
-          $('#add_failure_dialog').dialog('open');
-        });
-
-        $("#add_failure_dialog").dialog({
-          bgiframe: true,
-          height: 280,
-          modal: true,
-          autoOpen: false,
-          draggable: false,
-          resizable: false
-        });
+        autocomplete_reporter();
+        autocomplete_link();
+        add_failure_dialog();
       }
 
     });
@@ -59,9 +28,74 @@ $(document).ready(function(){
   );
 
   colorize_odd_rows();
+  set_button_behaviour();
 
 });
 
+// CUSTOM FUNCTIONS
+
+
 function colorize_odd_rows() {
   $("tr:nth-child(odd)").addClass("odd");
+}
+
+function set_button_behaviour() {
+  $(".ui-state-default").hover(
+    function() { $(this).addClass('ui-state-hover'); },
+    function() { $(this).removeClass('ui-state-hover'); }
+  );
+}
+
+// Failure dialog
+function add_failure_dialog() {
+  $('#add_failure').click(function() {
+    $('#add_failure_dialog').dialog('open');
+  });
+
+  $("#add_failure_dialog").dialog({
+    bgiframe: true,
+    height: 280,
+    modal: true,
+    autoOpen: false,
+    draggable: false,
+    resizable: false
+  });
+}
+
+// Autocompleters
+function autocomplete_link(){
+  $("input#link_sites").autocomplete("auto_complete_for_link_sites",
+  {mustMatch: true,
+    extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
+  }); 
+  $("input#link_sites").result(function(event, data, formatted) {
+    var hidden = $("#ticket_link_id");
+    hidden.val(data[1]);
+    $.ajax({
+      url: "../links/show",
+      data: {id: data[1]},
+      success: function(request) { $("div#link_details").html(request)}
+    });
+  });
+}
+
+function autocomplete_reporter() {
+  $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
+  { mustMatch: true,
+    extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
+                   'select': "user.id company.name user.email"},
+    formatItem: function(row) {
+                  return row[0] + " " + 
+                        "<span class='ac_company'>" + row[3] + "</span>" +
+                        "<span class='ac_email'>" + row[4] + "</span>";
+                }
+  });
+  $("input#person_lastname_firstname").result(function(event, data, formatted) {
+    var hidden = $("#ticket_reported_by_id");
+    hidden.val(data[2]);
+    $.ajax({
+      url: "../users/"+ data[2],
+      success: function(request) { $("div#reporter_details").html(request)}
+    });
+  });
 }

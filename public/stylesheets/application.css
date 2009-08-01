@@ -38,6 +38,7 @@ div#filter .button, div#filter .button:visited {
 	width: 100%;
 	text-align: left;
 	display: block;
+	clear: both;
 	vertical-align: middle;
 	margin-top: 8px;
 	margin-bottom: 10px;

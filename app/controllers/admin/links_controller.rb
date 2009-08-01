@@ -18,6 +18,7 @@ class Admin::LinksController < Operator::TicketsController
     @record = Link.find(params[:id])
     respond_to do |format|    
         format.html { render  'show' }
+        format.js { render 'show_js' }
     end
   end
 end
