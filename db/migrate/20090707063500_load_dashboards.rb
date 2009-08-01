@@ -8,7 +8,7 @@ class LoadDashboards < ActiveRecord::Migration
       end
 
       # Fix It: This should support recursivity to add different childs using different levels
-      [:companies, :failures, :priorities, :products, :regions, :roles, :statuses, :ticket_types].each do |item|
+      [:companies, :failures, :links, :priorities, :products, :regions, :roles, :statuses, :ticket_types].each do |item|
         @child = Dashboard.create!(:controller => item.to_s, :role_id => @admin_role.id, :parent_id => Dashboard.find_by_role_id_and_controller(@admin_role.id, 'catalogs').id )
       end
 
