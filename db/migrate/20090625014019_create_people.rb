@@ -11,8 +11,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string     :photo_file_name, :photo_content_type
       t.integer    :photo_file_size
       t.timestamp  :photo_updated_at
-      # /Plugin requirement
-      t.references :modified_by, :class_name => 'User' # Who has changed each record?
       t.string     :ip_address
       t.timestamps
     end
