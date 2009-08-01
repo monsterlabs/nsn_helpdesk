@@ -1,4 +1,14 @@
 class Views::Admin::Tickets::Index < Views::Layouts::Application
+  jquery <<-JS
+    $("tr#filter_row select").change(function() {
+      $.ajax({
+        complete:function(request){colorize_odd_rows()}, 
+        data:$.param($("form").serializeArray()),
+        success:function(request){$('#tickets').html(request);},
+        type:'post', 
+        url:'tickets/filter'}); 
+        return false; });
+  JS
 
   def page_title
     "Tickets Index"
@@ -22,14 +32,6 @@ class Views::Admin::Tickets::Index < Views::Layouts::Application
   end
 
   def view_content
-    div :id => "search" do
-      form_for(:q, :url => { :action => 'search_by_case_id'}) do |f|
-        label "Search by key:"
-
-        rawtext f.text_field :case_id, :size => 15
-      end
-    end    
-    
     span :id =>"ticket_collection", :class => 'collection' do
       widget Views::Admin::Tickets::Table, :collection => @collection
     end
