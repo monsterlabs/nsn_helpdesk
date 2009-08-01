@@ -171,25 +171,17 @@ class Erector::Widget
   def paginator(collection)
     div :class => "paginator", :id => "paginator" do
       if collection.total_pages > 1
-        limit = 10
-        start_range = 1
-        end_range = collection.total_pages
-        if collection.total_pages > limit      
-          start_range = collection.current_page > limit ? (collection.current_page - limit) : collection.current_page
-          paginator_limit = start_range + limit
-          end_range = paginator_limit > collection.total_pages ? (paginator_limit - collection.total_pages) : paginator_limit
-        end
         previous_page(collection)
-        (start_range..end_range).collect do |page|
+        page_ranges(collection).collect do |page|
           current_page(collection, page)
         end
         next_page(collection)
       end
     end
   end
-
+  
   def previous_page(collection)
-    link_to_page 'Previous', collection.previous_page if !collection.previous_page.nil?
+    link_to_page 'Previous', collection.previous_page unless collection.previous_page.nil?
   end
 
   def current_page(collection, page)
@@ -201,7 +193,7 @@ class Erector::Widget
   end
 
   def next_page(collection)
-    link_to_page 'Next', collection.next_page  if !collection.next_page.nil? 
+    link_to_page 'Next', collection.next_page  unless collection.next_page.nil?
   end
 
   def link_to_page(label, page)
@@ -209,6 +201,18 @@ class Erector::Widget
     params.delete(:page)
     params.delete(:per_page)
     link_to label, :controller => controller_name, :action => action_name, :params => params, :page => page
+  end
+
+  def page_ranges(collection)
+      limit = 10
+      start_range = 1
+      end_range = collection.total_pages
+      if collection.total_pages > limit      
+        start_range = collection.current_page > limit ? (collection.current_page - limit) : collection.current_page
+        paginator_limit = start_range + limit
+        end_range = paginator_limit > collection.total_pages ? (paginator_limit - collection.total_pages) : paginator_limit
+      end
+      (start_range..end_range)
   end
 
   def filter_select(class_name, dom_id = "filter")
