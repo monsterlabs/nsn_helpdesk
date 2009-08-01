@@ -27,10 +27,10 @@ class SessionsController < ApplicationController
       u= User.find_by_email(params[:email])
       if u and u.send_random_password
         flash[:message]  = "A new password has been sent by email."
-        redirect_to :action => 'new'
       else
         flash[:warning]  = "Couldn't send password"
       end
+      redirect_to :action => 'new'
     end
   end
 end
