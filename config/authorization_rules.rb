@@ -7,7 +7,7 @@ authorization do
   end
 
   role :field_manager do
-    has_permission_on :tickets, :to => :manage
+    has_permission_on [:tickets, :links, :users], :to => :manage
     has_permission_on [:user_settings, :user_settings, :people], :to => :read_and_update
     has_permission_on :feedbacks, :to => :write
   end
@@ -19,7 +19,7 @@ authorization do
     has_permission_on :users, :to => :manage
     has_permission_on :tickets, :to => :manage
     has_permission_on :feedbacks, :to => :write
-    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products, :roles], :to => :manage
+    has_permission_on [:regions, :priorities, :statuses, :failures, :ticket_types, :alarm_types, :companies, :products, :roles, :links], :to => :manage
   end
 end
 
