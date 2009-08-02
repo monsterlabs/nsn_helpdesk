@@ -6,13 +6,15 @@ Field Manager:
 
 Address record has been updated:
 
-Address: <%= @address.id%>
+Address: <%= @address.location %>
 
-User: <%= @address.user.person.fullname%>
+User: <%= @address.user.person.nil? ?  @address.user.email :  @address.user.person.fullname %>
 
-Modified by: <%= Person.find(@address.modified_by_id).fullname%>
+<% author = User.find(@address.modified_by_id) %>
 
-Updated at:<%= @address.updated_at%>
+Modified by: <%= author.person.nil? ? author.email : author.person.fullname %>
+
+Updated at: <%= @address.updated_at.to_s %>
 
 Modifications:
 

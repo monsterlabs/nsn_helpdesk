@@ -12,6 +12,7 @@ class CreatePeople < ActiveRecord::Migration
       t.integer    :photo_file_size
       t.timestamp  :photo_updated_at
       t.string     :ip_address
+      t.references :modified_by, :class_name => 'User'
       t.timestamps
     end
 

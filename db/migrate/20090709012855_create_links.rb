@@ -14,6 +14,7 @@ class CreateLinks < ActiveRecord::Migration
       t.references :time_zone
       t.text       :other
       t.string     :ip_address
+      t.references :modified_by, :class_name => 'User'
       t.timestamps
     end
   end

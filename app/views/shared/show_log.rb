@@ -20,7 +20,7 @@ class Views::Shared::ShowLog  < Views::Layouts::Application
           tr do
             td { b "Previous data:" }
             td do
-              (version.reify.attribute_names - ['created_at', 'updated_at', 'id', 'user_id', 'photo_updated_at']).each do |attr|
+              (version.reify.attribute_names - ['created_at', 'updated_at', 'id', 'user_id', 'photo_updated_at', 'modified_by_id']).each do |attr|
                 b ActiveSupport::Inflector.humanize(attr) + ': ' 
                 if attr =~ /\_id$/
                   model_name = attr.sub(/\_id$/,'')

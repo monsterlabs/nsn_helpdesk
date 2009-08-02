@@ -8,7 +8,7 @@ Next link record has been updated:
 
 Link: <%= @link.sites%>
 
-Modified by: <%= @link.user.person.fullname%>
+Modified by: <%= @link.modified_by.person.nil? ? @link.modified_by.email : @link.modified_by.person.fullname %>
 
 Updated at:<%= @link.updated_at%>
 

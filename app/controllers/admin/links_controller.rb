@@ -5,6 +5,7 @@ class Admin::LinksController < Operator::TicketsController
   def update
     @record = Link.find(params[:id])
     @record.ip_address = request.remote_ip    
+    @record.modified_by_id = current_user.id
     respond_to do |format|    
       if @record.update_attributes(params[:link])
         format.html { redirect_to :action => :index }

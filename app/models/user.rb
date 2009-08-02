@@ -6,19 +6,20 @@ class User < ActiveRecord::Base
   named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
 
   acts_as_authentic
-  using_access_control
+  # using_access_control
   
   has_many :user_roles
   has_many :roles, :through => :user_roles
-  has_one  :person
+  
+  has_one :person
   accepts_nested_attributes_for :person
-  has_one  :address
+  
+  has_one :address
   accepts_nested_attributes_for :address
   
   has_many :user_regions
   has_many :regions, :through => :user_regions
 
-  has_one :address
     
   def role_symbols
     roles.collect { |role| role.name.to_sym } 
@@ -39,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def self.field_managers_collection
-#    field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
+    field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
   end
   
 end

@@ -7,7 +7,8 @@ class Person < ActiveRecord::Base
   belongs_to :user
   belongs_to :company
   belongs_to :region
-
+  belongs_to :modified_by, :class_name => 'User'
+  
   def fullname
     [self.firstname, self.lastname].join(' ')
   end
