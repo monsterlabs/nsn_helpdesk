@@ -1,10 +1,12 @@
 ********************************************************************************
-****** [NSNCallCenter] TICKET PRIORITY HIGH (0 + 0) *****************
+****************** [NSNCallCenter] REMINDER **************************
 ********************************************************************************
 
 Field Managers:
 
-Has been reported a ticket <%= @ticket.priority.name.downcase%> case by <%= @ticket.reported_by.person.company.name%>.
+There is still a report that has not been attended.
+
+The ticket related to the report has the following features:
 
 Customer's Name:                     <%= @ticket.reported_by.person.fullname%>
 
@@ -44,10 +46,16 @@ Alarms:                                       <%= @ticket.alarm%>
 
 Special Instruction:                <%= @ticket.special_instructions%>
 
+<%= url_for :controller => 'tickets', :action => 'edit', :id => @ticket.id,
+            :host => 'localhost:3000/field_manager', :only_path => false, :escape => false%>
+
 
 Nokia Siemens Networks.
 
 
 --This message has been generated automatically, please do not reply.
+
+
+
 
 ********************************************************************************

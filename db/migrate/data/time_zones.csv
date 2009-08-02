@@ -1,5 +1,8 @@
 name
-"UTC -08:00 Tijuana"
-"UTC -07:00 Chihuahua, Mazatlan"
-"UTC -06:00 Guadalajara, Mexico City, Monterrey"
-
+"America/Mexico_City"
+"America/Cancun", "America/Merida"
+"America/Monterrey"
+"America/Mazatlan"
+"America/Chihuahua"
+"America/Hermosillo"
+"America/Tijuana"
