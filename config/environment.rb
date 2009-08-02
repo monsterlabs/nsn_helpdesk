@@ -25,6 +25,7 @@ Rails::Initializer.run do |config|
   config.gem "stffn-declarative_authorization", :lib => "declarative_authorization", :source => 'http://gems.github.com'
   config.gem "binarylogic-searchlogic", :lib => 'searchlogic', :source => 'http://gems.github.com'
   config.gem 'airblade-paper_trail', :lib => 'paper_trail', :source => 'http://gems.github.com'
+  config.gem 'tzinfo', :lib => 'tzinfo'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
