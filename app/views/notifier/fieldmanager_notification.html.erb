@@ -1,20 +1,21 @@
-********************************************************************************
+<?xml version="1.0" encoding="utf-8"?>
+b********************************************************************************
 ****** [NSNCallCenter] TICKET PRIORITY HIGH (0 + 0) *****************
 ********************************************************************************
 
 Field Managers:
 
-Has been reported a ticket <%= @ticket.priority.name.downcase%> case by <%= @ticket.reported_by.person.company.name%>.
+Has been reported a ticket <%= @ticket.priority.name.downcase %> case by <%= @ticket.reported_by.person.company.name %>.
 
-Customer's Name:                     <%= @ticket.reported_by.person.fullname%>
+Customer's Name:                     <%= @ticket.reported_by.person.fullname %>
 
 Customer's Contact Phone:      +52 1 7222647451
 
 Customer's Contact Time:       <%= @ticket.link.time_zone.name %>: <%= @ticket.opened_at_local.to_s %>
 
-Customer's E-mail:                   <%= @ticket.reported_by.email%>
+Customer's E-mail:                   <%= @ticket.reported_by.email %>
 
-Case ID:                                      <%= @ticket.case_id%>
+Case ID:                                      <%= @ticket.case_id %>
 
 NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname unless @ticket.opened_by.person.nil? %>
 
@@ -22,27 +23,29 @@ NSN Engineer ID Number:        <%= @ticket.opened_by.person.id unless @ticket.op
 
 NSN Engineer Contact Time:       America/Mexico_City: <%= @ticket.created_at %> / <%= @ticket.link.time_zone.name %>: <%= @ticket.opened_at_local.to_s %>
 
-Call handle time:                         <%= @ticket.capture_time%>
+Call handle time:                         <%= @ticket.capture_time %>
 
-Network Element:                         <%= @ticket.product.name%>
+Network Element:                         <%= @ticket.product.name %>
 
-Name of Site/Hostname:           <%= @ticket.link.region.name%>
+Name of Site/Hostname:           <%= @ticket.link.region.name %>
 
-Problem Description:                 <%= @ticket.failure.name%>
+Problem Description:                 <%= @ticket.failure.name %>
 
-Status:                                            <%= @ticket.status.name%>
+Status:                                            <%= @ticket.status.name %>
 
-Links:                                            <%= @ticket.link.sites%>
+Priority:                                          <%= @ticket.link.current_status %> <%= @ticket.priority.name  %>
 
-More affected:                              <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites%>
+Links:                                            <%= @ticket.link.sites %>
 
-Tramission:                                <%= @ticket.link.frequency_tx%> MHz
+More affected:                              <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %>
 
-Reception:                                  <%= @ticket.link.frequency_rx%> MHz
+Tramission:                                <%= @ticket.link.frequency_tx %>
 
-Alarms:                                       <%= @ticket.alarm%>
+Reception:                                  <%= @ticket.link.frequency_rx %>
 
-Special Instruction:                <%= @ticket.special_instructions%>
+Alarms:                                       <%= @ticket.alarm %>
+
+Special Instruction:                <%= @ticket.special_instructions %>
 
 
 Nokia Siemens Networks.
