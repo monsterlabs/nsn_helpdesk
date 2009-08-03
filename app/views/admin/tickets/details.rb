@@ -59,5 +59,6 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
     
+    div :id => "add_edit_dialog"
   end
 end

@@ -12,5 +12,21 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
       b { text "Frequency Rx"}
       text @record.frequency_rx
     end
+    p do
+      b { text "Status"}
+      text @record.current_status
+    end
+    link_to_remote("Edit", {:url => {:controller => 'links', :action => 'edit', :id => @record.id},
+            :update => {:success => "add_edit_dialog"}, 
+            :success => '$("#add_edit_dialog").dialog({
+              bgiframe: true,
+              height: 280,
+              modal: true,
+              autoOpen: false,
+              draggable: false,
+              resizable: false
+            }); 
+            $("#add_edit_dialog").dialog("open");'},
+            ui_style(:button))
   end
 end

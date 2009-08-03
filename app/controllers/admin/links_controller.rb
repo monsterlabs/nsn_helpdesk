@@ -1,6 +1,6 @@
 class Admin::LinksController < Operator::TicketsController
+  unloadable
   super_scaffold :class_name => Link, :name_space => "field_manager", :columns => {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string'}
-
 
   def update
     @record = Link.find(params[:id])
@@ -22,4 +22,14 @@ class Admin::LinksController < Operator::TicketsController
         format.js { render 'show_js' }
     end
   end
+  
+  def edit
+    @record = Link.find(params[:id])
+    @columns = {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string'}
+    respond_to do |format|    
+        format.html { render 'super_scaffold/edit' }
+        format.js { render 'edit_js' }
+    end
+  end
+  
 end

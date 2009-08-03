@@ -1,4 +1,5 @@
 class Operator::TicketsController < ApplicationController
+  unloadable
   list_for :ticket, :include => [:priority, :status, :region]
   multiple_auto_complete_for :person, [:lastname, :firstname]
   multiple_auto_complete_for :link, [:sites]
