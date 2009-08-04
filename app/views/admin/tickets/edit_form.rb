@@ -25,16 +25,6 @@ class Views::Admin::Tickets::EditForm < Erector::RailsWidget
         rawtext f.text_field :affected_site
       end
 
-      div do 
-        b 'Frequency TX'
-        rawtext f.text_field :frequency_tx, :size => 5
-      end
-
-      div do 
-        b 'Frequency RX'
-        rawtext f.text_field :frequency_rx, :size => 5
-      end
-
     end
     
   end

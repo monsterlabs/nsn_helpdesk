@@ -11,7 +11,7 @@ Customer's Name:                     <%= @ticket.reported_by.person.fullname %>
 
 Customer's Contact Phone:      +52 1 7222647451
 
-Customer's Contact Time:       <%= @ticket.link.time_zone.name %>: <%= @ticket.opened_at_local.to_s %>
+Customer's Contact Time:       <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
 
 Customer's E-mail:                   <%= @ticket.reported_by.email %>
 
@@ -21,7 +21,7 @@ NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname unles
 
 NSN Engineer ID Number:        <%= @ticket.opened_by.person.id unless @ticket.opened_by.person.nil? %>
 
-NSN Engineer Contact Time:       America/Mexico_City: <%= @ticket.created_at %> / <%= @ticket.link.time_zone.name %>: <%= @ticket.opened_at_local.to_s %>
+NSN Engineer Contact Time:       America/Mexico_City: <%= @ticket.created_at %> / <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
 
 Call handle time:                         <%= @ticket.capture_time %>
 
