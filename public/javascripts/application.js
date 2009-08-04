@@ -74,7 +74,7 @@ function autocomplete_link(){
     var hidden = $("#ticket_link_id");
     hidden.val(data[1]);
     $.ajax({
-      url: "../links/show",
+      url: "/admin/links/show",
       data: {id: data[1]},
       success: function(request) { $("div#link_details").html(request)}
     });
@@ -96,7 +96,7 @@ function autocomplete_reporter() {
     var hidden = $("#ticket_reported_by_id");
     hidden.val(data[2]);
     $.ajax({
-      url: "../users/"+ data[2],
+      url: "/admin/users/"+ data[2],
       success: function(request) { $("div#reporter_details").html(request)}
     });
   });

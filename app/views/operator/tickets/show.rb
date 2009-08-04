@@ -26,22 +26,6 @@ class Views::Operator::Tickets::Show < Views::Layouts::Application
             td { rawtext @ticket.affected_site }
         end
 
-        tr do 
-            td { b 'Frequency TX' }
-            td {
-                rawtext @ticket.frequency_tx 
-                label " MHz"
-               }
-        end
-
-        tr do 
-            td { b 'Frequency RX' }
-            td {
-                rawtext @ticket.frequency_rx 
-                label " MHz"
-               }
-        end
-
          tr do 
            td { b 'Priority' }
            td { rawtext @ticket.priority.name }

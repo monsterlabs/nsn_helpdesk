@@ -1,6 +1,6 @@
 class Admin::LinksController < Operator::TicketsController
   unloadable
-  super_scaffold :class_name => Link, :name_space => "field_manager", :columns => {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string'}
+  super_scaffold :class_name => Link, :name_space => "field_manager", :columns => {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string', :time_zone => 'select'}
 
   def update
     @record = Link.find(params[:id])
@@ -32,4 +32,9 @@ class Admin::LinksController < Operator::TicketsController
     end
   end
   
+def index
+  @collection = Link.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
+  render 'index'
+end
+
 end

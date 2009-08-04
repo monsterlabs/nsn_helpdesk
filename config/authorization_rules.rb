@@ -1,6 +1,7 @@
 authorization do
   role :operator do
     # Add permissions for operators here, e.g.
+    has_permission_on :users, :to => :read
     has_permission_on :tickets, :to => :create_and_read
     has_permission_on [:user_settings, :user_settings, :people], :to => :read_and_update
     has_permission_on :feedbacks, :to => :write
