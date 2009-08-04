@@ -40,22 +40,6 @@ class Notifier < ActionMailer::Base
     @body       = {:link => link }
   end
 
-  def address_notifications(address)
-    @subject    = '[NSNCallCenter] Address updated'
-    @recipients = 'fereyji@gmail.com' #field_managers_recipients
-    @from       = 'noreply@nokia.call.center.com'
-    @sent_on    = Time.now
-    @body       = {:address => address }
-  end
-
-  def person_notifications(person)
-    @subject    = '[NSNCallCenter] Person updated'
-    @recipients = 'fereyji@gmail.com' #field_managers_recipients
-    @from       = 'noreply@nokia.call.center.com'
-    @sent_on    = Time.now
-    @body       = {:person => person }
-  end
-
   def reminder_notification(ticket)
     @subject    = '[NSNCallCenter] Reminder'
     @recipients = 'fereyji@gmail.com' #field_managers_recipients
