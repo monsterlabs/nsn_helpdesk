@@ -29,7 +29,8 @@ class Views::Admin::Links::Index < Views::Layouts::Application
           end
         end
       end
-      
     end
+    
+    paginator(@collection)          
   end
 end
