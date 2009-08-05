@@ -1,2 +1,0 @@
-page.replace "photo_row", 
-  :inline => "<% Views::People::RowPhoto.new(:person => @person).to_s(:helpers => self) %>"

@@ -26,22 +26,6 @@ class Views::Operator::Tickets::Show < Views::Layouts::Application
             td { rawtext @ticket.affected_site }
         end
 
-        tr do 
-            td { b 'Frequency TX' }
-            td {
-                rawtext @ticket.frequency_tx 
-                label " MHz"
-               }
-        end
-
-        tr do 
-            td { b 'Frequency RX' }
-            td {
-                rawtext @ticket.frequency_rx 
-                label " MHz"
-               }
-        end
-
          tr do 
            td { b 'Priority' }
            td { rawtext @ticket.priority.name }
@@ -111,7 +95,7 @@ class Views::Operator::Tickets::Show < Views::Layouts::Application
            end
             tr do
               td {label "Created by:"}
-              td {rawtext Person.find_by_user_id(version.whodunnit).fullname unless Person.find_by_user_id(version.whodunnit).nil?}
+              td {rawtext Person.find_by_modified_by_id(version.whodunnit).fullname unless Person.find_by_modified_by_id(version.whodunnit).nil?}
             end
          unless version.object.nil?
             tr do

@@ -13,7 +13,7 @@ class Views::Admin::Tickets::Table < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
+        %w(case_id region link affected_site status priority customer opened_date actions).each  do |column|
           th :id => column do
             text ActiveSupport::Inflector.humanize(column)
           end
@@ -44,7 +44,9 @@ class Views::Admin::Tickets::Table < Erector::RailsWidget
         td :class => "filter_column" do
           rawtext simple_select :filter, :status, nil, :prompt => ""
         end
-        td # Alarms
+        td :class => "filter_column" do
+          rawtext simple_select :filter, :priority, nil, :prompt => ""
+        end
         td # Customer
         td # Opened date
         td { # Actions

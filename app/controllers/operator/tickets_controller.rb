@@ -1,4 +1,5 @@
 class Operator::TicketsController < ApplicationController
+  unloadable
   list_for :ticket, :include => [:priority, :status, :region]
   multiple_auto_complete_for :person, [:lastname, :firstname]
   multiple_auto_complete_for :link, [:sites]
@@ -83,6 +84,9 @@ class Operator::TicketsController < ApplicationController
     end
     if !(value = params[:filter][:affected_site]).blank?
       @collection = @collection.affected_site_like(value)
+    end
+    if !(value = params[:filter][:priority_id]).blank?
+      @collection = @collection.priority_id_equals(value)
     end
     
     @collection = @collection.paginate :page => 1, :per_page => 10

@@ -15,7 +15,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])    
+    @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
         format.html { redirect_to :action => 'index' }
@@ -27,6 +27,8 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    params[:user]['person_attributes'].merge!('modified_by_id' => current_user.id, 'ip_address' => request.remote_ip)
+    params[:user]['address_attributes'].merge!('modified_by_id' => current_user.id, 'ip_address' => request.remote_ip)
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }
@@ -47,6 +49,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.html { render 'show' }
+      format.js { render 'show_js' }
     end
   end
 

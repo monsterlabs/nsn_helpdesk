@@ -82,4 +82,10 @@ class Ticket < ActiveRecord::Base
     self.priority.name == "0+0 High" ? self.created_at + 2.hours : due_date = self.created_at + 10.days 
   end
 
+  def opened_at_local
+    time_zone = link.time_zone.nil? ?  'America/Mexico_City' : link.time_zone.name
+    tz = TZInfo::Timezone.get(time_zone)
+    tz.utc_to_local(opened_at.utc)
+  end
+
 end

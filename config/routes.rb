@@ -44,6 +44,8 @@ ActionController::Routing::Routes.draw do |map|
                        }
     field_manager.resources :users
     field_manager.resources :links
+    field_manager.resources :addresses
+    field_manager.resources :people
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.

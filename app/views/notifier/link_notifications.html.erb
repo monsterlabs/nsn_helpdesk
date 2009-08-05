@@ -1,20 +1,43 @@
 ****************************************************************************
-*****************  [NSN] LINK UPDATED  ************************
+*****************  [NSNCallCenter] LINK <%= "#{@link.versions.last.event}d".upcase %>  ************************
 ***************************************************************************
 
 Field Manager:
 
-Next link has been updated:
+Next link record has been <%= "#{@link.versions.last.event}d" %>: <%= @link.sites%>
 
-Link: <%= @link.sites%>
+Has been modified by: <%= @link.modified_by.person.nil? ? @link.modified_by.email : @link.modified_by.person.fullname %>
 
-Modified by: <%= @link.user.person.fullname%>
+Updated at: <%= @link.updated_at%>
 
-Updated at:<%= @link.updated_at%>
+<% ommited_attributes = ['current_status', 'id', 'modified_by_id', 'other', 'created_at', 'updated_at'] %>
+CURRENT DATA:
+<% (@link.attribute_names - ommited_attributes).each do |attr|%>
+  <% if attr =~ /\_id$/%>
+    <% model_name = attr.sub(/\_id$/,'')%>
+    <% attribute_data = @link.send(model_name.to_s).name unless @link.send(model_name.to_s).nil? %>
+  <% else%>
+    <% attribute_data = @link.send(attr.to_s)%>
+  <% end%>
+  <%= "  --" + ActiveSupport::Inflector.humanize(attr).to_s + ": #{attribute_data}" %>
+<% end%>
 
-Modifications:
 
 
+
+
+
+PREVIOUS DATA:
+<% last_version = @link.versions.last.reify %>
+<% (last_version.attribute_names - ommited_attributes).each do |attr|%>
+  <% if attr =~ /\_id$/%>
+    <% model_name = attr.sub(/\_id$/,'')%>
+    <% attribute_data = last_version.send(model_name).name unless last_version.send(model_name).nil?%>
+  <% else%>
+    <% attribute_data = last_version.send(attr.to_s)%>
+  <% end%>
+  <%= ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %>
+<% end%>
 
 You can see total versions of this ticket in the next url:
 <%= url_for :controller => 'links', :action => 'show', :id => @link.id,

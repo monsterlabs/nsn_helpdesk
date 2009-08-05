@@ -6,7 +6,7 @@ class LoadSites < ActiveRecord::Migration
     if ENV['RAILS_ENV'] != 'test'
       # It requires rake db:fixtures:load
       data_path = RAILS_ROOT + '/db/migrate/data'
-      [:failures, :priorities, :regions].each do |file|
+      [:failures, :priorities, :regions, :time_zones].each do |file|
         Fixtures.create_fixtures(data_path, file)
       end
       filename = data_path + '/sites.csv'
@@ -19,12 +19,12 @@ class LoadSites < ActiveRecord::Migration
           city_name = nil
         end
         region = Region.exists?(:name => region_name) ? Region.find_by_name(region_name) : Region.create!(:name => region_name)
-
+        time_zone = TimeZone.find_by_name('America/Mexico_City')
         unless city_name.nil?
           city = City.exists?(:name => city_name, :region_id => region.id) ?  City.find_by_name_and_region_id(city_name, region.id) : City.create!(:name => city_name, :region_id => region.id)
-          Link.create(:region_id => region.id, :city_id => city.id, :sites => row[2].strip )
+          Link.create(:region_id => region.id, :city_id => city.id, :sites => row[2].strip, :time_zone_id => time_zone.id)
         else
-          Link.create(:region_id => region.id, :other => other, :sites => row[2].strip )
+          Link.create(:region_id => region.id, :other => other, :sites => row[2].strip, :time_zone_id => time_zone.id )
         end
       end
     end

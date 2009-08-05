@@ -1,5 +1,4 @@
-name, time_limit
-0+0 High, 7200
-1+0 Medium, 864000
-1+1 Low, 864000
-
+id,name,time_limit
+1,High,7200
+2,Medium,864000
+3,Low,864000

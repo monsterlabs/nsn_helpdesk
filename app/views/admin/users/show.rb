@@ -4,50 +4,18 @@ class Views::Admin::Users::Show < Views::Layouts::Application
   end
   
   def view_content
-     table :id => "show" do
-       tr do 
-           td { b 'Photo' }
-           td { rawtext image_tag @user.person.photo.url(:thumb) unless @user.person.nil? }
-        end
-
-        tr do 
-            td { b 'Login' }
-            td { rawtext @user.login}
-        end
-
-        tr do 
-            td { b 'E-mail' }
-            td { rawtext @user.email}
-        end
-
-        if @user.person 
-
-          tr do 
-              td { b 'Firstname' }
-              td { rawtext @user.person.firstname }
-          end
-          
-          tr do 
-              td { b 'Lastname' }
-              td { rawtext @user.person.lastname }
-          end
-          
-          tr do 
-              td { b 'Company' }
-              td { rawtext @user.person.company.name unless @user.person.company.nil? }
-          end
-          
-          tr do 
-              td { b 'Region' }
-              td { rawtext @user.person.region.name unless @user.person.region.nil? }
-          end
-        
-        end
-
-     end
-     div do
-      rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
-      link_to 'Back', {:action => :index},  ui_style(:button)
-     end
+      div :class => 'prefix_1 grid_5 suffix_2 omega' do
+        widget Views::Users::Show, :user => @user
+        widget Views::People::Show, :person => @user.person
+        widget Views::Addresses::Show, :addr => @user.address
+      end
+      div :class => 'clear'
+      div do
+        rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
+        link_to 'Back', {:action => :index},  ui_style(:button)
+      end
+      4.times { br }
+      widget Views::Shared::ShowLog, :record => @user.person
+      widget Views::Shared::ShowLog, :record => @user.address
    end
 end

@@ -5,6 +5,8 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, nil, :size => 30
       rawtext hidden_field_tag 'ticket[reported_by_id]'
+      br
+      div :id => "reporter_details", :class => "prefix_3 grid_4"
     end
     
     div :class => 'field' do
@@ -13,6 +15,8 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       rawtext hidden_field_tag 'ticket[link_id]'
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]'
+      br
+      div :id => "link_details", :class => "prefix_3 grid_4"
     end
     
     div :class => 'field' do
@@ -20,16 +24,6 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       rawtext text_area_tag 'ticket[special_instructions]'
     end
     
-    div :class => 'field' do
-      label "Frequency TX"
-      rawtext text_field_tag 'ticket[frequency_tx]'
-    end
-    
-    div :class => 'field' do
-      label "Frequency RX"
-      rawtext text_field_tag 'ticket[frequency_rx]'
-    end
-
     div :class => 'field' do
       label "Priority reported by customer"
       rawtext simple_select :ticket, :priority, :reported_priority_id, {:prompt => true}
@@ -54,5 +48,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       label "Recommended priority"
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
+
+    div :id => "add_edit_dialog"
   end
 end

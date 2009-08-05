@@ -38,6 +38,7 @@ div#filter .button, div#filter .button:visited {
 	width: 100%;
 	text-align: left;
 	display: block;
+	clear: both;
 	vertical-align: middle;
 	margin-top: 8px;
 	margin-bottom: 10px;
@@ -48,7 +49,7 @@ div#filter .button, div#filter .button:visited {
 	text-align: right;
 	padding-right: 10px;
 	font-weight: bold;
-	vertical-align: middle;
+	vertical-align: top;
 }
 
 div#filter, #search {
@@ -153,7 +154,7 @@ div#safari {
 }
 
 div#safari a {
-	background: url('../images/safari.png') no-repeat;
+	background: url('../images/Safari.png') no-repeat;
 }
 
 div#firefox a {
@@ -261,15 +262,14 @@ div#login_form input#login_button {
 	font-size: 105%;
 }
 
-}
-
 div#login_form div#forgot {
 	color: #ff7f01;
 	text-align: center;
 }
 
 div#login_form div#forgot:hover {
-	text-decoration: underline:
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /* listings */
@@ -398,4 +398,20 @@ span.epiclock-digit {
 
 span.epiclock-spacer {
 	padding: 0px 2px;
+}
+
+div#reporter_details p {
+  margin: 10px 0px;
+}
+
+div#link_details p {
+  margin: 10px 0px;
+}
+
+div#reporter_details p b {
+  padding-right: 10px;
+}
+
+div#link_details p b {
+  padding-right: 10px;
 }

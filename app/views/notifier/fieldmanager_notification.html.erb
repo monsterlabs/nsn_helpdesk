@@ -1,45 +1,51 @@
-**********************************************************************
-*************** [NSN] TICKET PRIORITY HIGH (0 + 0) *******************
-**********************************************************************
+<?xml version="1.0" encoding="utf-8"?>
+b********************************************************************************
+****** [NSNCallCenter] TICKET PRIORITY HIGH (0 + 0) *****************
+********************************************************************************
 
 Field Managers:
 
-An Emergency Case for <%= @ticket.reported_by.person.company.name%> has been created.
+Has been reported a ticket <%= @ticket.priority.name.downcase %> case by <%= @ticket.reported_by.person.company.name %>.
 
-Customer's Name:                     <%= @ticket.reported_by.person.company.name%>
+Customer's Name:                     <%= @ticket.reported_by.person.fullname %>
 
-Customer's Contact Phone:            +52 1 7222647451
+Customer's Contact Phone:      +52 1 7222647451
 
-Customer's Contact Time:             11:50 am CR - Time / 12:50 Mexico - Time
+Customer's Contact Time:       <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
 
-Customer's E-mail:                   <%= @ticket.reported_by.email%>
+Customer's E-mail:                   <%= @ticket.reported_by.email %>
 
-EME Case ID:                         <%= @ticket.case_id%>
+Case ID:                                      <%= @ticket.case_id %>
 
 NSN Engineer on duty:                <%= @ticket.opened_by.person.fullname unless @ticket.opened_by.person.nil? %>
 
-NSN Engineer ID Number:              61329521
+NSN Engineer ID Number:        <%= @ticket.opened_by.person.id unless @ticket.opened_by.person.nil? %>
 
-NSN Engineer Contact Time:           11:56 am CR - Time / 12:56 Mexico - Time
+NSN Engineer Contact Time:       America/Mexico_City: <%= @ticket.created_at %> / <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
 
-Call handle time:                    5 min
+Call handle time:                         <%= @ticket.capture_time %>
 
-RESOLVE handle time:                 5 min
+Network Element:                         <%= @ticket.product.name %>
 
-Network Element:                     <%= @ticket.product.name%>
+Name of Site/Hostname:           <%= @ticket.link.region.name %>
 
-Name of Site/Hostname:               <%= @ticket.link.region.name%>
+Problem Description:                 <%= @ticket.failure.name %>
 
-Problem Description:                 <%= @ticket.failure.name%>
-Status:                              <%= Priority.find(@ticket.reported_priority_id).name%>
+Status:                                            <%= @ticket.status.name %>
 
-Links:                               <%= @ticket.link.sites%>
-More affected:                       <%= @ticket.frequency_tx%> MHz
-Tramission:                          <%= @ticket.frequency_rx%> MHz
-Reception:
-Alarms:                              <%= @ticket.alarm%>
+Priority:                                          <%= @ticket.link.current_status %> <%= @ticket.priority.name  %>
 
-Special Instruction:                 <%= @ticket.special_instructions%>
+Links:                                            <%= @ticket.link.sites %>
+
+More affected:                              <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %>
+
+Tramission:                                <%= @ticket.link.frequency_tx %>
+
+Reception:                                  <%= @ticket.link.frequency_rx %>
+
+Alarms:                                       <%= @ticket.alarm %>
+
+Special Instruction:                <%= @ticket.special_instructions %>
 
 
 Nokia Siemens Networks.
@@ -47,4 +53,4 @@ Nokia Siemens Networks.
 
 --This message has been generated automatically, please do not reply.
 
-**********************************************************************
+********************************************************************************
