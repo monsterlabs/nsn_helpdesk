@@ -22,9 +22,6 @@ class Views::Sessions::New < Views::Layouts::Application
   def body_content
     div :class => "container_16" do
       header_bar
-      div :class => "grid_10 ui-corner-all", :id => "new_session_main" do
-        
-      end
       div :class => "grid_6 ui-corner-all", :id => "login_box" do
         div :class => "prefix_1 grid_4 suffix_1 alpha", :id => "login_form" do
           login_form
@@ -38,6 +35,26 @@ class Views::Sessions::New < Views::Layouts::Application
     end
   end
 
+  def footer
+    div :id => "footer" do
+      p :class => "login_view" do 
+        text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." 
+      end
+      div :class => "browsers login_view", :id => 'text' do
+        text 'This application runs on:'
+        div :class => 'browser_link', :id => 'safari' do
+          link_to 'safari', 'http://www.apple.com/safari/'
+        end
+        div :class => 'browser_link', :id => 'firefox' do
+          link_to 'firefox', 'http://www.mozilla.com/firefox/'
+        end
+        div :class => 'browser_link', :id => 'chrome' do
+          link_to 'chrome', 'http://www.google.com/chrome/'
+        end
+      end
+    end
+  end
+  
   def login_form
     form_for @session, :session, :url => session_path do |f|
       p {

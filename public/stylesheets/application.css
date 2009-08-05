@@ -74,7 +74,6 @@ tr#filter_row input#filter_site {
 /* Styles for content divs and elements*/
 
 body {
-	background: white;
 	height: 600px;
 	margin: 0px;
 	font-family: Arial, Helvetica, Verdana, sans-serif;
@@ -101,9 +100,9 @@ div#footer {
 	height: 50px;
 	padding-top: 35px;
 	display: table;
-/*	position: absolute;*/
 	bottom: 0px;
 	color: silver;
+
 }
 
 div#footer p {
@@ -118,6 +117,10 @@ div#footer p {
 div#footer .browsers {
 	display: block;
 	
+}
+
+div#footer .login_view {
+	color: #222;
 }
 
 div#text {
@@ -238,7 +241,8 @@ div#feedback {
 
 /* sessions/new */
 
-div#new_session_main, div#login_box {
+div#login_box {
+	margin-left: 300px;
 	margin-top: 40px;
 	background: url("../images/box_background.png") bottom left;
 	height: 300px;
