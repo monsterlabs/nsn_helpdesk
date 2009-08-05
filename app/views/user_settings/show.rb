@@ -13,6 +13,7 @@ class Views::UserSettings::Show < Views::Layouts::Application
     div :class => 'clear'
     div do
       rawtext link_to('Modify', {:action => 'edit', :id => @user.id}, ui_style(:button))
+      rawtext link_to('Back', {:controller => current_user.roles.first.name + '/tickets', :action => 'index'}, ui_style(:button))
     end
   end
 end
