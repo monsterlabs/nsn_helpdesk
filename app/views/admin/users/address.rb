@@ -31,7 +31,7 @@ class Views::Admin::Users::Address < Erector::RailsWidget
       end
 
       div :class => 'field' do
-        label "Bussines phone"
+        label "Bussiness phone"
         rawtext address.text_field :business_phone, :size => 15
       end
 

@@ -36,7 +36,7 @@ class Views::Addresses::Show < Views::Layouts::Application
         end
         unless @addr.business_phone.to_s.strip.empty?
           tr do 
-            td { b 'Business phone:' }
+            td { b 'Bussiness phone:' }
             td { rawtext @addr.business_phone }
           end
           unless @addr.home_phone.to_s.strip.empty?
