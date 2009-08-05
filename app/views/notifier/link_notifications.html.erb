@@ -1,6 +1,6 @@
-****************************************************************************
+********************************************************************************
 *****************  [NSNCallCenter] LINK <%= "#{@link.versions.last.event}d".upcase %>  ************************
-***************************************************************************
+********************************************************************************
 
 Field Manager:
 
@@ -15,8 +15,8 @@ CURRENT DATA:
 <% (@link.attribute_names - ommited_attributes).each do |attr|%>
   <% if attr =~ /\_id$/%>
     <% model_name = attr.sub(/\_id$/,'')%>
-    <% attribute_data = @link.send(model_name.to_s).name unless @link.send(model_name.to_s).nil? %>
-  <% else%>
+    <% @link.send(model_name.to_s).nil? ? attribute_data = "nil" : attribute_data = @link.send(model_name.to_s).name %>
+  <% else%>|
     <% attribute_data = @link.send(attr.to_s)%>
   <% end%>
   <%= "  --" + ActiveSupport::Inflector.humanize(attr).to_s + ": #{attribute_data}" %>
@@ -32,11 +32,11 @@ PREVIOUS DATA:
 <% (last_version.attribute_names - ommited_attributes).each do |attr|%>
   <% if attr =~ /\_id$/%>
     <% model_name = attr.sub(/\_id$/,'')%>
-    <% attribute_data = last_version.send(model_name).name unless last_version.send(model_name).nil?%>
+    <% last_version.send(model_name.to_s).nil? ? attribute_data = "nil" : attribute_data = last_version.send(model_name.to_s).name %>
   <% else%>
     <% attribute_data = last_version.send(attr.to_s)%>
   <% end%>
-  <%= ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %>
+  <%= "  --" + ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %>
 <% end%>
 
 You can see total versions of this ticket in the next url:

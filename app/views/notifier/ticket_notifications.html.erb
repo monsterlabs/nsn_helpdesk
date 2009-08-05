@@ -1,23 +1,30 @@
-**********************************************************************
-*******************   [NSNCallCenter] TICKET OPEN   ******************
-**********************************************************************
+******************************************************************************************
+**************************   [NSNCallCenter] TICKET OPEN   **************************
+******************************************************************************************
 
 You report has been received!
 
-Case ID: <%= @ticket.case_id%>
+Case ID:                                <%= @ticket.case_id%>
 
-Product: <%= @ticket.product.name%>
-Reported_by: <%= @ticket.reported_by.person.fullname%>
-Link: <%= @ticket.link.sites%>
-Affected site: <%= @ticket.affected_site%>
+Product:                                 <%= @ticket.product.name%>
 
-Frequency TX: <%= @ticket.link.frequency_tx%> MHz
-Frequency RX: <%= @ticket.link.frequency_rx%> MHz
-Description of problem: <%= @ticket.failure.name%>
-Alarm(s): <%= @ticket.alarm%>
-Special instruction(s): <%= @ticket.special_instructions%>
+Reported_by:                        <%= @ticket.reported_by.person.fullname%>
 
-Your report was attended by Engineer NSN <%= @ticket.attended_by.person.fullname%>.
+Link:                                       <%= @ticket.link.sites%>
+
+Affected site:                         <%= @ticket.affected_site.nil? ? "Both" : @ticket.affected_site %>
+
+Frequency TX:                      <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %>
+
+Frequency RX:                     <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %>
+
+Failure Description:           <%= @ticket.failure.name%>
+
+Alarms:                                 <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
+
+Special instructions:          <%= @ticket.special_instructions.nil? ? "none" : @ticket.special_instructions%>
+
+Your report was attended by NSN Engineer: <%= @ticket.attended_by.person.fullname%>.
 
 
 
