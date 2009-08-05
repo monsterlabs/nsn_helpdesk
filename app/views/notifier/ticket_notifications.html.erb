@@ -18,7 +18,7 @@ Frequency TX:                      <%= @ticket.link.frequency_tx.nil? ? "none" :
 
 Frequency RX:                     <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %>
 
-Failure Description:           <%= @ticket.failure.name%>
+Failure:                             <%= @ticket.failure.name%>
 
 Alarms:                                 <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
 
