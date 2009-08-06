@@ -26,7 +26,8 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
               draggable: false,
               resizable: false
             }); 
-            $("#add_edit_dialog").dialog("open");'},
+            $("#add_edit_dialog").dialog("open");
+            set_button_behaviour();'},
             ui_style(:button))
   end
 end

@@ -48,4 +48,4 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
-ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y %H:%M:%S')
+ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS.merge!(:default => '%m/%d/%Y %H:%M:%S %Z')

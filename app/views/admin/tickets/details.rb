@@ -39,6 +39,7 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
         form_remote_tag(:url => "/admin/failures/create", :success => "$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');") do
           label "Name"
           rawtext text_field_tag 'failure[name]'
+          br
           rawtext submit_tag 'Create', ui_style(:button)
         end
       end

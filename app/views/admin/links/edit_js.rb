@@ -23,7 +23,7 @@ class Views::Admin::Links::EditJs < Views::Layouts::ApplicationJs
         rawtext text_field_tag(:current_status, @record.current_status)
       end
       rawtext submit_tag 'Update', ui_style(:button)
-      a(:onclick =>'$("#add_edit_dialog").dialog("close");') {text "Cancel"}
+      a(ui_style(:button).merge({:onclick =>'$("#add_edit_dialog").dialog("close");'})) {text "Cancel"}
     end
   end
 end
