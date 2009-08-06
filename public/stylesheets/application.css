@@ -80,9 +80,15 @@ body {
 	font-family: Arial, Helvetica, Verdana, sans-serif;
 }
 
+body#new_session_body{
+    background: url("../images/background3.png") no-repeat;
+    background-position: top center;
+}
+
 div.container_16 {
 	margin-bottom: 40px;
 	min-height: 554px;
+
 }
 
 div#header {
@@ -245,6 +251,7 @@ div#feedback {
 div#login_box {
 	margin-left: 300px;
 	margin-top: 40px;
+	margin-bottom: 75px;
 	background: url("../images/box_background.png") bottom left;
 	height: 300px;
 }

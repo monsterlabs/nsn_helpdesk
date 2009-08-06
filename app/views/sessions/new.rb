@@ -19,7 +19,7 @@ class Views::Sessions::New < Views::Layouts::Application
   end
 
   # Changing the layout
-  def body_content
+   def body_content 
     div :class => "container_16" do
       header_bar
       div :class => "grid_6 ui-corner-all", :id => "login_box" do
@@ -33,9 +33,22 @@ class Views::Sessions::New < Views::Layouts::Application
       end
       footer
     end
-  end
+   end
 
-  def footer
+   # Overriding body tag
+   def content
+     controller_setup
+     setup
+     rawtext doctype
+     html :xmlns => 'http://www.w3.org/1999/xhtml', 'xml:lang' => 'en', :lang => 'en' do
+       head { head_content }
+       body :id => "new_session_body" do
+         body_content
+       end
+     end
+   end
+
+   def footer
     div :id => "footer" do
       p :class => "login_view" do 
         text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." 
@@ -52,10 +65,10 @@ class Views::Sessions::New < Views::Layouts::Application
           link_to 'chrome', 'http://www.google.com/chrome/'
         end
       end
-    end
-  end
+     end
+   end
   
-  def login_form
+   def login_form
     form_for @session, :session, :url => session_path do |f|
       p {
         rawtext f.label "Login"
@@ -75,6 +88,5 @@ class Views::Sessions::New < Views::Layouts::Application
       }
       rawtext flash[:warning] || flash[:message]
     end
-  end
-
+   end
 end
