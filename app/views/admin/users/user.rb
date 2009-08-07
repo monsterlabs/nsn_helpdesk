@@ -14,14 +14,6 @@ class Views::Admin::Users::User < Erector::RailsWidget
         rawtext f.object.login
       end
     end
-    div :class => 'field' do
-      label "Password"
-      rawtext f.password_field :password
-    end
-    div :class => 'field' do
-      label "Password confirmation"
-      rawtext f.password_field :password_confirmation
-    end
   end
   
 end

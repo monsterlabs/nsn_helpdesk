@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_setting
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
   map.resources :feedbacks
+
+  map.resource :password_reset
   
   map.namespace :admin do |admin|
     admin.resources :users

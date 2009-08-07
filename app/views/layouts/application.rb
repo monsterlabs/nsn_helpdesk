@@ -47,6 +47,8 @@ class Views::Layouts::Application < Views::Layouts::Page
           text ' | ' 
           link_to 'My account', user_setting_path
           text ' | ' 
+          link_to 'Change my password', edit_password_reset_url
+          text ' | ' 
           link_to 'Sign out', logout_url
     end
   end
