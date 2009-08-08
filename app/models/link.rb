@@ -20,16 +20,16 @@ class Link < ActiveRecord::Base
     else
       phone_number = 'Not available'
     end
+    
     'A link has been updated: ' + \
       [ 'Link: ' + sites, 
         'Region: ' + region.name,
         'Current Status: ' + current_status.to_s,
-        'City: ' + city.name,
         'Time zone: ' + time_zone.name,
         'Modified by: ' + modified_by_user,
         'Phone: ' + phone_number,
         'Changed at: ' + updated_at.to_s(:short) 
-      ].join(', ')
+      ].join(', ').gsub(/[^a-z0-9\-_\+\s\:\n\@\.\,\/]+/i,'*')
     end
     
     def emergency_phone_number

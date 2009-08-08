@@ -64,7 +64,7 @@ class Ticket < ActiveRecord::Base
       'Case ID: ' + case_id, 
       'NSN Engineer: '  + call_attended_by_user,
       'Sent at: ' + created_at.to_s(:short) 
-      ].join(', ')
+      ].join(', ').gsub(/[^a-z0-9\-_\+\s\:\n\@\.\,\/]+/i,'*')
   end
   
   def emergency_phone_number
