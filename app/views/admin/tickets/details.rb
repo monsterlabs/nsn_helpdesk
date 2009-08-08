@@ -12,7 +12,7 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     div :class => 'field' do
       label "Link"
       rawtext text_field_tag :sites, nil, :size => 40
-      link_to_remote("Add", {:url => {:controller => 'admin/links', :action => 'new'},
+      link_to_remote("Add", {:url => {:controller => 'links', :action => 'new'},
               :with => "'region_id=' + $('#customer_filter_region_id').val()",
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({

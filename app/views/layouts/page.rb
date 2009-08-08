@@ -214,20 +214,19 @@ class Erector::Widget
       end
       (start_range..end_range)
   end
-
-  def filter_select(class_name, dom_id = "filter")
-    collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
-  end
-
-  def simple_select(object, class_name, method_name=nil,options={})
-    method_name ||= classify(class_name).foreign_key 
-    collection_select(object, method_name, classify(class_name).constantize.all, :id, :name, options)
-  end
-
-  def classify(class_name)
-     ActiveSupport::Inflector.tableize(class_name).classify
-  end
   
+  def filter_select(class_name, dom_id = "filter")
+     collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
+   end
+
+   def simple_select(object, class_name, method_name=nil,options={})
+     method_name ||= classify(class_name).foreign_key 
+     collection_select(object, method_name, classify(class_name).constantize.all, :id, :name, options)
+   end
+
+   def classify(class_name)
+      ActiveSupport::Inflector.tableize(class_name).classify
+   end
 end
 
 class Erector::RailsWidget
@@ -238,4 +237,5 @@ class Erector::RailsWidget
   include WillPaginate::ViewHelpers
   include ActionView::Helpers::FormOptionsHelper
   include ActionView::Helpers::ActiveRecordHelper
+ # include ActionView::Helpers::FormHelper
 end

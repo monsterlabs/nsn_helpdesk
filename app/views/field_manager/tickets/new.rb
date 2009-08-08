@@ -5,7 +5,7 @@ class Views::FieldManager::Tickets::New < Views::Layouts::Application
       $('#timer').clocks(EC_RUN);
     S
   end
-
+  
   def page_title
     "Add Ticket"
   end
@@ -14,7 +14,7 @@ class Views::FieldManager::Tickets::New < Views::Layouts::Application
     rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
     form_for(:ticket, @ticket, :url => { :action => "create"}) do |f|
       h2 do
-        text 'Case details'
+         text 'Case details'
       end
       
       widget Views::FieldManager::Tickets::Form, :f => f

@@ -8,7 +8,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
   map.resources :feedbacks
 
-  map.resource :change_password
+  map.resource  :change_password
+  map.resources :links
   
   map.namespace :admin do |admin|
     admin.resources :users
@@ -19,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
+    
     admin.resources :tickets, 
       :member => { :details => :get, :search_by_case_id => :post}, 
       :collection => { :auto_complete_for_person_lastname_firstname => :get,
@@ -45,7 +47,7 @@ ActionController::Routing::Routes.draw do |map|
                        :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get 
                        }
     field_manager.resources :users
-    field_manager.resources :links
+
     field_manager.resources :addresses
     field_manager.resources :people
   end  

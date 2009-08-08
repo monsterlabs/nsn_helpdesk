@@ -1,5 +1,4 @@
 class Views::FieldManager::Tickets::Index < Views::Layouts::Application
-
   jquery <<-JS
     $("tr#filter_row select").change(function() {
       $.ajax({
@@ -38,5 +37,4 @@ class Views::FieldManager::Tickets::Index < Views::Layouts::Application
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    
   end
-
 end
