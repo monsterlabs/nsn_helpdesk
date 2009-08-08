@@ -5,8 +5,8 @@ class LinksController < ApplicationController
     @link = Link.new
     @region_id = params[:region_id]
     respond_to do |format|
-      format.html { render 'new' }
-      format.js { render 'new_js' }
+      format.html { render 'links/new' }
+      format.js { render 'links/new_js' }
     end
   end
   
@@ -15,9 +15,9 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.save 
         format.html { redirect_to links_url }
-        format.js { render 'show_js' }
+        format.js { render 'links/show_js' }
       else
-        format.html {render 'new'}
+        format.html {render 'links/new'}
       end
     end
   end
@@ -29,9 +29,9 @@ class LinksController < ApplicationController
     respond_to do |format|    
       if @link.update_attributes(params[:link])
         format.html { redirect_to links_url }
-        format.js { render 'show_js' }
+        format.js { render 'links/show_js' }
       else
-        format.html { render  'edit' }
+        format.html { render  'links/edit' }
         format.js { }
       end
     end   
@@ -40,8 +40,8 @@ class LinksController < ApplicationController
   def show
     @link = Link.find(params[:id])
     respond_to do |format|    
-        format.html { render  'show' }
-        format.js { render 'show_js' }
+        format.html { render  'links/show' }
+        format.js { render 'links/show_js' }
     end
   end
   
@@ -49,13 +49,13 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @region_id = params[:region_id]
     respond_to do |format|    
-        format.html { render 'edit' }
-        format.js { render 'edit_js' }
+        format.html { render 'links/edit' }
+        format.js { render 'links/edit_js' }
     end
   end
   
   def index
     @collection = Link.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
-    render 'index'
+    render 'links/index'
   end
 end
