@@ -31,4 +31,8 @@ class Link < ActiveRecord::Base
         'Changed at: ' + updated_at.to_s(:short) 
       ].join(', ')
     end
+    
+    def emergency_phone_number
+      '5522159641'
+    end
 end
