@@ -29,7 +29,7 @@ class Link < ActiveRecord::Base
         'Modified by: ' + modified_by_user,
         'Phone: ' + phone_number,
         'Changed at: ' + updated_at.to_s(:short) 
-      ].join(', ').gsub(/[^a-z0-9\-_\+\s\:\n\@\.\,\/]+/i,'*')
+      ].join(', ')
     end
     
     def emergency_phone_number
