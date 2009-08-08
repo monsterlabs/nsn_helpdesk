@@ -12,6 +12,19 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     div :class => 'field' do
       label "Link"
       rawtext text_field_tag :link_sites, nil, :size => 40
+      link_to_remote("Add", {:url => {:controller => 'links', :action => 'new'},
+              :update => {:success => "add_edit_dialog"}, 
+              :success => '$("#add_edit_dialog").dialog({
+                bgiframe: true,
+                height: 280,
+                modal: true,
+                autoOpen: false,
+                draggable: false,
+                resizable: false
+              }); 
+              $("#add_edit_dialog").dialog("open");
+              set_button_behaviour();'},
+              ui_style(:button, {:class => "no_float"}))
       rawtext hidden_field_tag 'ticket[link_id]'
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]'

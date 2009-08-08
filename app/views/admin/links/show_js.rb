@@ -13,6 +13,10 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
       text @record.frequency_rx
     end
     p do
+      b { text "Time zone"}
+      text @record.time_zone.name
+    end
+    p do
       b { text "Status"}
       text @record.current_status
     end
