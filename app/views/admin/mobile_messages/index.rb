@@ -5,7 +5,7 @@ class Views::Admin::MobileMessages::Index < Views::Layouts::Application
 
   def view_content
     table :id => "listing" do
-      table_header %w(CaseId MobilePhone Message Status CreatedAt)
+      table_header ['CaseId or Link', 'Mobile Phone', 'Message', 'Status', 'Created at']
       table_body
     end
   end
@@ -14,7 +14,11 @@ class Views::Admin::MobileMessages::Index < Views::Layouts::Application
     tbody do    
        @collection.each do |record|
          tr do
-           td { rawtext record.ticket.case_id  }
+           if record.messageable_type == 'Ticket'
+             td { rawtext record.messageable.case_id }
+           else
+             td { rawtext record.messageable.sites }
+           end
            td { rawtext record.phone_number }
            td { rawtext record.body }
            td { rawtext (record.status ? 'Sent' : 'Pending') }
