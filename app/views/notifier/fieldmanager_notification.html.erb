@@ -1,10 +1,10 @@
 ********************************************************************************
-*************** [NSNCallCenter] TICKET PRIORITY <%= @ticket.priority.name.upcase %> ***************
+*************** [NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %> ***************
 ********************************************************************************
 
 Field Managers:
 
-Has been reported a <%= @ticket.priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.
+Has been reported a <%= @ticket.reported_priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.
 
 Customer's Name:                           <%= @ticket.reported_by.person.fullname %>
 
@@ -32,7 +32,7 @@ Failure:                                   <%= @ticket.failure.name %>
 
 Status:                                              <%= @ticket.status.name %>
 
-Priority:                                             <%= @ticket.link.current_status %> <%= @ticket.priority.name  %>
+Priority:                                             <%= @ticket.link.current_status %> <%= @ticket.reported_priority.name  %>
 
 Links:                                                <%= @ticket.link.sites %>
 
