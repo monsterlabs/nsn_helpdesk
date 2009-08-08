@@ -2,7 +2,10 @@ class Views::Admin::Links::EditJs < Views::Layouts::ApplicationJs
   def js_content
     rawtext error_messages_for 'record', :class => 'ui-state-error ui-corner-all'
     form_remote_tag(:url => "/admin/links/update", 
-      :success => "$('#add_edit_dialog').dialog('close'); $('div#link_details').html(request);") do
+      :success => "
+        $('#sites').val($('#link_sites').val());
+        $('#add_edit_dialog').dialog('close');
+        $('div#link_details').html(request);") do
         rawtext hidden_field_tag(:id, @link.id)
       p do
         label "City"

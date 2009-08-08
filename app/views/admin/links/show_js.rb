@@ -1,4 +1,5 @@
 class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
+  include AuthenticationSystem
   def js_content
     rawtext hidden_field_tag 'ticket[link_id]', @link.id
     p do
@@ -34,6 +35,6 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
             }); 
             $("#add_edit_dialog").dialog("open");
             set_button_behaviour();'},
-            ui_style(:button))
+            ui_style(:button)) if (current_user.roles.first.name == "admin")
   end
 end

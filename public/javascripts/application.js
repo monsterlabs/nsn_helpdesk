@@ -66,11 +66,11 @@ function add_failure_dialog() {
 
 // Autocompleters
 function autocomplete_link(){
-  $("input#link_sites").autocomplete("auto_complete_for_link_sites",
+  $("input#sites").autocomplete("auto_complete_for_link_sites",
   {mustMatch: true,
     extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
   }); 
-  $("input#link_sites").result(function(event, data, formatted) {
+  $("input#sites").result(function(event, data, formatted) {
     var hidden = $("#ticket_link_id");
     hidden.val(data[1]);
     $.ajax({
