@@ -1,8 +1,9 @@
 class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
   def js_content
+    rawtext hidden_field_tag 'ticket[link_id]', @link.id
     p do
       b { text "City"}
-      text @link.city.name
+      text @link.city.name if @link.city
     end
     p do
       b { text "Frequency Tx"}
@@ -21,6 +22,7 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
       text @link.current_status
     end
     link_to_remote("Edit", {:url => {:controller => 'links', :action => 'edit', :id => @link.id},
+            :with => "'region_id=' + $('#customer_filter_region_id').val()",
             :update => {:success => "add_edit_dialog"}, 
             :success => '$("#add_edit_dialog").dialog({
               bgiframe: true,

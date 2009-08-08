@@ -11,8 +11,9 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Link"
-      rawtext text_field_tag :link_sites, nil, :size => 40
-      link_to_remote("Add", {:url => {:controller => 'links', :action => 'new'},
+      rawtext text_field_tag :sites, nil, :size => 40
+      link_to_remote("Add", {:url => {:controller => 'admin/links', :action => 'new'},
+              :with => "'region_id=' + $('#customer_filter_region_id').val()",
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
@@ -23,9 +24,9 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
                 resizable: false
               }); 
               $("#add_edit_dialog").dialog("open");
-              set_button_behaviour();'},
+              set_button_behaviour();
+              $("#link_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
-      rawtext hidden_field_tag 'ticket[link_id]'
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]'
       br
@@ -69,7 +70,7 @@ class Views::Admin::Tickets::Details < Erector::RailsWidget
     end
     
     div :class => 'field' do
-      label "Recommended Priority"
+      label "Recommended priority"
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
     

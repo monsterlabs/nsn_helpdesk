@@ -11,8 +11,9 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Link"
-      rawtext text_field_tag :link_sites, nil, :size => 40
-      link_to_remote("Add", {:url => {:controller => 'links', :action => 'new'},
+      rawtext text_field_tag :sites, nil, :size => 40
+      link_to_remote("Add", {:url => {:controller => 'admin/links', :action => 'new'},
+              :with => "'region_id=' + $('#customer_filter_region_id').val()",
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
@@ -23,7 +24,8 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
                 resizable: false
               }); 
               $("#add_edit_dialog").dialog("open");
-              set_button_behaviour();'},
+              set_button_behaviour();
+              $("#link_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
       rawtext hidden_field_tag 'ticket[link_id]'
       label "Affected site"
@@ -62,7 +64,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       label "Alarm description"
       rawtext text_area_tag :alarm
     end
-
+  
     div :class => 'field' do
       label "Attended by"
       rawtext select :ticket, :attended_by_id, User.field_managers_collection.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --"
@@ -72,7 +74,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
       label "Recommended priority"
       rawtext simple_select :ticket, :priority, nil, {:prompt => true}
     end
-
+    
     div :id => "add_edit_dialog"
   end
 end

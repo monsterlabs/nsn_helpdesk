@@ -5,6 +5,10 @@ class Views::Admin::Links::EditJs < Views::Layouts::ApplicationJs
       :success => "$('#add_edit_dialog').dialog('close'); $('div#link_details').html(request);") do
         rawtext hidden_field_tag(:id, @link.id)
       p do
+        label "City"
+        rawtext collection_select :link, :city_id, City.region_id_equals(@region_id).sort {|x,y| x.name <=> y.name}, :id, :name
+      end
+      p do
         label "Sites"
         rawtext text_field_tag("link[sites]", @link.sites)
       end

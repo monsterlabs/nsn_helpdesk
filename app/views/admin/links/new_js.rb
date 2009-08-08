@@ -3,9 +3,14 @@ class Views::Admin::Links::NewJs < Views::Layouts::ApplicationJs
     rawtext error_messages_for 'record', :class => 'ui-state-error ui-corner-all'
     form_remote_tag(:url => "/admin/links/create", 
     :success => "\
-      $('#add_edit_dialog').dialog('close');\
-      $.ajax({ url: \"../links/show\", data: {id: $(\"#ticket_link_id\").val()},
-      success: function(request) { $(\"div#link_details\").html(request)} });") do
+      $('#sites').val($('#link_sites').val());
+      $('div#link_details').html(request);
+      $('#add_edit_dialog').dialog('close');") do
+        rawtext hidden_field_tag("link[region_id]")
+      p do
+        label "City"
+        rawtext collection_select :link, :city_id, City.region_id_equals(@region_id).sort {|x,y| x.name <=> y.name}, :id, :name
+      end
       p do
         label "Sites"
         rawtext text_field_tag("link[sites]")
@@ -26,7 +31,7 @@ class Views::Admin::Links::NewJs < Views::Layouts::ApplicationJs
         label "Status"
         rawtext text_field_tag("link[current_status]")
       end
-      rawtext submit_tag 'Update', ui_style(:button)
+      rawtext submit_tag 'Create', ui_style(:button)
       a(ui_style(:button).merge({:onclick =>'$("#add_edit_dialog").dialog("close");'})) {text "Cancel"}
     end
   end

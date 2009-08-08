@@ -3,6 +3,7 @@ class Admin::LinksController < Operator::TicketsController
 
   def new
     @link = Link.new
+    @region_id = params[:region_id]
     respond_to do |format|
       format.html { render 'new' }
       format.js { render 'new_js' }
@@ -11,10 +12,13 @@ class Admin::LinksController < Operator::TicketsController
   
   def create
     @link = Link.new(params[:link])
-    if @link.save 
-      redirect_to :controller => "admin/links"
-    else
-      render 'new'
+    respond_to do |format|
+      if @link.save 
+        format.html { redirect_to :controller => "admin/links" }
+        format.js { render 'show_js' }
+      else
+        format.html {render 'new'}
+      end
     end
   end
 
@@ -43,6 +47,7 @@ class Admin::LinksController < Operator::TicketsController
   
   def edit
     @link = Link.find(params[:id])
+    @region_id = params[:region_id]
     respond_to do |format|    
         format.html { render 'edit' }
         format.js { render 'edit_js' }

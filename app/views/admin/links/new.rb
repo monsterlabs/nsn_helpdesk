@@ -14,6 +14,10 @@ class Views::Admin::Links::New < Views::Layouts::Application
         rawtext collection_select :link, :region_id, Region.all, :id, :name
       end
       p do
+        label "City"
+        rawtext collection_select :link, :city_id, City.all.sort {|x,y| x.name <=> y.name}, :id, :name
+      end
+      p do
         label "Sites"
         rawtext text_field_tag("link[sites]")
       end
