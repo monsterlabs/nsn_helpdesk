@@ -3,7 +3,8 @@ class CreateMobileMessages < ActiveRecord::Migration
     create_table :mobile_messages do |t|
       t.string :phone_number
       t.text :body
-      t.references :ticket
+      t.integer :messageable_id 
+      t.string :messageable_type
       t.boolean :status
       t.timestamps
     end
