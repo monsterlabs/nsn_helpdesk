@@ -76,7 +76,7 @@ function autocomplete_link(){
     $.ajax({
       url: "/admin/links/show",
       data: {id: data[1]},
-      success: function(request) { $("div#link_details").html(request)}
+      success: function(request) { $("div#link_details").html(request); set_button_behaviour();}
     });
   });
 }
@@ -97,7 +97,7 @@ function autocomplete_reporter() {
     hidden.val(data[2]);
     $.ajax({
       url: "/admin/users/"+ data[2],
-      success: function(request) { $("div#reporter_details").html(request)}
+      success: function(request) { $("div#reporter_details").html(request); set_button_behaviour();}
     });
   });
 }

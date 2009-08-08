@@ -1,9 +1,14 @@
-class Views::Admin::Links::EditJs < Views::Layouts::ApplicationJs
-  def js_content
-    rawtext error_messages_for 'record', :class => 'ui-state-error ui-corner-all'
-    form_remote_tag(:url => "/admin/links/update", 
-      :success => "$('#add_edit_dialog').dialog('close'); $('div#link_details').html(request);") do
-        rawtext hidden_field_tag(:id, @link.id)
+class Views::Admin::Links::Edit < Views::Layouts::Application
+  def page_title
+    "Edit Link"
+  end
+  
+  def view_content
+    rawtext error_messages_for 'link', :class => 'ui-state-error ui-corner-all'
+    form_for(@link, :url => {:action => 'update', :id => @link.id}) do |f|
+      h2 do
+        text "Edit Link"
+      end
       p do
         label "Sites"
         rawtext text_field_tag("link[sites]", @link.sites)
@@ -24,8 +29,10 @@ class Views::Admin::Links::EditJs < Views::Layouts::ApplicationJs
         label "Status"
         rawtext text_field_tag("link[current_status]", @link.current_status)
       end
-      rawtext submit_tag 'Update', ui_style(:button)
-      a(ui_style(:button).merge({:onclick =>'$("#add_edit_dialog").dialog("close");'})) {text "Cancel"}
+      
+      rawtext f.submit 'Update', ui_style(:button)
+      link_to  'Cancel', { :action => :index },  ui_style(:button)
     end
   end
+
 end

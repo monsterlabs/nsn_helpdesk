@@ -1,31 +1,40 @@
 class Admin::LinksController < Operator::TicketsController
   unloadable
-  super_scaffold :class_name => Link, :name_space => "field_manager", :columns => {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string', :time_zone => 'select'}
 
   def new
-    @record = Link.new
-    @columns = {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string', :time_zone => 'select'}
+    @link = Link.new
     respond_to do |format|
-      format.html { render 'super_scaffold/new' }
+      format.html { render 'new' }
       format.js { render 'new_js' }
+    end
+  end
+  
+  def create
+    @link = Link.new(params[:link])
+    if @link.save 
+      redirect_to :controller => "admin/links"
+    else
+      render 'new'
     end
   end
 
   def update
-    @record = Link.find(params[:id])
-    @record.ip_address = request.remote_ip    
-    @record.modified_by_id = current_user.id
+    @link = Link.find(params[:id])
+    @link.ip_address = request.remote_ip    
+    @link.modified_by_id = current_user.id
     respond_to do |format|    
-      if @record.update_attributes(params[:link])
+      if @link.update_attributes(params[:link])
         format.html { redirect_to :action => :index }
+        format.js { render 'show_js' }
       else
-        format.html { render  'super_scaffold/edit' }
+        format.html { render  'edit' }
+        format.js { }
       end
     end   
   end
 
   def show
-    @record = Link.find(params[:id])
+    @link = Link.find(params[:id])
     respond_to do |format|    
         format.html { render  'show' }
         format.js { render 'show_js' }
@@ -33,10 +42,9 @@ class Admin::LinksController < Operator::TicketsController
   end
   
   def edit
-    @record = Link.find(params[:id])
-    @columns = {:sites => 'string', :frequency_tx => 'string', :frequency_rx => 'string', :current_status => 'string', :time_zone => 'select'}
+    @link = Link.find(params[:id])
     respond_to do |format|    
-        format.html { render 'super_scaffold/edit' }
+        format.html { render 'edit' }
         format.js { render 'edit_js' }
     end
   end
@@ -44,6 +52,13 @@ class Admin::LinksController < Operator::TicketsController
   def index
     @collection = Link.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     render 'index'
+  end
+  
+  def destroy
+    @link = Link.find(params[:id])
+    if @link.destroy
+      redirect_to :controller => 'admin/links'
+    end
   end
 
 end

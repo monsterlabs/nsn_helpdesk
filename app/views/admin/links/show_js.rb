@@ -2,25 +2,25 @@ class Views::Admin::Links::ShowJs < Views::Layouts::ApplicationJs
   def js_content
     p do
       b { text "City"}
-      text @record.city.name
+      text @link.city.name
     end
     p do
       b { text "Frequency Tx"}
-      text @record.frequency_tx
+      text @link.frequency_tx
     end
     p do
       b { text "Frequency Rx"}
-      text @record.frequency_rx
+      text @link.frequency_rx
     end
     p do
       b { text "Time zone"}
-      text @record.time_zone.name
+      text @link.time_zone.name
     end
     p do
       b { text "Status"}
-      text @record.current_status
+      text @link.current_status
     end
-    link_to_remote("Edit", {:url => {:controller => 'links', :action => 'edit', :id => @record.id},
+    link_to_remote("Edit", {:url => {:controller => 'links', :action => 'edit', :id => @link.id},
             :update => {:success => "add_edit_dialog"}, 
             :success => '$("#add_edit_dialog").dialog({
               bgiframe: true,
