@@ -1,4 +1,4 @@
-class Views::PasswordResets::Form < Erector::RailsWidget
+class Views::ChangePasswords::Form < Erector::RailsWidget
 
   def content
     form_for current_user, :url => { :action => 'update'}, :method => :put do |f|

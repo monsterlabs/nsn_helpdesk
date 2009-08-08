@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :people, :member => { :change_photo => :get , :update_photo => :get }
   map.resources :feedbacks
 
-  map.resource :password_reset
+  map.resource :change_password
   
   map.namespace :admin do |admin|
     admin.resources :users
