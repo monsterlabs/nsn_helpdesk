@@ -81,8 +81,8 @@ body {
 }
 
 body#new_session_body{
-    background: url("../images/background0.png") no-repeat;
-    background-position: top left;
+    background: url("../images/background3.png") no-repeat;
+    background-position: top center;
 }
 
 div.container_16 {
@@ -95,14 +95,6 @@ div#header {
 	background: url("../images/header.png") no-repeat;
 	float:left;
 	padding-top:20px;
-	height: 90px;
-	
-}
-
-div#login_view_header {
-	background: url("../images/header.png") no-repeat;
-	background-position: top right;
-	padding-top:30px;
 	height: 90px;
 	
 }
@@ -257,11 +249,16 @@ div#feedback {
 /* sessions/new */
 
 div#login_box {
+	padding-top: 20px;
 	margin-left: 300px;
 	margin-top: 40px;
-	margin-bottom: 75px;
-	background: url("../images/box_background.png") bottom left;
+	margin-bottom: 40px;
+	background: url("../images/box_background.png");
 	height: 300px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border: transparent;
+
 }
 
 div#login_form {

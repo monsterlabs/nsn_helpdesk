@@ -23,7 +23,7 @@ class Views::Sessions::New < Views::Layouts::Application
     div :class => "container_16" do
       header_bar
       div :class => "grid_6 ui-corner-all", :id => "login_box" do
-        div :class => "prefix_1 grid_4 suffix_1 alpha", :id => "login_form" do
+        div :class => "prefix_1 grid_4 suffix_1 alpha ui-corner-all", :id => "login_form" do
           login_form
         end
       end
@@ -34,12 +34,6 @@ class Views::Sessions::New < Views::Layouts::Application
       footer
     end
    end
-   
-   # Overriding header tag
-   def header_bar
-     div :class => "prefix_11 grid_5", :id => "login_view_header"
-   end
-     
 
    # Overriding body tag
    def content
