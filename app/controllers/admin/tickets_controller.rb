@@ -1,5 +1,5 @@
-class Admin::TicketsController < Operator::TicketsController
-  unloadable
+class Admin::TicketsController < FieldManager::TicketsController
+  
   def destroy
      @ticket = Ticket.find(params[:id])
      @ticket.destroy

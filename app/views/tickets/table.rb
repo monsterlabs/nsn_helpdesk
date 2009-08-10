@@ -1,4 +1,4 @@
-class Views::FieldManager::Tickets::Table < Erector::RailsWidget
+class Views::Tickets::Table < Erector::RailsWidget
   needs :collection
 
   def content
@@ -13,7 +13,7 @@ class Views::FieldManager::Tickets::Table < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(case_id region link affected_site status priority customer opened_date actions).each  do |column|
+        %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
           th :id => column do
             text ActiveSupport::Inflector.humanize(column)
           end
@@ -24,7 +24,7 @@ class Views::FieldManager::Tickets::Table < Erector::RailsWidget
   
   def table_body
     tbody :id => "tickets" do
-      widget Views::FieldManager::Tickets::Record, :collection => @collection
+      widget Views::Tickets::Record, :collection => @collection
     end # end tbody
   end
   
@@ -35,18 +35,16 @@ class Views::FieldManager::Tickets::Table < Erector::RailsWidget
           rawtext text_field_tag "filter[case_id]"
         end
         td :class => "filter_column" do
-          rawtext simple_select :filter, :region, nil, :prompt => ""
+          rawtext simple_select :filter, :region, :prompt => ""
         end
         td # Link
         td :class => "filter_column" do
           rawtext text_field_tag "filter[site]"
         end
         td :class => "filter_column" do
-          rawtext simple_select :filter, :status, nil, :prompt => ""
+          rawtext simple_select :filter, :status, :prompt => ""
         end
-        td :class => "filter_column" do
-          rawtext simple_select :filter, :priority, nil, :prompt => ""
-        end
+        td # Alarms
         td # Customer
         td # Opened date
         td { # Actions

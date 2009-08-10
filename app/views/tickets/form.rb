@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Form < Erector::RailsWidget
+class Views::Tickets::Form < Erector::RailsWidget
   needs :f
   
   def content

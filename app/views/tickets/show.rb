@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Show < Views::Layouts::Application
+class Views::Tickets::Show < Views::Layouts::Application
   def page_title
      "Show Ticket"
    end

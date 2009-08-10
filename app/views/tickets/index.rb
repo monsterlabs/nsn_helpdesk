@@ -1,4 +1,5 @@
-class Views::Admin::Tickets::Index < Views::Layouts::Application
+class Views::Tickets::Index < Views::Layouts::Application
+
   jquery <<-JS
     $("tr#filter_row select").change(function() {
       $.ajax({
@@ -33,8 +34,9 @@ class Views::Admin::Tickets::Index < Views::Layouts::Application
 
   def view_content
     span :id =>"ticket_collection", :class => 'collection' do
-      widget Views::Admin::Tickets::Table, :collection => @collection
+      widget Views::Tickets::Table, :collection => @collection
     end
     rawtext link_to 'Add ticket', {:action => 'new'}, ui_style(:button)    
   end
+
 end
