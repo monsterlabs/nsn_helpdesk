@@ -9,7 +9,7 @@ html {
 .button, .button:visited{	
 	display: block;
 	float: left;
-	font-family: Optima,Verdana,Arial,sans-serif;
+	font-family:Arial,Verdana,Optima,sans-serif;
 	font-size: 0.7em; 
 	padding: 0.45em 0.8em;
 	margin: .7em 0 0 0;
