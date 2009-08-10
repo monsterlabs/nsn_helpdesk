@@ -171,6 +171,10 @@ div#chrome a {
 	background: url('../images/google-chrome.png') no-repeat;
 }
 
+div#explorer a {
+	background: url('../images/explorer.png') no-repeat;
+}
+
 div#toplinks {
 	font-size: 100%;
 	text-align: right;

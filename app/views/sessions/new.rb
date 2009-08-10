@@ -64,6 +64,9 @@ class Views::Sessions::New < Views::Layouts::Application
         div :class => 'browser_link', :id => 'chrome' do
           link_to 'chrome', 'http://www.google.com/chrome/'
         end
+        #div :class => 'browser_link', :id => 'explorer' do
+          #link_to 'explorer', 'http://www.microsoft.com/windows/internet-explorer/default.aspx'
+        #end
       end
      end
    end

@@ -83,8 +83,11 @@ class Views::Layouts::Application < Views::Layouts::Page
         end
         div :class => 'browser_link', :id => 'chrome' do
           link_to 'chrome', 'http://www.google.com/chrome/'
-          end
         end
+        #div :class => 'browser_link', :id => 'explorer' do
+          #link_to 'explorer', 'http://www.microsoft.com/windows/internet-explorer/default.aspx'
+        #end
+      end
         # link_to 'safari', 'http://www.apple.com/safari/', {:class => "browser_link", :id => "safari"}
         # link_to 'firefox', 'http://www.mozilla.com/firefox/', {:class => "browser_link", :id => "firefox"}
         # link_to 'chrome', 'http://www.google.com/chrome/', {:class => "browser_link", :id => "chrome"}
