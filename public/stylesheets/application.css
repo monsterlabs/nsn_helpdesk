@@ -81,8 +81,8 @@ body {
 }
 
 body#new_session_body{
-    background: url("../images/background3.png") no-repeat;
-    background-position: top center;
+    background: url("../images/background0.png") no-repeat;
+    background-position: top left;
 }
 
 div.container_16 {
@@ -95,6 +95,14 @@ div#header {
 	background: url("../images/header.png") no-repeat;
 	float:left;
 	padding-top:20px;
+	height: 90px;
+	
+}
+
+div#login_view_header {
+	background: url("../images/header.png") no-repeat;
+	background-position: top right;
+	padding-top:30px;
 	height: 90px;
 	
 }

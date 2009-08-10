@@ -34,6 +34,12 @@ class Views::Sessions::New < Views::Layouts::Application
       footer
     end
    end
+   
+   # Overriding header tag
+   def header_bar
+     div :class => "prefix_11 grid_5", :id => "login_view_header"
+   end
+     
 
    # Overriding body tag
    def content
