@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::New < Views::Layouts::Application
+class Views::Tickets::New < Views::Layouts::Application
   def setup
     @@jqueries << <<-S
       $('#timer').epiclock({mode: EC_COUNTUP, target: "#{@ticket.opened_at}", format: "x:i:s"}); 
@@ -17,7 +17,7 @@ class Views::Operator::Tickets::New < Views::Layouts::Application
         text 'Case details'
       end
       
-      widget Views::Operator::Tickets::Form, :f => f
+      widget Views::Tickets::Form, :f => f
       
       rawtext f.submit 'Create', ui_style(:button)
       link_to 'Cancel', {:action => :index},  ui_style(:button)

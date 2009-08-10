@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  unloadable
+  #unloadable
 
   def new
     @link = Link.new

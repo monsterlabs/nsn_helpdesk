@@ -1,4 +1,4 @@
-class Views::Operator::Tickets::Details < Erector::RailsWidget
+class Views::Tickets::Details < Erector::RailsWidget
 
   def content
     div :class => 'field' do
@@ -41,7 +41,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Priority reported by customer"
-      rawtext simple_select :ticket, :priority, :reported_priority_id, {:prompt => true}
+      rawtext simple_select :ticket, :priority, {:prompt => true, :method_name => :reported_priority_id}
     end
     
     div :class => 'field' do
@@ -72,7 +72,7 @@ class Views::Operator::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Recommended priority"
-      rawtext simple_select :ticket, :priority, nil, {:prompt => true}
+      rawtext simple_select :ticket, :priority, {:prompt => true}
     end
     
     div :id => "add_edit_dialog"

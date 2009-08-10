@@ -215,13 +215,13 @@ class Erector::Widget
       (start_range..end_range)
   end
   
-  def filter_select(class_name, dom_id = "filter")
-     collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, {:prompt => true})
+  def filter_select(class_name, dom_id = "filter", options={:prompt => true})
+     collection_select(dom_id, classify(class_name).foreign_key, classify(class_name).constantize.all, :id, :name, options)
    end
 
-   def simple_select(object, class_name, method_name=nil,options={})
-     method_name ||= classify(class_name).foreign_key 
-     collection_select(object, method_name, classify(class_name).constantize.all, :id, :name, options)
+   def simple_select(object, class_name,options={})
+     options[:method_name] ||= classify(class_name).foreign_key 
+     collection_select(object,options[:method_name] , classify(class_name).constantize.all, :id, :name, options)
    end
 
    def classify(class_name)
