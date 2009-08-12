@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
   has_many :user_regions
   has_many :regions, :through => :user_regions
 
+  before_update :validate_password_fields
+
+  def validate_password_fields
+    if self.password == nil
+      self.errors.add_to_base("Password field can't be blank")
+    end
+  end
+
     
   def role_symbols
     roles.collect { |role| role.name.to_sym } 

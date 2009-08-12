@@ -8,7 +8,7 @@ class ChangePasswordsController < ApplicationController
   def update
     @user = User.find(current_user.id)
     
-    if @user.update_attributes(params[:user])  
+    if @user.update_attributes(params[:user]) and @user.errors.first.nil?
       redirect_to :controller => current_user.roles.first.name + '/tickets', :action => 'index'
     else  
       render :action => 'edit'
