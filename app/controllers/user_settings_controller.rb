@@ -1,5 +1,5 @@
 class UserSettingsController < ApplicationController
-  filter_access_to :all
+
   def edit
     @user = User.find(params[:id])
     respond_to do |format|

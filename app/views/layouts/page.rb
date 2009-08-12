@@ -113,10 +113,15 @@ class Views::Layouts::Page < Erector::RailsWidget
     @@params
   end
 
+  def flash
+    @@flash
+  end
+  
   def controller_setup
     @@controller_name = @controller.controller_name
     @@action_name = @controller.action_name
     @@params = @controller.request.params
+    @@flash = @controller.response.session['flash']
   end
 end
 

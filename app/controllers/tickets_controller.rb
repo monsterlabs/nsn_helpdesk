@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  
   list_for :ticket, :include => [:priority, :status, :region]
   multiple_auto_complete_for :person, [:lastname, :firstname]
   multiple_auto_complete_for :link, [:sites]
@@ -73,7 +74,7 @@ class TicketsController < ApplicationController
     @collection = @collection.paginate :page => 1, :per_page => 10
     
     respond_to do |format|
-      format.js { render 'tcikets/list_js'}
+      format.js { render 'tickets/list_js'}
     end
   end
   

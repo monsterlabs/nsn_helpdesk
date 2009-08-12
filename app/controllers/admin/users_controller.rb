@@ -1,5 +1,4 @@
 class Admin::UsersController < ApplicationController
-  filter_access_to :all
   def index
     @collection = User.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|

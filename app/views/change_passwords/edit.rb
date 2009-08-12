@@ -5,6 +5,7 @@ class Views::ChangePasswords::Edit < Views::Layouts::Application
   end
 
   def view_content
+    rawtext flash[:notice]
     widget Views::ChangePasswords::Form
   end
 

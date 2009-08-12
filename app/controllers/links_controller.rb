@@ -1,6 +1,4 @@
 class LinksController < ApplicationController
-  #unloadable
-
   def new
     @link = Link.new
     @region_id = params[:region_id]
