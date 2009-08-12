@@ -23,9 +23,11 @@ class Views::Admin::Users::Person < Erector::RailsWidget
           rawtext person.file_field :photo
           end
       end
-      div :class => 'field' do
-        label "Company"
-        rawtext person.collection_select :company_id, Company.all, :id, :name
+      unless current_user.roles.first.name == 'operator'
+        div :class => 'field' do
+          label "Company"
+          rawtext person.collection_select :company_id, Company.all, :id, :name
+        end
       end
     end
   end
