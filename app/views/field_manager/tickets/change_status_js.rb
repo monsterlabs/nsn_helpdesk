@@ -1,5 +1,6 @@
 class Views::FieldManager::Tickets::ChangeStatusJs < Views::Layouts::ApplicationJs
   def js_content
-    text 'The ticket status has been changed...'
+    dom_id = 'status_' + @ticket.dom_id 
+    text "$('##{dom_id}').replaceWith('#{@ticket.status.name}');"
   end
 end

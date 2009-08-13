@@ -8,7 +8,9 @@ class Views::Tickets::Record < Erector::RailsWidget
         td { rawtext ticket.link.region.name}
         td { rawtext ticket.link.sites}
         td { if ticket.affected_site.empty? then text "Both" else text ticket.affected_site end }
-        td { rawtext ticket.status.name }
+        td :id => 'status_' + ticket.dom_id do
+           rawtext ticket.status.name 
+        end
         td { rawtext ticket.alarm }
         td { rawtext ticket.reported_by.person.fullname }
         td { rawtext ticket.opened_at}
