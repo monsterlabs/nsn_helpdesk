@@ -77,5 +77,5 @@ class TicketsController < ApplicationController
       format.js { render 'tickets/list_js'}
     end
   end
-  
+
 end

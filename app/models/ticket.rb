@@ -32,7 +32,7 @@ class Ticket < ActiveRecord::Base
       :joins => 'left join links on links.id = tickets.link_id' }
   }
   
-  before_save :prepare_case_id
+  before_create :prepare_case_id
 
   def prepare_case_id
     date = Date.today.strftime "%d%m%Y"

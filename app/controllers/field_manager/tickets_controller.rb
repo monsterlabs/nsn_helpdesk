@@ -13,7 +13,7 @@ class FieldManager::TicketsController < TicketsController
       if @ticket.update_attributes(params[:ticket])
         format.html { redirect_to :action => :index }
       else
-        format.html { render 'field_manager/tickets/edit'}
+        format.html { render 'field_manager/tickets/edit' }
       end
     end
   end
