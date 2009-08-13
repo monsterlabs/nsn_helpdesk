@@ -1,7 +1,8 @@
 class ChangePasswordsController < ApplicationController
 
   def edit
-     @user = User.find(current_user.id)
+    @user = User.find(current_user.id)
+    flash[:notice] = ""
     render
   end
 
@@ -11,6 +12,7 @@ class ChangePasswordsController < ApplicationController
       flash[:notice] = 'Your password has been changed!'
       render :action => 'edit'
     else  
+      flash[:notice] = ""
       render :action => 'edit'
     end    
   end
