@@ -114,14 +114,14 @@ class Views::Layouts::Page < Erector::RailsWidget
   end
 
   def flash
-    @@flash
+    @@flash ||= {}
   end
   
   def controller_setup
     @@controller_name = @controller.controller_name
     @@action_name = @controller.action_name
     @@params = @controller.request.params
-    @@flash = @controller.response.session['flash']
+    @@flash = @controller.response.session['flash'] if @controller.session.has_key? 'flash'
   end
 end
 
