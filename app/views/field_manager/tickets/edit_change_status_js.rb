@@ -40,6 +40,10 @@ class Views::FieldManager::Tickets::EditChangeStatusJs < Views::Layouts::Applica
                 rawtext hidden_field_tag 'ticket[reported_by_id]', @ticket.reported_by.id
                 #rawtext hidden_field_tag 'ticket[accepts_clossing_id]'
               end         
+              div :class => 'field' do
+                b 'Ticket type: '
+                rawtext simple_select :ticket, :ticket_type, :prompt => "-- Select --"
+              end  
             end
             div :class => 'field' do
                b "Comments"

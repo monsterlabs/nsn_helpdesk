@@ -16,6 +16,16 @@ class Views::Tickets::Show < Views::Layouts::Application
            td { rawtext @ticket.link.region.name }
          end
 
+         tr do 
+             td { b 'Customer name' }
+             td { rawtext @ticket.reported_by.person.fullname }
+         end
+
+         tr do 
+             td { b 'Company' }
+             td { rawtext @ticket.reported_by.person.company.name }
+         end
+
         tr do 
             td { b 'Link' }
             td { rawtext @ticket.link.sites }
@@ -32,7 +42,7 @@ class Views::Tickets::Show < Views::Layouts::Application
          end
 
         tr do 
-            td { b 'Subject' }
+            td { b 'Failure' }
             td { rawtext @ticket.failure.name }
         end
 
@@ -41,15 +51,6 @@ class Views::Tickets::Show < Views::Layouts::Application
             td { rawtext @ticket.alarm }
         end
 
-        tr do 
-            td { b 'Customer' }
-            td { rawtext @ticket.reported_by.person.company.name }
-        end
-
-        tr do 
-            td { b 'Customer name' }
-            td { rawtext @ticket.reported_by.person.fullname }
-        end
 
         tr do 
             td { b 'Attended by' }
@@ -62,20 +63,69 @@ class Views::Tickets::Show < Views::Layouts::Application
         end
 
         tr do 
-            td { b 'Due Date' }
-            td { rawtext @ticket.due_date }
+            td { b 'Calls handle time' }
+            td { rawtext @ticket.capture_time }
         end
-
+      
         tr do 
-            td { b 'Status' }
+            td { b 'Current Status' }
             td { rawtext @ticket.status.name }
         end
+        
+        unless @ticket.assigned_to.nil?
+          tr do 
+            mylabel = (@ticket.status.id == 2 ? 'Assigned to: ' : "#{@ticket.status.name} by: ")
+            b mylabel
+            td { b mylabel }
+            td { rawtext @ticket.assigned_to.person.fullname }
+          end
 
-
-         tr do 
-             td { b 'Calls handle time' }
-             td { rawtext @ticket.capture_time }
-         end
+          tr do 
+            td { b 'Due Date' }
+            td { rawtext @ticket.due_date }
+          end
+          unless  @ticket.ticket_type.nil?
+            tr do 
+              td { b 'Ticket Type' }
+              td { rawtext @ticket.ticket_type.name }
+            end
+          end
+          
+          if @ticket.comments.size > 0
+            tr do
+              td { br }
+              td { br }
+            end
+              
+            tr do 
+              td { b 'Comments' }
+              td { rawtext ''}
+            end
+            
+            tr do
+              td { br }
+              td { br }
+            end
+            
+            @ticket.comments.each do  |comment|
+              tr do 
+                td { b 'From' }
+                td { rawtext "#{comment.user.person.fullname} - #{comment.created_at} " }
+              end
+              
+              tr do 
+                td { b 'Comment' }
+                td { rawtext comment.body}
+              end
+              
+              tr do
+                td { br }
+                td { br }
+              end
+              
+            end
+          end
+        end
 
      end
 
