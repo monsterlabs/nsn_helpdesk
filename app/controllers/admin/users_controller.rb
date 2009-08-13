@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @collection = User.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
+    @collection = User.find(:all, :conditions => ['login <> ?', current_user.login]).paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
       format.html { render :action => 'index' }
     end

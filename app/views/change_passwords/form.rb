@@ -12,8 +12,8 @@ class Views::ChangePasswords::Form < Erector::RailsWidget
         rawtext f.password_field :password_confirmation, :size => 20
       end
 
-      rawtext f.submit 'Change my password', ui_style(:button)
-      rawtext link_to('Cancel', {:controller => current_user.roles.first.name + '/tickets', :action => 'index'}, ui_style(:button))
+      rawtext f.submit 'Change password', ui_style(:button)
+      rawtext link_to('Back', {:controller => current_user.roles.first.name + '/tickets', :action => 'index'}, ui_style(:button))
     end
   end
 
