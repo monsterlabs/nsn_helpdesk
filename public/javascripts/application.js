@@ -30,7 +30,6 @@ $(document).ready(function(){
 
   colorize_odd_rows();
   set_button_behaviour();
-
 });
 
 // CUSTOM FUNCTIONS

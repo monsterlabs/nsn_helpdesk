@@ -28,6 +28,7 @@ class Views::Tickets::Details < Erector::RailsWidget
               $("#link_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
       rawtext hidden_field_tag 'ticket[link_id]'
+      br
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]'
       br

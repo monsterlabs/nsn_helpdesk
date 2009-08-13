@@ -9,8 +9,8 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
         widget Views::Admin::Users::ShowJs.new(:user => ticket.reported_by)
       end
       rawtext hidden_field_tag 'ticket[reported_by_id]', ticket.reported_by.id
-
     end
+    
     div :class => 'field' do
       label "Link"
       rawtext text_field_tag :sites, ticket.link.sites, :size => 40, :onFocus=> "autocomplete_link();"
@@ -29,6 +29,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       set_button_behaviour();
       $("#link_region_id").val($("#customer_filter_region_id").val());'},
       ui_style(:button, {:class => "no_float"}))
+      br
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]', ticket.affected_site
       br
@@ -50,17 +51,18 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
     div :class => 'field' do
       label "Failure"
       rawtext simple_select :ticket, :failure,  :selected => ticket.failure_id
-      div ui_style(:button, {:class => "no_float", :id => "add_failure", :onclick => 'add_failure_dialog();'}) do
+      div ui_style(:button, {:class => "no_float", :id => "add_failure"}) do
         text "Add"
       end
       
       div :id => "add_failure_dialog", :title => "Add a failure", :style => 'display:none;' do
-          form_remote_tag(:url => "/admin/failures/create", :success => "$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');") do
-              label "Name"
-              rawtext text_field_tag 'failure[name]'
-              br
-              rawtext submit_tag 'Create', ui_style(:button)
-          end
+          label "Name"
+          rawtext text_field_tag 'failure[name]'
+          br
+          rawtext submit_to_remote 'create_failure', 'Create', 
+              :url => "/admin/failures/create", 
+              :success => "$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');",
+              :submit => "add_failure_dialog"
       end
     end
 

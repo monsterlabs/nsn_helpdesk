@@ -1,5 +1,7 @@
 class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
 
+  jquery "add_failure_dialog();"
+
   def page_title
     "Edit Ticket"
   end
