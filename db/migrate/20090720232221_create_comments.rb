@@ -3,7 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.references :ticket, :user
       t.references :parent, :class_name => 'Comment'
-      t.string :subject
+#      t.string :subject
       t.text :body
 
       t.timestamps

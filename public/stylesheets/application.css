@@ -52,6 +52,7 @@ div#filter .button, div#filter .button:visited {
 	vertical-align: top;
 }
 
+
 div#filter, #search {
 	display:block;
 	font-weight:bold;
@@ -323,6 +324,10 @@ table#listing td {
 
 table#listing td.actions_column {
 	width: 170px;
+}
+
+table#listing td.change_status_column {
+	width: 250px;
 }
 
 thead#listing-head th {

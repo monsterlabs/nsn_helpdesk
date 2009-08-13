@@ -18,8 +18,8 @@ class Ticket < ActiveRecord::Base
   belongs_to :link  
   belongs_to :site
 
-  has_many   :ticket_comments
-  accepts_nested_attributes_for :ticket_comments
+  has_many   :comments
+  accepts_nested_attributes_for :comments
   
   has_many :mobile_messages, :as => :messageable
 

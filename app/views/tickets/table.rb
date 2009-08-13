@@ -13,7 +13,9 @@ class Views::Tickets::Table < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        %w(case_id region link affected_site status alarms customer opened_date actions).each  do |column|
+        columns = %w(case_id region link affected_site status alarms customer opened_date actions)
+        columns << 'change_status' if current_user.role_symbols.include? :field_manager
+        columns.each  do |column|
           th :id => column do
             text ActiveSupport::Inflector.humanize(column)
           end
@@ -50,6 +52,9 @@ class Views::Tickets::Table < Erector::RailsWidget
         td { # Actions
           rawtext submit_tag "Filter", ui_style(:button)
         }
+        if current_user.role_symbols.include? :field_manager
+         td { '' }
+        end
       end # end tr
     end # end form
   end

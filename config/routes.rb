@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :field_manager do |field_manager|
     field_manager.resources :tickets, 
-      :member =>     { :details => :get, :search_by_case_id => :post },
+      :member =>     { :details => :get, :search_by_case_id => :post, :edit_change_status => :get, :change_status => :post },
       :collection => { :auto_complete_for_person_lastname_firstname => :get,
                        :auto_complete_for_link_sites => :get, 
                        :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get 
