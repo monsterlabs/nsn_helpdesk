@@ -11,20 +11,19 @@ class LoadSites < ActiveRecord::Migration
       end
       filename = data_path + '/sites.csv'
       CSV.read(filename).each do |row|
-        region_name = row[1].strip
-        city_name = row[3]
+        region_id = row[0].strip
+        city_name = row[2]
         other = nil
         if city_name =~ /R1/
           other = city_name
           city_name = nil
         end
-        region = Region.exists?(:name => region_name) ? Region.find_by_name(region_name) : Region.create!(:name => region_name)
-        time_zone = TimeZone.find_by_name('America/Mexico_City')
+        time_zone = TimeZone.find_by_name(row[6])
         unless city_name.nil?
-          city = City.exists?(:name => city_name, :region_id => region.id) ?  City.find_by_name_and_region_id(city_name, region.id) : City.create!(:name => city_name, :region_id => region.id)
-          Link.create(:region_id => region.id, :city_id => city.id, :sites => row[2].strip, :time_zone_id => time_zone.id)
+          city = City.exists?(:name => city_name, :region_id => region_id) ?  City.find_by_name_and_region_id(city_name, region_id) : City.create!(:name => city_name, :region_id => region_id)
+          Link.create(:region_id => region_id, :city_id => city.id, :sites => row[1].strip, :time_zone_id => time_zone.id, :frequency_tx => row[3], :frequency_rx => row[4], :current_status => row[5].strip)
         else
-          Link.create(:region_id => region.id, :other => other, :sites => row[2].strip, :time_zone_id => time_zone.id )
+          Link.create(:region_id => region_id, :other => other, :sites => row[1].strip, :time_zone_id => time_zone.id )
         end
       end
     end

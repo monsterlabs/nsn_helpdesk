@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
 
   def ticket_notifications(ticket)
     @subject    = '[NSNCallCenter] Ticket has been sent'
-    @recipients = 'fereyji@gmail.com' # @ticket.reported_by.email
+    @recipients = 'alexjr85@gmail.com' # @ticket.reported_by.email
     @from       = 'noreply@nsn.call-center.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
@@ -18,7 +18,7 @@ class Notifier < ActionMailer::Base
   def fieldmanager_notification(ticket, email)
     ticket.reported_priority.name == 'High' ? (prefix='EME Case') : (prefix='Case')
     @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
-    @recipients = 'fereyji@gmail.com' #email
+    @recipients = 'alexjr85@gmail.com' #email
     @from       = 'noreply@nsn.call-center.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
@@ -34,7 +34,7 @@ class Notifier < ActionMailer::Base
 
   def link_notifications(link)
     @subject    = '[NSNCallCenter] Link updated'
-    @recipients = 'fereyji@gmail.com' #field_managers_recipients
+    @recipients = 'alexjr85@gmail.com' #field_managers_recipients
     @from       = 'noreply@nsn.call-center.com'
     @sent_on    = Time.now
     @body       = {:link => link }
@@ -42,7 +42,7 @@ class Notifier < ActionMailer::Base
 
   def reminder_notification(ticket)
     @subject    = '[NSNCallCenter] Reminder'
-    @recipients = 'fereyji@gmail.com' #field_managers_recipients
+    @recipients = 'alexjr85@gmail.com' #field_managers_recipients
     @from       = 'noreply@nsn.call-center.com'
     @sent_on    = Time.now
     @body       = {:ticket => ticket }    
@@ -50,7 +50,7 @@ class Notifier < ActionMailer::Base
 
 #   def ticket_solved_notification(ticket)
 #     @subject    = '[NSNCallCenter] Ticket solved'
-#     @recipients = 'fereyji@gmail.com' #field_managers_recipients
+#     @recipients = 'alexjr85@gmail.com' #field_managers_recipients
 #     @from       = 'noreply@nsn.call-center.com'
 #     @sent_on    = Time.now
 #     @body       = {:ticket => ticket }    
@@ -58,7 +58,7 @@ class Notifier < ActionMailer::Base
 
 #   def ticket_closed_notification(ticket)
 #     @subject    = '[NSNCallCenter] Ticket closed'
-#     @recipients = 'fereyji@gmail.com' #field_managers_recipients
+#     @recipients = 'alexjr85@gmail.com' #field_managers_recipients
 #     @from       = 'noreply@nsn.call-center.com'
 #     @sent_on    = Time.now
 #     @body       = {:ticket => ticket }    

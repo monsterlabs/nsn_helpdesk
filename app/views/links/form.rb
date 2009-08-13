@@ -9,15 +9,15 @@ class Views::Links::Form < Views::Layouts::Application
     end
      p do
        label "Sites"
-       rawtext text_field_tag("link[sites]", record.sites)
+       rawtext text_field_tag("link[sites]", record.sites, :size => 30)
      end
      p do
         label "Frequency Tx"
-        rawtext text_field_tag("link[frequency_tx]", record.frequency_tx)
+        rawtext text_field_tag("link[frequency_tx]", record.frequency_tx, :size => 10)
       end
       p do
         label "Frequency Rx"
-        rawtext text_field_tag("link[frequency_rx]", record.frequency_rx)
+        rawtext text_field_tag("link[frequency_rx]", record.frequency_rx, :size => 10)
       end
       p do
         label "Time zone"
