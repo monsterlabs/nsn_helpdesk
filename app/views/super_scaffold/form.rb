@@ -12,7 +12,7 @@ class Views::SuperScaffold::Form < Erector::RailsWidget
         when 'text'
           rawtext f.text_area key
         when 'select'
-          rawtext f.collection_select "#{key}_id", ActiveSupport::Inflector.classify(key).constantize.all, :id, :name
+          rawtext f.collection_select "#{key}", ActiveSupport::Inflector.classify(key.to_s.sub(/\_id$/,'')).constantize.all, :id, :name
         end
       end
       end
