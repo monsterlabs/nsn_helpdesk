@@ -7,7 +7,7 @@ authorization do
   end
 
   role :field_manager do
-    has_permission_on :tickets, :to => [:manage, :change_status]
+    has_permission_on :tickets, :to => :manage
     has_permission_on [:links, :users], :to => :manage
     has_permission_on [:user_settings, :change_passwords], :to => :read_and_update
     has_permission_on [:feedbacks, :failures], :to => :write
@@ -27,7 +27,7 @@ end
 privileges do
   # default privilege hierarchies to facilitate RESTful Rails apps
   shared_actions = [:details, :auto_complete_for_person_lastname_firstname, :auto_complete_for_link_sites, :filter]
-  privilege :manage, :includes => ([:create, :read, :update, :delete, :destroy ] + shared_actions)
+  privilege :manage, :includes => ([:create, :read, :update, :delete, :destroy, :change_status, :edit_change_status ] + shared_actions)
   privilege :change_status, :includes => [:change_status, :edit_change_status]
   privilege :read, :includes => [:index, :show]
   privilege :create, :includes => :new

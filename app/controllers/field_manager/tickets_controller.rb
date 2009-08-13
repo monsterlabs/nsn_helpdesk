@@ -1,4 +1,5 @@
 class FieldManager::TicketsController < TicketsController
+  
   def edit
     @ticket = Ticket.find(params[:id])
     respond_to do |format|

@@ -6,7 +6,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       rawtext text_field_tag :person_lastname_firstname, ticket.reported_by.person.fullname, :size => 30, :onFocus=> "autocomplete_reporter();"
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4" do
-        widget Views::Admin::Users::ShowJs.new(:user => ticket.reported_by)
+        #widget Views::Admin::Users::ShowJs.new(:user => ticket.reported_by)
       end
       rawtext hidden_field_tag 'ticket[reported_by_id]', ticket.reported_by.id
     end
@@ -34,7 +34,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       rawtext text_field_tag 'ticket[affected_site]', ticket.affected_site
       br
       div :id => "link_details", :class => "prefix_3 grid_4" do
-        widget Views::Links::ShowRecordJs, :record => ticket.link
+ #       widget Views::Links::ShowRecordJs, :record => ticket.link
       end
     end
 
