@@ -3,13 +3,13 @@ authorization do
     # Add permissions for operators here, e.g.
     has_permission_on [:users, :links, :user_settings, :change_passwords], :to => :read_and_update
     has_permission_on :tickets, :to => :create_and_read
-    has_permission_on :feedbacks, :to => :write
+    has_permission_on [:feedbacks, :failures], :to => :write
   end
 
   role :field_manager do
     has_permission_on [:tickets, :links, :users], :to => :manage
     has_permission_on [:user_settings, :change_passwords], :to => :read_and_update
-    has_permission_on :feedbacks, :to => :write
+    has_permission_on [:feedbacks, :failures], :to => :write
   end
 
   # Permissions for admin here

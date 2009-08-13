@@ -1,7 +1,7 @@
 class Views::Shared::ShowLog  < Views::Layouts::Application
   needs :record
   def content
-    if @record.versions.size > 1
+    if @record.respond_to? :versions and @record.versions.size > 1
       h2 'Changelog'
       h3 "This #{@record.class.name.downcase} has #{@record.versions.size - 1} version(s)"
       record.versions.shift

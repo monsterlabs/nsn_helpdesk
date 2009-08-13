@@ -3,6 +3,12 @@ class Views::Links::ShowRecord < Views::Layouts::Application
 
   def content
     rawtext hidden_field_tag 'ticket[link_id]', record.id
+    
+    p do
+      b { text "Link"}
+      text record.sites
+    end
+    
      p do
        b { text "City"}
        text record.city.name if record.city

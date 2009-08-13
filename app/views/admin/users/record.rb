@@ -21,10 +21,12 @@ class Views::Admin::Users::Record < Erector::RailsWidget
           td { text record.login }
           td { text record.email }
           td :class => "actions_column" do
-            link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
-            link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
-            link_to 'Destroy', {:action => :destroy, :id => record.id}, 
-               {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
+            link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button) 
+            link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button) 
+            if current_user.role_symbols.include? :admin
+              link_to 'Destroy', {:action => :destroy, :id => record.id}, 
+                {:method => :delete, :confirm => 'Do you want to delete this record ?'}.merge(ui_style(:button))
+            end
           end
         end
       end

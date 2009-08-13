@@ -66,7 +66,7 @@ function add_failure_dialog() {
 
 // Autocompleters
 function autocomplete_link(){
-  $("input#sites").autocomplete("auto_complete_for_link_sites",
+  $("input#sites").autocomplete("/tickets/auto_complete_for_link_sites",
   {mustMatch: true,
     extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
   }); 
@@ -74,15 +74,14 @@ function autocomplete_link(){
     var hidden = $("#ticket_link_id");
     hidden.val(data[1]);
     $.ajax({
-      url: "/admin/links/show",
-      data: {id: data[1]},
+      url: "/links/" + data[1],
       success: function(request) { $("div#link_details").html(request); set_button_behaviour();}
     });
   });
 }
 
 function autocomplete_reporter() {
-  $("input#person_lastname_firstname").autocomplete("auto_complete_for_person_lastname_firstname",
+  $("input#person_lastname_firstname").autocomplete("/tickets/auto_complete_for_person_lastname_firstname",
   { mustMatch: true,
     extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
                    'select': "user.id company.name user.email"},
@@ -96,7 +95,7 @@ function autocomplete_reporter() {
     var hidden = $("#ticket_reported_by_id");
     hidden.val(data[2]);
     $.ajax({
-      url: "/admin/users/"+ data[2],
+      url: "/users/"+ data[2],
       success: function(request) { $("div#reporter_details").html(request); set_button_behaviour();}
     });
   });
