@@ -27,7 +27,7 @@ class Views::People::Show < Views::Layouts::Application
             end
           end
         end
-        div :class => 'grid_4 prefix_1 omega', :id => 'photo', :style => 'padding-top: 30px;' do
+        div :class => 'grid_4 prefix_2 omega', :id => 'photo', :style => 'padding-top: 30px; margin-left: -20px;' do
           if @person.photo.size == nil
             rawtext image_tag "/photos/thumb/missing.png"
           else
