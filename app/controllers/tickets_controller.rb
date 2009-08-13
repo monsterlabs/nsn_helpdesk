@@ -70,6 +70,9 @@ class TicketsController < ApplicationController
     if !(value = params[:filter][:priority_id]).blank?
       @collection = @collection.priority_id_equals(value)
     end
+    if !(value = params[:filter][:reported_priority_id]).blank?
+      @collection = @collection.reported_priority_id_equals(value)
+    end
     
     @collection = @collection.paginate :page => 1, :per_page => 10
     

@@ -11,9 +11,12 @@ class Views::Tickets::Record < Erector::RailsWidget
         td :id => 'status_' + ticket.dom_id do
            rawtext ticket.status.name 
         end
-        td { rawtext ticket.alarm }
+        td { rawtext ticket.reported_priority.name }
+        td { rawtext ticket.priority.name }
         td { rawtext ticket.reported_by.person.fullname }
         td { rawtext ticket.opened_at}
+        td { rawtext ticket.opened_at_local}
+
         td :class => "actions_column" do 
           if current_user.role_symbols.include? :admin
             link_to 'Edit', { :action => :edit, :id => ticket.id }, ui_style(:button)

@@ -305,7 +305,8 @@ table#listing {
 }
 
 table#listing.tickets-table {
-	width: 900px;
+	width: 1180px;
+	margin-left: -90px;
 }
 
 table#listing tbody tr {
@@ -327,7 +328,7 @@ table#listing td.actions_column {
 }
 
 table#listing td.change_status_column {
-	width: 250px;
+	width: 260px;
 }
 
 thead#listing-head th {
