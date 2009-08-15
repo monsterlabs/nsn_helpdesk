@@ -57,4 +57,11 @@ class LinksController < ApplicationController
     @collection = Link.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     render 'links/index'
   end
+  
+  def filter
+    @collection = Link.search_and_paginate(params[:filter], params[:page] || 1)
+    respond_to do |format|
+        format.js { render 'links/list_js'}
+    end
+  end
 end
