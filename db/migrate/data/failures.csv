@@ -1,26 +1,26 @@
-name
-ANTENA DAÑADA
-CABLE DE ALIMENTACION DE IDU ENPALMADO
-CABLE DE ALIMENTACION DE LA IDU PRESENTA FALSO CONTACTO
-CABLE FLEXBUS CON FORRO DAÑADO
-CABLE FLEXBUS ENPALMADO
-CABLE FLEXBUS VANDALIZADO
-CONECTOR DE IDU CARBONIZADO
-CONECTOR DE IDU SULFATADO
-CONECTORES BNC - BNC EN DDF SULFATADOS
-CONECTORES BNC - BNC FLOJOS
-CONEXIÓN DE IDU A PANEL FUSIBLES CON FALSO CONTACTO
-EL LED FB1 ESTA APAGADO
-EL LOG DE NIVELES DE LA ODU PRESENTA DESVANECIMIENTO
-FUSIBLE DE ALIMENTACION DE IDU DAÑADO
-LA FIU SE ENCONTRO APAGADA ( FALLA DE ENERGIA )
-LA IDU A o B SE ENCONTRO APAGADA
-LA IDU PRESENTA PROBLEMAS EN TRIBUTARIAS ( NO CURSA TRAFICO )
-LA IDU SE ENCUENTRA ALARMADA
-LA IDU A o B NO ENCIENDE
-LA ODU APARECE COMO FANTASMA EN PANTALLA
-LA ODU NO PRESENTA NIVEL DE RX EN PANTALLA
-LA ODU NO PRESENTA VOLTAJE DE AGC
-LA ODU PRESENTA ERRORES
-NIVELES DEGRADADOS
-NIVELES FUERA DE RANGO
+"name"
+"Antena dañada"
+"Cable de alimentación de IDU empalmado"
+"Cable de alimentación de la IDU presenta falso contacto"
+"Cable flexbus con forro dañado"
+"Cable flexbus empalmado"
+"Cable flexbus vandalizado"
+"Conector de IDU carbonizado"
+"Conector de IDU sulfatado"
+"Conectores BNC - BNC en ddf sulfatados"
+"Conectores BNC - BNC flojos"
+"Conexión de IDU a panel fusibles con falso contacto"
+"El led fb1 esta apagado"
+"El log de niveles de la ODU presenta desvanecimiento"
+"Fusible de alimentación de IDU dañado"
+"La FIU se encontró apagada ( falla de energía )"
+"La IDU a o b se encontró apagada"
+"La IDU presenta problemas en tributarias ( no cursa trafico )"
+"La IDU se encuentra alarmada"
+"La IDU a o b no enciende"
+"La ODU aparece como fantasma en pantalla"
+"La ODU no presenta nivel de Rx en pantalla"
+"La ODU no presenta voltaje de AGC"
+"La ODU presenta errores"
+"Niveles degradados"
+"Niveles fuera de rango"
