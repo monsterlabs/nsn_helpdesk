@@ -4,7 +4,7 @@ class AddUsersAndRoles < ActiveRecord::Migration
   def self.up
     if ENV['RAILS_ENV'] != 'test'
       Authorization::Maintenance::without_access_control do
-        [:admin, :group_manager, :operator, :customer, :technician].each do |role|
+        [:admin, :group_manager, :operator, :customer, :corporate].each do |role|
           Role.create(:name => role.to_s)
         end
         Role.create(:name => 'field_manager', :parent_id => Role.find_by_name('group_manager'))

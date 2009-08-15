@@ -22,6 +22,14 @@ authorization do
     has_permission_on [:user_settings, :change_passwords], :to => :read_and_update
     has_permission_on [:companies, :failures, :links, :priorities, :products, :regions, :roles, :statuses, :ticket_types], :to => :manage
   end
+
+  # Permissions for admin here
+  role :corporate do
+    has_permission_on :tickets, :to => [:read, :filter]
+    has_permission_on [:user_settings, :change_passwords], :to => :read_and_update
+    has_permission_on :feedbacks, :to => :write
+  end
+
 end
 
 privileges do

@@ -31,23 +31,23 @@ class Views::Tickets::Table < Erector::RailsWidget
   end
   
   def table_filter
-    form_remote_tag :url => "tickets/filter", :update => { :success => "tickets"}, :complete => "colorize_odd_rows()" do
+  form_remote_tag :url => "tickets/filter", :update => { :success => "tickets"}, :complete => "colorize_odd_rows()" do
       tr :id => "filter_row" do
         td :class => "filter_column" do
-          rawtext text_field_tag "filter[case_id]"
+          rawtext text_field_tag "filter[case_id_like]"
         end
         td :class => "filter_column" do
-          rawtext simple_select :filter, :region, :prompt => ""
-        end
-        td # Link
-        td :class => "filter_column" do
-          rawtext text_field_tag "filter[site]"
+          rawtext simple_select :filter, :region, :method_name => :region_id_equals,:prompt => "" unless current_user.roles.first.name == 'corporate'
         end
         td :class => "filter_column" do
-          rawtext simple_select :filter, :status, :prompt => ""
+          rawtext text_field_tag "filter[sites_like]"
+        end
+        td
+        td :class => "filter_column" do
+          rawtext simple_select :filter, :status, :method_name => :status_id_equals, :prompt => ""
         end
         td :class => "filter_column" do
-            rawtext simple_select :filter, :priority, {:prompt => "", :method_name => :reported_priority_id}
+            rawtext simple_select :filter, :priority, :method_name =>:reported_priority_id_equals, :prompt => ""
         end
 
         td # Customer

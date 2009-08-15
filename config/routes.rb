@@ -11,6 +11,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource  :change_password
   map.resources :links
+
+  map.namespace :corporate do |corporate|
+    corporate.resources :tickets
+  end
   
   map.namespace :admin do |admin|
     admin.resources :users

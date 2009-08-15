@@ -5,7 +5,7 @@ class LoadCustomers < ActiveRecord::Migration
   def self.up
     if ENV['RAILS_ENV'] != 'test'
       data_path = RAILS_ROOT + '/db/migrate/data'
-      %w(customer operator field_manager group_manager).each do |role_name|
+      %w(customer operator field_manager group_manager corporate).each do |role_name|
         filename = data_path + "/#{role_name}.csv"
         CSV.read(filename).each do |row|
           company_name = row[6].to_s.strip  

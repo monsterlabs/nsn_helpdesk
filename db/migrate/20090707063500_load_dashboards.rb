@@ -21,6 +21,11 @@ class LoadDashboards < ActiveRecord::Migration
       [:tickets, :users, :links].each do |item|
         Dashboard.create(:controller => item.to_s, :role_id => Role.find_by_name('field_manager').id )
       end
+
+      # Dashboard for corporate
+      [:tickets].each do |item|
+        Dashboard.create(:controller => item.to_s, :role_id => Role.find_by_name('corporate').id )
+      end
     end
   end
 

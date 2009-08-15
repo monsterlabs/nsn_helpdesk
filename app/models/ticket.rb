@@ -31,6 +31,11 @@ class Ticket < ActiveRecord::Base
     { :conditions => { 'links.region_id' => id }, 
       :joins => 'left join links on links.id = tickets.link_id' }
   }
+
+  named_scope :sites_like, lambda { |sites|
+    { :conditions => ['LOWER(links.sites) LIKE ? ', "%#{sites.downcase}%" ], 
+      :joins => 'left join links on links.id = tickets.link_id' }
+  }
   
   before_create :prepare_case_id
 
@@ -88,6 +93,10 @@ class Ticket < ActiveRecord::Base
     time_zone = link.time_zone.nil? ?  'America/Mexico_City' : link.time_zone.name
     tz = TZInfo::Timezone.get(time_zone)
     tz.utc_to_local(opened_at.utc)
+  end
+
+  def self.search_and_paginate(search = :all,page = 1, per_page = 10)
+      Ticket.search(search).all.paginate(:page => page, :per_page => per_page)
   end
 
 end

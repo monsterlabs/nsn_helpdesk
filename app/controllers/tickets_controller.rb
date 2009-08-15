@@ -41,40 +41,9 @@ class TicketsController < ApplicationController
       format.js { render 'tickets/details_js' }
     end
   end
-
-  def search_by_case_id
-    @ticket = Ticket.find_by_case_id(params[:q][:case_id])
-    respond_to do |format|    
-      if @ticket.nil?
-        format.html { redirect_to :action => :index }
-      else
-        format.html { render 'tickets/show' }
-      end
-    end    
-  end
   
   def filter
-    @collection = Ticket
-    if !(value = params[:filter][:case_id]).blank?
-      @collection = @collection.case_id_like(value)
-    end
-    if !(value = params[:filter][:status_id]).blank?
-      @collection = @collection.status_id_equals(value)
-    end
-    if !(value = params[:filter][:region_id]).blank?
-      @collection = @collection.region_id_equals(value)
-    end
-    if !(value = params[:filter][:affected_site]).blank?
-      @collection = @collection.affected_site_like(value)
-    end
-    if !(value = params[:filter][:priority_id]).blank?
-      @collection = @collection.priority_id_equals(value)
-    end
-    if !(value = params[:filter][:reported_priority_id]).blank?
-      @collection = @collection.reported_priority_id_equals(value)
-    end
-    
-    @collection = @collection.paginate :page => 1, :per_page => 10
+    @collection = Ticket.search_and_paginate(params[:filter], params[:page] || 1)
     
     respond_to do |format|
       format.js { render 'tickets/list_js'}

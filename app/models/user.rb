@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
     self.save
     Notifier.deliver_random_password(self, new_password)
   end
+
+  def region_id
+    self.person.region.id
+  end
   
   private
   
