@@ -4,28 +4,40 @@ class Views::Links::Form < Views::Layouts::Application
   def content
     rawtext hidden_field_tag(:id, record.id) 
     p do
-      label "City"
-       rawtext collection_select :link, :city_id, City.all, :id, :name, :selected => record.city_id
+      label "Sites"
+      rawtext text_field_tag("link[sites]", record.sites, :size => 30)
     end
-     p do
-       label "Sites"
-       rawtext text_field_tag("link[sites]", record.sites, :size => 30)
-     end
-     p do
-        label "Frequency Tx"
-        rawtext text_field_tag("link[frequency_tx]", record.frequency_tx, :size => 10)
-      end
+
+    if current_user.role_symbols.include? :field_manager or current_user.role_symbols.include? :admin
       p do
-        label "Frequency Rx"
-        rawtext text_field_tag("link[frequency_rx]", record.frequency_rx, :size => 10)
+        label "Region"
+        rawtext collection_select :link, :region_id, Region.all, :id, :name, :selected => record.region_id
       end
-      p do
-        label "Time zone"
-        rawtext collection_select :link, :time_zone_id, TimeZone.all, :id, :name, :selected => record.time_zone_id
-      end
-      p do
-        label "Status"
-        rawtext text_field_tag("link[current_status]", record.current_status)
-      end
+    end
+
+    p do
+      label "City"
+      rawtext collection_select :link, :city_id, City.all, :id, :name, :selected => record.city_id
+    end
+
+    p do
+      label "Frequency Tx"
+      rawtext text_field_tag("link[frequency_tx]", record.frequency_tx, :size => 10)
+    end
+
+    p do
+      label "Frequency Rx"
+      rawtext text_field_tag("link[frequency_rx]", record.frequency_rx, :size => 10)
+    end
+
+    p do
+      label "Time zone"
+      rawtext collection_select :link, :time_zone_id, TimeZone.all, :id, :name, :selected => record.time_zone_id
+    end
+
+    p do
+      label "Configuration"
+      rawtext text_field_tag("link[configuration]", record.configuration)
+    end
   end
 end

@@ -209,7 +209,7 @@ class Erector::Widget
     # Fix it: Clean code for link_to_page for paginator
     params.delete(:page)
     params.delete(:per_page)
-    link_to label, :controller => controller_name, :action => action_name, :params => params, :page => page
+    a label, :href => url_for(:controller => controller_name, :action => action_name, :params => params, :page => page)
   end
 
   def page_ranges(collection)

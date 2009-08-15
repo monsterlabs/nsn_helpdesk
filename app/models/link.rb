@@ -12,6 +12,10 @@ class Link < ActiveRecord::Base
 
   has_many :mobile_messages, :as => :messageable
 
+  def self.search_and_paginate(search = :all,page = 1, per_page = 10)
+      Link.search(search).all.paginate(:page => page, :per_page => per_page)
+  end
+  
   def summary
     modified_by ||= User.find_by_login('admin')
     modified_by_user = modified_by.person.nil? ? modified_by.email : modified_by.person.fullname

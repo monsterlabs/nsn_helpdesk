@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
 
   before_update :validate_password_fields
 
+  def self.search_and_paginate(search = :all,page = 1, per_page = 10)
+      User.search(search).all.paginate(:page => page, :per_page => per_page)
+  end
+
   def validate_password_fields
     if self.password == nil
       self.errors.add_to_base("Password field can't be blank")
