@@ -21,9 +21,9 @@ class LoadSites < ActiveRecord::Migration
         time_zone = TimeZone.find_by_name(row[6])
         unless city_name.nil?
           city = City.exists?(:name => city_name, :region_id => region_id) ?  City.find_by_name_and_region_id(city_name, region_id) : City.create!(:name => city_name, :region_id => region_id)
-          Link.create(:region_id => region_id, :city_id => city.id, :sites => row[1].strip, :time_zone_id => time_zone.id, :frequency_tx => row[3], :frequency_rx => row[4], :current_status => row[5].strip)
+          Link.create(:region_id => region_id, :city_id => city.id, :sites => row[1].strip, :time_zone_id => time_zone.id, :frequency_tx => row[3], :frequency_rx => row[4], :configuration => row[5].strip)
         else
-          Link.create(:region_id => region_id, :other => other, :sites => row[1].strip, :time_zone_id => time_zone.id )
+          Link.create(:region_id => region_id, :other => other, :sites => row[1].strip, :time_zone_id => time_zone.id, :frequency_tx => row[3], :frequency_rx => row[4], :configuration => row[5].strip)
         end
       end
     end
