@@ -31,8 +31,10 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }
+        format.js { render 'users/show_js' }
       else
-        format.html { render :action => 'new' }        
+        format.html { render :action => 'new' }
+        format.js { }
       end
     end
   end
@@ -41,6 +43,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.html { render 'edit' }
+      format.js { render 'edit_js' }
     end
   end
 
