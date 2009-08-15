@@ -35,7 +35,7 @@ class Views::Links::ShowRecord < Views::Layouts::Application
     end
     
     p do
-      b { text "Status: "}
+      b { text "Configuration: "}
       text record.configuration
     end
   end
