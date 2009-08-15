@@ -305,8 +305,7 @@ table#listing {
 }
 
 table#listing.tickets-table {
-	width: 1180px;
-	margin-left: -90px;
+	width: 900px;
 }
 
 table#listing tbody tr {

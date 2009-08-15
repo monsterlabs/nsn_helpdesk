@@ -12,10 +12,8 @@ class Views::Tickets::Record < Erector::RailsWidget
            rawtext ticket.status.name 
         end
         td { rawtext ticket.reported_priority.name }
-        td { rawtext ticket.priority.name }
         td { rawtext ticket.reported_by.person.fullname }
         td { rawtext ticket.opened_at}
-        td { rawtext ticket.opened_at_local}
 
         td :class => "actions_column" do 
           if current_user.role_symbols.include? :admin

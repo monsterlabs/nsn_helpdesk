@@ -13,7 +13,7 @@ class Views::Tickets::Table < Erector::RailsWidget
   def table_header
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
-        columns = %w(case_id region link affected_site status reported_priority recomended_priority customer local_datetime link_datetime actions)
+        columns = %w(case_id region link affected_site status reported_priority customer local_datetime actions)
         columns << 'change_status' if current_user.role_symbols.include? :field_manager
         columns.each  do |column|
           th :id => column do
@@ -50,13 +50,8 @@ class Views::Tickets::Table < Erector::RailsWidget
             rawtext simple_select :filter, :priority, {:prompt => "", :method_name => :reported_priority_id}
         end
 
-        td :class => "filter_column" do
-            rawtext simple_select :filter, :priority, :prompt => ""
-        end
-
         td # Customer
         td # Opened datetime
-        td # Link datetime
         td if current_user.role_symbols.include? :field_manager
         td { # Actions
           rawtext submit_tag "Filter", ui_style(:button)
