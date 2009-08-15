@@ -8,10 +8,10 @@ class Views::Admin::Users::User < Erector::RailsWidget
     end
     div :class => 'field' do
       label "Login"
-      if current_user.login == 'admin'
-        rawtext f.text_field :login
-      else
+      if f.object.id == current_user.id
         rawtext f.object.login
+      else
+        rawtext f.text_field :login
       end
     end
 
