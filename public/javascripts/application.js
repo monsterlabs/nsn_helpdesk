@@ -93,7 +93,7 @@ function autocomplete_link(){
 
 function autocomplete_reporter() {
   $("input#person_lastname_firstname").autocomplete("/tickets/auto_complete_for_person_lastname_firstname",
-  { mustMatch: true,
+  { mustMatch: false,
     extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
                    'select': "user.id company.name user.email"},
     formatItem: function(row) {
