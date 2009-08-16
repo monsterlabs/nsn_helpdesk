@@ -7,7 +7,7 @@ class Views::Tickets::Table < Erector::RailsWidget
       table_filter
       table_body
     end
-    paginator @collection
+    div :id => 'paginator'
   end
 
   def table_header

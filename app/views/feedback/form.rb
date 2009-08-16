@@ -8,7 +8,7 @@ class Views::Feedback::Form < Erector::RailsWidget
       br
       rawtext label { text "Mesage" }
       br
-      rawtext text_area_tag('message')
+      rawtext text_area_tag('message', nil, :size => "35x10")
       
       rawtext submit_tag('Send', ui_style(:button, :id => "main"))
     end
