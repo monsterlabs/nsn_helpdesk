@@ -15,6 +15,12 @@ class Link < ActiveRecord::Base
   def self.search_and_paginate(search = :all,page = 1, per_page = 10)
       Link.search(search).all.paginate(:page => page, :per_page => per_page)
   end
+
+  named_scope :city_like, lambda { |city_name|
+    { :conditions => ['LOWER(cities.name) LIKE ? ', "%#{city_name.downcase}%" ], 
+      :joins => 'left join cities on cities.id = links.city_id' }
+  }
+
   
   def summary
     modified_by ||= User.find_by_login('admin')

@@ -32,7 +32,7 @@ class Views::Links::Table < Erector::RailsWidget
                rawtext select :filter, :configuration, [ ['1 + 1', '1 + 1'], ['1 + 0', '1 + 0'], ['0 + 0', '0 + 0'] ], :prompt => ""
             end
             td :class => "filter_column" do
-              rawtext simple_select :filter, :time_zone, :prompt => ""
+              rawtext text_field_tag "filter[city_like]"
             end
 
             td { # Actions

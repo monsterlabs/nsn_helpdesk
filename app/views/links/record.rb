@@ -9,7 +9,7 @@ class Views::Links::Record < Views::Layouts::Application
         td { text record.frequency_rx }
         td { text record.region.name }
         td { text record.configuration }
-        td { text record.time_zone.name }
+        td { text record.city.name }
         td :class => "actions_column" do 
           link_to 'Edit', {:action => :edit, :id => record.id}, ui_style(:button)
           link_to 'Show', {:action => :show, :id => record.id}, ui_style(:button)
