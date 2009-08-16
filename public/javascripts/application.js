@@ -93,7 +93,7 @@ function autocomplete_link(){
 
 function autocomplete_reporter() {
   $("input#person_lastname_firstname").autocomplete("/tickets/auto_complete_for_person_lastname_firstname",
-  { mustMatch: true,
+  { mustMatch: false,
     extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
                    'select': "user.id company.name user.email"},
     formatItem: function(row) {
@@ -107,7 +107,14 @@ function autocomplete_reporter() {
     hidden.val(data[2]);
     $.ajax({
       url: "/users/"+ data[2],
-      success: function(request) { $("div#reporter_details").html(request); set_button_behaviour();}
+      success: function(request) { $("div#reporter_details").html(request); set_button_behaviour(); $("input#person_lastname_firstname").disable();}
     });
   });
+}
+
+function reset_reporter() {
+  $("input#person_lastname_firstname").enable();
+  $("input#person_lastname_firstname").val("");
+  $("#reporter_details").html("");
+  $("#ticket_reported_by_id").val("");
 }

@@ -10,16 +10,22 @@ class Admin::UsersController < ApplicationController
     @user = User.new
     respond_to do |format|
       format.html { render 'new' }
+      format.js { render 'new_js' }
     end
   end
 
   def create
+    params[:user][:login] ||= params[:user][:email].split("@")[0]
+    params[:user][:password] ||= "qw12.."
+    params[:user][:password_confirmation] ||= "qw12.."
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
         format.html { redirect_to :action => 'index' }
+        format.js { render 'show_js' }
       else
-        format.html { render :action => 'new' }        
+        format.html { render :action => 'new' }
+        format.js { }
       end
     end
   end

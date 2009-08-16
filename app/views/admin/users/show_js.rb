@@ -21,6 +21,11 @@ class Views::Admin::Users::ShowJs < Views::Layouts::ApplicationJs
       text @user.address.mobile_phone
     end
     
+    a :onclick => 'reset_reporter();', 
+      :class => 'ui-state-default ui-corner-all button' do
+      text 'Change'
+    end
+    
     link_to_remote("Edit",  { :url => {:controller => 'users', :action => 'edit', :id => @user.id}, :method => :get,
                :with => "'region_id=' + $('#customer_filter_region_id').val()",
                :update => {:success => "add_edit_dialog"}, 

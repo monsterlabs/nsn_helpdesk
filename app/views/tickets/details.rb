@@ -4,6 +4,21 @@ class Views::Tickets::Details < Erector::RailsWidget
     div :class => 'field' do
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, nil, :size => 30
+      link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+              :update => {:success => "add_edit_dialog"}, 
+              :success => '$("#add_edit_dialog").dialog({
+                bgiframe: true,
+                height: 280,
+                modal: true,
+                autoOpen: false,
+                draggable: false,
+                resizable: false
+              });
+              $("#add_edit_dialog").dialog("open");
+              set_button_behaviour();
+              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());
+              $("input#person_lastname_firstname").disable();'},
+              ui_style(:button, {:class => "no_float"}))
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4"
       rawtext hidden_field_tag 'ticket[reported_by_id]'
@@ -32,7 +47,9 @@ class Views::Tickets::Details < Erector::RailsWidget
       label "Affected site"
       rawtext text_field_tag 'ticket[affected_site]'
       br
-      div :id => "link_details", :class => "prefix_3 grid_4"
+      div :id => "link_details", :class => "prefix_3 grid_4" do
+        text ""
+      end
     end
     
     div :class => 'field' do
