@@ -1,6 +1,6 @@
 #!/usr/bin/env script/runner
 require "simple-daemon"
-ENV['RAILS_ENV'] = 'development'
+ENV['RAILS_ENV'] = 'production'
 
 class MailDaemon < SimpleDaemon::Base
   SimpleDaemon::WORKING_DIRECTORY = "#{RAILS_ROOT}/tmp"
