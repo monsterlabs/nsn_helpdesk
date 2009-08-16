@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
   css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete"
-  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "application"
+  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "jquery.badBrowser.js", "application"
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
@@ -73,30 +73,6 @@ class Views::Layouts::Application < Views::Layouts::Page
   def footer
     div :id => "footer" do
       p { text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." }
-      div :class => "browsers", :id => 'text' do
-        text 'This application runs on:'
-        div :class => 'browser_link', :id => 'safari' do
-          a :href => 'http://www.apple.com/safari/' do
-            img :src => "/images/Safari.png"
-          end
-        end
-        div :class => 'browser_link', :id => 'firefox' do
-          a :href => 'http://www.mozilla.com/firefox/' do
-            img :src => "/images/firefox.png"
-          end
-        end
-        div :class => 'browser_link', :id => 'chrome' do
-          a :href => 'http://www.google.com/chrome/' do
-            img :src => "/images/google-chrome.png"
-          end
-        end
-        #div :class => 'browser_link', :id => 'explorer' do
-          #link_to 'explorer', 'http://www.microsoft.com/windows/internet-explorer/default.aspx'
-        #end
-      end
-        # link_to 'safari', 'http://www.apple.com/safari/', {:class => "browser_link", :id => "safari"}
-        # link_to 'firefox', 'http://www.mozilla.com/firefox/', {:class => "browser_link", :id => "firefox"}
-        # link_to 'chrome', 'http://www.google.com/chrome/', {:class => "browser_link", :id => "chrome"}
     end
   end
 end

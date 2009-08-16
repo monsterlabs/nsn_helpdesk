@@ -100,6 +100,15 @@ div#header {
 	
 }
 
+div#browserWarning {
+  width: 100%;
+  color: #d76004;
+/*  background: #d76004 url(images/ui-bg_inset-hard_25_d76004_1x100.png) 50% top repeat-x;*/
+/*  border-bottom: solid 1px silver;*/
+  text-align: center;
+  padding:'5px 0px 5px 0px'
+}
+
 div#footer {	
 	margin-top: 20px;
 	border-top: 1px solid;
