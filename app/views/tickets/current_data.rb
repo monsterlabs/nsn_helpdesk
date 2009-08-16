@@ -75,7 +75,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Alarm(s)'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.alarm
+        text ticket.alarm
       end
     end
     tr do 
