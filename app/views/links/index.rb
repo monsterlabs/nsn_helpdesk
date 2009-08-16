@@ -1,5 +1,16 @@
 class Views::Links::Index < Views::Layouts::Application
 
+  jquery <<-JS
+    $("tr#filter_row select").change(function() {
+      $.ajax({
+        complete:function(request){colorize_odd_rows()}, 
+        data:$.param($("form").serializeArray()),
+        success:function(request){$('#links').html(request);},
+        type:'post', 
+        url:'links/filter'}); 
+        return false; });
+  JS
+
   def page_title
     "Links Index"
   end
