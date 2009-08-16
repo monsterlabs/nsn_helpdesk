@@ -10,7 +10,7 @@ Has been modified by: <%= @link.modified_by.person.nil? ? @link.modified_by.emai
 
 Updated at: <%= @link.updated_at%>
 
-<% ommited_attributes = ['current_status', 'id', 'modified_by_id', 'other', 'created_at', 'updated_at'] %>
+<% ommited_attributes = ['configuration', 'id', 'modified_by_id', 'other', 'created_at', 'updated_at'] %>
 CURRENT DATA:
 <% (@link.attribute_names - ommited_attributes).each do |attr|%>
   <% if attr =~ /\_id$/%>
