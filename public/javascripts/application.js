@@ -79,7 +79,7 @@ function add_failure_dialog() {
 function autocomplete_link(){
   $("input#sites").autocomplete("/tickets/auto_complete_for_link_sites",
   {mustMatch: true,
-    extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() },
+    extraParams: { 'options[region_id]': $("#customer_filter_region_id").val() }
   }); 
   $("input#sites").result(function(event, data, formatted) {
     var hidden = $("#ticket_link_id");

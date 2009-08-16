@@ -2,12 +2,14 @@ class Views::Tickets::Table < Erector::RailsWidget
   needs :collection
 
   def content
-    table :id => "listing", :class => "tickets-table" do
-      table_header
-      table_filter
-      table_body
+    div :id => "tickets" do
+      table :id => "listing", :class => "tickets-table" do
+        table_header
+        table_filter
+        table_body
+      end
+      div :id => 'paginator'
     end
-    div :id => 'paginator'
   end
 
   def table_header
@@ -25,7 +27,7 @@ class Views::Tickets::Table < Erector::RailsWidget
   end
   
   def table_body
-    tbody :id => "tickets" do
+    tbody do
       widget Views::Tickets::Record, :collection => @collection
     end # end tbody
   end
@@ -35,7 +37,7 @@ class Views::Tickets::Table < Erector::RailsWidget
   action_name ||= 'index'
   jquery %Q($("tr#filter_row select").change(function() {
       $.ajax({
-        complete:function(request){colorize_odd_rows()}, 
+        complete:function(request){colorize_odd_rows(); set_button_behaviour();}, 
         data:$.param($("form").serializeArray()),
         success:function(request){$('#tickets').html(request);},
         type:'post', 
@@ -46,20 +48,23 @@ class Views::Tickets::Table < Erector::RailsWidget
       tr :id => "filter_row" do
         rawtext hidden_field_tag "filter[attended_by_id_equals]", current_user.id if params[:filter] && params[:filter].has_key?(:attended_by_id_equals)
         td :class => "filter_column" do
-          rawtext text_field_tag "filter[case_id_like]"
+          rawtext text_field_tag "filter[case_id_like]", (params[:filter] ? params[:filter][:case_id_like] : nil)
         end
         td :class => "filter_column" do
-          rawtext simple_select :filter, :region, :method_name => :region_id_equals,:prompt => "" unless current_user.roles.first.name == 'corporate'
+          rawtext simple_select :filter, :region, :method_name => :region_id_equals,:prompt => ("" unless current_user.roles.first.name == 'corporate'),
+                    :selected => (params[:filter] ? params[:filter][:region_id_equals].to_i : nil)
         end
         td :class => "filter_column" do
-          rawtext text_field_tag "filter[sites_like]"
+          rawtext text_field_tag "filter[sites_like]", (params[:filter] ? params[:filter][:sites_like] : nil)
         end
         td
         td :class => "filter_column" do
-          rawtext simple_select :filter, :status, :method_name => :status_id_equals, :prompt => ""
+          rawtext simple_select :filter, :status, :method_name => :status_id_equals, :prompt => "",
+                    :selected => (params[:filter] ? params[:filter][:status_id_equals].to_i : nil)
         end
         td :class => "filter_column" do
-            rawtext simple_select :filter, :priority, :method_name =>:reported_priority_id_equals, :prompt => ""
+            rawtext simple_select :filter, :priority, :method_name =>:reported_priority_id_equals, :prompt => "",
+                    :selected => (params[:filter] ? params[:filter][:reported_priority_id_equals].to_i : nil)
         end
 
         td # Customer

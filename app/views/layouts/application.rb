@@ -76,13 +76,19 @@ class Views::Layouts::Application < Views::Layouts::Page
       div :class => "browsers", :id => 'text' do
         text 'This application runs on:'
         div :class => 'browser_link', :id => 'safari' do
-          link_to 'safari', 'http://www.apple.com/safari/'
+          a :href => 'http://www.apple.com/safari/' do
+            img :src => "/images/Safari.png"
+          end
         end
         div :class => 'browser_link', :id => 'firefox' do
-          link_to 'firefox', 'http://www.mozilla.com/firefox/'
+          a :href => 'http://www.mozilla.com/firefox/' do
+            img :src => "/images/firefox.png"
+          end
         end
         div :class => 'browser_link', :id => 'chrome' do
-          link_to 'chrome', 'http://www.google.com/chrome/'
+          a :href => 'http://www.google.com/chrome/' do
+            img :src => "/images/google-chrome.png"
+          end
         end
         #div :class => 'browser_link', :id => 'explorer' do
           #link_to 'explorer', 'http://www.microsoft.com/windows/internet-explorer/default.aspx'

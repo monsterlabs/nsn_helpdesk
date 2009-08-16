@@ -150,7 +150,6 @@ div#footer .browser_link {
 
 div#footer .browser_link a {
 	text-decoration: none;
-	color: transparent;
 	padding: 10px 4px;
 	margin: 0px 3px;
 	text-align: middle;
@@ -158,22 +157,6 @@ div#footer .browser_link a {
 
 div#safari {
 	margin-left: 10px;
-}
-
-div#safari a {
-	background: url('../images/Safari.png') no-repeat;
-}
-
-div#firefox a {
-	background: url('../images/firefox.png') no-repeat;
-}
-
-div#chrome a {
-	background: url('../images/google-chrome.png') no-repeat;
-}
-
-div#explorer a {
-	background: url('../images/explorer.png') no-repeat;
 }
 
 div#toplinks {
@@ -306,6 +289,10 @@ table#listing {
 
 table#listing.tickets-table {
 	width: 900px;
+}
+
+table#listing.tickets-table tr{
+	display: table-row;
 }
 
 table#listing tbody tr {
