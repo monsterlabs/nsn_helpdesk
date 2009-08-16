@@ -10,9 +10,8 @@ class Notifier < ActionMailer::Base
     managers = User.field_managers
     managers.shift
     managers.each do |field_manager|
-      Notifier.deliver_fieldmanager_notification(ticket, field_manager.email)
+      Notifier.queue(:fieldmanager_notification, ticket, field_manager.email)
     end
-
   end
 
   def fieldmanager_notification(ticket, email)
