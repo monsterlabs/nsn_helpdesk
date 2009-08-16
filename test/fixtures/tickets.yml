@@ -1,0 +1,133 @@
+--- 
+tickets_001: 
+  created_at: 2009-08-15 16:27:16.643117
+  case_id: NSNCT150820092
+  reported_priority_id: "1"
+  priority_id: "1"
+  special_instructions: ""
+  link_id: "100"
+  product_id: "836798121"
+  updated_at: 2009-08-15 16:27:16.643117
+  ticket_type_id: 
+  opened_by_id: "2"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "9"
+  id: "2"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "145"
+  opened_at: 2009-08-15 16:25:25
+  failure_id: "379990527"
+  affected_site: ""
+  ip_address: "::ffff:127.0.0.1"
+tickets_002: 
+  created_at: 2009-08-15 16:39:06.79507
+  case_id: NSNCT150820093
+  reported_priority_id: "3"
+  priority_id: "3"
+  special_instructions: ""
+  link_id: "839"
+  product_id: "836798121"
+  updated_at: 2009-08-15 16:39:06.79507
+  ticket_type_id: 
+  opened_by_id: "2"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "126"
+  id: "4"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "146"
+  opened_at: 2009-08-15 16:38:45
+  failure_id: "2143655115"
+  affected_site: BTS Abasolo
+  ip_address: "::ffff:127.0.0.1"
+tickets_003: 
+  created_at: 2009-08-15 18:04:14.531332
+  case_id: NSNCT150820094
+  reported_priority_id: "3"
+  priority_id: "1"
+  special_instructions: ""
+  link_id: "127"
+  product_id: "836798121"
+  updated_at: 2009-08-15 18:04:14.531332
+  ticket_type_id: 
+  opened_by_id: "2"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "13"
+  id: "5"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "145"
+  opened_at: 2009-08-15 18:03:40
+  failure_id: "2143655115"
+  affected_site: ""
+  ip_address: "::ffff:127.0.0.1"
+tickets_004: 
+  created_at: 2009-08-15 18:04:57.208113
+  case_id: NSNCT150820095
+  reported_priority_id: "2"
+  priority_id: "3"
+  special_instructions: ""
+  link_id: "261"
+  product_id: "836798121"
+  updated_at: 2009-08-15 18:04:57.208113
+  ticket_type_id: 
+  opened_by_id: "2"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "23"
+  id: "6"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "147"
+  opened_at: 2009-08-15 18:04:26
+  failure_id: "2143655115"
+  affected_site: ""
+  ip_address: "::ffff:127.0.0.1"
+tickets_005: 
+  created_at: 2009-08-15 18:07:46.250419
+  case_id: NSNCT150820096
+  reported_priority_id: "2"
+  priority_id: "3"
+  special_instructions: ""
+  link_id: "742"
+  product_id: "836798121"
+  updated_at: 2009-08-15 18:07:46.250419
+  ticket_type_id: 
+  opened_by_id: "1"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "114"
+  id: "7"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "145"
+  opened_at: 2009-08-15 18:07:05
+  failure_id: "146973789"
+  affected_site: ""
+  ip_address: "::ffff:127.0.0.1"
+tickets_006: 
+  created_at: 2009-08-15 18:08:19.380105
+  case_id: NSNCT150820097
+  reported_priority_id: "3"
+  priority_id: "2"
+  special_instructions: ""
+  link_id: "12"
+  product_id: "836798121"
+  updated_at: 2009-08-15 18:08:19.380105
+  ticket_type_id: 
+  opened_by_id: "1"
+  accepts_closing_id: 
+  assigned_to_id: 
+  reported_by_id: "4"
+  id: "8"
+  status_id: "1"
+  alarm: 
+  attended_by_id: "148"
+  opened_at: 2009-08-15 18:07:50
+  failure_id: "2143655115"
+  affected_site: ""
+  ip_address: "::ffff:127.0.0.1"
