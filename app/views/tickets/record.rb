@@ -2,6 +2,10 @@ class Views::Tickets::Record < Erector::RailsWidget
   needs :collection
 
   def content
+    jquery <<-S
+      $('#paginator').replaceWith('#{ capture { paginator(@collection) } }')
+    S
+    
     @collection.each do |ticket|
       tr :id => ticket.dom_id do
         td { rawtext ticket.case_id  }
