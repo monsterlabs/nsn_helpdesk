@@ -317,6 +317,24 @@ table#listing tbody tr.odd {
 	vertical-align: middle;
 }
 
+/* ticket/show*/
+table#listing tbody tr#ticket_title td {
+    background-color: #FF7F01;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 100px;
+}
+
+table#listing td#ticket_left_cell {
+    font-weight: bold;
+    width: 30%;
+}
+
+table#listing td#ticket_right_cell {
+    width: 70%;
+}
+/**/
+
 table#listing td {
 	vertical-align: middle;
 	padding-left: 10px;
