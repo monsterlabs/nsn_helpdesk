@@ -19,3 +19,6 @@
 [submodule "vendor/plugins/auto_complete_jquery"]
 	path = vendor/plugins/auto_complete_jquery
 	url = git://github.com/alexjr85/auto_complete_jquery.git
+[submodule "vendor/plugins/mail_queue"]
+	path = vendor/plugins/mail_queue
+	url = git://github.com/fnando/mail_queue.git

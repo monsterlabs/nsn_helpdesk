@@ -11,7 +11,8 @@ class Link < ActiveRecord::Base
   belongs_to :modified_by, :class_name => 'User'
 
   has_many :mobile_messages, :as => :messageable
-
+  has_many :mails, :as => :mailable
+  
   def self.search_and_paginate(search = :all,page = 1, per_page = 10)
       Link.search(search).all.paginate(:page => page, :per_page => per_page)
   end

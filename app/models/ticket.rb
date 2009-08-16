@@ -22,6 +22,7 @@ class Ticket < ActiveRecord::Base
   accepts_nested_attributes_for :comments
   
   has_many :mobile_messages, :as => :messageable
+  has_many :mails, :as => :mailable
 
   default_scope :order => 'tickets.created_at DESC'
 
