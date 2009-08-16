@@ -33,6 +33,8 @@ namespace :deploy do
   desc "Restarting mod_rails with restart.txt"
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "touch #{current_path}/tmp/restart.txt"
+    run "ruby #{current_path}/script/runner #{current_path}/tools/mail_sender.rb stop"
+    run "ruby #{current_path}/script/runner #{current_path}/tools/mail_sender.rb start"
   end
   
   [:start, :stop].each do |t|
