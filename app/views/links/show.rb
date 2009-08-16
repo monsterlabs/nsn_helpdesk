@@ -5,10 +5,16 @@ class Views::Links::Show < Views::Layouts::Application
   end
 
   def view_content
-    widget Views::Links::ShowRecord, :record => @link
+    table :id => "listing" do
+      widget Views::Links::ShowRecord, :record => @link
+    end
+    if @link.respond_to? :versions and @link.versions.size > 1
+      table :id => "listing" do
+        widget Views::Shared::ShowLog, :record => @link
+      end
+    end
+
     link_to "Modify", { :action => 'edit', :id => @link.id }, ui_style(:button)
     link_to "Back", { :action => 'index' }, ui_style(:button)
-    4.times { br }
-    widget Views::Shared::ShowLog, :record => @link
   end
 end

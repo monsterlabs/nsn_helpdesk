@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
 
   acts_as_authentic
-  # using_access_control
   
   has_many :user_roles
   has_many :roles, :through => :user_roles
@@ -31,17 +30,20 @@ class User < ActiveRecord::Base
       self.errors.add_to_base("Password field can't be blank")
     end
   end
-
     
   def role_symbols
     roles.collect { |role| role.name.to_sym } 
   end
-  
+
+  def has_role?(role)
+    role_symbols.include?(role)
+  end
+
   def send_random_password
     new_password = User.random_password(10)
     self.password = self.password_confirmation = new_password
     self.save
-    Notifier.deliver_random_password(self, new_password)
+    Notifier.queue(:random_password, self, new_password)
   end
 
   def region_id

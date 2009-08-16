@@ -80,7 +80,7 @@ class Views::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Alarm description"
-      rawtext text_area_tag :alarm
+      rawtext text_area_tag 'ticket[alarm]'
     end
   
     div :class => 'field' do

@@ -26,6 +26,7 @@ Rails::Initializer.run do |config|
   config.gem "binarylogic-searchlogic", :lib => 'searchlogic', :source => 'http://gems.github.com'
   config.gem 'airblade-paper_trail', :lib => 'paper_trail', :source => 'http://gems.github.com'
   config.gem 'tzinfo', :lib => 'tzinfo'
+  config.gem 'simple-daemon'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -37,8 +38,7 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-  config.active_record.observers = :ticket_observer, :link_observer if ENV['RAILS_ENV'] == 'production'
-
+  config.active_record.observers = :ticket_observer, :link_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

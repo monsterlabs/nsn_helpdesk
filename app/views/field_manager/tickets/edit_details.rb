@@ -68,7 +68,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
 
     div :class => 'field' do
       label "Alarm description"
-      rawtext text_area_tag :alarm, ticket.alarm
+      rawtext text_area_tag 'ticket[alarm]', ticket.alarm
     end
 
     div :class => 'field' do
