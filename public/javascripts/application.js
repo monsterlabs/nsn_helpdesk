@@ -27,6 +27,18 @@ $(document).ready(function(){
       $('#dashboard').css({"margin-bottom": 15});
     }
   );
+  
+  $('#tickets_tab').hover(
+    function(){
+      $('#tickets_children').css({top: $(this).parent().offset().top + 35, left: $(this).parent().offset().left});
+      $('#tickets_children').fadeIn();
+      $('#dashboard').css({"margin-bottom": 45});
+    },
+    function(){
+      $('#tickets_children').fadeOut("slow");
+      $('#dashboard').css({"margin-bottom": 15});
+    }
+  );
 
   colorize_odd_rows();
   set_button_behaviour();

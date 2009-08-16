@@ -35,7 +35,7 @@ end
 privileges do
   # default privilege hierarchies to facilitate RESTful Rails apps
   shared_actions = [:details, :auto_complete_for_person_lastname_firstname, :auto_complete_for_link_sites, :filter]
-  privilege :manage, :includes => ([:create, :read, :update, :delete, :destroy, :change_status, :edit_change_status ] + shared_actions)
+  privilege :manage, :includes => ([:create, :read, :update, :delete, :destroy, :change_status, :edit_change_status, :mine ] + shared_actions)
   privilege :change_status, :includes => [:change_status, :edit_change_status]
   privilege :read, :includes => [:index, :show]
   privilege :create, :includes => :new

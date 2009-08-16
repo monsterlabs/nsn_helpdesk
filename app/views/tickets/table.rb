@@ -31,8 +31,20 @@ class Views::Tickets::Table < Erector::RailsWidget
   end
   
   def table_filter
-  form_remote_tag :url => "tickets/filter", :update => { :success => "tickets"}, :complete => "colorize_odd_rows()" do
+  action_name = 'mine' if params[:filter] && params[:filter].has_key?(:attended_by_id_equals)
+  action_name ||= 'index'
+  jquery %Q($("tr#filter_row select").change(function() {
+      $.ajax({
+        complete:function(request){colorize_odd_rows()}, 
+        data:$.param($("form").serializeArray()),
+        success:function(request){$('#tickets').html(request);},
+        type:'post', 
+        url:'/tickets/#{action_name}'}); 
+        return false; });)
+  
+  form_remote_tag :url => "/tickets/#{action_name}", :update => { :success => "tickets"}, :complete => "colorize_odd_rows()" do
       tr :id => "filter_row" do
+        rawtext hidden_field_tag "filter[attended_by_id_equals]", current_user.id if params[:filter] && params[:filter].has_key?(:attended_by_id_equals)
         td :class => "filter_column" do
           rawtext text_field_tag "filter[case_id_like]"
         end

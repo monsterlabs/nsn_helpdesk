@@ -5,9 +5,10 @@ class TicketsController < ApplicationController
   multiple_auto_complete_for :link, [:sites]
   
   def index
-    @collection = Ticket.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
+    @collection = Ticket.search_and_paginate(params[:filter], params[:page] || 1)
     respond_to do |format|
       format.html { render 'tickets/index' }
+      format.js { render 'tickets/list_js'}
     end    
   end
   
@@ -41,13 +42,14 @@ class TicketsController < ApplicationController
       format.js { render 'tickets/details_js' }
     end
   end
-  
-  def filter
-    @collection = Ticket.search_and_paginate(params[:filter], params[:page] || 1)
-    
-    respond_to do |format|
-      format.js { render 'tickets/list_js'}
-    end
+
+  def mine
+    params[:filter] ||= {}
+    @collection = Ticket.search_and_paginate(params[:filter].merge!({:attended_by_id_equals => current_user.id}), params[:page] || 1)
+     respond_to do |format|
+       format.html { render 'tickets/index' }
+       format.js { render 'tickets/list_js'}
+     end
   end
 
 end
