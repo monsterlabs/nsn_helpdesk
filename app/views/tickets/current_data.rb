@@ -110,6 +110,14 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         rawtext @ticket.status.name
       end
     end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Additional notes'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext @ticket.notes
+      end
+    end
   end
 
 end

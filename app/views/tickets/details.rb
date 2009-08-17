@@ -92,6 +92,11 @@ class Views::Tickets::Details < Erector::RailsWidget
       label "Recommended priority"
       rawtext simple_select :ticket, :priority, {:prompt => true}
     end
+
+    div :class => 'field' do
+      label "Additional notes"
+      rawtext text_area_tag 'ticket[notes]'
+    end
     
     div :id => "add_edit_dialog"
   end
