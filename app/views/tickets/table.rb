@@ -16,7 +16,7 @@ class Views::Tickets::Table < Erector::RailsWidget
     thead :class => "ui-widget-header", :id => "listing-head" do
       tr do
         columns = %w(case_id region link affected_site status reported_priority customer local_datetime actions)
-        columns << 'change_status' if current_user.role_symbols.include? :field_manager
+        columns << 'change_status' if current_user.has_role?(:field_manager) or current_user.has_role?(:admin)
         columns.each  do |column|
           th :id => column do
             text ActiveSupport::Inflector.humanize(column)
@@ -69,7 +69,7 @@ class Views::Tickets::Table < Erector::RailsWidget
 
         td # Customer
         td # Opened datetime
-        td if current_user.role_symbols.include? :field_manager
+        td if current_user.role_symbols.include? :field_manager or current_user.role_symbols.include? :admin
         td { # Actions
           rawtext submit_tag "Filter", ui_style(:button)
         }

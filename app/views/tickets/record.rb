@@ -20,19 +20,19 @@ class Views::Tickets::Record < Erector::RailsWidget
         td { rawtext ticket.opened_at}
 
         td :class => "actions_column" do 
-          if current_user.role_symbols.include? :admin
+          if current_user.has_role?(:admin)
             link_to 'Edit', { :action => :edit, :id => ticket.id }, ui_style(:button)
             link_to 'Show', { :action => :show, :id => ticket.id }, ui_style(:button)
             link_to 'Destroy', { :action => :destroy, :id => ticket.id },
             { :method => :delete, :confirm => 'Do you want to delete this record ?' }.merge(ui_style(:button))
-          elsif current_user.role_symbols.include? :field_manager
+          elsif current_user.has_role?(:field_manager)
             link_to 'Edit', { :action => :edit, :id => ticket.id }, ui_style(:button)
             link_to 'Show', { :action => :show, :id => ticket.id }, ui_style(:button)
           else
             link_to 'Show', { :action => 'show', :id => ticket.id}, ui_style(:button) 
           end
         end
-        if current_user.role_symbols.include? :field_manager
+        if current_user.has_role?(:field_manager) or current_user.has_role?(:admin)
           td :class => "change_status_column" do
             Status.all(:conditions => 'id > 1', :order => 'id ASC').each do |s|
               link_to_remote(s.name, {:url => {:controller => '/field_manager/tickets', :action => 'edit_change_status', :status_id => s.id, :id => ticket.id}, :method => :get,
