@@ -5,6 +5,7 @@ class Region < ActiveRecord::Base
   default_scope :order => 'name ASC' 
   
   has_many :tickets
-  has_many :users
+  has_many :user_regions
+  has_many :users, :through => :user_regions
   has_many :links
 end
