@@ -2,25 +2,23 @@
 *************** [NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %> ***************
 ********************************************************************************
 
-Field Managers:
-
 Has been reported a <%= @ticket.reported_priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.
 
 Customer's Name:                           <%= @ticket.reported_by.person.fullname %>
 
-Customer's Contact Phone:           52 1 7222647451
+Customer's Contact Phone:           <%= @ticket.reported_by.address.business_phone %>
 
-Customer's Contact Time:              <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
+Customer's Contact Time:              <%= @ticket.opened_at_local.to_s %>
 
 Customer's e-mail:                          <%= @ticket.reported_by.email %>
 
 Case ID:                                             <%= @ticket.case_id %>
 
-NSN Engineer on duty:                   <%= @ticket.opened_by.person.nil? ? "none" : @ticket.opened_by.person.fullname%>
+NSN Engineer on duty:                   <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.person.fullname : @ticket.link.region.users.field_managers.collect {|fm| fm.person.fullname }.join(', ')%>
 
-NSN Engineer ID Number:            <%= @ticket.opened_by.person.nil? ? "none" : @ticket.opened_by.person.id%>
+NSN Engineer ID Number:            <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.id : @ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')%>
 
-NSN Engineer Contact Time:        America/Mexico_City: <%= @ticket.created_at %> / <%= @ticket.link.time_zone.name if @ticket.link.time_zone %>: <%= @ticket.opened_at_local.to_s %>
+NSN Engineer Contact Time:        <%= @ticket.opened_at_local.to_s %>
 
 Call handle time:                             <%= @ticket.capture_time %>
 
@@ -28,7 +26,7 @@ Network Element:                           <%= @ticket.product.name %>
 
 Name of Site/Hostname:              <%= @ticket.link.region.name %>
 
-Failure:                                   <%= @ticket.failure.name %>
+Failure:                                             <%= @ticket.failure.name %>
 
 Status:                                              <%= @ticket.status.name %>
 
@@ -45,6 +43,8 @@ Frequency RX:                                <%= @ticket.link.frequency_rx.nil? 
 Alarms:                                            <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
 
 Special Instructions:                     <%= @ticket.special_instructions.nil? ? "none" : @ticket.special_instructions %>
+
+Additional notes:                            <%= @ticket.notes.nil? ? "none" : @ticket.notes %>
 
 
 Nokia Siemens Networks.

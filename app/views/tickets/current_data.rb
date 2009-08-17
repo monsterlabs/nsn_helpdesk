@@ -16,7 +16,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text "Custmomer's company"
+        text "Customer's company"
       end
       td :id => 'ticket_right_cell' do 
         rawtext ticket.reported_by.person.company.name
@@ -67,7 +67,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text "NSN Engineer on duty"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.assigned_to.person.fullname unless  ticket.assigned_to.nil?
+        rawtext !ticket.assigned_to.nil? ? ticket.assigned_to.person.fullname : ticket.link.region.users.field_managers.collect {|fm| fm.person.fullname }.join(', ')
       end
     end
     tr do 
@@ -75,7 +75,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text "NSN Engineer ID number"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.attended_by.id
+        rawtext !ticket.assigned_to.nil? ? ticket.assigned_to.id : ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')
       end
     end
     tr do 
@@ -200,10 +200,18 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
+        text 'Opened by'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.opened_by.person.nil? ? ticket.opened_by.email : ticket.opened_by.person.fullname 
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
         text 'Opened Date '
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.opened_at
+        rawtext ticket.opened_at.to_s + ' America/Mexico_City'
       end
     end
     tr do 

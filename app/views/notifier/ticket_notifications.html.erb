@@ -2,33 +2,49 @@
 **************************   [NSNCallCenter] TICKET OPEN   **************************
 ******************************************************************************************
 
-You report has been received!
+Your report has been received.
 
-Case ID:                                <%= @ticket.case_id%>
+Customer's Name:                           <%= @ticket.reported_by.person.fullname %>
 
-Product:                                 <%= @ticket.product.name%>
+Customer's Contact Phone:           <%= @ticket.reported_by.address.business_phone %>
 
-Reported_by:                        <%= @ticket.reported_by.person.fullname%>
+Customer's Contact Time:              <%= @ticket.opened_at_local.to_s %>
 
-Priority:                                  <%= @ticket.link.configuration %> <%= @ticket.reported_priority.name  %>
+Customer's e-mail:                          <%= @ticket.reported_by.email %>
 
-Link:                                       <%= @ticket.link.sites%>
+Case ID:                                             <%= @ticket.case_id %>
 
-Affected site:                         <%= @ticket.affected_site.nil? ? "Both" : @ticket.affected_site %>
+NSN Engineer on duty:                   <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.person.fullname : @ticket.link.region.users.field_managers.collect {|fm| fm.person.fullname }.join(', ')%>
 
-Frequency TX:                      <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %>
+NSN Engineer ID Number:            <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.id : @ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')%>
 
-Frequency RX:                     <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %>
+NSN Engineer Contact Time:        <%= @ticket.opened_at_local.to_s %>
 
-Failure:                                   <%= @ticket.failure.name%>
+Call handle time:                             <%= @ticket.capture_time %>
 
-Alarms:                                 <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
+Network Element:                           <%= @ticket.product.name %>
 
-Special instructions:          <%= @ticket.special_instructions.nil? ? "none" : @ticket.special_instructions%>
+Name of Site/Hostname:              <%= @ticket.link.region.name %>
 
-Your report was attended by NSN Engineer: <%= @ticket.attended_by.person.fullname%>.
+Failure:                                             <%= @ticket.failure.name %>
 
+Status:                                              <%= @ticket.status.name %>
 
+Priority:                                             <%= @ticket.link.configuration %> <%= @ticket.reported_priority.name  %>
+
+Links:                                                <%= @ticket.link.sites %>
+
+More affected:                                 <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %>
+
+Frequency TX:                                 <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %>
+
+Frequency RX:                                <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %>
+
+Alarms:                                            <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
+
+Special Instructions:                     <%= @ticket.special_instructions.nil? ? "none" : @ticket.special_instructions %>
+
+Additional notes:                            <%= @ticket.notes.nil? ? "none" : @ticket.notes %>
 
 Nokia Siemens Networks.
 

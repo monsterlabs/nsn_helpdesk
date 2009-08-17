@@ -324,10 +324,14 @@ table#listing tbody tr#ticket_title td {
 table#listing td#ticket_left_cell {
     font-weight: bold;
     width: 30%;
+    padding-top: 3px;
+    padding-bottom: 10px;
 }
 
 table#listing td#ticket_right_cell {
     width: 70%;
+    padding-top: 3px;
+    padding-bottom: 10px;
 }
 /**/
 
