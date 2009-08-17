@@ -7,7 +7,7 @@ class Views::Shared::ShowLog  < Views::Layouts::Application
     end
     tr do
       td:id => 'ticket_left_cell' do
-        rawtext b "This link has #{@record.versions.size - 1} version(s)"
+        rawtext b "This #{@record.class.name} has #{@record.versions.size - 1} version(s)"
       end
       td :id => 'ticket_right_cell' do
       end
@@ -52,14 +52,6 @@ class Views::Shared::ShowLog  < Views::Layouts::Application
         end
       end
     end
-  end
-end
-
-def who_has_changed_it(user_id)
-  @user= User.find(user_id)
-  unless @user.nil?
-    fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
-    "#{fullname} <#{@user.email}>"
   end
 end
 

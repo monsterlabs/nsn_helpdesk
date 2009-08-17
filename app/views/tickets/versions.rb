@@ -25,7 +25,7 @@ class Views::Tickets::Versions < Erector::RailsWidget
           text "Created by"
         end
         td :id => 'ticket_right_cell' do 
-          rawtext Person.find_by_modified_by_id(version.whodunnit).fullname unless Person.find_by_modified_by_id(version.whodunnit).nil?
+          rawtext who_has_changed_it(version.whodunnit)
         end
       end    
       tr do 

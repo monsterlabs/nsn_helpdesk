@@ -75,4 +75,12 @@ class Views::Layouts::Application < Views::Layouts::Page
       p { text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." }
     end
   end
+
+  def who_has_changed_it(user_id)
+    @user = User.find(user_id)
+    unless @user.nil?
+      fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
+      "#{fullname} <#{@user.email}>"
+    end
+  end  
 end

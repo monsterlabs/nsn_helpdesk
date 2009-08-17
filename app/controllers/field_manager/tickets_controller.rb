@@ -9,6 +9,8 @@ class FieldManager::TicketsController < TicketsController
 
   def update
     @ticket = Ticket.find(params[:id])
+    @ticket.ip_address = request.remote_ip    
+    @ticket.modified_by_id = current_user.id
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
         format.html { redirect_to :action => :index }
