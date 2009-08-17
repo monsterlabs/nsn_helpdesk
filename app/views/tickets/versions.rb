@@ -62,7 +62,6 @@ class Views::Tickets::Versions < Erector::RailsWidget
           end
         end            
         
-        
         tr do 
           td :id => 'ticket_left_cell' do 
             text 'Region'
@@ -77,6 +76,38 @@ class Views::Tickets::Versions < Erector::RailsWidget
           end
           td :id => 'ticket_right_cell' do 
             rawtext  version.reify.reported_by.person.fullname
+          end
+        end
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's bussiness phone"
+          end
+          td :id => 'ticket_right_cell' do 
+            rawtext  version.reify.reported_by.address.business_phone
+          end
+        end
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's home phone"
+          end
+          td :id => 'ticket_right_cell' do 
+            rawtext  version.reify.reported_by.address.home_phone
+          end
+        end
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's mobile phone"
+          end
+          td :id => 'ticket_right_cell' do 
+            rawtext  version.reify.reported_by.address.mobile_phone
+          end
+        end
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's fax number"
+          end
+          td :id => 'ticket_right_cell' do 
+            rawtext  version.reify.reported_by.address.fax_number
           end
         end
         tr do 

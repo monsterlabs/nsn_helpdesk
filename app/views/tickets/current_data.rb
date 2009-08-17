@@ -4,62 +4,110 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
   def content
     tr :id=> 'ticket_title' do
       td {}
-      td {label "Ticket Currrent Data"}
+      td {label "Ticket Details"}
     end 
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's name"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.reported_by.person.fullname
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Custmomer's company"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.reported_by.person.company.name
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's contact phone"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.reported_by.address.business_phone
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's mobile phone"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.reported_by.address.mobile_phone
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's contact time"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.opened_at_local
+      end
+    end
+    tr do
+      td :id => 'ticket_left_cell' do 
+        text "Customer's email"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.reported_by.email
+      end
+    end
     tr do 
       td :id => 'ticket_left_cell' do 
         text "Case ID"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.case_id
+        rawtext ticket.case_id
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Region'
+        text "NSN Engineer on duty"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.link.region.name
+        rawtext ticket.assigned_to.person.fullname unless  ticket.assigned_to.nil?
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Customer name'
+        text "NSN Engineer ID number"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext  @ticket.reported_by.person.fullname
+        rawtext ticket.attended_by.id
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Company'
+        text "NSN Engineer contact time"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.reported_by.person.company.name
+        rawtext ticket.created_at.to_s + ' America/Mexico_City'
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Link'
+        text 'Call handle time'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.link.sites
+        rawtext ticket.capture_time
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Affected Site(s)'
+        text 'Network element (product)'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.affected_site
+        rawtext ticket.product.name
       end
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Priority'
+        text 'Name of site / hostname (region)'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.priority.name
+        rawtext ticket.link.region.name
       end
     end
     tr do 
@@ -67,7 +115,55 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Failure'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.failure.name
+        rawtext ticket.failure.name
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Status'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.status.name
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Priority'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.link.configuration + ' ' + ticket.reported_priority.name
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Links'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.link.sites
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'More affected site'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.affected_sites
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Frequency TX'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.link.frequency_tx
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Frequency RX'
+      end
+      td :id => 'ticket_right_cell' do 
+        text ticket.link.frequency_rx
       end
     end
     tr do 
@@ -80,10 +176,26 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Attended by'
+        text 'Special instruction(s)'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.attended_by.person.fullname
+        text ticket.special_instructions
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Phone call attended by'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.attended_by.person.fullname
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text 'Recommended priority'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.priority.name
       end
     end
     tr do 
@@ -91,23 +203,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Opened Date '
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.opened_at
-      end
-    end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text 'Call handle time'
-      end
-      td :id => 'ticket_right_cell' do 
-        rawtext @ticket.capture_time
-      end
-    end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text 'Current Status'
-      end
-      td :id => 'ticket_right_cell' do 
-        rawtext @ticket.status.name
+        rawtext ticket.opened_at
       end
     end
     tr do 
@@ -115,7 +211,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Additional notes'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.notes
+        rawtext ticket.notes
       end
     end
   end

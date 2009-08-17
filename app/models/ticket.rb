@@ -95,7 +95,7 @@ class Ticket < ActiveRecord::Base
   def opened_at_local
     time_zone = link.time_zone.nil? ?  'America/Mexico_City' : link.time_zone.name
     tz = TZInfo::Timezone.get(time_zone)
-    tz.utc_to_local(opened_at.utc)
+    tz.utc_to_local(opened_at.utc).to_s + ' ' + link.time_zone.name
   end
 
   def self.search_and_paginate(search = :all,page = 1, per_page = 10)
