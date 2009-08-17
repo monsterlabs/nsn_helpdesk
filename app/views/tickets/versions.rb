@@ -1,5 +1,6 @@
 class Views::Tickets::Versions < Erector::RailsWidget
   needs :ticket
+
   def content
     tr :id => "ticket_title" do 
       td {}
@@ -12,9 +13,8 @@ class Views::Tickets::Versions < Erector::RailsWidget
       td :id => "ticket_right_cell" do 
       end
     end   
-
+    
     @ticket.versions.reverse.each do |version| 
-
       tr do 
         td :id => "ticket_left_cell" do 
         end
