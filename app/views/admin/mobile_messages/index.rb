@@ -12,19 +12,17 @@ class Views::Admin::MobileMessages::Index < Views::Layouts::Application
   
   def table_body
     tbody do    
-      unless @collection.nil?
-        @collection.each do |record|
-          tr do
-            if record.messageable_type == 'Ticket'
-              td { rawtext record.messageable.case_id }
-            else
-              td { rawtext record.messageable.sites }
-            end
-            td { rawtext record.phone_number }
-            td { rawtext record.body }
-            td { rawtext (record.status ? 'Sent' : 'Pending') }
-            td { rawtext record.created_at }
+      @collection.each do |record|
+        tr do
+          if record.messageable_type == 'Ticket'
+            td { rawtext record.messageable.case_id }
+          else
+            td { rawtext record.messageable.sites }
           end
+          td { rawtext record.phone_number }
+          td { rawtext record.body }
+          td { rawtext (record.status ? 'Sent' : 'Pending') }
+          td { rawtext record.created_at }
         end
       end
     end
