@@ -44,10 +44,11 @@ function badBrowser(){
 if(badBrowser()){
 	$(function(){
 		$("<div id='browserWarning'>You are using an unsupported browser. "+
-		    "Please one of these:&nbsp;" + 
-		      "<a href='http://www.apple.com/safari/'><img src='/images/Safari.png' /></a>&nbsp;&nbsp;"+
-		      "<a href='http://www.mozilla.com/firefox/'><img src='/images/firefox.png' /></a>&nbsp;"+
-		      "<a href='http://www.google.com/chrome/'><img src='/images/google-chrome.png' /></a>")
+		    "Please use the mos recient version of:&nbsp;" + 
+		      "<a href='http://www.apple.com/safari/'><img title='Safari 4' src='/images/Safari.png' /></a>&nbsp;&nbsp;"+
+		      "<a href='http://www.mozilla.com/firefox/'><img title='Firefox 3' src='/images/firefox.png' /></a>&nbsp;"+
+		      "<a href='http://www.google.com/chrome/'><img title='Google Chrome' src='/images/google-chrome.png' /></a>&nbsp;"+
+		      "<a href='http://www.microsoft.com/windows/internet-explorer/default.aspx'><img title='Internet Explorer 8' src='/images/explorer.png'/></a>")
 			.prependTo("body");
 	});	
 }

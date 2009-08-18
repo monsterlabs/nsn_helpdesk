@@ -57,25 +57,27 @@ class Views::Sessions::New < Views::Layouts::Application
          text "NSN Mexico Cellular Transmission." 
       end
       div :class => "browsers login_view", :id => 'text' do
-        text 'This application runs on:'
+        text 'This application runs on the most recient versions of:'
         div :class => 'browser_link', :id => 'safari' do
           a :href => 'http://www.apple.com/safari/' do
-            img :src => "/images/Safari.png"
+            img :src => "/images/Safari.png", :title => "Safari 4"
           end
         end
         div :class => 'browser_link', :id => 'firefox' do
           a :href => 'http://www.mozilla.com/firefox/' do
-            img :src => "/images/firefox.png"
+            img :src => "/images/firefox.png", :title => "Firefox 3"
           end
         end
         div :class => 'browser_link', :id => 'chrome' do
           a :href => 'http://www.google.com/chrome/' do
-            img :src => "/images/google-chrome.png"
+            img :src => "/images/google-chrome.png", :title => "Google Chrome"
           end
         end
-        #div :class => 'browser_link', :id => 'explorer' do
-          #link_to 'explorer', 'http://www.microsoft.com/windows/internet-explorer/default.aspx'
-        #end
+        div :class => 'browser_link', :id => 'explorer' do
+          a :href => 'http://www.microsoft.com/windows/internet-explorer/default.aspx' do
+            img :src => "/images/explorer.png", :title => "Internet Explorer 8"
+          end
+        end
       end
      end
    end
