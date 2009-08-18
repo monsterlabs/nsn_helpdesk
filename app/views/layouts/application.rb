@@ -72,7 +72,12 @@ class Views::Layouts::Application < Views::Layouts::Page
   
   def footer
     div :id => "footer" do
-      p { text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." }
+      p {
+         text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved."
+         br
+         br
+         text "NSN Mexico Cellular Transmission." 
+        }
     end
   end
 

@@ -51,7 +51,10 @@ class Views::Sessions::New < Views::Layouts::Application
    def footer
     div :id => "footer" do
       p :class => "login_view" do 
-        text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." 
+         text "Copyright ©2009 Nokia Siemens Networks. All Rights reserved." 
+         br
+         br
+         text "NSN Mexico Cellular Transmission." 
       end
       div :class => "browsers login_view", :id => 'text' do
         text 'This application runs on:'
