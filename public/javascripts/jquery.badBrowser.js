@@ -44,7 +44,7 @@ function badBrowser(){
 if(badBrowser()){
 	$(function(){
 		$("<div id='browserWarning'>You are using an unsupported browser. "+
-		    "Please use the mos recient version of:&nbsp;" + 
+		    "Please use the mos recent version of:&nbsp;" + 
 		      "<a href='http://www.apple.com/safari/'><img title='Safari 4' src='/images/Safari.png' /></a>&nbsp;&nbsp;"+
 		      "<a href='http://www.mozilla.com/firefox/'><img title='Firefox 3' src='/images/firefox.png' /></a>&nbsp;"+
 		      "<a href='http://www.google.com/chrome/'><img title='Google Chrome' src='/images/google-chrome.png' /></a>&nbsp;"+

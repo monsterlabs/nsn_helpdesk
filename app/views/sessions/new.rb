@@ -57,7 +57,7 @@ class Views::Sessions::New < Views::Layouts::Application
          text "NSN Mexico Cellular Transmission." 
       end
       div :class => "browsers login_view", :id => 'text' do
-        text 'This application runs on the most recient versions of:'
+        text 'This application runs on the most recent versions of:'
         div :class => 'browser_link', :id => 'safari' do
           a :href => 'http://www.apple.com/safari/' do
             img :src => "/images/Safari.png", :title => "Safari 4"
