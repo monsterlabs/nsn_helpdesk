@@ -42,7 +42,7 @@ class Ticket < ActiveRecord::Base
   }
   
   before_create :prepare_case_id
-
+  before_update :disable_timestamp
   def prepare_case_id
     date = Date.today.strftime "%d%m%Y"
     last = Ticket.daily.last
@@ -51,6 +51,13 @@ class Ticket < ActiveRecord::Base
     self.case_id = "NSNCT#{date}#{serial}"
   end
   
+  def disable_timestamp
+    if changes.include?(:updated_at)
+      ActiveRecord::Base.record_timestamps = false
+    end
+    true
+  end
+
   def affected_sites
     affected_site.to_s.empty? ? 'Both' : affected_site
   end
@@ -85,10 +92,6 @@ class Ticket < ActiveRecord::Base
     end
   end
   
-  def due_date
-    self.priority.name == "0+0 High" ? self.created_at + 2.hours : due_date = self.created_at + 10.days 
-  end
-
   def opened_at_local
     time_zone = link.time_zone.nil? ?  'America/Mexico_City' : link.time_zone.name
     tz = TZInfo::Timezone.get(time_zone)

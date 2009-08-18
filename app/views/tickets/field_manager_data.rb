@@ -15,7 +15,7 @@ class Views::Tickets::FieldManagerData < Erector::RailsWidget
         text 'Due Date'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.due_date
+        rawtext ticket.updated_at
       end
     end
 
