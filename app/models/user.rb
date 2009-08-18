@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   named_scope :customers, :conditions => "roles.name = 'customer'", :include => { :user_roles => :role }
   named_scope :field_managers, :conditions => "roles.name = 'field_manager'", :include => { :user_roles => :role }
   named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
+  named_scope :emergencies, :conditions => "roles.name = 'emergencies'", :include => { :user_roles => :role }
 
   acts_as_authentic
   
@@ -50,6 +51,13 @@ class User < ActiveRecord::Base
     self.person.region.id
   end
   
+  def mobile_phones
+    unless address.nil?
+      address.mobile_phone.gsub(/044/,'').strip.gsub(/\s/,'').split(',')
+    else
+      []
+    end
+  end
   private
   
   def self.random_password(length)

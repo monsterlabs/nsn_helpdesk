@@ -74,10 +74,6 @@ class Ticket < ActiveRecord::Base
       'Sent at: ' + created_at.to_s(:short) 
       ].join(', ')
   end
-  
-  def emergency_phone_number
-    '5522159641'
-  end
 
   # Fix It: Change method name to capture_duration
   def capture_time

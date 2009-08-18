@@ -13,7 +13,7 @@ class LoadUserRegionForFieldManager < ActiveRecord::Migration
     user_regions(147, ['Region 5'])
     user_regions(148, ['Region 2', 'Region 1', 'Region 4'])
     
-    @emergency_role = Role.create!(:name => 'Emergencies')
+    @emergency_role = Role.create!(:name => 'emergencies')
     @user = User.find(144)
     @user.roles << @emergency_role
     @user.save
