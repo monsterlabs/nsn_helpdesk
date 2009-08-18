@@ -18,7 +18,7 @@ Updated at: <%= @link.updated_at%><br/>
   <% else%>
     <% attribute_data = @link.send(attr.to_s)%>
   <% end%>
-  <p><%= ActiveSupport::Inflector.humanize(attr).to_s + ": #{attribute_data}" %></p>
+  <p><b><%= ActiveSupport::Inflector.humanize(attr).to_s + "  : #{attribute_data}" %></b></p>
 <% end%>
 <br/>
 <br/>
@@ -31,7 +31,7 @@ Updated at: <%= @link.updated_at%><br/>
   <% else%>
     <% attribute_data = last_version.send(attr.to_s)%>
   <% end%>
-  <p><%= ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %></p>
+  <p><b><%= ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %></b></p>
 <% end%>
 <br/>
 You can see total versions of this ticket in the next url:<br/>
