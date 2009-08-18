@@ -250,7 +250,8 @@ div#login_box {
 	margin-left: 300px;
 	margin-top: 40px;
 	margin-bottom: 40px;
-	background: url("../images/box_background.png");
+	/*background: url("../images/box_background.png");*/
+	background-color: transparent;
 	height: 300px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;

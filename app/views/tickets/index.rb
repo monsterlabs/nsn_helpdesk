@@ -18,8 +18,8 @@ class Views::Tickets::Index < Views::Layouts::Application
       end
       div :class => "clear"
       footer
+      end
     end
-  end
 
   def view_content
     span :id =>"ticket_collection", :class => 'collection' do
