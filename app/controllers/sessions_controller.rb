@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 #  skip_filter_access_to
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
+
+  caches_action :new, :recover_password
+
   def new
     @session = UserSession.new
   end
