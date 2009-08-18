@@ -36,6 +36,7 @@ class Notifier < ActionMailer::Base
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = {:link => link }
+    @content_type = "text/html"
   end
 
   def reminder_notification(ticket)

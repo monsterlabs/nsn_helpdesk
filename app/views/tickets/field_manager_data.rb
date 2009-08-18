@@ -4,10 +4,10 @@ class Views::Tickets::FieldManagerData < Erector::RailsWidget
   def content
     tr do 
       td :id => 'ticket_left_cell' do 
-        text (@ticket.status.id == 2 ? 'Assigned to' : "#{@ticket.status.name} by: ")
+        text (ticket.status.id == 2 ? 'Assigned to' : "#{ticket.status.name} by: ")
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.assigned_to.person.fullname
+        rawtext ticket.accepts_closing.person.fullname
       end
     end
     tr do 
@@ -15,17 +15,17 @@ class Views::Tickets::FieldManagerData < Erector::RailsWidget
         text 'Due Date'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext @ticket.due_date
+        rawtext ticket.due_date
       end
     end
 
-   if @ticket.status.name == 'Closed'
+   if ticket.status.name == 'Closed'
       tr do 
         td :id => 'ticket_left_cell' do 
           text 'Ticket Type'
         end
         td :id => 'ticket_right_cell' do 
-          rawtext @ticket.ticket_type.name
+          rawtext ticket.ticket_type.name
         end
       end
     end

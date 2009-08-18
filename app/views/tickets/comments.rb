@@ -21,7 +21,7 @@ class Views::Tickets::Comments < Erector::RailsWidget
           text 'From'
         end
         td :id => 'ticket_right_cell' do 
-          rawtext "#{comment.user.person.fullname} - #{comment.created_at}"
+          rawtext "#{comment.user.person.nil? ? 'admin' : comment.user.person.fullname} - #{comment.created_at}"
         end
       end
       tr do 

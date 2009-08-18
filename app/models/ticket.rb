@@ -15,6 +15,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :attended_by, :class_name => 'User'
   belongs_to :modified_by, :class_name => 'User'
   belongs_to :alternate_contact, :class_name => 'User'
+  belongs_to :accepts_closing, :class_name => 'User'
   belongs_to :failure
   
   belongs_to :link  
