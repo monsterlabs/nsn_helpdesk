@@ -59,10 +59,8 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
           label "Name"
           rawtext text_field_tag 'failure[name]'
           br
-          rawtext submit_to_remote 'create_failure', 'Create', 
-              :url => "/admin/failures/create", 
-              :success => "$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');",
-              :submit => "add_failure_dialog"
+          
+          a(ui_style(:button).merge({:onclick =>"$.ajax({data:$(\"#add_failure_dialog :input\").serialize(), dataType:'script', success:function(request){$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');}, type:'post', url:'/admin/failures/create'});"})) {text "Create"}
       end
     end
 
