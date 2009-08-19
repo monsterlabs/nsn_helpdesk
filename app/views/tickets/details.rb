@@ -16,8 +16,7 @@ class Views::Tickets::Details < Erector::RailsWidget
               });
               $("#add_edit_dialog").dialog("open");
               set_button_behaviour();
-              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());
-              $("input#person_lastname_firstname").disable();'},
+              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4"
@@ -41,7 +40,7 @@ class Views::Tickets::Details < Erector::RailsWidget
               $("#add_edit_dialog").dialog("open");
               set_button_behaviour();
               $("#link_region_id").val($("#customer_filter_region_id").val());'},
-              ui_style(:button, {:class => "no_float"}))
+              ui_style(:button, {:class => "no_float"})) if current_user.does_not_have_role? :operator
       rawtext hidden_field_tag 'ticket[link_id]'
       br
       label "Affected site"

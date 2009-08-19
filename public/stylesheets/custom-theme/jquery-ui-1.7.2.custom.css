@@ -48,11 +48,7 @@
 
 /* Component containers
 ----------------------------------*/
-<<<<<<< HEAD:public/stylesheets/custom-theme/jquery-ui-1.7.2.custom.css
 .ui-widget-content { border: 1px solid #d7d7d7; background: #fafafa; color: #3d3d3d; }
-=======
-.ui-widget-content { border: 1px solid #d7d7d7; background: #f8f8f8; color: #3d3d3d; }
->>>>>>> 33165afffffcd32ca4027805c1658424dca49928:public/stylesheets/custom-theme/jquery-ui-1.7.2.custom.css
 .ui-widget-content a { color: #3d3d3d; }
 .ui-widget-header { border: 1px solid #e78908; background: #d76004 url(images/ui-bg_inset-hard_25_d76004_1x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }

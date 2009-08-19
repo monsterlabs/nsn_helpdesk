@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
         format.js { render 'show_js' }
       else
         format.html { render :action => 'new' }
-        format.js { }
+        format.js { render 'error_js' }
       end
     end
   end

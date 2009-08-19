@@ -1,8 +1,10 @@
 class Views::Admin::Users::NewJs < Views::Layouts::ApplicationJs
   def js_content
-    rawtext error_messages_for 'user', :class => 'ui-state-error ui-corner-all'
     form_remote_tag(:url => "/users/create", 
-    :success => "$('#person_lastname_firstname').val($('#user_person_attributes_firstname').val() + ' ' + $('#user_person_attributes_lastname').val() ); $('div#reporter_details').html(request); $('#add_edit_dialog').dialog('close');") do
+    :success => "$('#person_lastname_firstname').val($('#user_person_attributes_firstname').val() + ' ' + $('#user_person_attributes_lastname').val() );
+                 $('div#reporter_details').html(request); $('#add_edit_dialog').dialog('close');
+                 $('input#person_lastname_firstname').disable();") do
+                 
       rawtext hidden_field_tag 'user[person_attributes][region_id]'
       p do
         label "E-mail"

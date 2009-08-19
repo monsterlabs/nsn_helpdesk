@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
   def has_role?(role)
     role_symbols.include?(role)
   end
+  
+  def does_not_have_role?(role)
+    !has_role?(role)
+  end
 
   def send_random_password
     new_password = User.random_password(10)
