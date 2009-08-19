@@ -27,6 +27,7 @@ class Views::Layouts::Application < Views::Layouts::Page
       header_bar
       toplinks
       dashboard
+      controller_title
       ## This is where the view sets its content
       div :class => "prefix_1 grid_14 suffix_1" do
         view_content
@@ -82,6 +83,12 @@ class Views::Layouts::Application < Views::Layouts::Page
     unless @user.nil?
       fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
       "#{fullname} <#{@user.email}>"
+    end
+  end
+  
+  def controller_title
+    div :class => 'grid_3 prefix_7', :id => 'controller_title' do
+      h1 controller_name.capitalize
     end
   end  
 end
