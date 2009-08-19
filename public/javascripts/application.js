@@ -140,3 +140,15 @@ function reset_reporter() {
   $("#reporter_details").html("");
   $("#ticket_reported_by_id").val("");
 }
+
+function show_progress() {
+  $.blockUI({ 
+    message: '<div id=\"progress\">',
+    css: { border: 'none', backgroundColor: 'transparent' },
+    baseZ: 1004});
+  $('#progress').progressbar({value: 100});
+}
+
+function hide_progress() {
+  $.unblockUI();
+}

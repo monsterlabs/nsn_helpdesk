@@ -243,6 +243,10 @@ div#feedback {
 	top: 35%;
 }
 
+#progress .ui-progressbar-value {
+	background-image: url("../images/progress.gif");
+}
+
 /* sessions/new */
 
 div#login_box {

@@ -1,10 +1,11 @@
 class Views::Admin::Users::NewJs < Views::Layouts::ApplicationJs
   def js_content
-    form_remote_tag(:url => "/users/create", 
+    form_remote_tag(:url => "/users/create",
+    :loading => "show_progress()",
     :success => "$('#person_lastname_firstname').val($('#user_person_attributes_firstname').val() + ' ' + $('#user_person_attributes_lastname').val() );
                  $('div##{@response_id}').html(request); $('#add_edit_dialog').dialog('close');
-                 $('input#{@input_id}').disable();") do
-                 
+                 $('input#{@input_id}').disable();
+                 hide_progress();") do
       rawtext hidden_field_tag 'user[person_attributes][region_id]'
       p do
         label "E-mail"
