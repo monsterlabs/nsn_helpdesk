@@ -7,6 +7,7 @@ $(document).ready(function(){
       success: function(data){ $("#details").html(data); },
       complete: function(){ 
         autocomplete_reporter();
+        autocomplete_alternate();
         autocomplete_link();
         add_failure_dialog();
         set_button_behaviour();
@@ -108,6 +109,27 @@ function autocomplete_reporter() {
     $.ajax({
       url: "/users/"+ data[2],
       success: function(request) { $("div#reporter_details").html(request); set_button_behaviour(); $("input#person_lastname_firstname").disable();}
+    });
+  });
+}
+
+function autocomplete_alternate() {
+  $("input#alternate_person_lastname_firstname").autocomplete("/tickets/auto_complete_for_person_lastname_firstname",
+  { mustMatch: false,
+    extraParams: { 'options[region_id]': $("#customer_filter_region_id").val(),
+                   'select': "user.id company.name user.email"},
+    formatItem: function(row) {
+                  return row[0] + " " + 
+                        "<span class='ac_company'>" + row[3] + "</span>" +
+                        "<span class='ac_email'>" + row[4] + "</span>";
+                }
+  });
+  $("input#alternate_person_lastname_firstname").result(function(event, data, formatted) {
+    var hidden = $("#ticket_alternate_contact_id");
+    hidden.val(data[2]);
+    $.ajax({
+      url: "/users/"+ data[2],
+      success: function(request) { $("div#alternate_details").html(request); set_button_behaviour(); $("input#alternate_person_lastname_firstname").disable();}
     });
   });
 }

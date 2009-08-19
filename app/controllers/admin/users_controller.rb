@@ -8,6 +8,8 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
+    @response_id = params[:response_id]
+    @input_id = params[:input_id]
     respond_to do |format|
       format.html { render 'new' }
       format.js { render 'new_js' }

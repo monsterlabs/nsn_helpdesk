@@ -439,7 +439,7 @@ span.epiclock-spacer {
 	padding: 0px 2px;
 }
 
-div#reporter_details p {
+div#reporter_details p, div#alternate_details p {
   margin: 10px 0px;
 }
 
@@ -447,7 +447,7 @@ div#link_details p {
   margin: 10px 0px;
 }
 
-div#reporter_details p b {
+div#reporter_details p b, div#alternate_details p b {
   padding-right: 10px;
 }
 

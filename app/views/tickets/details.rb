@@ -5,6 +5,7 @@ class Views::Tickets::Details < Erector::RailsWidget
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, nil, :size => 30
       link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+              :with => "'response_id=reporter_details&input_id=person_lastname_firstname'",
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
@@ -21,6 +22,29 @@ class Views::Tickets::Details < Erector::RailsWidget
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4"
       rawtext hidden_field_tag 'ticket[reported_by_id]'
+    end
+    
+    div :class => 'field' do
+      label "Alternative contact"
+      rawtext text_field_tag :alternate_person_lastname_firstname, nil, :size => 30
+      link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+              :with => "'response_id=alternate_details&input_id=alternate_person_lastname_firstname'",
+              :update => {:success => "add_edit_dialog"}, 
+              :success => '$("#add_edit_dialog").dialog({
+                bgiframe: true,
+                height: 280,
+                modal: true,
+                autoOpen: false,
+                draggable: false,
+                resizable: false
+              });
+              $("#add_edit_dialog").dialog("open");
+              set_button_behaviour();
+              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
+              ui_style(:button, {:class => "no_float"}))
+      br
+      div :id => "alternate_details", :class => "prefix_3 grid_4"
+      rawtext hidden_field_tag 'ticket[alternate_contact_id]'
     end
     
     div :class => 'field' do
