@@ -18,18 +18,19 @@ module DashboardHelper
             ul :class => "submenu", :style=>"display: none;", :id => (record.controller + '_children') do
               record.children.collect do |child|
                 li do
-                  link_to (child.label || child.controller.humanize), :controller =>  name_space + '/' + child.controller, :action => child.action
+                  mylabel = child.label || child.controller.humanize
+                  link_to mylabel, :controller =>  (name_space + '/' + child.controller), :action => child.action
                 end
               end
             end
           end
         end
       end
-    end 
+    end
   end
 
   def tab(name_space, record)
-    li :class => "t-proj" do 
+    li :class => "t-proj" do
       link_to(record.controller.humanize, :controller => name_space + '/' + record.controller)
     end
   end
