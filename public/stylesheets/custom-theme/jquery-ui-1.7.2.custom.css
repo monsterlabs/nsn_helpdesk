@@ -48,7 +48,7 @@
 
 /* Component containers
 ----------------------------------*/
-.ui-widget-content { border: 1px solid #d7d7d7; background: #f5f5f5; color: #3d3d3d; }
+.ui-widget-content { border: 1px solid #d7d7d7; background: #f8f8f8; color: #3d3d3d; }
 .ui-widget-content a { color: #3d3d3d; }
 .ui-widget-header { border: 1px solid #e78908; background: #d76004 url(images/ui-bg_inset-hard_25_d76004_1x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
