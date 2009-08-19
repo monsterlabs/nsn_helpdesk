@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
   css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete"
-  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "jquery.badBrowser.js", "application"
+  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "jquery.badBrowser.js", "jquery.blockUI.js", "application"
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
@@ -21,7 +21,7 @@ class Views::Layouts::Application < Views::Layouts::Page
   include DashboardHelper
   
   def body_content
-    feedback
+    div :id => "feedback"
     div :class => "container_16" do
       ## Create the layout
       header_bar
@@ -59,10 +59,6 @@ class Views::Layouts::Application < Views::Layouts::Page
         text mydashboard
     end
     div :class => "clear" 
-  end
-
-  def feedback
-    div :id => "feedback"
   end
 
   def dialog

@@ -4,23 +4,6 @@ class Views::Tickets::Index < Views::Layouts::Application
     "Tickets Index"
   end
 
-  def body_content
-    feedback
-    div :class => "container_16" do
-      ## Create the layout
-      header_bar
-      toplinks
-      dashboard
-      ## This is where the view sets its content
-      div :class => "grid_16" do
-        view_content
-        dialog
-      end
-      div :class => "clear"
-      footer
-      end
-    end
-
   def view_content
     span :id =>"ticket_collection", :class => 'collection' do
       widget Views::Tickets::Table, :collection => @collection

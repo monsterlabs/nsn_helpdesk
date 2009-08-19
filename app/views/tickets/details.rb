@@ -9,13 +9,14 @@ class Views::Tickets::Details < Erector::RailsWidget
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
-                height: 280,
+                height: 320,
                 modal: true,
                 autoOpen: false,
                 draggable: false,
                 resizable: false
               });
               $("#add_edit_dialog").dialog("open");
+              $("#add_edit_dialog").dialog("enable");
               set_button_behaviour();
               $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
@@ -32,13 +33,14 @@ class Views::Tickets::Details < Erector::RailsWidget
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
-                height: 280,
+                height: 320,
                 modal: true,
                 autoOpen: false,
                 draggable: false,
                 resizable: false
               });
               $("#add_edit_dialog").dialog("open");
+              $("#add_edit_dialog").dialog("enable");
               set_button_behaviour();
               $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
               ui_style(:button, {:class => "no_float"}))
