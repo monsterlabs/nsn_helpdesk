@@ -22,3 +22,6 @@
 [submodule "vendor/plugins/mail_queue"]
 	path = vendor/plugins/mail_queue
 	url = git://github.com/fnando/mail_queue.git
+[submodule "vendor/plugins/open_flash_chart"]
+	path = vendor/plugins/open_flash_chart
+	url = git://github.com/pullmonkey/open_flash_chart.git
