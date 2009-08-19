@@ -36,11 +36,21 @@ class Ticket < ActiveRecord::Base
       :joins => 'left join links on links.id = tickets.link_id' }
   }
 
+  named_scope :region_id_equals_any, lambda { |ids|
+    { :conditions => ids.collect { |id| "links.region_id = #{id}" }.join(' OR '),
+      :joins => 'left join links on links.id = tickets.link_id' }
+  }
+
   named_scope :sites_like, lambda { |sites|
     { :conditions => ['LOWER(links.sites) LIKE ? ', "%#{sites.downcase}%" ], 
       :joins => 'left join links on links.id = tickets.link_id' }
   }
+  named_scope :created_at_in_year_and_month, lambda { |year, month|
+      m = month.to_s.length < 2 ? "0" + month.to_s : month.to_s 
+      { :conditions => ["date_part('year', created_at)  = ? AND date_part('month', created_at) = ?", year.to_s, m.to_s] }
+    }
   
+
   before_create :prepare_case_id
   before_update :disable_timestamp
   def prepare_case_id
