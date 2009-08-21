@@ -1,14 +1,61 @@
 class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
   needs :ticket
+  
   def content
+    jquery "autocomplete_reporter();
+    autocomplete_alternate();
+    autocomplete_link();"
+    
     div :class => 'field' do
       label "Reported by"
-      rawtext text_field_tag :person_lastname_firstname, ticket.reported_by.person.fullname, :size => 30, :onFocus=> "autocomplete_reporter();"
+      rawtext text_field_tag :person_lastname_firstname, ticket.reported_by.person.fullname, :size => 30, :disabled => "true"
+      link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+              :with => "'response_id=reporter_details&input_id=person_lastname_firstname'",
+              :update => {:success => "add_edit_dialog"}, 
+              :success => '$("#add_edit_dialog").dialog({
+                bgiframe: true,
+                height: 320,
+                modal: true,
+                autoOpen: false,
+                draggable: false,
+                resizable: false
+              });
+              $("#add_edit_dialog").dialog("open");
+              $("#add_edit_dialog").dialog("enable");
+              set_button_behaviour();
+              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
+              ui_style(:button, {:class => "no_float"}))
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4" do
-        #widget Views::Admin::Users::ShowJs.new(:user => ticket.reported_by)
+        widget Views::Admin::Users::ShowJs, :user => ticket.reported_by, :value_tag_id => 'ticket_reported_by_id', :associated_field_id => 'person_lastname_firstname'
       end
       rawtext hidden_field_tag 'ticket[reported_by_id]', ticket.reported_by.id
+    end
+    
+    div :class => 'field' do
+      label "Alternative contact"
+      rawtext text_field_tag :alternate_person_lastname_firstname, ticket.alternate_contact.person.fullname, :size => 30, :disabled => "true"
+       link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+                :with => "'response_id=alternate_details&input_id=alternate_person_lastname_firstname'",
+                :update => {:success => "add_edit_dialog"}, 
+                :success => '$("#add_edit_dialog").dialog({
+                  bgiframe: true,
+                  height: 320,
+                  modal: true,
+                  autoOpen: false,
+                  draggable: false,
+                  resizable: false
+                });
+                $("#add_edit_dialog").dialog("open");
+                $("#add_edit_dialog").dialog("enable");
+                set_button_behaviour();
+                $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
+                ui_style(:button, {:class => "no_float"}))
+      br
+      div :id => "alternate_details", :class => "prefix_3 grid_4" do
+        widget Views::Admin::Users::ShowJs, :user => ticket.alternate_contact, :value_tag_id => 'ticket_alternate_contact_id', :associated_field_id => 'alternate_person_lastname_firstname'
+      end
+      rawtext hidden_field_tag 'ticket[alternate_contact_id]', ticket.alternate_contact.id
     end
     
     div :class => 'field' do
@@ -34,7 +81,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       rawtext text_field_tag 'ticket[affected_site]', ticket.affected_site
       br
       div :id => "link_details", :class => "prefix_3 grid_4" do
- #       widget Views::Links::ShowRecordJs, :record => ticket.link
+        widget Views::Links::ShowRecordJs, :record => ticket.link
       end
     end
 

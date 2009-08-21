@@ -1,4 +1,6 @@
 class Views::Admin::Users::ShowJs < Views::Layouts::ApplicationJs
+  # needs :value_tag_id, :associated_field_id, :user
+  
   def js_content
     p do
       b { text "Company"}
@@ -21,7 +23,10 @@ class Views::Admin::Users::ShowJs < Views::Layouts::ApplicationJs
       text @user.address.mobile_phone
     end
     
-    a :onclick => 'reset_reporter();', 
+    a :onclick => %Q($("input##{@associated_field_id}").enable();
+                   $("input##{@associated_field_id}").val("");
+                   $("##{@value_tag_id}").val("");
+                   $(this).parent().html("");),
       :class => 'ui-state-default ui-corner-all button' do
       text 'Change'
     end

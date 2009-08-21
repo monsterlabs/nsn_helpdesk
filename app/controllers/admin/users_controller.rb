@@ -59,7 +59,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.html { render 'show' }
-      format.js { render 'show_js' }
+      format.js { 
+        @associated_field_id = params['associated_field_id']
+        @value_tag_id = params['value_tag_id']
+        render 'show_js' 
+      }
     end
   end
 

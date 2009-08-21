@@ -40,7 +40,10 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     respond_to do |format|    
         format.html { render  'links/show' }
-        format.js { render 'links/show_js' }
+        format.js { 
+          @record = @link
+          render 'links/show_js' 
+        }
     end
   end
   
