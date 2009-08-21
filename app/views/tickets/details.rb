@@ -89,7 +89,7 @@ class Views::Tickets::Details < Erector::RailsWidget
     
     div :class => 'field' do
       label "Failure"
-      rawtext simple_select :ticket, :failure
+      rawtext collection_select(Ticket, :failure_id, Failure.all, :id, :failure_length_limited, :prompt => '-- Select Failure  --')
       div ui_style(:button, {:class => "no_float", :id => "add_failure"}) do
         text "Add"
       end
