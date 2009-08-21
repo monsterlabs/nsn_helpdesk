@@ -5,7 +5,7 @@ class Views::ChangePasswords::Form < Erector::RailsWidget
       rawtext error_messages_for 'user', :class => 'ui-state-error ui-corner-all'
       div :class => 'field' do
         label "Password"
-        rawtext f.password_field :password, :size => 20
+        rawtext f.password_field :password, :value => nil, :size => 20
       end
       div :class => 'field' do
         label "Password confirmation"
