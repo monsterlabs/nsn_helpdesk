@@ -31,7 +31,7 @@ class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
         end
         div :class => 'field' do
           label "Region"
-          rawtext filter_select :region, :customer_filter, :selected => @ticket.link
+          rawtext filter_select :region, :customer_filter, :selected => @ticket.link.region_id
         end
         div :id => 'details' do
           widget Views::FieldManager::Tickets::EditDetails, :ticket => @ticket
