@@ -5,4 +5,9 @@ class Failure < ActiveRecord::Base
   default_scope :order => 'name ASC'
 
   has_many :tickets
+  
+  def failure_length_limited
+    (name.length > 70) ? (name.slice(0..69) + '...') : name
+  end
+  
 end

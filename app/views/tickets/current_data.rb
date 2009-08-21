@@ -24,10 +24,10 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text "Customer's contact phone"
+        text "Customer's phone"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext  ticket.reported_by.address.business_phone
+        rawtext  ticket.reported_by.address.business_phone == ""  ? 'none' : ticket.reported_by.address.business_phone
       end
     end
     tr do 
@@ -35,15 +35,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text "Customer's mobile phone"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext  ticket.reported_by.address.mobile_phone
-      end
-    end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "Customer's contact time"
-      end
-      td :id => 'ticket_right_cell' do 
-        rawtext ticket.opened_at_local
+        rawtext  ticket.reported_by.address.mobile_phone == ""  ? 'none' : ticket.reported_by.address.mobile_phone
       end
     end
     tr do
@@ -54,6 +46,40 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         rawtext  ticket.reported_by.email
       end
     end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's zone time"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.opened_at_local
+      end
+    end
+unless ticket.alternate_contact.nil?
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's contact name"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.alternate_contact.person.fullname
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's contact email"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.alternate_contact.email
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's contact mobile phone"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext  ticket.alternate_contact.address.business_phone == ""  ? 'none' : ticket.alternate_contact.address.business_phone
+      end
+    end
+end
     tr do 
       td :id => 'ticket_left_cell' do 
         text "Case ID"
@@ -171,7 +197,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Alarm(s)'
       end
       td :id => 'ticket_right_cell' do 
-        text ticket.alarm
+        text (ticket.alarm = "") ? 'none' : ticket.alarm
       end
     end
     tr do 
@@ -179,7 +205,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Special instruction(s)'
       end
       td :id => 'ticket_right_cell' do 
-        text ticket.special_instructions
+        text (ticket.special_instructions = "")  ? 'none' : ticket.special_instructions
       end
     end
     tr do 
@@ -219,7 +245,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Additional notes'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.notes
+        rawtext (ticket.notes = "") ? 'none' : ticket.notes
       end
     end
   end
