@@ -15,7 +15,7 @@ class MailDaemon < SimpleDaemon::Base
       if Mail.respond_to? :process
         ActionMailer::Base.smtp_settings = mail_servers[rand(mail_servers.size)]
         Mail.process(:limit => 15) 
-        Mail.update_all("locked = 't', tries = 0")
+        Mail.update_all("locked = 'f', tries = 0")
         puts "Sending email at " + Time.now.to_s
       end
       sleep(seconds[rand(seconds.size)])
