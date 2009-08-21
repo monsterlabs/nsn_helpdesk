@@ -76,7 +76,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
           text "Customer's contact mobile phone"
         end
         td :id => 'ticket_right_cell' do 
-          rawtext  ticket.alternate_contact.address.business_phone == ""  ? 'none' : ticket.alternate_contact.address.business_phone
+          rawtext  ticket.alternate_contact.address.mobile_phone == ""  ? 'none' : ticket.alternate_contact.address.mobile_phone
         end
       end
     end
