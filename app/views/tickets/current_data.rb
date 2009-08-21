@@ -54,32 +54,32 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         rawtext ticket.opened_at_local
       end
     end
-unless ticket.alternate_contact.nil?
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "Customer's contact name"
+    unless ticket.alternate_contact.nil?
+      tr do 
+        td :id => 'ticket_left_cell' do 
+          text "Customer's contact name"
+        end
+        td :id => 'ticket_right_cell' do 
+          rawtext  ticket.alternate_contact.person.fullname
+        end
       end
-      td :id => 'ticket_right_cell' do 
-        rawtext  ticket.alternate_contact.person.fullname
+      tr do 
+        td :id => 'ticket_left_cell' do 
+          text "Customer's contact e-mail"
+        end
+        td :id => 'ticket_right_cell' do 
+          rawtext  ticket.alternate_contact.email
+        end
+      end
+      tr do 
+        td :id => 'ticket_left_cell' do 
+          text "Customer's contact mobile phone"
+        end
+        td :id => 'ticket_right_cell' do 
+          rawtext  ticket.alternate_contact.address.business_phone == ""  ? 'none' : ticket.alternate_contact.address.business_phone
+        end
       end
     end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "Customer's contact email"
-      end
-      td :id => 'ticket_right_cell' do 
-        rawtext  ticket.alternate_contact.email
-      end
-    end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "Customer's contact mobile phone"
-      end
-      td :id => 'ticket_right_cell' do 
-        rawtext  ticket.alternate_contact.address.business_phone == ""  ? 'none' : ticket.alternate_contact.address.business_phone
-      end
-    end
-end
     tr do 
       td :id => 'ticket_left_cell' do 
         text "Case ID"

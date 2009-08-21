@@ -1,55 +1,66 @@
-********************************************************************************
-*************** [NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %> ***************
-********************************************************************************
-
-Has been reported a <%= @ticket.reported_priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.
-
-Customer's Name:                           <%= @ticket.reported_by.person.fullname %>
-
-Customer's Contact Phone:           <%= @ticket.reported_by.address.business_phone %>
-
-Customer's Contact Time:              <%= @ticket.opened_at_local.to_s %>
-
-Customer's e-mail:                          <%= @ticket.reported_by.email %>
-
-Case ID:                                             <%= @ticket.case_id %>
-
-NSN Engineer on duty:                   <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.person.fullname : @ticket.link.region.users.field_managers.collect {|fm| fm.person.fullname }.join(', ')%>
-
-NSN Engineer ID Number:            <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.id : @ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')%>
-
-NSN Engineer Contact Time:        <%= @ticket.opened_at_local.to_s %>
-
-Call handle time:                             <%= @ticket.capture_time %>
-
-Network Element:                           <%= @ticket.product.name %>
-
-Name of Site/Hostname:              <%= @ticket.link.region.name %>
-
-Failure:                                             <%= @ticket.failure.name %>
-
-Status:                                              <%= @ticket.status.name %>
-
-Priority:                                             <%= @ticket.link.configuration %> <%= @ticket.reported_priority.name  %>
-
-Links:                                                <%= @ticket.link.sites %>
-
-More affected:                                 <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %>
-
-Frequency TX:                                 <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %>
-
-Frequency RX:                                <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %>
-
-Alarms:                                            <%= @ticket.alarm.nil? ? "none" : @ticket.alarm %>
-
-Special Instructions:                     <%= @ticket.special_instructions.nil? ? "none" : @ticket.special_instructions %>
-
-Additional notes:                            <%= @ticket.notes.nil? ? "none" : @ticket.notes %>
-
-
-Nokia Siemens Networks.
-
-
---This message has been generated automatically, please do not reply.
-
-********************************************************************************
+<hr>
+<h2 style="text-align: center">[NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %></h2>
+<hr>
+<br/>
+Has been reported a <%= @ticket.reported_priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.<br/>
+<br/>
+<b>Customer's Name:</b>                          <%= @ticket.reported_by.person.fullname %><br/>
+<br/>  
+<b>Customer's Company:</b>                       <%= @ticket.reported_by.person.company.name %><br/>
+<br/>
+<b>Customer's Phone:</b>                         <%= (@ticket.reported_by.address.business_phone = "") ? 'none' : @ticket.reported_by.address.business_phone %><br/>
+<br/>
+<b>Customer's Mobile Phone:</b>                  <%= (@ticket.reported_by.address.mobile_phone="") ? 'none' : @ticket.reported_by.address.mobile_phone %><br/>
+<br/>
+<b>Customer's e-mail:</b>                        <%= @ticket.reported_by.email %><br/>
+<br/>   
+<b>Customer's Zone Time:</b>                     <%= @ticket.opened_at_local.to_s %><br/>
+<br/>
+<% unless @ticket.alternate_contact.nil? %>
+<b>Customer's Contact Name:</b>                  <%= @ticket.alternate_contact.person.fullname %><br/>
+<br/>
+<b>Customer's Contact e-mail:</b>                <%= @ticket.alternate_contact.email %><br/>
+<br/>
+<b>Customer's Contact Mobile Phone:</b>          <%= @ticket.alternate_contact.address.business_phone == ""  ? 'none' : @ticket.alternate_contact.address.business_phone %><br/>
+<br/>
+<% end %>
+<b>Case ID:</b>                                  <%= @ticket.case_id %><br/>
+<br/>
+<b>NSN Engineer on duty:</b>                     <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.person.fullname : @ticket.link.region.users.field_managers.collect {|fm| fm.person.fullname }.join(', ')%><br/>
+<br/>
+<b>NSN Engineer ID Number:</b>                   <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.id : @ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')%><br/>
+<br/>
+<b>NSN Engineer Contact Time:</b>                <%= @ticket.opened_at_local.to_s %><br/>
+<br/>
+<b>Call handle time:</b>                         <%= @ticket.capture_time %><br/>
+<br/>
+<b>Network Element:</b>                          <%= @ticket.product.name %><br/>
+<br/>
+<b>Name of Site/Hostname:</b>                    <%= @ticket.link.region.name %><br/>
+<br/>
+<b>Failure:</b>                                  <%= @ticket.failure.name %><br/>
+<br/>
+<b>Status:</b>                                   <%= @ticket.status.name %><br/>
+<br/>
+<b>Priority:</b>                                 <%= @ticket.reported_priority.name %> <%= " " %><%= @ticket.link.configuration %> <br/>
+<br/>
+<b>Links:</b>                                    <%= @ticket.link.sites %><br/>
+<br/>
+<b>More affected:</b>                            <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %><br/>
+<br/>
+<b>Frequency TX:</b>                             <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %><br/>
+<br/>
+<b>Frequency RX:</b>                             <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %><br/>
+<br/>
+<b>Alarms:</b>                                   <%= (@ticket.alarm = "") ? "none" : @ticket.alarm %><br/>
+<br/>
+<b>Special Instructions:</b>                     <%= (@ticket.special_instructions = "") ? "none" : @ticket.special_instructions %><br/>
+<br/>
+<b>Additional notes:</b>                         <%= (@ticket.notes = "") ? "none" : @ticket.notes %><br/>
+<br/>
+<br/>
+<h3 style="margin-left: 50px;"><i>Nokia Siemens Networks.</i></h3><br/>
+<br/>
+<i style="margin-left: 50px;">--This message has been generated automatically, please do not reply.--</i><br/>
+<br/>
+<hr>

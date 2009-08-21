@@ -6,6 +6,7 @@ class Notifier < ActionMailer::Base
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
+    @content_type = "text/html"
 
     Notifier.queue(:fieldmanager_notification, ticket, ticket.attended_by.email)
     ticket.link.region.users.field_managers.each do |field_manager|
@@ -20,6 +21,7 @@ class Notifier < ActionMailer::Base
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
+    @content_type = "text/html"
   end
 
   def random_password(user, password)
@@ -28,6 +30,7 @@ class Notifier < ActionMailer::Base
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = { :user => user, :password => password}
+    @content_type = "text/html"
   end
 
   def link_notifications(link)
