@@ -1,10 +1,8 @@
 <hr>
-<h2 style="text-align: center">[NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %></h2>
+  <h2 style="text-align: center;">[NSNCallCenter] TICKET REMINDER</h2>
 <hr>
 <br/>
-Field Managers:<br/>
-<br/>
-<b><There is still a report that has not been attended.</b><br/>
+<h3 style="text-align: center;">There is still a report that has not been attended.</h3>
 <br/>
 <b>Customer's Name:</b>                          <%= @ticket.reported_by.person.fullname %><br/>
 <br/>  
@@ -60,8 +58,9 @@ Field Managers:<br/>
 <br/>
 <b>Additional notes:</b>                         <%= (@ticket.notes = "") ? "none" : @ticket.notes %><br/>
 <br/>
-To attend this ticket please click on the following link: <%= url_for :controller => 'tickets', :action => 'edit', :id => @ticket.id,
-            :host => 'localhost:3000/field_manager', :only_path => false, :escape => false%><br/>
+To attend this ticket please click on the following link:<br/>
+<br/>
+<a href="http://www.nsnmwcaretelcel.com/field_manager/tickets/show/<%= @ticket.id %>">www.nsnmwcaretelcel.com/field_manager/links/show/<%= @ticket.id %></a><br/>
 <br/>
 <br/>
 <h3 style="margin-left: 50px;"><i>Nokia Siemens Networks.</i></h3><br/>
