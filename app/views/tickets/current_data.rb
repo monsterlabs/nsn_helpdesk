@@ -157,7 +157,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Priority'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.link.configuration + ' ' + ticket.reported_priority.name
+        rawtext ticket.reported_priority.name + ' ' + ticket.link.configuration
       end
     end
     tr do 

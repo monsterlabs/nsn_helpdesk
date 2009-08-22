@@ -48,6 +48,7 @@ class Notifier < ActionMailer::Base
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = {:ticket => ticket }    
+    @content_type = "text/html"
   end
 
 #   def ticket_closed_notification(ticket)
