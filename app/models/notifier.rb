@@ -44,7 +44,7 @@ class Notifier < ActionMailer::Base
 
   def reminder_notification(ticket)
     @subject    = '[NSNCallCenter] Reminder'
-    @recipients = ['fereyji@hotmail.com', 'fereyji@gmail.com']#User.field_managers.collect { |fm| fm.email }
+    @recipients = User.field_managers.collect { |fm| fm.email }
     @from       = 'noreply@nsnmwcaretelcel.com'
     @sent_on    = Time.now
     @body       = {:ticket => ticket }    
