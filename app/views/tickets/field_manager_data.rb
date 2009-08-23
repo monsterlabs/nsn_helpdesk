@@ -25,7 +25,7 @@ class Views::Tickets::FieldManagerData < Erector::RailsWidget
           text 'Ticket Type'
         end
         td :id => 'ticket_right_cell' do 
-          rawtext ticket.ticket_type.name
+          rawtext ticket.ticket_type.nil? ? 'none' : ticket.ticket_type.name
         end
       end
     end

@@ -33,11 +33,12 @@ class Views::Tickets::Record < Erector::RailsWidget
           end
         end
         if current_user.has_role?(:field_manager) or current_user.has_role?(:admin)
-          td :class => "change_status_column" do
-            Status.all(:conditions => 'id > 1', :order => 'id ASC').each do |s|
-              link_to_remote(s.name, {:url => {:controller => '/field_manager/tickets', :action => 'edit_change_status', :status_id => s.id, :id => ticket.id}, :method => :get,
-              :update => {:success => "add_edit_dialog"}, 
-              :success => '$("#add_edit_dialog").dialog({
+          unless ticket.status.name == 'Closed'
+            td :id => "change_status_ticket_#{ticket.id}_column", :class => "change_status_column" do
+              Status.all(:conditions => 'id > 1', :order => 'id ASC').each do |s|
+                link_to_remote(s.name, {:url => {:controller => '/field_manager/tickets', :action => 'edit_change_status', :status_id => s.id, :id => ticket.id}, :method => :get,
+                                 :update => {:success => "add_edit_dialog"}, 
+                                 :success => '$("#add_edit_dialog").dialog({
               bgiframe: true,
               height: 330,
               width: 340,
@@ -49,12 +50,12 @@ class Views::Tickets::Record < Erector::RailsWidget
               $("#add_edit_dialog").dialog("open");
               set_button_behaviour();
               '},
-              ui_style(:button))
+                               ui_style(:button))
 
+              end
             end
           end
         end
-
       end
     end
   end
