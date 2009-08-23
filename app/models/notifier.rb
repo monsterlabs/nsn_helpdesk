@@ -51,12 +51,13 @@ class Notifier < ActionMailer::Base
     @content_type = "text/html"
   end
 
-#   def ticket_closed_notification(ticket)
-#     @subject    = '[NSNCallCenter] Ticket closed'
-#     @recipients = 'alexjr85@gmail.com' #field_managers_recipients
-#     @from       = 'noreply@nsnmwcaretelcel.com'
-#     @sent_on    = Time.now
-#     @body       = {:ticket => ticket }    
-#   end
-
+  def ticket_closed_notification(ticket)
+    @subject    = '[NSNCallCenter] Ticket closed'
+    @recipients = User.group_and_field_managers_collection.collect {|user| user.email}
+    @from       = 'noreply@nsnmwcaretelcel.com'
+    @sent_on    = Time.now
+    @body       = {:ticket => ticket }    
+    @content_type = "text/html"
+  end
+  
 end

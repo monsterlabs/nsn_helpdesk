@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   named_scope :field_managers, :conditions => "roles.name = 'field_manager'", :include => { :user_roles => :role }
   named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
   named_scope :emergencies, :conditions => "roles.name = 'emergencies'", :include => { :user_roles => :role }
+  named_scope :group_managers, :conditions => "roles.name = 'group_manager'", :include => { :user_roles => :role }
 
   acts_as_authentic
   
@@ -71,6 +72,10 @@ class User < ActiveRecord::Base
 
   def self.field_managers_collection
     field_managers = User.field_managers.collect - User.field_managers.collect[0].to_a
+  end
+
+  def self.group_and_field_managers_collection
+    group = User.group_managers + self.field_managers_collection
   end
   
 end
