@@ -1,6 +1,5 @@
 class ReportsController < ApplicationController
   skip_before_filter :filter_access_filter
-  include MyGraph
   def index
     render 'reports/index'
   end
@@ -87,8 +86,8 @@ class ReportsController < ApplicationController
   #  
   #  end
 
-  def stacked_bar
-    render :text => stacked_bar_chart
-  end
+  #def stacked_bar
+  #  render :text => stacked_bar_chart
+  #end
 
 end
