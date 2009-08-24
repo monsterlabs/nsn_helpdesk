@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
-    admin.resources :reports
+    admin.resources :reports, :collection => { :bar => :get , :bar_all => :get, :ticket_all => :get, :ticket_by_region => :get }, :member => { :report_all => :put }
     
     admin.resources :tickets, 
       :member => { :details => :get, :search_by_case_id => :post}, 
@@ -57,6 +57,8 @@ ActionController::Routing::Routes.draw do |map|
 
     field_manager.resources :addresses
     field_manager.resources :people
+    field_manager.resources :reports, :collection => { :bar => :get , :bar_all => :get, :ticket_all => :get, :ticket_by_region => :get }, :member => { :report_all => :put }
+    
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
