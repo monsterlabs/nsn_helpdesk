@@ -27,7 +27,7 @@ class Ticket < ActiveRecord::Base
   has_many :mobile_messages, :as => :messageable
   has_many :mails, :as => :mailable
 
-  default_scope :order => 'tickets.created_at DESC'
+  default_scope :order => 'tickets.opened_at DESC'
 
   named_scope :daily, lambda { {:conditions => { :created_at => (Time.zone.now.midnight..Time.zone.now) }, :order => 'created_at ASC'} }
   
