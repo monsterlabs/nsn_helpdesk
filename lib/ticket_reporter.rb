@@ -10,7 +10,7 @@ class TicketReporter
           graph_data << [priority_name(p_id), cases_per_month(results, months, year)]
           max_size = cases_per_month(results, months, year).max if cases_per_month(results, months, year).max > max_size
        end
-       {:region_name => region_name(region_id), :graph_data => graph_data, :months => months, :max_size => max_size, :year => year}
+       {:region_name => region_name(region_id), :results => graph_data, :months => months, :max_size => max_size, :year => year}
      end
      
      private

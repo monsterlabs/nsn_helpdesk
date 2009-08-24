@@ -32,7 +32,7 @@ class Views::Reports::Index < Views::Layouts::Application
            b "Regions" 
            br
            br
-           rawtext select :report, :region_id, (options_for_select Region.all.collect {|record| [record.name, record.id]})
+           rawtext select :report, :region_id, (options_for_select Region.all.collect {|record| [record.name, record.id]}), {}, {:multiple => true, :size => 5}
          end
     
          div :class => "grid_2" do

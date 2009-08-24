@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource  :change_password
   map.resources :links
-  map.resources :reports
+  map.resources :reports, :collection => { :bar => :get }
 
   map.namespace :corporate do |corporate|
     corporate.resources :tickets

@@ -34,7 +34,7 @@ module MyGraph
     graph.x_axis = x_axis
     graph.y_axis = y_axis
     graph.elements = bars
-    graph.render
+    graph
   end
 
   def stacked_bar_chart(data={})
