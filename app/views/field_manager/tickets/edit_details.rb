@@ -1,63 +1,65 @@
 class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
   needs :ticket
-  
+
   def content
     jquery "autocomplete_reporter();
     autocomplete_alternate();
     autocomplete_link();"
-    
+
     div :class => 'field' do
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, ticket.reported_by.person.fullname, :size => 30, :disabled => "true"
       link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
-              :with => "'response_id=reporter_details&input_id=person_lastname_firstname'",
-              :update => {:success => "add_edit_dialog"}, 
-              :success => '$("#add_edit_dialog").dialog({
-                bgiframe: true,
-                height: 320,
-                modal: true,
-                autoOpen: false,
-                draggable: false,
-                resizable: false
-              });
-              $("#add_edit_dialog").dialog("open");
-              $("#add_edit_dialog").dialog("enable");
-              set_button_behaviour();
-              $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
-              ui_style(:button, {:class => "no_float"}))
+      :with => "'response_id=reporter_details&input_id=person_lastname_firstname'",
+      :update => {:success => "add_edit_dialog"}, 
+      :success => '$("#add_edit_dialog").dialog({
+      bgiframe: true,
+      height: 320,
+      modal: true,
+      autoOpen: false,
+      draggable: false,
+      resizable: false
+      });
+      $("#add_edit_dialog").dialog("open");
+      $("#add_edit_dialog").dialog("enable");
+      set_button_behaviour();
+      $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
+      ui_style(:button, {:class => "no_float"}))
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4" do
         widget Views::Admin::Users::ShowJs, :user => ticket.reported_by, :value_tag_id => 'ticket_reported_by_id', :associated_field_id => 'person_lastname_firstname'
       end
       rawtext hidden_field_tag 'ticket[reported_by_id]', ticket.reported_by.id
     end
-    
-    div :class => 'field' do
-      label "Alternative contact"
-      rawtext text_field_tag :alternate_person_lastname_firstname, ticket.alternate_contact.person.fullname, :size => 30, :disabled => "true"
-       link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
-                :with => "'response_id=alternate_details&input_id=alternate_person_lastname_firstname'",
-                :update => {:success => "add_edit_dialog"}, 
-                :success => '$("#add_edit_dialog").dialog({
-                  bgiframe: true,
-                  height: 320,
-                  modal: true,
-                  autoOpen: false,
-                  draggable: false,
-                  resizable: false
-                });
-                $("#add_edit_dialog").dialog("open");
-                $("#add_edit_dialog").dialog("enable");
-                set_button_behaviour();
-                $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
-                ui_style(:button, {:class => "no_float"}))
-      br
-      div :id => "alternate_details", :class => "prefix_3 grid_4" do
-        widget Views::Admin::Users::ShowJs, :user => ticket.alternate_contact, :value_tag_id => 'ticket_alternate_contact_id', :associated_field_id => 'alternate_person_lastname_firstname'
+
+    unless  ticket.alternate_contact.nil?
+      div :class => 'field' do
+        label "Alternative contact"
+        rawtext text_field_tag :alternate_person_lastname_firstname, ticket.alternate_contact.person.fullname, :size => 30, :disabled => "true"
+        link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
+        :with => "'response_id=alternate_details&input_id=alternate_person_lastname_firstname'",
+        :update => {:success => "add_edit_dialog"}, 
+        :success => '$("#add_edit_dialog").dialog({
+        bgiframe: true,
+        height: 320,
+        modal: true,
+        autoOpen: false,
+        draggable: false,
+        resizable: false
+        });
+        $("#add_edit_dialog").dialog("open");
+        $("#add_edit_dialog").dialog("enable");
+        set_button_behaviour();
+        $("#user_person_attributes_region_id").val($("#customer_filter_region_id").val());'},
+        ui_style(:button, {:class => "no_float"}))
+        br
+        div :id => "alternate_details", :class => "prefix_3 grid_4" do
+          widget Views::Admin::Users::ShowJs, :user => ticket.alternate_contact, :value_tag_id => 'ticket_alternate_contact_id', :associated_field_id => 'alternate_person_lastname_firstname'
+        end
+        rawtext hidden_field_tag 'ticket[alternate_contact_id]', ticket.alternate_contact.id
       end
-      rawtext hidden_field_tag 'ticket[alternate_contact_id]', ticket.alternate_contact.id
     end
-    
+
     div :class => 'field' do
       label "Link"
       rawtext text_field_tag :sites, ticket.link.sites, :size => 40, :onFocus=> "autocomplete_link();"
@@ -97,17 +99,18 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
 
     div :class => 'field' do
       label "Failure"
-      rawtext simple_select :ticket, :failure,  :selected => ticket.failure_id
+      rawtext collection_select('ticket', :failure_id, Failure.all, :id, :failure_length_limited, :selected => ticket.failure_id)
+
       div ui_style(:button, {:class => "no_float", :id => "add_failure"}) do
         text "Add"
       end
-      
+
       div :id => "add_failure_dialog", :title => "Add a failure", :style => 'display:none;' do
-          label "Name"
-          rawtext text_field_tag 'failure[name]'
-          br
-          
-          a(ui_style(:button).merge({:onclick =>"$.ajax({data:$(\"#add_failure_dialog :input\").serialize(), dataType:'script', success:function(request){$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');}, type:'post', url:'/admin/failures/create'});"})) {text "Create"}
+        label "Name"
+        rawtext text_field_tag 'failure[name]'
+        br
+
+        a(ui_style(:button).merge({:onclick =>"$.ajax({data:$(\"#add_failure_dialog :input\").serialize(), dataType:'script', success:function(request){$('#ticket_failure_id').replaceWith(request); $('#add_failure_dialog').dialog('close');}, type:'post', url:'/admin/failures/create'});"})) {text "Create"}
       end
     end
 
