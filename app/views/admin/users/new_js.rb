@@ -46,7 +46,7 @@ class Views::Admin::Users::NewJs < Views::Layouts::ApplicationJs
       end
 
       p do
-        label "Bussiness phone"
+        label "Business phone"
         rawtext text_field_tag 'user[address_attributes][business_phone]'
       end
 

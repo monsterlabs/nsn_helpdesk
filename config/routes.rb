@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource  :change_password
   map.resources :links
-  map.resources :reports, :collection => { :bar => :get }
+  map.resources :reports
 
   map.namespace :corporate do |corporate|
     corporate.resources :tickets
@@ -26,7 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
-    admin.resources :reports, :collection => { :bar => :get }
+    admin.resources :reports
     
     admin.resources :tickets, 
       :member => { :details => :get, :search_by_case_id => :post}, 
@@ -44,7 +44,6 @@ ActionController::Routing::Routes.draw do |map|
                       :auto_complete_for_link_sites => :get,
                       :list_by_priority => :get, :list_by_status=> :get, :list_by_region => :get
                       }
-    operator.resources :reports, :collection => { :bar => :get }
   end  
 
   map.namespace :field_manager do |field_manager|

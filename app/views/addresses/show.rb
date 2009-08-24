@@ -4,7 +4,7 @@ class Views::Addresses::Show < Views::Layouts::Application
 
   def content
     unless @addr.nil?
-      h2 'Información de contacto'
+      h2 'Contact info'
       table :id => "profile-info" do
         tr do 
           td { b 'Location:' }
@@ -36,7 +36,7 @@ class Views::Addresses::Show < Views::Layouts::Application
         end
         unless @addr.business_phone.to_s.strip.empty?
           tr do 
-            td { b 'Bussiness phone:' }
+            td { b 'Business phone:' }
             td { rawtext @addr.business_phone }
           end
           unless @addr.home_phone.to_s.strip.empty?
