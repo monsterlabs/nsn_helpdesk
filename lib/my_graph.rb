@@ -16,7 +16,7 @@ module MyGraph
     end
 
     # some title
-    title = Title.new("Reports for #{data[:region_name]}")
+    title = Title.new("#{data[:title]}")
 
     # labels along the x axis, just hard code for now, but you would want to dynamically do this
     x_axis = XAxis.new

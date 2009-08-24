@@ -8,10 +8,12 @@ class Views::Reports::Show < Views::Layouts::Application
 
    def view_content
       br
-       div :class => "grid_16" do
+       div :class => "grid_14" do
             @graphs.each do |graph| 
                rawtext graph
-               rawtext hr
+               br
+            #   link_to('Excel file', params.merge(:action => :ticket_by_region))
+               br
             end
        end
        div :class => 'clear'
