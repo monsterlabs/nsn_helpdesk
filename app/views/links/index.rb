@@ -5,7 +5,7 @@ class Views::Links::Index < Views::Layouts::Application
       $.ajax({
         complete:function(request){colorize_odd_rows()}, 
         data:$.param($("form").serializeArray()),
-        success:function(request){$('#links').html(request);},
+        success:function(request){$('#links_collection').html(request);},
         type:'post', 
         url:'links/filter'}); 
         return false; });

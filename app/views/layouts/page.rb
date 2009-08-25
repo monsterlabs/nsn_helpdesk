@@ -177,51 +177,59 @@ class Erector::Widget
     end
   end
   
-  def paginator(collection)
+  def paginator(collection, action = action_name)
     div :class => "paginator", :id => "paginator" do
       if collection.total_pages > 1
-        previous_page(collection)
+        previous_page(collection, action)
         page_ranges(collection).collect do |page|
-          current_page(collection, page)
+          current_page(collection, page, action)
         end
-        next_page(collection)
+        next_page(collection, action)
       end
     end
   end
   
-  def previous_page(collection)
-    link_to_page 'Previous', collection.previous_page unless collection.previous_page.nil?
+  def previous_page(collection, action)
+    link_to_page 'Previous', (collection.previous_page unless collection.previous_page.nil?), action
   end
 
-  def current_page(collection, page)
+  def current_page(collection, page, action)
     if page == collection.current_page
       rawtext content_tag(:span, page, :class => 'current')
     else
-      link_to_page page, page unless page == collection.current_page
+      link_to_page page, page, action
     end
   end
 
-  def next_page(collection)
-    link_to_page 'Next', collection.next_page  unless collection.next_page.nil?
+  def next_page(collection, action)
+    link_to_page 'Next', (collection.next_page  unless collection.next_page.nil?), action
   end
 
-  def link_to_page(label, page)
+  def link_to_page(label, page, action)
     # Fix it: Clean code for link_to_page for paginator
     params.delete(:page)
     params.delete(:per_page)
-    link_to label, :controller => controller_name, :action => action_name, :params => params, :page => page
+    params.delete(:action)
+    link_to label, :controller => controller_name, :action => action, :params => params, :page => page
   end
 
   def page_ranges(collection)
-      limit = 10
-      start_range = 1
-      end_range = collection.total_pages
-      if collection.total_pages > limit      
-        start_range = collection.current_page > limit ? (collection.current_page - limit) : collection.current_page
-        paginator_limit = start_range + limit
-        end_range = paginator_limit > collection.total_pages ? (paginator_limit - collection.total_pages) : paginator_limit
+      limit = 9
+      first = 1
+      last = limit
+      total = collection.total_pages
+      current = collection.current_page
+      
+      if total <= 9 || current < 5
+        last = (total > limit ? limit : total)
+        (1..last)
+      else
+        if (total - current) < 4
+          ((total-(limit-1))..total)
+        else
+          ((current-4)..(current+4))
+        end
       end
-      (start_range..end_range)
   end
   
   def filter_select(class_name, dom_id = "filter", options={:prompt => true})

@@ -15,24 +15,26 @@ class Views::Links::Table < Erector::RailsWidget
   end
 
   def table_filter
-    form_remote_tag :url => "links/filter", :update => { :success => "links"}, :complete => "colorize_odd_rows()" do
+    form_remote_tag :url => "links/filter", :update => { :success => "links_collection"}, :complete => "colorize_odd_rows()" do
          tr :id => "filter_row" do
 
             td :class => "filter_column" do
-              rawtext text_field_tag "filter[sites_like]"
+              rawtext text_field_tag "filter[sites_like]", (params[:filter][:sites_like] if params[:filter])
             end
             
             td :class => "filter_column" 
             td :class => "filter_column" 
 
             td :class => "filter_column" do
-              rawtext simple_select :filter, :region, :prompt => ""
+              rawtext simple_select :filter, :region, {:prompt => "", :selected => (params[:filter] ? params[:filter][:region_id].to_i : nil)}
             end
             td :class => "filter_column" do
-               rawtext select :filter, :configuration, [ ['1 + 1', '1 + 1'], ['1 + 0', '1 + 0'], ['0 + 0', '0 + 0'] ], :prompt => ""
+               rawtext select :filter, :configuration, 
+                  options_for_select([['1 + 1', '1 + 1'], ['1 + 0', '1 + 0'], ['0 + 0', '0 + 0']], (params[:filter][:configuration] if params[:filter])),
+                  :prompt => ""
             end
             td :class => "filter_column" do
-              rawtext text_field_tag "filter[city_like]"
+              rawtext text_field_tag "filter[city_like]", (params[:filter][:city_like] if params[:filter])
             end
 
             td { # Actions

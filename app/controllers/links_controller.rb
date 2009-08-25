@@ -57,7 +57,7 @@ class LinksController < ApplicationController
   end
   
   def index
-    @collection = Link.all.paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
+    @collection = Link.search_and_paginate(params[:filter], params[:page] || 1)
     render 'links/index'
   end
   
