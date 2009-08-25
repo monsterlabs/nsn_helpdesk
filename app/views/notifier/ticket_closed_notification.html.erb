@@ -4,6 +4,8 @@
 <br/>
 <h3>The ticket <%= @ticket.case_id %> has been closed. The ticket close was accepted by <%= @ticket.accepts_closing.person.fullname %>.</h3>
 <br/>
+<h3 style="text-align: center;">There is still a report that has not been attended.</h3>
+<br/>
 <b>Customer's Name:</b>                          <%= @ticket.reported_by.person.fullname %><br/>
 <br/>  
 <b>Customer's Company:</b>                       <%= @ticket.reported_by.person.company.name %><br/>
@@ -36,21 +38,25 @@
 <br/>
 <b>Network Element:</b>                          <%= @ticket.product.name %><br/>
 <br/>
-<b>Name of Site/Hostname:</b>                    <%= @ticket.link.region.name %><br/>
+<b>Link Region:</b>                              <%= @ticket.link.region.name %><br/>
 <br/>
 <b>Failure:</b>                                  <%= @ticket.failure.name %><br/>
 <br/>
 <b>Status:</b>                                   <%= @ticket.status.name %><br/>
 <br/>
-<b>Priority:</b>                                 <%= @ticket.reported_priority.name %> <%= " " %><%= @ticket.link.configuration %> <br/>
+<b>Priority:</b>                                 <%= priority_label(@ticket.reported_priority.name)%> <br/>
+<br/>
+<b>Recommended Priority:</b>                     <%= priority_label(@ticket.priority.name)%> <br/>
 <br/>
 <b>Links:</b>                                    <%= @ticket.link.sites %><br/>
 <br/>
-<b>More affected:</b>                            <%= @ticket.affected_sites.nil? ? "Both" : @ticket.affected_sites %><br/>
+<b>More affected:</b>                            <%= @ticket.affected_sites.to_s.strip.empty? ? "Both" : @ticket.affected_sites %><br/>
 <br/>
-<b>Frequency TX:</b>                             <%= @ticket.link.frequency_tx.nil? ? "none" : @ticket.link.frequency_tx %><br/>
+<b>Frequency TX:</b>                             <%= @ticket.link.frequency_tx.to_s.strip.empty? ? "none" : @ticket.link.frequency_tx %><br/>
 <br/>
-<b>Frequency RX:</b>                             <%= @ticket.link.frequency_rx.nil? ? "none" : @ticket.link.frequency_rx %><br/>
+<b>Frequency RX:</b>                             <%= @ticket.link.frequency_rx.to_s.strip.empty? ? "none" : @ticket.link.frequency_rx %><br/>
+<br/>
+<b>Configuration:</b>                             <%= @ticket.link.configuration.to_s.strip.empty? ? "none" : @ticket.link.configuration %><br/>
 <br/>
 <b>Alarms:</b>                                   <%= (@ticket.alarm = "") ? "none" : @ticket.alarm %><br/>
 <br/>

@@ -1,5 +1,6 @@
 class Views::Tickets::Record < Erector::RailsWidget
   needs :collection
+  include ApplicationHelper
 
   def content
     jquery <<-S

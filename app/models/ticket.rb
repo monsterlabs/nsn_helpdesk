@@ -1,4 +1,6 @@
 class Ticket < ActiveRecord::Base
+  include ApplicationHelper
+
   has_paper_trail 
 
   validates_presence_of :product_id, :reported_by_id, :link_id, :reported_priority_id, :failure, :attended_by_id
@@ -84,7 +86,8 @@ class Ticket < ActiveRecord::Base
       'Affected sites: ' + affected_sites,
       'Region: ' + link.region.name,
       'Status: ' + status.name,
-      'Priority: ' + reported_priority.name,
+      'Priority: ' + priority_label(reported_priority.name),
+      'Recommended priority: ' + priority_label(priority.name),
       'Reported by: ' + reported_by_user,
       'Phone: ' + phone_number,
       'Case ID: ' + case_id, 
