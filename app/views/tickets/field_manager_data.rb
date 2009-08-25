@@ -7,7 +7,7 @@ class Views::Tickets::FieldManagerData < Erector::RailsWidget
         text (ticket.status.id == 2 ? 'Assigned to' : "#{ticket.status.name} by: ")
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.accepts_closing.person.fullname
+        rawtext ticket.assigned_to.person.fullname
       end
     end
     tr do 

@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-
+  helper :application
   def ticket_notifications(ticket)
     @subject    = '[NSNCallCenter] Ticket has been sent'
     @recipients = ticket.opened_by.email

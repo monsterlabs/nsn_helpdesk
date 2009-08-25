@@ -1,5 +1,6 @@
 class Views::Tickets::CurrentData < Erector::RailsWidget
   needs :ticket
+  include ApplicationHelper
   
   def content
     tr :id=> 'ticket_title' do
@@ -130,7 +131,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text 'Name of site / hostname (region)'
+        text 'Link region'
       end
       td :id => 'ticket_right_cell' do 
         rawtext ticket.link.region.name
@@ -152,12 +153,13 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         rawtext ticket.status.name
       end
     end
+
     tr do 
       td :id => 'ticket_left_cell' do 
         text 'Priority'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.reported_priority.name + ' ' + ticket.link.configuration
+        rawtext priority_label(ticket.reported_priority.name)
       end
     end
     tr do 
@@ -194,6 +196,14 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
+        text 'Configuration'
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.link.configuration
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
         text 'Alarm(s)'
       end
       td :id => 'ticket_right_cell' do 
@@ -221,7 +231,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Recommended priority'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext ticket.priority.name
+        rawtext priority_label(ticket.priority.name)
       end
     end
     tr do 
@@ -249,5 +259,4 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
       end
     end
   end
-
 end
