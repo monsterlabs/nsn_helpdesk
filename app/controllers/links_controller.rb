@@ -14,7 +14,9 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.save 
         format.html { redirect_to links_url }
-        format.js { render 'links/show_js' }
+        format.js { 
+          @record = @link
+          render 'links/show_js' }
       else
         format.html {render 'links/new'}
       end
