@@ -254,5 +254,5 @@ class Erector::RailsWidget
   include WillPaginate::ViewHelpers
   include ActionView::Helpers::FormOptionsHelper
   include ActionView::Helpers::ActiveRecordHelper
- # include ActionView::Helpers::FormHelper
+  include ActionView::Helpers::PrototypeHelper
 end

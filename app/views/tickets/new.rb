@@ -12,8 +12,9 @@ class Views::Tickets::New < Views::Layouts::Application
   end
 
   def view_content
-    rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
-    form_for(:ticket, @ticket, :url => { :action => "create"}) do |f|
+    #rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
+    div :id => 'ticket_errors'
+    form_for(:ticket, @ticket, :url => { :action => "create"}, :html => {:id => 'new_ticket'}) do |f|
       h2 do
         text 'Case details'
       end

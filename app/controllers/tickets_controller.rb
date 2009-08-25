@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  skip_before_filter :filter_access_filter
+  skip_before_filter :require_user
   
   list_for :ticket, :include => [:priority, :status, :region]
   multiple_auto_complete_for :person, [:lastname, :firstname]
@@ -24,8 +26,10 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to :action => :index }
+        format.js { redirect_to :action => :index }
       else
         format.html { render 'tickets/new' }
+        format.js { render 'tickets/errors_js'}
       end
     end        
   end
