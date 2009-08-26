@@ -26,7 +26,7 @@ class TicketsController < ApplicationController
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to :action => :index }
-        format.js { redirect_to :action => :index }
+        format.js   { render 'tickets/create_js' }
       else
         format.html { render 'tickets/new' }
         format.js { render 'tickets/errors_js'}
