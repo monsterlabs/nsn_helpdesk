@@ -12,11 +12,14 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    @response_id = params[:response_id]
-    @input_id = params[:input_id]
     respond_to do |format|
       format.html { render 'new' }
-      format.js { render 'new_js' }
+      format.js { 
+        @response_id = params[:response_id]
+        @associated_field_id = params[:associated_field_id]
+        @value_tag_id = params[:value_tag_id]
+        render 'new_js' 
+      }
     end
   end
 
@@ -28,7 +31,11 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to :action => 'index' }
-        format.js { render 'show_js' }
+        format.js { 
+          @associated_field_id = params[:associated_field_id]
+          @value_tag_id = params[:value_tag_id]
+          render 'show_js' 
+        }
       else
         format.html { render :action => 'new' }
         format.js { render 'error_js' }
@@ -43,10 +50,14 @@ class Admin::UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }
-        format.js { render 'users/show_js' }
+        format.js {
+          @associated_field_id = params[:associated_field_id]
+          @value_tag_id = params[:value_tag_id]
+          render 'users/show_js'
+        }
       else
         format.html { render :action => 'new' }
-        format.js { }
+        format.js { render 'error_js' }
       end
     end
   end
@@ -55,7 +66,11 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.html { render 'edit' }
-      format.js { render 'edit_js' }
+      format.js {
+        @associated_field_id = params[:associated_field_id]
+        @value_tag_id = params[:value_tag_id]
+        render 'edit_js' 
+      }
     end
   end
 

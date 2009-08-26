@@ -10,7 +10,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       label "Reported by"
       rawtext text_field_tag :person_lastname_firstname, ticket.reported_by.person.fullname, :size => 30, :disabled => "true"
       link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
-      :with => "'response_id=reporter_details&input_id=person_lastname_firstname'",
+      :with => "'response_id=reporter_details&associated_field_id=person_lastname_firstname&value_tag_id=ticket_reported_by_id'",
       :update => {:success => "add_edit_dialog"}, 
       :success => '$("#add_edit_dialog").dialog({
       bgiframe: true,
@@ -37,7 +37,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
         label "Alternative contact"
         rawtext text_field_tag :alternate_person_lastname_firstname, ticket.alternate_contact.person.fullname, :size => 30, :disabled => "true"
         link_to_remote("Add", {:url => {:controller => 'admin/users', :action => 'new'},
-        :with => "'response_id=alternate_details&input_id=alternate_person_lastname_firstname'",
+        :with => "'response_id=alternate_details&associated_field_id=alternate_person_lastname_firstname&value_tag_id=ticket_alternate_contact_id'",
         :update => {:success => "add_edit_dialog"}, 
         :success => '$("#add_edit_dialog").dialog({
         bgiframe: true,

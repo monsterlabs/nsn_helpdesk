@@ -1,11 +1,13 @@
-class Views::Admin::Users::NewJs < Views::Layouts::ApplicationJs
+  class Views::Admin::Users::NewJs < Views::Layouts::ApplicationJs
   def js_content
     form_remote_tag(:url => "/users/create",
     :loading => "show_progress()",
-    :success => "$('#person_lastname_firstname').val($('#user_person_attributes_firstname').val() + ' ' + $('#user_person_attributes_lastname').val() );
+    :success => "$('input##{@associated_field_id}').val($('#user_person_attributes_firstname').val() + ' ' + $('#user_person_attributes_lastname').val() );
                  $('div##{@response_id}').html(request); $('#add_edit_dialog').dialog('close');
-                 $('input#{@input_id}').disable();
-                 hide_progress();") do
+                 $('input##{@associated_field_id}').disable();
+                 hide_progress(); set_button_behaviour();") do
+      rawtext hidden_field_tag 'value_tag_id', @value_tag_id
+      rawtext hidden_field_tag 'associated_field_id', @associated_field_id
       rawtext hidden_field_tag 'user[person_attributes][region_id]'
       p do
         label "E-mail"
