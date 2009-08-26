@@ -57,6 +57,8 @@ $(document).ready(function(){
   set_button_behaviour();
 
   $("#new_ticket").submitWithAjax();
+  $("#edit_ticket").submitWithAjax();
+
 });
 
 // CUSTOM FUNCTIONS

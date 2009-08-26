@@ -7,8 +7,9 @@ class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
   end
 
   def view_content
+    div :id => 'ticket_errors'
     rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
-    form_tag('/field_manager/tickets/update') do
+    form_tag('/field_manager/tickets/update', :id => 'edit_ticket') do
       h2 do
         text 'Case details'
       end

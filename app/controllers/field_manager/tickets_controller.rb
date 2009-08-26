@@ -14,8 +14,11 @@ class FieldManager::TicketsController < TicketsController
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
         format.html { redirect_to :action => :index }
+        format.js   { render 'field_manager/tickets/update_js' }
       else
         format.html { render 'field_manager/tickets/edit' }
+        format.js { render 'field_manager/tickets/errors_js' }
+        
       end
     end
   end
