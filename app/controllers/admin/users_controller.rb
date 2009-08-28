@@ -51,6 +51,7 @@ class Admin::UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         format.html { redirect_to :action => 'index' }
         format.js {
+          @response_id = params[:response_id]
           @associated_field_id = params[:associated_field_id]
           @value_tag_id = params[:value_tag_id]
           render 'users/show_js'

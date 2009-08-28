@@ -27,7 +27,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
       ui_style(:button, {:class => "no_float"}))
       br
       div :id => "reporter_details", :class => "prefix_3 grid_4" do
-        widget Views::Admin::Users::ShowJs, :user => ticket.reported_by, :value_tag_id => 'ticket_reported_by_id', :associated_field_id => 'person_lastname_firstname'
+        widget Views::Admin::Users::ShowJs, :user => ticket.reported_by, :value_tag_id => 'ticket_reported_by_id', :associated_field_id => 'person_lastname_firstname', :response_id => 'reporter_details'
       end
       rawtext hidden_field_tag 'ticket[reported_by_id]', ticket.reported_by.id
     end
@@ -54,7 +54,7 @@ class Views::FieldManager::Tickets::EditDetails < Erector::RailsWidget
         ui_style(:button, {:class => "no_float"}))
         br
         div :id => "alternate_details", :class => "prefix_3 grid_4" do
-          widget Views::Admin::Users::ShowJs, :user => ticket.alternate_contact, :value_tag_id => 'ticket_alternate_contact_id', :associated_field_id => 'alternate_person_lastname_firstname'
+          widget Views::Admin::Users::ShowJs, :user => ticket.alternate_contact, :value_tag_id => 'ticket_alternate_contact_id', :associated_field_id => 'alternate_person_lastname_firstname', :response_id => 'alternate_details'
         end
         rawtext hidden_field_tag 'ticket[alternate_contact_id]', ticket.alternate_contact.id
       end
