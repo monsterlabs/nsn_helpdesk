@@ -28,7 +28,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text "Customer's phone"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext  ticket.reported_by.address.business_phone == ""  ? 'none' : ticket.reported_by.address.business_phone
+        rawtext  show_value(ticket.reported_by.address, :business_phone)
       end
     end
     tr do 
@@ -36,7 +36,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text "Customer's mobile phone"
       end
       td :id => 'ticket_right_cell' do 
-        rawtext  ticket.reported_by.address.mobile_phone == ""  ? 'none' : ticket.reported_by.address.mobile_phone
+        rawtext  show_value(ticket.reported_by.address, :mobile_phone)
       end
     end
     tr do
@@ -77,7 +77,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
           text "Customer's contact mobile phone"
         end
         td :id => 'ticket_right_cell' do 
-          rawtext  ticket.alternate_contact.address.mobile_phone == ""  ? 'none' : ticket.alternate_contact.address.mobile_phone
+          rawtext  show_value(ticket.alternate_contact.address, :mobile_phone)
         end
       end
     end
@@ -207,7 +207,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Alarm(s)'
       end
       td :id => 'ticket_right_cell' do 
-        text (ticket.alarm = "") ? 'none' : ticket.alarm
+        text show_value(ticket, :alarm)
       end
     end
     tr do 
@@ -215,7 +215,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Special instruction(s)'
       end
       td :id => 'ticket_right_cell' do 
-        text (ticket.special_instructions = "")  ? 'none' : ticket.special_instructions
+        text show_value(ticket, :special_instructions)
       end
     end
     tr do 
@@ -255,7 +255,7 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         text 'Additional notes'
       end
       td :id => 'ticket_right_cell' do 
-        rawtext (ticket.notes = "") ? 'none' : ticket.notes
+        rawtext show_value(ticket, :notes)
       end
     end
   end

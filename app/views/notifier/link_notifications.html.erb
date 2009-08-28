@@ -34,8 +34,7 @@ Updated at: <%= @link.updated_at%><br/>
   <p><b><%= ActiveSupport::Inflector.humanize(attr) + ": #{attribute_data}" %></b></p>
 <% end%>
 <br/>
-You can see total versions of this ticket in the next url:<br/>
-<a href="http://www.nsnmwcaretelcel.com/field_manager/links/show/<%= @link.id%>">www.nsnmwcaretelcel.com/field_manager/links/show/<%= @link.id %></a>
+You can see all versions of this ticket on this  <%link_to 'link.', field_manager_ticket_path(:id => @ticket.id) %>
 <br/>
 <br/>
 Nokia Siemens Networks.<br/>

@@ -10,9 +10,9 @@
 <br/>  
 <b>Customer's Company:</b>                       <%= @ticket.reported_by.person.company.name %><br/>
 <br/>
-<b>Customer's Phone:</b>                         <%= (@ticket.reported_by.address.business_phone = "") ? 'none' : @ticket.reported_by.address.business_phone %><br/>
+<b>Customer's Phone:</b>                         <%= show_value(@ticket.reported_by.address, :business_phone) %><br/>
 <br/>
-<b>Customer's Mobile Phone:</b>                  <%= (@ticket.reported_by.address.mobile_phone="") ? 'none' : @ticket.reported_by.address.mobile_phone %><br/>
+<b>Customer's Mobile Phone:</b>                  <%= show_value(@ticket.reported_by.address, :mobile_phone) %><br/>
 <br/>
 <b>Customer's e-mail:</b>                        <%= @ticket.reported_by.email %><br/>
 <br/>   
@@ -23,7 +23,7 @@
 <br/>
 <b>Customer's Contact e-mail:</b>                <%= @ticket.alternate_contact.email %><br/>
 <br/>
-<b>Customer's Contact Mobile Phone:</b>          <%= @ticket.alternate_contact.address.business_phone == ""  ? 'none' : @ticket.alternate_contact.address.business_phone %><br/>
+<b>Customer's Contact Mobile Phone:</b>          <%= show_value(@ticket.alternate_contact.address, :business_phone) %><br/>
 <br/>
 <% end %>
 <b>Case ID:</b>                                  <%= @ticket.case_id %><br/>
@@ -50,19 +50,19 @@
 <br/>
 <b>Links:</b>                                    <%= @ticket.link.sites %><br/>
 <br/>
-<b>More affected:</b>                            <%= @ticket.affected_sites.to_s.strip.empty? ? "Both" : @ticket.affected_sites %><br/>
+<b>More affected:</b>                            <%= @ticket.affected_sites %><br/>
 <br/>
-<b>Frequency TX:</b>                             <%= @ticket.link.frequency_tx.to_s.strip.empty? ? "none" : @ticket.link.frequency_tx %><br/>
+<b>Frequency TX:</b>                             <%= show_value(@ticket.link, :frequency_tx) %><br/>
 <br/>
-<b>Frequency RX:</b>                             <%= @ticket.link.frequency_rx.to_s.strip.empty? ? "none" : @ticket.link.frequency_rx %><br/>
+<b>Frequency RX:</b>                             <%= show_value(@ticket.link, :frequency_rx) %><br/>
 <br/>
-<b>Configuration:</b>                             <%= @ticket.link.configuration.to_s.strip.empty? ? "none" : @ticket.link.configuration %><br/>
+<b>Configuration:</b>                            <%= show_value(@ticket.link, :configuration) %><br/>
 <br/>
-<b>Alarms:</b>                                   <%= (@ticket.alarm = "") ? "none" : @ticket.alarm %><br/>
+<b>Alarms:</b>                                   <%= show_value(@ticket, :alarm) %><br/>
 <br/>
-<b>Special Instructions:</b>                     <%= (@ticket.special_instructions = "") ? "none" : @ticket.special_instructions %><br/>
+<b>Special Instructions:</b>                     <%= show_value(@ticketm, :special_instructions) %><br/>
 <br/>
-<b>Additional notes:</b>                         <%= (@ticket.notes = "") ? "none" : @ticket.notes %><br/>
+<b>Additional notes:</b>                         <%= show_value(@ticket, :notes) %><br/>
 <br/>
 <br/>
 <h3 style="margin-left: 50px;"><i>Nokia Siemens Networks.</i></h3><br/>
