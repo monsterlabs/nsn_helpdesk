@@ -46,7 +46,8 @@ class Views::Tickets::Record < Erector::RailsWidget
   
   def links_to_change_status(ticket)
     td :id => "change_status_ticket_#{ticket.id}_column", :class => "change_status_column" do
-        Status.all(:conditions => 'id > 1', :order => 'id ASC').each do |s|
+      minimum = current_user.has_role?(:admin) ? 1 : 2
+        Status.all(:conditions => "id != #{ticket.status_id} AND id >= #{minimum}", :order => 'id ASC').each do |s|
           link_to_remote(s.name, {:url => {:controller => '/field_manager/tickets', :action => 'edit_change_status', :status_id => s.id, :id => ticket.id}, :method => :get,
                         :update => {:success => "add_edit_dialog"}, 
                         :success => '$("#add_edit_dialog").dialog({

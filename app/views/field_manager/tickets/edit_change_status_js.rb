@@ -3,9 +3,8 @@ class Views::FieldManager::Tickets::EditChangeStatusJs < Views::Layouts::Applica
      rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
       form_remote_tag(:url => "/field_manager/tickets/change_status", 
         :success => "
-          $('#sites').val($('#link_sites').val());
           $('#add_edit_dialog').dialog('close');
-          $('div#link_details').html(request);") do |f|
+          $('tr#ticket_#{@ticket.id}').html(request);") do |f|
           rawtext hidden_field_tag(:id, @ticket.id) 
           fieldset do
             div :class => 'field' do
