@@ -34,7 +34,7 @@ class Views::Admin::Users::ShowJs < Views::Layouts::ApplicationJs
     end
     
     link_to_remote("Edit",  { :url => {:controller => 'users', :action => 'edit', :id => @user.id}, :method => :get,
-               :with => "'region_id=' + $('#customer_filter_region_id').val() + '&associated_field_id=#{@associated_field_id}&value_tag_id=#{@value_tag_id}'",
+               :with => "'region_id=' + $('#customer_filter_region_id').val() + '&associated_field_id=#{@associated_field_id}&value_tag_id=#{@value_tag_id}&response_id=#{@response_id}'",
                :update => {:success => "add_edit_dialog"}, 
                :success => '$("#add_edit_dialog").dialog({
                  bgiframe: true,

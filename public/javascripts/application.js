@@ -121,7 +121,7 @@ function autocomplete_reporter() {
   });
   $("input#person_lastname_firstname").result(function(event, data, formatted) {
     $.ajax({
-      url: "/users/"+ data[2] +"?associated_field_id=person_lastname_firstname&value_tag_id=ticket_reported_by_id",
+      url: "/users/"+ data[2] +"?associated_field_id=person_lastname_firstname&value_tag_id=ticket_reported_by_id&response_id=reporter_details",
       success: function(request) { $("div#reporter_details").html(request); set_button_behaviour(); $("input#person_lastname_firstname").disable();}
     });
   });
@@ -140,7 +140,7 @@ function autocomplete_alternate() {
   });
   $("input#alternate_person_lastname_firstname").result(function(event, data, formatted) {
     $.ajax({
-      url: "/users/"+ data[2] +"?associated_field_id=alternate_person_lastname_firstname&value_tag_id=ticket_alternate_contact_id",
+      url: "/users/"+ data[2] +"?associated_field_id=alternate_person_lastname_firstname&value_tag_id=ticket_alternate_contact_id&response_id=alternate_details",
       success: function(request) { $("div#alternate_details").html(request); set_button_behaviour(); $("input#alternate_person_lastname_firstname").disable();}
     });
   });

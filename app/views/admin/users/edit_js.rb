@@ -4,7 +4,7 @@ class Views::Admin::Users::EditJs < Views::Layouts::ApplicationJs
     form_remote_tag(:url => "/users/update", 
       :success => "
         $('#add_edit_dialog').dialog('close');
-        $('div#reporter_details').html(request); set_button_behaviour();") do |f|
+        $('div##{@response_id}').html(request); set_button_behaviour();") do |f|
         # widget Views::Links::Form, :record => @link
         rawtext hidden_field_tag 'value_tag_id', @value_tag_id
         rawtext hidden_field_tag 'associated_field_id', @associated_field_id
