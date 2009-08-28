@@ -11,4 +11,8 @@ module ApplicationHelper
     end
     name + ' ' + sufix
   end
+  
+  def show_value(record, attribute)
+    record.send(attribute).to_s.strip.empty? ? "none" : record.send(attribute)
+  end
 end

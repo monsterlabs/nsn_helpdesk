@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
   def ticket_notifications(ticket)
     @subject    = '[NSNCallCenter] Ticket has been sent'
     @recipients = ticket.opened_by.email
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
     @content_type = "text/html"
@@ -18,7 +18,7 @@ class Notifier < ActionMailer::Base
     ticket.reported_priority.name == 'High' ? (prefix='EME Case') : (prefix='Case')
     @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
     @recipients = email
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
     @content_type = "text/html"
