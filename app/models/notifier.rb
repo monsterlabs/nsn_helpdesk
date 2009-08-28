@@ -27,7 +27,7 @@ class Notifier < ActionMailer::Base
   def random_password(user, password)
     @subject    = '[NSNCallCenter] Your password has been reset'
     @recipients = user.email
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = { :user => user, :password => password}
     @content_type = "text/html"
@@ -36,7 +36,7 @@ class Notifier < ActionMailer::Base
   def link_notifications(link)
     @subject    = '[NSNCallCenter] Link updated'
     @recipients = link.region.users.field_managers.collect { |fm| fm.email }
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = {:link => link }
     @content_type = "text/html"
@@ -45,7 +45,7 @@ class Notifier < ActionMailer::Base
   def reminder_notification(ticket)
     @subject    = '[NSNCallCenter] Reminder'
     @recipients = User.field_managers.collect { |fm| fm.email }
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = {:ticket => ticket }    
     @content_type = "text/html"
@@ -53,8 +53,8 @@ class Notifier < ActionMailer::Base
 
   def ticket_closed_notification(ticket)
     @subject    = '[NSNCallCenter] Ticket closed'
-    @recipients = User.group_and_field_managers_collection.collect {|user| user.email}
-    @from       = 'noreply@nsnmwcaretelcel.com'
+    @recipients = User.field_managers.collect { |user| user.email }
+    @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = {:ticket => ticket }    
     @content_type = "text/html"
