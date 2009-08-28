@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
   helper :application
   def ticket_notifications(ticket)
     @subject    = '[NSNCallCenter] Ticket has been sent'
-    @recipients = 'alexjr85@gmail.com' #ticket.opened_by.email
+    @recipients = ticket.opened_by.email
     @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
@@ -17,7 +17,7 @@ class Notifier < ActionMailer::Base
   def fieldmanager_notification(ticket, email)
     ticket.reported_priority.name == 'High' ? (prefix='EME Case') : (prefix='Case')
     @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
-    @recipients = 'alexjr85@gmail.com' # email
+    @recipients = email
     @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @body       = { :ticket => ticket}
