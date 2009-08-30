@@ -9,9 +9,7 @@ class Views::Links::Show < Views::Layouts::Application
       widget Views::Links::ShowRecord, :record => @link
     end
     if @link.respond_to? :versions and @link.versions.size > 1
-      table :id => "listing" do
-        widget Views::Shared::ShowLog, :record => @link
-      end
+      widget Views::Shared::ShowLog, :record => @link
     end
 
     link_to "Modify", { :action => 'edit', :id => @link.id }, ui_style(:button)
