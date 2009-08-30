@@ -4,6 +4,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
   def content
     table :id => "listing" do
       table_header %w(Photo Fullname Login Email Actions)
+      table_filter
       table_body
     end
   end
@@ -31,6 +32,20 @@ class Views::Admin::Users::Record < Erector::RailsWidget
         end
       end
     end
+  end
+  
+  def table_filter
+    tr :id => "filter_row" do
+      td :class => "filter_column"
+      td :class => "filter_column" do
+        rawtext text_field_tag "filter", params[:filter]
+      end
+      td :class => "filter_column" 
+      td :class => "filter_column"
+      td {
+        rawtext submit_tag "Filter", ui_style(:button)
+      }
+    end # end tr
   end
   
 end

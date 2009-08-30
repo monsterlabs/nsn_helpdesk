@@ -180,11 +180,11 @@ class Erector::Widget
   def paginator(collection, action = action_name)
     div :class => "paginator", :id => "paginator" do
       if collection.total_pages > 1
-        previous_page(collection, action)
+        previous_page(collection, action) unless collection.current_page == 1
         page_ranges(collection).collect do |page|
           current_page(collection, page, action)
         end
-        next_page(collection, action)
+        next_page(collection, action) unless collection.current_page == collection.total_pages
       end
     end
   end

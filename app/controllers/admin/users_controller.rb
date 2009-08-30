@@ -1,12 +1,13 @@
 class Admin::UsersController < ApplicationController
   def index
     @collection = User.find(:all, 
-        :conditions => ['login <> ?', current_user.login],
+        :conditions => ['login <> ? AND (people.lastname like ? OR people.firstname like ?)', current_user.login, "%#{params[:filter] || ""}%", "%#{params[:filter] || ""}%"],
         :include => :person,
         :order => "people.lastname #{params[:order] || 'ASC'}, people.firstname #{params[:order] || 'ASC'}"
       ).paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
       format.html { render :action => 'index' }
+      # format.js { render 'users/list_js' }
     end
   end
 
