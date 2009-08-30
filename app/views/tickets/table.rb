@@ -49,7 +49,7 @@ class Views::Tickets::Table < Erector::RailsWidget
     tr :id => "filter_row" do
       rawtext hidden_field_tag "filter[attended_by_id_equals]", current_user.id if params[:filter] && params[:filter].has_key?(:attended_by_id_equals)
       td :class => "filter_column" do
-        rawtext text_field_tag "filter[case_id_like]", (params[:filter] ? params[:filter][:case_id_like] : nil), :size => 13
+        rawtext text_field_tag "filter[case_id_like]", (params[:filter] ? params[:filter][:case_id_like] : nil), :size => 15
       end
       td :class => "filter_column" do
         rawtext simple_select :filter, :region, :method_name => :region_id_equals,:prompt => ("" unless current_user.roles.first.name == 'corporate'),
