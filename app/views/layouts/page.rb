@@ -214,20 +214,20 @@ class Erector::Widget
   end
 
   def page_ranges(collection)
-      limit = 9
+      limit = 10
       first = 1
       last = limit
       total = collection.total_pages
       current = collection.current_page
       
-      if total <= 9 || current < 5
+      if total <= 10 || current < 9
         last = (total > limit ? limit : total)
         (1..last)
       else
-        if (total - current) < 4
+        if (total - current) < 9
           ((total-(limit-1))..total)
         else
-          ((current-4)..(current+4))
+          ((current-9)..(current+9))
         end
       end
   end
