@@ -20,7 +20,13 @@ class ReportsController < ApplicationController
     end
     render 'reports/show'       
   end
-
+  
+  def show_form
+    respond_to do |format|
+      format.js { render "reports/#{params[:form_name]}_js.rb" }
+    end
+  end
+  
 
   def report_all
     link = "/reports/bar_all?"

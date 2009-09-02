@@ -28,11 +28,7 @@ class Views::Links::Table < Erector::RailsWidget
       td :class => "filter_column" do
         rawtext simple_select :filter, :region, {:prompt => "", :selected => (params[:filter] ? params[:filter][:region_id].to_i : nil)}
       end
-      td :class => "filter_column" do
-        rawtext select :filter, :configuration, 
-        options_for_select([['1 + 1', '1 + 1'], ['1 + 0', '1 + 0'], ['0 + 0', '0 + 0']], (params[:filter][:configuration] if params[:filter])),
-        :prompt => ""
-      end
+      td :class => "filter_column" 
       td :class => "filter_column" do
         rawtext text_field_tag "filter[city_like]", (params[:filter][:city_like] if params[:filter])
       end
