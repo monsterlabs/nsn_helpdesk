@@ -39,7 +39,7 @@ class FieldManager::TicketsController < TicketsController
       if @ticket.update_attributes(a)
         format.js { render 'field_manager/tickets/change_status_js' }
       else
-        format.js { redirect_to :action => :index}
+        format.js { render 'tickets/errors_js', :status => 500 }
       end
     end
   end 

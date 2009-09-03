@@ -2,9 +2,9 @@ class Views::FieldManager::Tickets::EditChangeStatusJs < Views::Layouts::Applica
   def js_content
      rawtext error_messages_for 'ticket', :class => 'ui-state-error ui-corner-all'
       form_remote_tag(:url => "/field_manager/tickets/change_status", 
-        :success => "
-          $('#add_edit_dialog').dialog('close');
-          $('tr#ticket_#{@ticket.id}').html(request);") do |f|
+        :success => "$('#add_edit_dialog').dialog('close');
+          $('tr#ticket_#{@ticket.id}').html(request);",
+        :failure => "eval(request.responseText);") do |f|
           rawtext hidden_field_tag(:id, @ticket.id) 
           fieldset do
             div :class => 'field' do
