@@ -39,16 +39,16 @@ class Views::Reports::CasesByRegionForm < Views::Layouts::Application
         br
         rawtext select :report, :year, (2009..(Date.today.year + 5)).collect { |y| [y, y]}
       end
-      
+
       div :class => "grid_2"do
-          b "Chart type"
-          br
-          br
-          rawtext radio_button_tag 'graph[graph_type]', 'bar'
-          text 'Bar'
-          br
-          rawtext radio_button_tag 'graph[graph_type]', 'pie'
-          text 'Pie'
+        b "Chart type"
+        br
+        br
+        rawtext radio_button_tag 'report[chart_type]', 'bar3d'
+        text 'Bar'
+        br
+        rawtext radio_button_tag 'report[chart_type]', 'pie'
+        text 'Pie'
       end
 
       div :class => 'clear'

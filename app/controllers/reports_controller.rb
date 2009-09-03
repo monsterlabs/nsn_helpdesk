@@ -1,4 +1,3 @@
-require 'spreadsheet'
 class ReportsController < ApplicationController
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
@@ -7,26 +6,27 @@ class ReportsController < ApplicationController
     render 'reports/index'
   end
 
-  def create
-    @graphs = []
-    params[:report][:region_id].each do |region_id|
-       link = "/reports/bar?region_id=#{region_id}"
-       months = params[:report][:months].collect { |m| "months[]=#{m}" }.join('&')
-       link << "&" + months unless months.empty?
-       priorities = params[:report][:priorities].collect { |p| "priorities[]=#{p}" }.join('&')
-       link << "&" + priorities unless priorities.empty?
-       link << "&" + "year=#{params[:report][:year]}"
-      @graphs << open_flash_chart_object(800,280,link)
-    end
-    render 'reports/show'       
-  end
-  
   def show_form
     respond_to do |format|
       format.js { render "reports/#{params[:form_name]}_js.rb" }
     end
   end
-  
+
+  def create
+     @graphs = []
+     params[:report][:region_id].each do |region_id|
+        link = "/reports/bar?region_id=#{region_id}"
+        months = params[:report][:months].collect { |m| "months[]=#{m}" }.join('&')
+        link << "&" + months unless months.empty?
+        priorities = params[:report][:priorities].collect { |p| "priorities[]=#{p}" }.join('&')
+        link << "&" + priorities unless priorities.empty?
+        link << "&" + "year=#{params[:report][:year]}"
+        link << "&" + "chart_type=#{params[:report][:chart_type]}"
+        
+       @graphs << open_flash_chart_object(800,280,link)
+     end
+     render 'reports/show'       
+   end  
 
   def report_all
     link = "/reports/bar_all?"
@@ -35,19 +35,20 @@ class ReportsController < ApplicationController
     priorities = params[:report][:priorities].collect { |p| "priorities[]=#{p}" }.join('&')
     link << "&" + priorities unless priorities.empty?
     link << "&" + "year=#{params[:report][:year]}"
+    link << "&" + "chart_type=#{params[:report][:chart_type]}"
     @graph = open_flash_chart_object(800,280,link)
     render 'reports/report_all'       
   end
   
   def bar
-    @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:region_id], params[:priorities], params[:months], 2009)
-    @graph = bar3d_chart(@data)
+    @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:region_id], params[:priorities], params[:months], params[:year])
+    @graph = method("#{params[:chart_type]}_chart").call(@data)
     render :text => @graph.to_s
   end
 
   def bar_all
     @data = TicketReporter.find_by_reported_priority_per_month(params[:priorities], params[:months],  params[:year])
-    @graph = bar3d_chart(@data)
+    @graph = method("#{params[:chart_type]}_chart").call(@data)
     render :text => @graph.to_s
   end
     
@@ -62,7 +63,6 @@ class ReportsController < ApplicationController
     @collection = @data[:records]
     send_file(excel_file(@collection), :type => "application/vnd.ms-excel", :disposition => "inline")
   end
-
 
   private
   def excel_file(collection)

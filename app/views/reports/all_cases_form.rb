@@ -22,8 +22,9 @@ class Views::Reports::AllCasesForm < Views::Layouts::Application
         b "Months" 
         br
         br
-        rawtext select_month(Date.today, {:field_name => 'months', :object_name => :report}, {:multiple => true, :size => 9})
+        rawtext select_month(Date.today, { :field_name => 'months', :prefix => 'report' }, { :multiple => true, :size => 9 }).sub(/months\]/, "months][]")
       end
+
 
       div :class => "grid_2" do
         b "Year" 
@@ -31,14 +32,15 @@ class Views::Reports::AllCasesForm < Views::Layouts::Application
         br
         rawtext select :report, :year, (2009..(Date.today.year + 5)).collect { |y| [y, y]}
       end
+      
       div :class => "grid_2"do
          b "Chart type"
          br
          br
-         rawtext radio_button_tag 'graph[graph_type]', 'bar'
+         rawtext radio_button_tag 'report[chart_type]', 'bar3d'
          text 'Bar'
          br
-         rawtext radio_button_tag 'graph[graph_type]', 'pie'
+         rawtext radio_button_tag 'report[chart_type]', 'pie'
          text 'Pie'
       end
 

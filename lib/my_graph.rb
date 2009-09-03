@@ -1,6 +1,7 @@
 require 'vendor/plugins/open_flash_chart/lib/open_flash_chart'
 module MyGraph
   include OpenFlashChart
+  
   def bar3d_chart(data={})
     bars   = []
     # random colors to chose from
@@ -20,12 +21,12 @@ module MyGraph
 
     # labels along the x axis, just hard code for now, but you would want to dynamically do this
     x_axis = XAxis.new
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
-    x_axis.labels = data[:months].collect {|m| months[(m.to_i - 1)] } 
+    x_axis.labels = month_list(data[:months])
 
     # go to 100% since we are dealing with test results
     y_axis = YAxis.new
-    y_axis.set_range(0, data[:max_size], 1)
+    interval = data[:max_size] > 10 ? (data[:max_size] / 5) : 1
+    y_axis.set_range(0, data[:max_size], interval)
 
     # setup the graph
     graph = OpenFlashChart.new
@@ -37,6 +38,29 @@ module MyGraph
     graph
   end
 
+  def pie_chart(data)
+    title = Title.new("#{data[:title]}: #{month_list(data[:months]).join(', ')}")
+    pie = Pie.new
+    pie.start_angle = 35
+    pie.animate = true
+    pie.tooltip = '#val# of #total#<br>#percent# of 100%'
+    pie.colours = ["#330066", "#9a89f9", "#459a89" ]
+    myvalues = []
+    data[:results].each do |label, values|
+      total = values.compact.inject(0) { |sum,item| sum + item }
+      myvalues << PieValue.new(total, "#{label} (#{total})")
+    end
+    pie.values  = myvalues
+
+    chart = OpenFlashChart.new
+    chart.bg_colour = '#ffffcc'
+    chart.title = title
+    chart.add_element(pie)
+
+    chart.x_axis = nil
+    chart.render
+  end
+
   def stacked_bar_chart(data={})
     title = Title.new(:text => "Stuff I'm thinking about", :style => "{font-size: 20px; color: #F24062; text-align: center;}")
 
@@ -46,7 +70,8 @@ module MyGraph
     bar_stack.append_stack [5, { "val" => 5, "colour" => "#ff0000" }]
     bar_stack.append_stack [2,2,2,2, { "val" => 2, "colour" => "#ff00ff" }]
 
-    bar_stack.keys = [{ "colour" => "#C4D318", "text" => "Kiting", "font-size" => 13 },
+    bar_stack.keys = [
+      { "colour" => "#C4D318", "text" => "Kiting", "font-size" => 13 },
       { "colour" => "#50284A", "text" => "Work", "font-size" => 13 },
       { "colour" => "#7D7B6A", "text" => "Drinking", "font-size" => 13 },
       { "colour" => "#ff0000", "text" => "XXX", "font-size" => 13 },
@@ -66,5 +91,11 @@ module MyGraph
       chart.y_axis = y
       chart.tooltip = tooltip
       chart.render
-    end
   end
+
+  def month_list(mymonths)
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+    mymonths.collect {|m| months[(m.to_i - 1)] } 
+  end
+  
+end
