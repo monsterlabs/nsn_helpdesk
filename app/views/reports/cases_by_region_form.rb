@@ -4,7 +4,7 @@ class Views::Reports::CasesByRegionForm < Views::Layouts::Application
     h2 "Cases by Region"
     br
     br
-    form_for(:report, :url => {:action => 'create'}) do
+    form_for(:report, :url => {:action => 'cases_by_region_chart'}) do
       div :class => "grid_5" do
         b "Case type" 
         br

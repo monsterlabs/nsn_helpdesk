@@ -12,41 +12,25 @@ class ReportsController < ApplicationController
     end
   end
 
-  def create
-     @graphs = []
-     params[:report][:region_id].each do |region_id|
-        link = "/reports/bar?region_id=#{region_id}"
-        months = params[:report][:months].collect { |m| "months[]=#{m}" }.join('&')
-        link << "&" + months unless months.empty?
-        priorities = params[:report][:priorities].collect { |p| "priorities[]=#{p}" }.join('&')
-        link << "&" + priorities unless priorities.empty?
-        link << "&" + "year=#{params[:report][:year]}"
-        link << "&" + "chart_type=#{params[:report][:chart_type]}"
-        
-       @graphs << open_flash_chart_object(800,280,link)
-     end
-     render 'reports/show'       
+  def cases_by_region_chart
+     regions = params[:report][:region_id]
+     params[:report].delete(:region_id)
+     @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,by_region_chart_reports_url(params[:report].merge(:region_id => region_id))) }
+     render 'reports/by_region_chart'       
    end  
-
-  def report_all
-    link = "/reports/bar_all?"
-    months = params[:report][:months].collect { |m| "months[]=#{m}" }.join('&')
-    link << "&" + months unless months.empty?
-    priorities = params[:report][:priorities].collect { |p| "priorities[]=#{p}" }.join('&')
-    link << "&" + priorities unless priorities.empty?
-    link << "&" + "year=#{params[:report][:year]}"
-    link << "&" + "chart_type=#{params[:report][:chart_type]}"
-    @graph = open_flash_chart_object(800,280,link)
-    render 'reports/report_all'       
-  end
   
-  def bar
+  def by_region_chart
     @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:region_id], params[:priorities], params[:months], params[:year])
     @graph = method("#{params[:chart_type]}_chart").call(@data)
     render :text => @graph.to_s
   end
 
-  def bar_all
+  def cases_main_chart
+    @graph = open_flash_chart_object(800,280,main_chart_reports_url(params[:report]))
+    render 'reports/main_chart'       
+  end
+
+  def main_chart
     @data = TicketReporter.find_by_reported_priority_per_month(params[:priorities], params[:months],  params[:year])
     @graph = method("#{params[:chart_type]}_chart").call(@data)
     render :text => @graph.to_s

@@ -3,7 +3,7 @@ class Views::Reports::AllCasesForm < Views::Layouts::Application
     h2 'All Cases'
     br
     br
-    form_for(:report, :url => {:action => 'report_all'}, :method => :put) do
+    form_for(:report, :url => {:action => 'cases_main_chart'}) do
       div :class => "grid_5 " do
         b "Case type" 
         br
