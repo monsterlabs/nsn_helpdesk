@@ -16,6 +16,7 @@ function badBrowser(){
     if (ffversion < 3) {
       return true;
     }
+    return false;
   }
   // Check for Safari < Version 4.0
   if (/safari[\/\s](\d+\.\d+)/.test(userAgent) && !/chrome[\/\s](\d+\.\d+)/.test(userAgent)) {
@@ -27,6 +28,7 @@ function badBrowser(){
         return true;
       }
     }
+    return false;
   }
   // Check for Chrome < Version 2.0
   var chrome = userAgent.indexOf('chrome');

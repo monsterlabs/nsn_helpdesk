@@ -149,7 +149,7 @@ function autocomplete_alternate() {
 function show_progress() {
   $.blockUI({ 
     message: '<div id=\"progress\">',
-    css: { border: 'none', backgroundColor: 'transparent' },
+    css: { border: 'none', backgroundColor: 'transparent', 'z-index': 1005 },
     baseZ: 1004});
   $('#progress').progressbar({value: 100});
 }

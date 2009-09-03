@@ -2,6 +2,8 @@ class Views::Admin::Users::EditJs < Views::Layouts::ApplicationJs
   def js_content
     rawtext error_messages_for 'user', :class => 'ui-state-error ui-corner-all'
     form_remote_tag(:url => "/users/update", 
+      :loading => "show_progress()",
+      :complete => "hide_progress();",
       :success => "$('#add_edit_dialog').dialog('close'); $('div##{@response_id}').html(request); set_button_behaviour();") do |f|
         # widget Views::Links::Form, :record => @link
         rawtext hidden_field_tag 'response_id', @response_id
