@@ -1,8 +1,18 @@
 class Admin::UsersController < ApplicationController
   def index
+    conditions_str = 'login <> ? AND (people.lastname like ? OR people.firstname like ?)'
+    conditions_vals = [current_user.login, "%#{params[:filter] || ""}%", "%#{params[:filter] || ""}%"]
+    if params[:role] && !params[:role][0].blank?
+      conditions_str += ' AND roles.id = ?'
+      conditions_vals << params[:role]
+    end
+    if params[:region] && !params[:region][0].blank?
+      conditions_str += ' AND region_id = ?'
+      conditions_vals << params[:region]
+    end
     @collection = User.find(:all, 
-        :conditions => ['login <> ? AND (people.lastname like ? OR people.firstname like ?)', current_user.login, "%#{params[:filter] || ""}%", "%#{params[:filter] || ""}%"],
-        :include => :person,
+        :conditions => [ conditions_str, *conditions_vals ],
+        :include => [:person, :roles],
         :order => "people.lastname #{params[:order] || 'ASC'}, people.firstname #{params[:order] || 'ASC'}"
       ).paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
