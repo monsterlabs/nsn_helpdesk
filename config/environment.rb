@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'airblade-paper_trail', :lib => 'paper_trail', :source => 'http://gems.github.com'
   config.gem 'tzinfo', :lib => 'tzinfo'
   config.gem 'simple-daemon'
+  config.gem 'spreadsheet', :lib => 'spreadsheet'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
