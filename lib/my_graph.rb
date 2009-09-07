@@ -41,7 +41,7 @@ module MyGraph
     pie.start_angle = 35
     pie.animate = true
     pie.tooltip = '#val# of #total#<br>#percent# of 100%'
-    pie.colours = ["#330066", "#9a89f9", "#459a89" ]
+    pie.colours = ["#750091", "#f99027", "#9088AA"]
     myvalues = []
     data[:results].each do |label, values|
       total = values.compact.inject(0) { |sum,item| sum + item }

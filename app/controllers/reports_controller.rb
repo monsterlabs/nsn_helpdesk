@@ -15,21 +15,31 @@ class ReportsController < ApplicationController
   end
 
   def cases_by_region_chart
-     regions = params[:report][:region_id]
-     params[:report].delete(:region_id)
-     @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,by_region_chart_reports_url(params[:report].merge(:region_id => region_id))) }
-     render 'reports/by_region_chart'
+    if !params[:report][:region_id].nil? and !params[:report][:priorities].nil? and !params[:report][:months].nil? and !params[:report][:year].nil?
+      regions = params[:report][:region_id]
+      params[:report].delete(:region_id)
+      @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,by_region_chart_reports_url(params[:report].merge(:region_id => region_id))) }
+      render 'reports/by_region_chart'
+    else
+      @errors = "You should select at least one element in each option"
+      render 'reports/cases_by_region'
+    end
    end  
   
   def by_region_chart
-    @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:region_id], params[:priorities], params[:months], params[:year])
-    @graph = method("#{params[:chart_type]}_chart").call(@data)
-    render :text => @graph.to_s
+      @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:region_id], params[:priorities], params[:months], params[:year])
+      @graph = method("#{params[:chart_type]}_chart").call(@data) 
+      render :text => @graph.to_s
   end
 
   def cases_main_chart
-    @graph = open_flash_chart_object(800,280,main_chart_reports_url(params[:report]))
-    render 'reports/main_chart'
+    if !params[:report][:priorities].nil? and !params[:report][:months].nil? and !params[:report][:year].nil?
+      @graph = open_flash_chart_object(800,280,main_chart_reports_url(params[:report]))
+      render 'reports/main_chart'
+    else
+      @errors = "You should select at least one element in each option"
+      render 'reports/all_cases'
+    end
   end
 
   def main_chart
@@ -39,10 +49,15 @@ class ReportsController < ApplicationController
   end
 
   def detailed_chart
-    regions = params[:report][:region_id]
-    params[:report].delete(:region_id)
-    @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,detailed_cases_chart_reports_url(params[:report].merge(:region_id => region_id))) }
-    render 'reports/detailed_chart'
+    if !params[:report][:region_id].nil? and !params[:report][:priorities].nil? and !params[:report][:months].nil? and !params[:report][:year].nil?
+      regions = params[:report][:region_id]
+      params[:report].delete(:region_id)
+      @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,detailed_cases_chart_reports_url(params[:report].merge(:region_id => region_id))) }
+      render 'reports/detailed_chart'
+    else
+     @errors = "You should select at least one element in each option"
+     render 'reports/detailed_cases'
+    end
   end
 
   def detailed_cases_chart
