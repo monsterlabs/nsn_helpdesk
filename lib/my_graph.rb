@@ -1,24 +1,21 @@
 require 'vendor/plugins/open_flash_chart/lib/open_flash_chart'
 module MyGraph
   include OpenFlashChart
-  
+
   def bar3d_chart(data={})
     bars   = []
-    # random colors to chose from
-    colours = ["#459a89", "#9a89f9","#330066" ]
+    colours = {:high => "#750091", :medium => "#f99027", :low => "#9088AA"}
 
     data[:results].each do |label, values|
       # 3d bar graph, could be any bar graph though
       bar = Bar3d.new
       bar.set_key(label, 10)
-      bar.colour = colours[bars.size]
+      bar.colour = colours[(label.downcase.to_sym)]
       bar.values = values
       bars << bar
     end
-
-    # some title
     title = Title.new("#{data[:title]}")
-
+    
     # labels along the x axis, just hard code for now, but you would want to dynamically do this
     x_axis = XAxis.new
     x_axis.labels = month_list(data[:months])
@@ -62,40 +59,52 @@ module MyGraph
   end
 
   def stacked_bar_chart(data={})
-    title = Title.new(:text => "Stuff I'm thinking about", :style => "{font-size: 20px; color: #F24062; text-align: center;}")
 
-    bar_stack = BarStack.new(:colours => ['#C4D318', '#50284A', '#7D7B6A'])
-    bar_stack.append_stack([2.5,5,2.5])
-    bar_stack.append_stack [2.5,5,1.25,1.25]
-    bar_stack.append_stack [5, { "val" => 5, "colour" => "#ff0000" }]
-    bar_stack.append_stack [2,2,2,2, { "val" => 2, "colour" => "#ff00ff" }]
+    bars   = []
+    colours = { :high => "#750091", :medium => "#f99027", :low => "#9088AA" }
+    status_colours = { :open => '#ff0000', :assigned => '#FFCC00', :resolved => '#0000FF', :closed => '#00CC00'}
+    data[:results].each do |label, values, stacked_values|
+      stacked_bar = BarStack.new(:barwidth => 0.3, :axis =>'left')
+      values.each_index do |index|
+        stacked_bar.append_stack(stacked_values[index].collect {|s| {:val => s.last, :colour => status_colours[s.first]} })
+      end
+      bars << stacked_bar
+      # 3d bar graph, could be any bar graph though
+      bar = Bar3d.new
+      bar.set_key(label, 10)
+      bar.colour = colours[(label.downcase.to_sym)]
+      bar.values = values
+      bars << bar
+    end
+    bars.first.keys =  status_colours.keys.collect {|k| { 'colour' => status_colours[k], 'text' => k.to_s.capitalize, 'font-size' => 10}} 
 
-    bar_stack.keys = [
-      { "colour" => "#C4D318", "text" => "Kiting", "font-size" => 13 },
-      { "colour" => "#50284A", "text" => "Work", "font-size" => 13 },
-      { "colour" => "#7D7B6A", "text" => "Drinking", "font-size" => 13 },
-      { "colour" => "#ff0000", "text" => "XXX", "font-size" => 13 },
-      { "colour" => "#ff00ff", "text" => "What rhymes with purple? Nurple?", "font-size" => 13 }]
-      bar_stack.tip = "X label [#x_label#], Value [#val#]<br>Total [#total#]"
+    # some title
+    title = Title.new("#{data[:title]}")
 
-      y = YAxis.new(:min => 0, :max => 14, :steps => 2)
-      x = XAxis.new(:labels => {:labels => ["Winter", "Spring", "Summer", "Autumn"]})
+    # labels along the x axis, just hard code for now, but you would want to dynamically do this
+    x_axis = XAxis.new
+    x_axis.labels = month_list(data[:months])
 
+    # go to 100% since we are dealing with test results
+    y_axis = YAxis.new
+    interval = data[:max_size] > 10 ? (data[:max_size] / 5) : 1
+    y_axis.set_range(0, data[:max_size], interval)
 
-      tooltip = Tooltip.new
-      tooltip.mouse = 2
-
-      chart = OpenFlashChart.new(:title => title)
-      chart.add_element bar_stack
-      chart.x_axis = x
-      chart.y_axis = y
-      chart.tooltip = tooltip
-      chart.render
+    # setup the graph
+    graph = OpenFlashChart.new
+    graph.bg_colour = '#ffffcc'
+    graph.title = title
+    graph.x_axis = x_axis
+    graph.y_axis = y_axis
+    bars.each do |b|
+      graph.add_element(b)
+    end
+    graph
   end
 
   def month_list(mymonths)
     months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
     mymonths.collect {|m| months[(m.to_i - 1)] } 
   end
-  
-end
+
+end 

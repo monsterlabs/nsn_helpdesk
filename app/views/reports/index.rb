@@ -18,7 +18,7 @@ class Views::Reports::Index < Views::Layouts::Application
       text ' | '
       link_to_remote 'Cases by Region', :url => show_form_reports_url(:form_name => 'cases_by_region_form'), :method => :get, :update => { :success => :report_form }
       text ' | '
-      link_to_remote 'Detailed Cases', :url => show_form_reports_url(:form_name => 'detailed_cases_form'), :method => :get, :update => { :success => :report_form }
+      link_to_remote 'Detailed Cases by Region', :url => show_form_reports_url(:form_name => 'detailed_cases_form'), :method => :get, :update => { :success => :report_form }
     end
   end
 end

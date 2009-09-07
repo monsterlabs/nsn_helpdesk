@@ -1,7 +1,9 @@
 class ReportsController < ApplicationController
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
+
   include MyGraph
+
   def index
     render 'reports/index'
   end
@@ -16,7 +18,7 @@ class ReportsController < ApplicationController
      regions = params[:report][:region_id]
      params[:report].delete(:region_id)
      @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,by_region_chart_reports_url(params[:report].merge(:region_id => region_id))) }
-     render 'reports/by_region_chart'       
+     render 'reports/by_region_chart'
    end  
   
   def by_region_chart
@@ -27,7 +29,7 @@ class ReportsController < ApplicationController
 
   def cases_main_chart
     @graph = open_flash_chart_object(800,280,main_chart_reports_url(params[:report]))
-    render 'reports/main_chart'       
+    render 'reports/main_chart'
   end
 
   def main_chart
@@ -35,7 +37,20 @@ class ReportsController < ApplicationController
     @graph = method("#{params[:chart_type]}_chart").call(@data)
     render :text => @graph.to_s
   end
-    
+
+  def detailed_chart
+    regions = params[:report][:region_id]
+    params[:report].delete(:region_id)
+    @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,detailed_cases_chart_reports_url(params[:report].merge(:region_id => region_id))) }
+    render 'reports/detailed_chart'
+  end
+
+  def detailed_cases_chart
+    @data = TicketReporter.find_by_region_and_reported_priority_and_status_per_month(params[:region_id], params[:priorities], params[:months],  params[:year])
+    @graph = stacked_bar_chart(@data)
+    render :text => @graph.to_s
+  end
+
   def ticket_by_region
     @data = TicketReporter.find_by_region_and_reported_priority_per_month(params[:report][:region_id], params[:report][:priorities], params[:report][:months], params[:report][:year])
     @collection = @data[:records]
