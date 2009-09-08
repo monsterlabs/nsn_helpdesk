@@ -4,7 +4,7 @@ class Views::Tickets::Versions < Erector::RailsWidget
   def content
     tr :id => "ticket_title" do 
       td {}
-      td {label "Ticket Version(s)"}
+      td {label "Case Version(s)"}
     end
     tr do 
       td :id => "ticket_left_cell" do 

@@ -1,8 +1,8 @@
 <hr>
-<h2 style="text-align: center">[NSNCallCenter] TICKET PRIORITY <%= @ticket.reported_priority.name.upcase %></h2>
+<h2 style="text-align: center">[NSNCallCenter] CASE PRIORITY <%= @ticket.reported_priority.name.upcase %></h2>
 <hr>
 <br/>
-Has been reported a <%= @ticket.reported_priority.name.downcase %> case ticket by <%= @ticket.reported_by.person.company.name %>.<br/>
+Has been reported a <%= @ticket.reported_priority.name.downcase %> priority case by <%= @ticket.reported_by.person.company.name %>.<br/>
 <br/>
 <b>Customer's Name:</b>                          <%= @ticket.reported_by.person.fullname %><br/>
 <br/>  
