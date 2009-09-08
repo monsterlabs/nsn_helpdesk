@@ -171,7 +171,7 @@ class Erector::Widget
       thead :class => "ui-widget-header", :id => "listing-head" do
         tr do
             columns.each  do |column|
-              th { text column }
+              th { text ActiveSupport::Inflector.humanize(column) }
             end
       end
     end
