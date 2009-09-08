@@ -13,7 +13,7 @@ module DashboardHelper
         else
           li :id => record.controller + '_tab' do
             a :id => record.controller + '_link' do
-              text record.controller.humanize
+              text (record.label || record.controller.humanize)
             end
             ul :class => "submenu", :style=>"display: none;", :id => (record.controller + '_children') do
               record.children.collect do |child|
@@ -31,7 +31,7 @@ module DashboardHelper
 
   def tab(name_space, record)
     li :class => "t-proj" do
-      link_to(record.controller.humanize, :controller => name_space + '/' + record.controller)
+      link_to((record.label || record.controller.humanize), :controller => name_space + '/' + record.controller)
     end
   end
 

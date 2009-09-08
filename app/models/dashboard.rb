@@ -7,6 +7,7 @@ class Dashboard < ActiveRecord::Base
     belongs_to :role
     belongs_to :parent, :class_name => 'Dashboard'
     
+    default_scope :order => 'id ASC, label ASC, controller ASC'
     def has_children?
       children.size > 0
     end

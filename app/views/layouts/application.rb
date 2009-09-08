@@ -88,7 +88,13 @@ class Views::Layouts::Application < Views::Layouts::Page
   
   def controller_title
     div :class => 'grid_3 prefix_7', :id => 'controller_title' do
-      title = controller_name == 'change_passwords' ? 'Change password' : ActiveSupport::Inflector.humanize(controller_name)
+      if controller_name == 'change_passwords'
+        title = 'Change password'
+      elsif controller_name == 'tickets'
+        title = 'Cases'
+      else 
+        title = ActiveSupport::Inflector.humanize(controller_name)
+      end
       h1 title
     end
   end  
