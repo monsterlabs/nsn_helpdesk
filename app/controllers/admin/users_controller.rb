@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
     @collection = User.find(:all, 
         :conditions => [ conditions_str, *conditions_vals ],
         :include => [:person, :roles],
-        :order => "people.lastname #{params[:order] || 'ASC'}, people.firstname #{params[:order] || 'ASC'}"
+        :order => "people.firstname #{params[:order] || 'ASC'}"
       ).paginate :page => params[:page] || 1, :per_page => params[:per_page] || 10
     respond_to do |format|
       format.html { render :action => 'index' }
