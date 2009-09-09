@@ -21,9 +21,21 @@ class Views::People::Show < Views::Layouts::Application
               td { rawtext @person.company.name  unless @person.company.nil? }
             end
 
-            tr do 
-              td { b 'Region:' }
-              td { rawtext @person.region.name unless @person.region.nil? }
+            tr do
+              if @person.user.has_role? :field_manager 
+                td { b 'Regions:' }
+                td {
+                  ul do
+                    @person.user.regions.each do |region|
+                      li {rawtext region.name}
+                    end
+                  end
+                  br
+                }
+              else
+                td { b 'Region:' }
+                td { rawtext @person.region.name unless @person.region.nil? }
+              end
             end
           end
         end

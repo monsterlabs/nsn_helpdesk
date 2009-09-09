@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
   
   has_many :user_regions
   has_many :regions, :through => :user_regions
+  accepts_nested_attributes_for :user_regions, :allow_destroy => true
 
   before_update :validate_password_fields
 

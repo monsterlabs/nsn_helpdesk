@@ -7,6 +7,7 @@ class Views::Admin::Users::Show < Views::Layouts::Application
     div :class => 'prefix_1 grid_5 suffix_2 omega' do
       widget Views::Users::ShowRecord, :user => @user
       widget Views::People::Show, :person => @user.person
+      br
       widget Views::Addresses::Show, :addr => @user.address
     end
     div :class => 'clear'

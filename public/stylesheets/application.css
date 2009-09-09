@@ -18,8 +18,8 @@ html {
 }
 
 .no_float {
-  display: inline;
-  float: none;
+  display: inline !important;
+  float: none !important;
 }
 
 div#filter .button, div#filter .button:visited {
