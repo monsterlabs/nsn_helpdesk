@@ -38,7 +38,7 @@ class Views::Admin::Users::Record < Erector::RailsWidget
     tr :id => "filter_row" do
       td :class => "filter_column"
       td :class => "filter_column" do
-        rawtext text_field_tag "filter", params[:filter]
+        rawtext text_field_tag "filter[fullname]", (params[:filter] ? params[:filter][:fullname] : '')
       end
       td :class => "filter_column" 
       td :class => "filter_column"

@@ -7,6 +7,32 @@ class User < ActiveRecord::Base
   named_scope :emergencies, :conditions => "roles.name = 'emergencies'", :include => { :user_roles => :role }
   named_scope :group_managers, :conditions => "roles.name = 'group_manager'", :include => { :user_roles => :role }
 
+  named_scope :region, lambda { |region_id|
+    {
+      # :joins => 'LEFT JOIN user_regions ON users.id = user_regions.user_id INNER JOIN people ON people.user_id = users.id',
+      :include => [:person, :user_regions],
+      :conditions => ['user_regions.region_id = :region OR people.region_id = :region', {:region => region_id}] 
+    }
+  }
+  
+  named_scope :role, lambda { |role_id|
+    {
+      :include => { :user_roles => :role },
+      :conditions => ['roles.name = ?', Role.find(role_id).name]
+    }
+  }
+  
+  named_scope :order, lambda { |order|
+    { :order => "people.firstname #{order.blank? ? 'ASC' : order }", :include => :person }
+  }
+  
+  named_scope :fullname, lambda { |name|
+    { 
+      :include => :person, 
+      :conditions => ['people.lastname like :name OR people.firstname like :name', {:name => "%#{name}%"}]
+    }
+  }
+  
   acts_as_authentic
   
   has_many :user_roles
