@@ -15,7 +15,10 @@ class Views::Tickets::Record < Erector::RailsWidget
         td { if ticket.affected_site.empty? then text "Both" else text ticket.affected_site end }
         td :id => 'status_' + ticket.dom_id do
             img :src => "/images/#{ticket.status.name.downcase}.png", :width => '12px', :height => '12px'
-           rawtext ticket.status.name 
+            status = ticket.status.name
+            span :class => status.downcase do
+              rawtext status
+            end
         end
         td { rawtext ticket.reported_priority.name }
         td { rawtext ticket.reported_by.person.fullname }

@@ -458,3 +458,13 @@ div#reporter_details p b, div#alternate_details p b {
 div#link_details p b {
   padding-right: 10px;
 }
+
+span.open {
+  color: red;
+  font-weight: bold;
+}
+
+span.closed {
+  color: green;
+  font-weight: bold;
+}
