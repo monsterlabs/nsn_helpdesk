@@ -50,10 +50,7 @@ class ReportsController < ApplicationController
   end
 
   def detailed_chart
-    if !params[:report][:region_id].nil? and !params[:report][:priorities].nil? and !params[:report][:months].nil? and !params[:report][:year].nil?
-      regions = params[:report][:region_id]
-      params[:report].delete(:region_id)
-      @graphs = regions.collect { |region_id| open_flash_chart_object(800,280,detailed_cases_chart_reports_url(params[:report].merge(:region_id => region_id))) }
+    if !params[:report][:region_id].nil? and !params[:report][:priorities].nil? and !params[:report][:months].nil? and !params[:report][:year].nil?    
       render 'reports/detailed_chart'
     else
      @errors = "You should select at least one element in each option"
@@ -64,6 +61,9 @@ class ReportsController < ApplicationController
   def detailed_cases_chart
     @data = TicketReporter.find_by_region_and_reported_priority_and_status_per_month(params[:region_id], params[:priorities], params[:months],  params[:year])
     @graph = stacked_bar_chart(@data)
-    render :text => @graph.to_s
+    respond_to do |format|
+      format.html { render :text => @graph.to_s }
+      format.xls  { render :action => 'results', :layout => false}
+    end
   end
 end

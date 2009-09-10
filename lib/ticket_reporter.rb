@@ -40,7 +40,7 @@ class TicketReporter
          records << results.flatten
          max_size = cases_per_month_and_status(results, months, year).first.max if cases_per_month_and_status(results, months, year).first.max > max_size
        end
-       {:title => "Tickets for region #{region_name(region_id)}", :results => graph_data, :months => months, :max_size => max_size, :year => year, :records => records}
+       {:title => "Tickets for region #{region_name(region_id)}", :results => graph_data, :months => months, :max_size => max_size, :year => year, :records => records.flatten}
      end
 
     private
