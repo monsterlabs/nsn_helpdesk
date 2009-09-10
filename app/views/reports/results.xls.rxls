@@ -1,0 +1,58 @@
+Spreadsheet.client_encoding = 'UTF-8'
+sheet = workbook.create_worksheet
+row = 0
+col = 0
+[ "Customer's name", "Customer's company", "Customer's phone", "Customer's mobile phone", "Customer's email", "Customer's zone time", "Case ID",
+  "NSN Engineer on duty", "NSN Engineer ID number", "NSN Engineer contact time", "Call handle time", "Product",  "Region", "Failure", "Status",
+  "Reported priority", "Link", "More affected site", "Frequency TX", "Frequency RX", "Alarm(s)", "Special instruction(s)", "Phone call attended by",
+  "Recommended priority", "Opened by",  "Opened Date", "Additional notes", "WorkInProgress/Closed by", "Due Date", "Ticket Type"].each do |col_name|
+	sheet[row, col] = col_name
+	col +=1
+end
+sheet.row(0).default_format = Spreadsheet::Format.new(:color => :black, :weight => :bold, :size => 11)
+
+row = row + 1
+@data[:records].each do |ticket|
+     row = row + 1
+	 unless ticket.reported_by.nil?
+		unless ticket.reported_by.person.nil?
+     		sheet[row,0] = ticket.reported_by.person.fullname
+     		sheet[row,1] = ticket.reported_by.person.company.name
+		end
+		unless ticket.reported_by.address.nil?
+     		sheet[row,2] = ticket.reported_by.address.business_phone
+     		sheet[row,3] = ticket.reported_by.address.mobile_phone
+		end
+     	sheet[row,4] = ticket.reported_by.email 
+	 end
+     sheet[row,5] = ticket.opened_at_local
+     sheet[row,6] = ticket.case_id
+
+	 unless ticket.assigned_to.nil?
+     	sheet[row,7] = ticket.assigned_to.person.fullname unless ticket.assigned_to.person.nil?
+     	sheet[row,8] = ticket.assigned_to.id 
+	 end
+	 sheet[row,9] = ticket.created_at.to_s 
+     sheet[row,10] = ticket.capture_time
+     sheet[row,11] = ticket.product.name
+     sheet[row,12] = ticket.link.region.name
+     sheet[row,13] = ticket.failure.name
+     sheet[row,14] = ticket.status.name
+     sheet[row,15] = ticket.reported_priority.name 
+     sheet[row,16] = ticket.link.sites
+     sheet[row,17] = ticket.affected_sites
+     sheet[row,18] = ticket.link.frequency_tx
+     sheet[row,19] = ticket.link.frequency_rx
+     sheet[row,20] = ticket.alarm
+     sheet[row,21] = ticket.special_instructions
+     sheet[row,22] = ticket.attended_by.person.fullname
+     sheet[row,23] = ticket.priority.name
+	 sheet[row,24] = ticket.opened_by.person.nil? ? ticket.opened_by.email : ticket.opened_by.person.fullname
+   	 sheet[row,25] = ticket.opened_at_local
+     sheet[row,26] = ticket.notes
+     unless ticket.assigned_to.nil?
+       sheet[row,27] = ticket.accepts_closing.person.fullname.to_s unless ticket.accepts_closing.nil?
+       sheet[row,28] = ticket.updated_at.to_s
+       sheet[row,29] = ticket.ticket_type.name.to_s unless ticket.ticket_type.nil?
+     end
+end

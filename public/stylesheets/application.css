@@ -466,5 +466,15 @@ span.open {
 
 span.closed {
   color: green;
-  font-weight: bold;
+  font-weight: normal;
+}
+
+span.assigned {
+  color: #FFCC14;
+  font-weight: normal;
+}
+
+span.resolved {
+  color: #0066CC;
+  font-weight: normal;
 }

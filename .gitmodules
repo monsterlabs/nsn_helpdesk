@@ -25,3 +25,6 @@
 [submodule "vendor/plugins/open_flash_chart"]
 	path = vendor/plugins/open_flash_chart
 	url = git://github.com/pullmonkey/open_flash_chart.git
+[submodule "vendor/plugins/spreadsheet_on_rails"]
+	path = vendor/plugins/spreadsheet_on_rails
+	url = git://github.com/10to1/spreadsheet_on_rails.git
