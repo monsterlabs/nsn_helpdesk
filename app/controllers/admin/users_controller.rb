@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
   def index
+    params[:filter] ||= {}
+    params[:filter][:order] ||= "ASC"
     @collection = User.search_and_paginate(params[:filter], params[:page] || 1)
     respond_to do |format|
       format.html { render :action => 'index' }
