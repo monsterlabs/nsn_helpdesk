@@ -79,14 +79,14 @@ class Views::Layouts::Application < Views::Layouts::Page
   end
 
   def who_has_changed_it(user_id)
-    @user = User.find(user_id)
-    unless @user.nil?
-      fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
-      "#{fullname} <#{@user.email}>"
-    else
-      "admin"
-    end
-  end
+     user = User.find(user_id) if user_id != 0
+     unless user.nil?
+       fullname =  user.person.nil? ? 'admin' : user.person.fullname
+       "#{fullname} <#{user.email}>"
+     else
+       "admin"
+     end
+   end
   
   def controller_title
     div :class => 'grid_3 prefix_7', :id => 'controller_title' do
