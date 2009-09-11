@@ -2,7 +2,7 @@ class Views::Tickets::New < Views::Layouts::Application
   def setup
     @@jqueries << <<-S
     $('#timer').html("");
-    $('#timer').epiclock({mode: EC_COUNTUP, target: "#{@ticket.opened_at.strftime "%m/%d/%Y %H:%M:%S %z"}", format: "x:i:s"}); 
+    $('#timer').epiclock({mode: EC_STOPWATCH, format: "x:i:s"}); 
     $('#timer').clocks(EC_RUN);
     S
   end
