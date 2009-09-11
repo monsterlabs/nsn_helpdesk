@@ -1,5 +1,7 @@
 class Views::Links::Index < Views::Layouts::Application
 
+  js  "jquery.floatheader"
+
   jquery <<-JS
     $("tr#filter_row select").change(function() {
       $.ajax({
@@ -16,6 +18,7 @@ class Views::Links::Index < Views::Layouts::Application
   end
 
   def view_content
+    jquery "$('#listing').floatHeader(); $('div.floatHeader tr').removeClass('odd').addClass('ui-widget-header');"
       span :id =>"links_collection", :class => 'collection' do
         widget Views::Links::Table, :collection => @collection
         paginator(@collection)

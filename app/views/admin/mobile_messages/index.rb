@@ -1,9 +1,13 @@
 class Views::Admin::MobileMessages::Index < Views::Layouts::Application
+  
+  js  "jquery.floatheader"
+  
   def page_title
     "Mobile Messages"
   end
 
   def view_content
+    jquery "$('#listing').floatHeader(); $('div.floatHeader tr').removeClass('odd').addClass('ui-widget-header');"
     table :id => "listing" do
       table_header ['CaseId or Link', 'Mobile Phone', 'Message', 'Status', 'Created at']
       table_body

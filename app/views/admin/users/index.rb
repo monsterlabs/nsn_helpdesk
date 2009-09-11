@@ -1,9 +1,12 @@
 class Views::Admin::Users::Index < Views::Layouts::Application
+  js  "jquery.floatheader"
+  
   def page_title
     "User Administration"
   end
   
   def view_content
+    jquery "$('#listing').floatHeader(); $('div.floatHeader tr').removeClass('odd').addClass('ui-widget-header');"
     form_tag 'users', :method => :get do
       b { text 'Sort by name:' }
       rawtext select 'filter', 'order', options_for_select([['Ascending', 'ASC'], ['Descending', 'DESC']],
