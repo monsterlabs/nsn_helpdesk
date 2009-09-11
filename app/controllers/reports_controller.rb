@@ -10,6 +10,7 @@ class ReportsController < ApplicationController
   def show_form
     respond_to do |format|
       format.js { render "reports/#{params[:form_name]}_js.rb" }
+      format.html { render "reports/#{params[:form_name]}.rb" }
     end
   end
 

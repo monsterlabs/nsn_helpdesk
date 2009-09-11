@@ -21,6 +21,6 @@ class Views::Reports::ByRegionChart < Views::Layouts::Application
     end
     br
     div :class => 'clear'
-    rawtext link_to('Back', {:action => 'index'}, ui_style(:button))
+    rawtext link_to('Back', {:action => 'show_form', :form_name => 'cases_by_region' }, ui_style(:button))
   end
 end
