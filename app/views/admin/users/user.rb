@@ -3,6 +3,14 @@ class Views::Admin::Users::User < Erector::RailsWidget
   
   def content
     div :class => 'field' do
+      label 'Role'
+      f.fields_for :user_roles do |role_form|
+        rawtext role_form.collection_select 'role_id', Role.all, :id, :name
+      end
+    end
+    
+    
+    div :class => 'field' do
       label "E-mail"
       rawtext f.text_field :email 
     end
