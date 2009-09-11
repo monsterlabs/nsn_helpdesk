@@ -110,7 +110,7 @@ class Views::Tickets::Details < Erector::RailsWidget
   
     div :class => 'field' do
       label "Attended by"
-      rawtext select :ticket, :attended_by_id, User.region(@region).field_managers.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --"
+      rawtext select :ticket, :attended_by_id, User.field_managers.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --"
     end
     
     div :class => 'field' do

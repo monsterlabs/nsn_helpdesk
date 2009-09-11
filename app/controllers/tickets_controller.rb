@@ -42,7 +42,6 @@ class TicketsController < ApplicationController
   end
   
   def details
-    @region = params[:id]
     respond_to do |format|
       format.js { render 'tickets/details_js' }
     end
