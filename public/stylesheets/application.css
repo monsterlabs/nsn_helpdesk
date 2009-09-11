@@ -478,3 +478,7 @@ span.resolved {
   color: #0066CC;
   font-weight: normal;
 }
+
+#report_form a {
+	text-decoration: none;
+}

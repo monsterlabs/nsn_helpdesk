@@ -157,3 +157,7 @@ function show_progress() {
 function hide_progress() {
   $.unblockUI();
 }
+
+function toggle_checkbox(form_name, dom_id) {
+	$("#"+form_name).toggleCheckboxes("#"+dom_id);
+}

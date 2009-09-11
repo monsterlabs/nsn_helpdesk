@@ -4,9 +4,11 @@ class Views::Reports::CasesByRegionForm < Views::Layouts::Application
     h2 "Cases by Region"
     br
     br
-    form_for(:report, :url => {:action => 'cases_by_region_chart'}) do
+    form_for(:report, :url => {:action => 'cases_by_region_chart'}, :html => { :id => :report_form }) do
       div :class => "grid_5" do
-        b "Case type" 
+        b "Case type (" 
+        link_to_function 'Check all / None', "toggle_checkbox('report_form', 'report_priorities_')"
+        b ")"
         br
         br
         check_box_tag 'report[priorities][]', '1', true

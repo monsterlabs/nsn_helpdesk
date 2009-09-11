@@ -3,17 +3,19 @@ class Views::Reports::AllCasesForm < Views::Layouts::Application
     h2 'All Cases'
     br
     br
-    form_for(:report, :url => {:action => 'cases_main_chart'}) do
+    form_for(:report, :url => {:action => 'cases_main_chart'}, :html => {:id => :report_form}) do
       div :class => "grid_5 " do
-        b "Case type" 
+        b "Case type (" 
+        link_to_function 'Check all / None', "toggle_checkbox('report_form', 'report_priorities_')"
+        b ")"
         br
         br
         check_box_tag 'report[priorities][]', '1', true
-        text 'Emergencies (High)'
-        br
-        check_box_tag 'report[priorities][]', '2', true
-        text 'Corrective manteinance (Medium)'
-        br
+                text 'Emergencies (High)'
+                br
+                check_box_tag 'report[priorities][]', '2', true
+                text 'Corrective manteinance (Medium)'
+                br
         check_box_tag 'report[priorities][]', '3', true
         text 'Corrective manteinance (Low)'
       end
