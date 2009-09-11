@@ -83,6 +83,8 @@ class Views::Layouts::Application < Views::Layouts::Page
     unless @user.nil?
       fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
       "#{fullname} <#{@user.email}>"
+    else
+      "admin"
     end
   end
   

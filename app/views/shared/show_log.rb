@@ -1,15 +1,15 @@
 class Views::Shared::ShowLog  < Views::Layouts::Application
   needs :record
   def content
-    unless @record.nil?
+    unless record.nil?
       table :id => "listing" do
         tr :id => "ticket_title" do
           td {}
-          td {b "#{@record.class.name} version(s)"}
+          td {b "#{record.class.name} version(s)"}
         end
         tr do
           td:id => 'ticket_left_cell' do
-            rawtext b "This #{@record.class.name} has #{@record.versions.size - 1} version(s)"
+            rawtext b "This #{record.class.name} has #{record.versions.size - 1} version(s)"
           end
           td :id => 'ticket_right_cell' do
           end
