@@ -21,6 +21,6 @@ class Views::Reports::DetailedChart < Views::Layouts::Application
         br :class => 'clear'
       end
       br :class => 'clear'
-      rawtext link_to('Back', {:action => 'index'}, ui_style(:button))
+      rawtext link_to('Back', {:action => 'show_form', :form_name => 'detailed_cases'}, ui_style(:button))
    end
 end

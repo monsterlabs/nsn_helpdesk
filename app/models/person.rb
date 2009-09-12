@@ -10,7 +10,7 @@ class Person < ActiveRecord::Base
   belongs_to :modified_by, :class_name => 'User'
   
   def fullname
-    [self.firstname, self.lastname].join(' ')
+    [firstname, lastname].join(' ')
   end
 
 end

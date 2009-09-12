@@ -157,3 +157,19 @@ function show_progress() {
 function hide_progress() {
   $.unblockUI();
 }
+
+function toggle_checkbox(form_name, dom_id) {
+	$("#"+form_name).toggleCheckboxes("#"+dom_id);
+}
+
+function toggle_all_multiple_select(dom_id) {
+  $("#"+dom_id).each(function() {
+       $("#"+dom_id+" option").attr("selected","selected");  
+  });
+}
+
+function toggle_none_multiple_select(dom_id) {
+  $("#"+dom_id).each(function() {
+       $("#"+dom_id+" option").attr("selected",'');  
+  });
+}

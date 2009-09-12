@@ -1,7 +1,7 @@
 class Views::Layouts::Application < Views::Layouts::Page
 
   css "reset", "grid", "application", "custom-theme/jquery-ui-1.7.2.custom", "jquery.autocomplete"
-  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "jquery.badBrowser.js", "jquery.blockUI.js", "application"
+  js  "jquery.min", "jquery-ui", "jrails", "jquery.bgiframe.min", "jquery.ajaxQueue", "jquery.epiclock.min", "jquery.autocomplete.min", "jquery.badBrowser.js", "jquery.blockUI.js", "jquery.checkboxes.pack", "application"
   jquery <<-Str
       $('#feedback').click(function() {
         $('#feedback-dialog').dialog('open');
@@ -79,12 +79,14 @@ class Views::Layouts::Application < Views::Layouts::Page
   end
 
   def who_has_changed_it(user_id)
-    @user = User.find(user_id)
-    unless @user.nil?
-      fullname =  @user.person.nil? ? 'admin' : @user.person.fullname
-      "#{fullname} <#{@user.email}>"
-    end
-  end
+     user = User.find(user_id) if user_id != 0
+     unless user.nil?
+       fullname =  user.person.nil? ? 'admin' : user.person.fullname
+       "#{fullname} <#{user.email}>"
+     else
+       "admin"
+     end
+   end
   
   def controller_title
     div :class => 'grid_3 prefix_7', :id => 'controller_title' do
