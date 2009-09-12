@@ -5,10 +5,9 @@ class Views::Reports::DetailedCasesForm < Views::Layouts::Application
     br
     br
     form_for(:report, :url => {:action => 'detailed_chart'}, :html => { :id => :report_form }) do
-      div :class => "grid_5 prefix_1" do
-        b "Case type (" 
-        link_to_function 'Check all / None', "toggle_checkbox('report_form', 'report_priorities_')"
-        b ")"
+      div :class => "grid_5" do
+        b "Case type: " 
+        link_to_function 'All, None', "toggle_checkbox('report_form', 'report_priorities_')"
         br
         br
         check_box_tag 'report[priorities][]', '1', true
@@ -21,15 +20,19 @@ class Views::Reports::DetailedCasesForm < Views::Layouts::Application
         text 'Corrective manteinance (Low)'
       end
 
-      div :class => "grid_2", :style => 'margin-left: -25px;' do
-        b "Regions" 
+      div :class => "grid_3", :style => 'margin-left: -25px;' do
+        b "Regions: " 
+        link_to_function 'All, ', "toggle_all_multiple_select('report_region_id')"
+        link_to_function 'None', "toggle_none_multiple_select('report_region_id')"
         br
         br
         rawtext select :report, :region_id, (options_for_select Region.all.collect {|record| [record.name, record.id]}), {}, {:multiple => true, :size => 9, :selected => Region.first.id}
       end
 
-      div :class => "grid_2" do
-        b "Months" 
+      div :class => "grid_3" do
+        b "Months: " 
+        link_to_function 'All, ', "toggle_all_multiple_select('report_months')"
+        link_to_function 'None', "toggle_none_multiple_select('report_months')"
         br
         br
         rawtext select_month(Date.today, { :field_name => 'months', :prefix => 'report' }, { :multiple => true, :size => 9, :selected => Date.today.month }).sub(/months\]/, "months][]")
