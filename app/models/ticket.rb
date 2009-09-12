@@ -44,7 +44,7 @@ class Ticket < ActiveRecord::Base
   }
 
   named_scope :sites_like, lambda { |sites|
-    { :conditions => ['LOWER(links.sites) LIKE ? ', "%#{sites.downcase}%" ], 
+    { :conditions => ["translate(LOWER(links.sites), '\303\241\303\251\303\255\303\263\303\272\303\274\303\261', 'aeiouun') LIKE ? ", "%#{sites.downcase}%" ], 
       :joins => 'left join links on links.id = tickets.link_id' }
   }
   named_scope :created_at_in_year_and_month, lambda { |year, month|

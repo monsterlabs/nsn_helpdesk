@@ -18,10 +18,14 @@ class Link < ActiveRecord::Base
   end
 
   named_scope :city_like, lambda { |city_name|
-    { :conditions => ['LOWER(cities.name) LIKE ? ', "%#{city_name.downcase}%" ], 
+    { :conditions => ["translate(LOWER(cities.name), '\303\241\303\251\303\255\303\263\303\272\303\274\303\261', 'aeiouun') LIKE ? ", "%#{city_name.downcase}%" ], 
       :joins => 'left join cities on cities.id = links.city_id' }
   }
-
+  
+  named_scope :sites_like, lambda { |sites_name|
+    { :conditions => ["translate(LOWER(sites), '\303\241\303\251\303\255\303\263\303\272\303\274\303\261', 'aeiouun') LIKE ? ", "%#{sites_name.downcase}%"] }
+  }
+  
   
   def summary
     modified_by ||= User.find_by_login('admin')

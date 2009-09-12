@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
   named_scope :fullname, lambda { |name|
     { 
       :include => :person, 
-      :conditions => ['people.lastname like :name OR people.firstname like :name', {:name => "%#{name}%"}]
+      :conditions => ["translate(LOWER(people.lastname), '\303\241\303\251\303\255\303\263\303\272\303\274\303\261', 'aeiouun') " + 
+                      "like :name OR translate(LOWER(people.firstname), '\303\241\303\251\303\255\303\263\303\272\303\274\303\261', 'aeiouun') like :name", {:name => "%#{name.downcase}%"}]
     }
   }
   

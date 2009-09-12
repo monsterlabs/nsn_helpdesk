@@ -2,7 +2,9 @@ class Views::Tickets::Table < Erector::RailsWidget
   needs :collection
 
   def content
-    form_remote_tag :url => "links/filter", :update => { :success => "links_collection"}, :complete => "colorize_odd_rows()" do
+    action_name = 'mine' if params[:filter] && params[:filter].has_key?(:attended_by_id_equals)
+    action_name ||= 'index'
+    form_remote_tag :url => "tickets/#{action_name}", :update => { :success => "tickets"}, :complete => "colorize_odd_rows()" do
       div :id => "tickets" do
         table :id => "listing", :class => "tickets-table" do
           table_header
