@@ -60,7 +60,7 @@ class ReportsController < ApplicationController
   end
 
   def detailed_cases_chart
-    @data = TicketReporter.find_by_region_and_reported_priority_and_status_per_month(params[:region_id], params[:priorities], params[:months],  params[:year])
+    @data = TicketReporter.find_by_region_and_reported_priority_and_status_per_month(params[:region_id], params[:priority_id], params[:months],  params[:year])
     @graph = stacked_bar_chart(@data)
     respond_to do |format|
       format.html { render :text => @graph.to_s }

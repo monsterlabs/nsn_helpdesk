@@ -20,7 +20,15 @@ class Views::Reports::DetailedCasesForm < Views::Layouts::Application
         text 'Corrective manteinance (Low)'
       end
 
-      div :class => "grid_3", :style => 'margin-left: -25px;' do
+      div :class => "grid_3", :style => 'margin-left: -30px;' do
+            b "Status: " 
+            link_to_function 'All, ', "toggle_all_multiple_select('report_status_id')"
+            link_to_function 'None', "toggle_none_multiple_select('report_status_id')"
+            br
+            br
+            rawtext select :report, :status_id, (options_for_select Status.all.collect {|record| [record.name, record.id]}), {}, {:multiple => true, :size => 4, :selected => Region.first.id}
+      end
+      div :class => "grid_3", :style => 'margin-left: -30px;' do
         b "Regions: " 
         link_to_function 'All, ', "toggle_all_multiple_select('report_region_id')"
         link_to_function 'None', "toggle_none_multiple_select('report_region_id')"
@@ -29,7 +37,7 @@ class Views::Reports::DetailedCasesForm < Views::Layouts::Application
         rawtext select :report, :region_id, (options_for_select Region.all.collect {|record| [record.name, record.id]}), {}, {:multiple => true, :size => 9, :selected => Region.first.id}
       end
 
-      div :class => "grid_3" do
+      div :class => "grid_3", :style => 'margin-left: -30px;' do
         b "Months: " 
         link_to_function 'All, ', "toggle_all_multiple_select('report_months')"
         link_to_function 'None', "toggle_none_multiple_select('report_months')"
@@ -38,7 +46,7 @@ class Views::Reports::DetailedCasesForm < Views::Layouts::Application
         rawtext select_month(Date.today, { :field_name => 'months', :prefix => 'report' }, { :multiple => true, :size => 9, :selected => Date.today.month }).sub(/months\]/, "months][]")
       end
 
-      div :class => "grid_2" do
+      div :class => "grid_2", :style => 'margin-left: -30px;' do
         b "Year" 
         br
         br

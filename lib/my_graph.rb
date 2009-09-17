@@ -59,22 +59,15 @@ module MyGraph
   end
 
   def stacked_bar_chart(data={})
-
     bars   = []
-    colours = { :high => "#750091", :medium => "#f99027", :low => "#9088AA" }
+    colours = { :high => "#9966CC", :medium => "#ff9933", :low => "#CCCCCC" }
     status_colours = { :open => '#ff0000', :assigned => '#FFCC00', :resolved => '#0000FF', :closed => '#00CC00'}
     data[:results].each do |label, values, stacked_values|
-      stacked_bar = BarStack.new(:barwidth => 0.3, :axis =>'left')
+      stacked_bar = BarStack.new
       values.each_index do |index|
         stacked_bar.append_stack(stacked_values[index].collect {|s| {:val => s.last, :colour => status_colours[s.first]} })
       end
       bars << stacked_bar
-      # 3d bar graph, could be any bar graph though
-      bar = Bar3d.new
-      bar.set_key(label, 10)
-      bar.colour = colours[(label.downcase.to_sym)]
-      bar.values = values
-      bars << bar
     end
     bars.first.keys =  status_colours.keys.collect {|k| { 'colour' => status_colours[k], 'text' => k.to_s.capitalize, 'font-size' => 10}} 
 
@@ -92,7 +85,7 @@ module MyGraph
 
     # setup the graph
     graph = OpenFlashChart.new
-    graph.bg_colour = '#ffffcc'
+    graph.bg_colour = colours[data[:priority].downcase.to_sym]
     graph.title = title
     graph.x_axis = x_axis
     graph.y_axis = y_axis

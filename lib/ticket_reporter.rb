@@ -29,18 +29,17 @@ class TicketReporter
       {:title => "Cases at #{year}", :results => graph_data, :months => months, :max_size => max_size, :year => year, :records => records.flatten}
     end
 
-    def find_by_region_and_reported_priority_and_status_per_month(region_id, priorities, months, year)
+    def find_by_region_and_reported_priority_and_status_per_month(region_id, priority_id, months, year)
        max_size = 5
        graph_data = []
        collection = Ticket.search(:region_id_equals => region_id)
        records = []
-       priorities.each do |p_id|
-         results = collection.find_all_by_reported_priority_id(p_id)
-         graph_data << [priority_name(p_id)] + cases_per_month_and_status(results, months, year)
-         records << results.flatten
-         max_size = cases_per_month_and_status(results, months, year).first.max if cases_per_month_and_status(results, months, year).first.max > max_size
-       end
-       {:title => "Tickets for region #{region_name(region_id)}", :results => graph_data, :months => months, :max_size => max_size, :year => year, :records => records.flatten}
+       results = collection.find_all_by_reported_priority_id(priority_id)
+       graph_data << [priority_name(priority_id)] + cases_per_month_and_status(results, months, year)
+       records << results.flatten
+       max_size = cases_per_month_and_status(results, months, year).first.max if cases_per_month_and_status(results, months, year).first.max > max_size
+       priority_name = Priority.find(priority_id).name  
+       {:title => "Tickets for region #{region_name(region_id)} with priority #{priority_name}", :results => graph_data, :months => months, :max_size => max_size, :year => year, :records => records.flatten, :priority => priority_name }
      end
 
     private
