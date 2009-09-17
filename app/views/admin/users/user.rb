@@ -4,8 +4,9 @@ class Views::Admin::Users::User < Erector::RailsWidget
   def content
     div :class => 'field' do
       label 'Role'
-      f.fields_for :user_roles do |role_form|
-        rawtext role_form.collection_select 'role_id', Role.all, :id, :name
+      f.fields_for "user_role_attributes", f.object.user_role do |role_form|
+            rawtext role_form.hidden_field :id unless role_form.id.nil?            
+            rawtext role_form.collection_select 'role_id', Role.all, :id, :name
       end
     end
     
