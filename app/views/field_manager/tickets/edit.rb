@@ -26,8 +26,12 @@ class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
             rawtext text_field_tag 'ticket[case_id]', @ticket.case_id
           end      
           div :class => 'field' do
-            label "Opened at"
+            label "Opened at (Beginning of call handle time)"
             rawtext datetime_select(:ticket, :opened_at)
+          end
+          div :class => 'field' do
+            label "Created at (Ending of call handle time)"
+            rawtext datetime_select(:ticket, :created_at)
           end     
         end
         div :class => 'field' do

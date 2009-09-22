@@ -49,6 +49,5 @@ namespace :migrate do
   desc "Reset the DB by dropping it and running migrations"
   task :reset, :roles => :app do
     run "cd #{current_path} && #{sudo} rake db:migrate:reset"
-  end
-  
+  end  
 end

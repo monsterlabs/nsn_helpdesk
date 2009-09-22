@@ -64,7 +64,7 @@ class Ticket < ActiveRecord::Base
   end
   
   def disable_timestamp
-    if changes.include?(:updated_at)
+    if changes.include?(:updated_at) or changes.include?(:created_at)
       ActiveRecord::Base.record_timestamps = false
     end
     true
