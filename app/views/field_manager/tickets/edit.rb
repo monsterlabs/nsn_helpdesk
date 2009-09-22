@@ -48,8 +48,6 @@ class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
           end      
         end
       end
-      
-      
       rawtext submit_tag 'Update', ui_style(:button)
       link_to 'Cancel', {:action => :index},  ui_style(:button)      
     end

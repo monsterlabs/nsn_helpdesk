@@ -35,11 +35,11 @@ class Link < ActiveRecord::Base
     else
       phone_number = 'Not available'
     end
-    
+
     'A link has been updated: ' + \
       [ 'Link: ' + sites, 
         'Region: ' + region.name,
-        'Current Status: ' + current_status.to_s,
+        'Configuration: ' + configuration.to_s,
         'Time zone: ' + time_zone.name,
         'Modified by: ' + modified_by_user,
         'Phone: ' + phone_number,
