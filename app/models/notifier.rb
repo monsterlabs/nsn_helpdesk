@@ -1,13 +1,10 @@
 class Notifier < ActionMailer::Base
   helper :application
   def ticket_notifications(ticket)
-    @subject    = '[NSNCallCenter] Ticket has been sent'
+    setup
+    @subject    = "#{@subject_prefix} Ticket has been sent"
     @recipients = ticket.opened_by.email
-    @from       = 'callcenter@lattice.com.mx'
-    @sent_on    = Time.now
     @body       = { :ticket => ticket}
-    @content_type = "text/html"
-
     Notifier.queue(:fieldmanager_notification, ticket, ticket.attended_by.email)
     ticket.link.region.users.field_managers.each do |field_manager|
       Notifier.queue(:fieldmanager_notification, ticket, field_manager.email) if field_manager.email != ticket.attended_by.email
@@ -15,49 +12,45 @@ class Notifier < ActionMailer::Base
   end
 
   def fieldmanager_notification(ticket, email)
-    ticket.reported_priority.name == 'High' ? (prefix='EME Case') : (prefix='Case')
-    @subject    = prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
+    setup
+    prefix = (ticket.reported_priority.name == 'High' ? 'EME Case' : 'Case')
+    @subject    = @subject_prefix + prefix + ": - #{ticket.case_id} - #{ticket.reported_by.person.company.name}. - Status: #{ticket.status.name.upcase}"
     @recipients = email
-    @from       = 'callcenter@lattice.com.mx'
-    @sent_on    = Time.now
     @body       = { :ticket => ticket}
-    @content_type = "text/html"
   end
 
   def random_password(user, password)
-    @subject    = '[NSNCallCenter] Your password has been reset'
+    setup
+    @subject    = "#{@subject_prefix} Your password has been reset"
     @recipients = user.email
-    @from       = 'callcenter@lattice.com.mx'
-    @sent_on    = Time.now
     @body       = { :user => user, :password => password}
-    @content_type = "text/html"
   end
 
   def link_notifications(link)
-    @subject    = '[NSNCallCenter] Link updated'
+    setup
+    @subject    = "#{@subject_prefix} Link updated"
     @recipients = link.region.users.field_managers.collect { |fm| fm.email }
-    @from       = 'callcenter@lattice.com.mx'
-    @sent_on    = Time.now
-    @body       = {:link => link }
-    @content_type = "text/html"
+    @body       = { :link => link }
   end
 
   def reminder_notification(ticket)
-    @subject    = '[NSNCallCenter] Reminder'
+    setup
+    @subject    = "#{@subject_prefix} Reminder"
     @recipients = User.field_managers.collect { |fm| fm.email }
-    @from       = 'callcenter@lattice.com.mx'
-    @sent_on    = Time.now
-    @body       = {:ticket => ticket }    
-    @content_type = "text/html"
+    @body       = { :ticket => ticket }    
   end
 
   def ticket_closed_notification(ticket)
-    @subject    = '[NSNCallCenter] Ticket closed'
+    setup
+    @subject    = "#{@subject_prefix} Ticket closed"
     @recipients = User.field_managers.collect { |user| user.email }
+    @body       = { :ticket => ticket }    
+  end
+
+  def setup
     @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
-    @body       = {:ticket => ticket }    
     @content_type = "text/html"
+    @subject_prefix = '[NSNCallCenter-TEST] '
   end
-  
 end

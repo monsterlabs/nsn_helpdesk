@@ -6,6 +6,7 @@ set :domain, "www.nsnmwcaretelcel.com"
 ##
 #load 'ext/passenger-mod-rails.rb'  # Restart task for use with mod_rails
 set :deploy_to, "/var/rails/#{application}"
+set :doc_dir, "/var/rails/#{application}_doc"
 default_run_options[:pty] = true
 set :use_sudo, true
 set :user, "deployer"
@@ -28,6 +29,7 @@ role :app, domain
 namespace :deploy do
   task :after_update_code, :roles => :app do
     run "ln -nfs #{deploy_to}/shared/system/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{doc_dir} #{release_path}/public/documentation"
   end
   
   desc "Restarting mod_rails with restart.txt"
