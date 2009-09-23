@@ -48,7 +48,7 @@ class Views::FieldManager::Tickets::Edit < Views::Layouts::Application
           end      
         end
       end
-      rawtext submit_tag 'Update', ui_style(:button)
+      rawtext submit_tag 'Update', ui_style(:button, {:confirm => '¿ Are you really reallly sure ?' })
       link_to 'Cancel', {:action => :index},  ui_style(:button)      
     end
   end

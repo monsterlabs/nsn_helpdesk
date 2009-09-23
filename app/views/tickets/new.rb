@@ -21,7 +21,7 @@ class Views::Tickets::New < Views::Layouts::Application
 
       widget Views::Tickets::Form, :f => f
 
-      rawtext f.submit 'Create', ui_style(:button)
+      rawtext f.submit 'Create', ui_style(:button, {:confirm => '¿ Are you really reallly sure ?' })
       link_to 'Cancel', {:action => :index},  ui_style(:button)
     end
   end
