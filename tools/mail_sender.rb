@@ -14,7 +14,6 @@ class MailDaemon < SimpleDaemon::Base
     loop do
       if Mail.respond_to? :process
         # ActionMailer::Base.smtp_settings = mail_servers[rand(mail_servers.size)]
-        ActionMailer::Base.default_charset = "utf-8" 
         Mail.process(:limit => 15) 
         #  Mail.update_all("locked = 'f'")
         puts "Sending email at " + Time.now.to_s

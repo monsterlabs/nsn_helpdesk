@@ -52,8 +52,12 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
   config.action_mailer.sendmail_settings = {
-    :arguments => '-i -t -f callcenter@lattice.com.mx'
+    :arguments => '-i -t -f callcenter@lattice.com.mx',
   }
+  sendmail_config = YAML.load_file(RAILS_ROOT + "/config/mail.yml")
+  config.action_mailer.sendmail_settings.merge!(sendmail_config['settings'])
+  config.action_mailer.default_charset = sendmail_config['charset']
+  
 end
 
 

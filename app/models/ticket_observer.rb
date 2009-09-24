@@ -14,7 +14,11 @@ class TicketObserver < ActiveRecord::Observer
         end
       end
     end
-    Notifier.queue(:ticket_notifications, ticket)
+    Notifier.queue(:ticket_notification, ticket)
+    Notifier.queue(:fieldmanager_notification, ticket, ticket.attended_by.email)
+    ticket.link.region.users.field_managers.each do |field_manager|
+          Notifier.queue(:fieldmanager_notification, ticket, field_manager.email) if field_manager.email != ticket.attended_by.email
+    end
   end
 
   def after_update(ticket)
