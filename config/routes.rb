@@ -30,8 +30,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :alarm_types
     admin.resources :companies
     admin.resources :products
-    admin.resources :reports, :collection => { :bar => :get , :bar_all => :get, :ticket_all => :get, :ticket_by_region => :get }, :member => { :report_all => :put }
-    
+    admin.resources :reports, :collection => { :show_form => :get, :main_chart => :get, :by_region_chart => :get, 
+                                              :detailed_cases_chart => :get,
+                                              :ticket_all => :get, :ticket_by_region => :get
+                                               },
+                               :member => { :cases_main_chart => :post, :cases_by_region_chart => :post, :detailed_chart => :post }    
     admin.resources :tickets, 
       :member => { :details => :get, :search_by_case_id => :post}, 
       :collection => { :auto_complete_for_person_lastname_firstname => :get,
@@ -61,8 +64,11 @@ ActionController::Routing::Routes.draw do |map|
 
     field_manager.resources :addresses
     field_manager.resources :people
-    field_manager.resources :reports, :collection => { :bar => :get , :bar_all => :get, :ticket_all => :get, :ticket_by_region => :get }, :member => { :report_all => :put }
-    
+    field_manager.resources :reports, :collection => { :show_form => :get, :main_chart => :get, :by_region_chart => :get, 
+                                                       :detailed_cases_chart => :get,
+                                                       :ticket_all => :get, :ticket_by_region => :get
+                                               },
+                               :member => { :cases_main_chart => :post, :cases_by_region_chart => :post, :detailed_chart => :post }
   end  
 
   # The priority is based upon order of creation: first created -> highest priority.
