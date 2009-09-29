@@ -34,20 +34,22 @@ class User < ActiveRecord::Base
     }
   }
   
-  acts_as_authentic
-  
+  acts_as_authentic do |c|
+    c.logged_in_timeout = 120.minutes # default is 10.minutes
+  end
+
   has_many :user_roles
   has_many :roles, :through => :user_roles
-  
+
   has_one :user_role
   accepts_nested_attributes_for :user_role
-  
+
   has_one :person
   accepts_nested_attributes_for :person
-  
+
   has_one :address
   accepts_nested_attributes_for :address
-  
+
   has_many :user_regions
   has_many :regions, :through => :user_regions
   accepts_nested_attributes_for :user_regions, :allow_destroy => true
