@@ -7,6 +7,6 @@ class LinkObserver < ActiveRecord::Observer
            # MobileMessage.create(:messageable => link, :phone_number => phone_number)
        end
     end
-    Notifier.queue(:link_notifications, link) 
+    # Notifier.queue(:link_notifications, link) 
   end
 end

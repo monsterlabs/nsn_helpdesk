@@ -12,6 +12,7 @@ class Views::Admin::MobileMessages::Index < Views::Layouts::Application
       table_header ['CaseId or Link', 'Mobile Phone', 'Message', 'Status', 'Created at']
       table_body
     end
+    paginator @collection
   end
   
   def table_body
@@ -30,7 +31,7 @@ class Views::Admin::MobileMessages::Index < Views::Layouts::Application
         end
       end
     end
-    paginator @collection
+
   end
 
 end
