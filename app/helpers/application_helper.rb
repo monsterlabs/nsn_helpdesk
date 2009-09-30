@@ -23,7 +23,9 @@ module ApplicationHelper
         rawtext status
         if status == 'Open' and ticket.versions.size > 1
             opened_versions = ticket.versions.collect { |version| 
-              'Open' if version.reify.class == Ticket and version.reify.status.name == 'Open'
+              if version.reify.class == Ticket and version.reify.status.name == 'Closed'
+                'Open'
+              end
             }.compact
 
             if opened_versions.size > 0
