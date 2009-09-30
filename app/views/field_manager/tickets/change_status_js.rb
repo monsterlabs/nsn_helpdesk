@@ -1,15 +1,13 @@
 class Views::FieldManager::Tickets::ChangeStatusJs < Views::Layouts::ApplicationJs
+  include ApplicationHelper
+  
   def js_content
     td { rawtext @ticket.case_id  }
     td { rawtext @ticket.link.region.name}
     td { rawtext @ticket.link.sites}
     td { if @ticket.affected_site.empty? then text "Both" else text @ticket.affected_site end }
     td :id => 'status_' + @ticket.dom_id do
-       status = @ticket.status.name
-       img :src => "/images/#{status.downcase}.png", :width => '12px', :height => '12px'
-       span :class => status.downcase do
-         rawtext status
-       end
+      status_indicator(@ticket)
     end
     td { rawtext @ticket.reported_priority.name }
     td { rawtext @ticket.reported_by.person.fullname }

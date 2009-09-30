@@ -14,11 +14,7 @@ class Views::Tickets::Record < Erector::RailsWidget
         td { rawtext ticket.link.sites}
         td { if ticket.affected_site.empty? then text "Both" else text ticket.affected_site end }
         td :id => 'status_' + ticket.dom_id do
-            status = ticket.status.name
-            img :src => "/images/#{status.downcase}.png", :width => '12px', :height => '12px'
-            span :class => status.downcase do
-              rawtext status
-            end
+          status_indicator(ticket)
         end
         td { rawtext ticket.reported_priority.name }
         td { rawtext ticket.reported_by.person.fullname }

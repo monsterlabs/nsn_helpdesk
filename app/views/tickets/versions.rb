@@ -19,7 +19,7 @@ class Views::Tickets::Versions < Erector::RailsWidget
         td :id => "ticket_left_cell" do 
         end
         td :id => "ticket_right_cell" do 
-          rawtext b "Version #{version.index + 1}"
+          rawtext b "Version #{version.index + 1}", :style => 'color: orange;'
         end
       end   
       tr do 
@@ -50,15 +50,7 @@ class Views::Tickets::Versions < Erector::RailsWidget
         end            
         tr do 
           td :id => "ticket_left_cell" do 
-            text "Status"
-          end
-          td :id => "ticket_right_cell" do 
-            rawtext version.reify.status.name
-          end
-        end            
-        tr do 
-          td :id => "ticket_left_cell" do 
-            text "Event"
+            text "Database event"
           end
           td :id => "ticket_right_cell" do 
             rawtext version.event
@@ -176,14 +168,16 @@ class Views::Tickets::Versions < Erector::RailsWidget
         rawtext version.reify.failure.name
       end
     end
+    
     tr do 
-      td :id => 'ticket_left_cell' do 
-        text 'Status'
+      td :id => "ticket_left_cell" do 
+        text "Status"
       end
-      td :id => 'ticket_right_cell' do 
+      td :id => "ticket_right_cell" do 
         rawtext version.reify.status.name
       end
-    end
+    end            
+    
     tr do 
       td :id => 'ticket_left_cell' do 
         text 'Priority'
