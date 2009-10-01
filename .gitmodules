@@ -28,3 +28,6 @@
 [submodule "vendor/plugins/mail_queue"]
 	path = vendor/plugins/mail_queue
 	url = git://github.com/alexjr85/mail_queue.git
+[submodule "vendor/plugins/ssl_requirement"]
+	path = vendor/plugins/ssl_requirement
+	url = git://github.com/rails/ssl_requirement.git

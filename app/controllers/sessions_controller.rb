@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
-#  skip_filter_access_to
+  include SslRequirement
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
 
+  ssl_required :create, :new
   caches_action :new, :recover_password
 
   def new
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
     @session = UserSession.new(params[:user_session])
     if @session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default :controller => current_user.roles.first.name + '/tickets'
+      redirect_to :controller => current_user.roles.first.name + '/tickets',  :protocol => 'http'
     else
       render 'new'
     end
