@@ -116,7 +116,7 @@ class Ticket < ActiveRecord::Base
   
   def datetime_to_local(datetime, time_zone)
     tz = TZInfo::Timezone.get(time_zone)
-    z.utc_to_local(datetime.utc).to_s
+    tz.utc_to_local(datetime.utc).to_s
   end
 
   def link_time_zone
