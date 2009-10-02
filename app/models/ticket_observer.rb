@@ -15,7 +15,7 @@ class TicketObserver < ActiveRecord::Observer
       end
     end
     Notifier.queue(:ticket_notification, ticket)
-    (User.group_managers + User.field_managers).each do |user|
+    User.staff.each do |user|
         Notifier.queue(:fieldmanager_notification, ticket, user.email)
     end
   end

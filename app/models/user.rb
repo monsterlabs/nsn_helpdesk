@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   named_scope :operators, :conditions => "roles.name = 'operator'", :include => { :user_roles => :role }
   named_scope :emergencies, :conditions => "roles.name = 'emergencies'", :include => { :user_roles => :role }
   named_scope :group_managers, :conditions => "roles.name = 'group_manager'", :include => { :user_roles => :role }
-
+  named_scope :admin, :conditions => "roles.name = 'admin'", :include => { :user_roles => :role }
+  
   named_scope :region, lambda { |region_id|
     {
       # :joins => 'LEFT JOIN user_regions ON users.id = user_regions.user_id INNER JOIN people ON people.user_id = users.id',
@@ -60,6 +61,10 @@ class User < ActiveRecord::Base
       User.search(search).all.paginate(:page => page, :per_page => per_page)
   end
 
+  def self.staff
+    User.group_managers + User.field_managers + User.operators + User.admin
+  end
+  
   def validate_password_fields
     if self.password == nil
       self.errors.add_to_base("Password field can't be blank")
