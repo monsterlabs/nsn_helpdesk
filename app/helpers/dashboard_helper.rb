@@ -1,7 +1,7 @@
 module DashboardHelper
   include AuthenticationSystem
   def mydashboard
-    role = current_user.roles.first
+    role = Role.find_by_name(current_user.role_symbols.first.to_s)
     set_dashboard(role.name, Dashboard.parents_by_role_id(role.id))
   end
 

@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
     
   def role_symbols
-    roles.collect { |role| role.name.to_sym } 
+    roles.collect { |role| role.name == 'group_manager' ? :field_manager : role.name.to_sym } 
   end
 
   def has_role?(role)

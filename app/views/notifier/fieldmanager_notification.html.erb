@@ -30,7 +30,7 @@ Has been reported a <%= @ticket.reported_priority.name.downcase %> priority case
 <br/>
 <b>NSN Engineer ID Number:</b>                   <%= !@ticket.assigned_to.nil? ? @ticket.assigned_to.id : @ticket.link.region.users.field_managers.collect {|fm| fm.id }.join(', ')%><br/>
 <br/>
-<b>NSN Engineer Contact Time:</b>                <%= @ticket.opened_at_local.to_s %><br/>
+<b>NSN Engineer Contact Time:</b>                <%= @ticket.created_at.to_s + ' America/Mexico_City' %><br/>
 <br/>
 <b>Call handle time:</b>                         <%= @ticket.capture_time %><br/>
 <br/>
