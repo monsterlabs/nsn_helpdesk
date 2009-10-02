@@ -49,10 +49,18 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text "Customer's zone time"
+        text "Customer's call handle time begins at"
       end
       td :id => 'ticket_right_cell' do 
         rawtext ticket.opened_at_local
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "Customer's call handle time ends at"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.created_at_local
       end
     end
     unless ticket.alternate_contact.nil?
@@ -107,12 +115,21 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
     end
     tr do 
       td :id => 'ticket_left_cell' do 
-        text "NSN Engineer contact time"
+        text "NSN Engineer's call handle time begins at"
+      end
+      td :id => 'ticket_right_cell' do 
+        rawtext ticket.opened_at.to_s + ' America/Mexico_City'
+      end
+    end
+    tr do 
+      td :id => 'ticket_left_cell' do 
+        text "NSN Engineer's call handle time ends at"
       end
       td :id => 'ticket_right_cell' do 
         rawtext ticket.created_at.to_s + ' America/Mexico_City'
       end
     end
+    
     tr do 
       td :id => 'ticket_left_cell' do 
         text 'Call handle time'
