@@ -25,9 +25,9 @@
 [submodule "vendor/plugins/spreadsheet_on_rails"]
 	path = vendor/plugins/spreadsheet_on_rails
 	url = git://github.com/10to1/spreadsheet_on_rails.git
-[submodule "vendor/plugins/mail_queue"]
-	path = vendor/plugins/mail_queue
-	url = git://github.com/alexjr85/mail_queue.git
 [submodule "vendor/plugins/ssl_requirement"]
 	path = vendor/plugins/ssl_requirement
 	url = git://github.com/rails/ssl_requirement.git
+[submodule "vendor/plugins/mail_queue"]
+	path = vendor/plugins/mail_queue
+	url = git://github.com/alexjr85/mail_queue.git
