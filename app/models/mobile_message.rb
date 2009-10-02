@@ -8,7 +8,7 @@ class MobileMessage < ActiveRecord::Base
   after_create  :send_message
   
   def prepare_body
-    self.body = 'TEST: ' + self.messageable.summary.gsub(/[^a-z0-9\-_\+\s\:\n\@\.\,\/]+/i,'*')
+    self.body = self.messageable.summary.gsub(/[^a-z0-9\-_\+\s\:\n\@\.\,\/]+/i,'*')
   end
   
   def send_message

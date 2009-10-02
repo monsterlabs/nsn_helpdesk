@@ -48,6 +48,6 @@ class Notifier < ActionMailer::Base
     @from       = 'callcenter@lattice.com.mx'
     @sent_on    = Time.now
     @content_type = "multipart/related"
-    @subject_prefix = '[NSNCallCenter-TEST] '
+    @subject_prefix = '[NSNCallCenter] '
   end
 end
