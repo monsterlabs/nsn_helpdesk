@@ -16,7 +16,7 @@ class TicketObserver < ActiveRecord::Observer
     end
     Notifier.queue(:ticket_notification, ticket)
     User.staff.each do |user|
-        Notifier.queue(:fieldmanager_notification, ticket, user.email)
+        Notifier.queue(:fieldmanager_notification, ticket, user.email) if user.email != ticket.opened_by.email
     end
   end
 
