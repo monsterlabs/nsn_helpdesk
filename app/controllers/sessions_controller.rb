@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
 
-#  ssl_required :create, :new
+  ssl_required :create, :new
   caches_action :new, :recover_password
 
   def new

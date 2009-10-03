@@ -51,8 +51,8 @@ row = row + 1
      sheet[row,23] = ticket.attended_by.person.fullname
      sheet[row,24] = ticket.priority.name
 	 sheet[row,25] = ticket.opened_by.person.nil? ? ticket.opened_by.email : ticket.opened_by.person.fullname
-   	 sheet[row,26] = ticket.opened_at
-   	 sheet[row,27] = ticket.created_at
+   	 sheet[row,26] = ticket.opened_at.to_s + ' America/Mexico_City'
+   	 sheet[row,27] = ticket.created_at.to_s + ' America/Mexico_City'
    	 sheet[row,28] = ticket.capture_time
      sheet[row,29] = ticket.notes
      unless ticket.assigned_to.nil?
