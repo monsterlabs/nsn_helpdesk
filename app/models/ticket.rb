@@ -101,8 +101,10 @@ class Ticket < ActiveRecord::Base
   def capture_time
     if !created_at.nil? and !opened_at.nil?
       # Fix It: Calculate duration
-      min, sec = ((created_at - opened_at ) / 60).to_s.split('.')
-      "#{min} min. #{sec[0,1]} sec."
+      duration = (created_at - opened_at).abs
+      min = (duration / 60).round
+      sec = ((duration) - (min * 60.0)).to_i
+      "#{min} min. #{sec} sec."
     end
   end
   
