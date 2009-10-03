@@ -88,14 +88,24 @@ class Views::Tickets::Versions < Erector::RailsWidget
             rawtext  version.reify.reported_by.address.mobile_phone
           end
         end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "Customer's contact time"
-      end
+        
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's call handle time begins at"
+          end
           td :id => 'ticket_right_cell' do 
             rawtext version.reify.opened_at_local
           end
         end
+        tr do 
+          td :id => 'ticket_left_cell' do 
+            text "Customer's call handle time ends at"
+          end
+          td :id => 'ticket_right_cell' do 
+            rawtext rawtext version.reify.created_at_local
+          end
+        end
+        
    tr do
       td :id => 'ticket_left_cell' do 
         text "Customer's email"
@@ -128,14 +138,22 @@ class Views::Tickets::Versions < Erector::RailsWidget
         rawtext version.reify.attended_by.id
       end
     end
-    tr do 
-      td :id => 'ticket_left_cell' do 
-        text "NSN Engineer contact time"
+     tr do 
+        td :id => 'ticket_left_cell' do 
+          text "NSN Engineer's call handle time begins at"
+        end
+        td :id => 'ticket_right_cell' do 
+          rawtext version.reify.opened_at.to_s + ' America/Mexico_City'
+        end
       end
-      td :id => 'ticket_right_cell' do 
-        rawtext version.reify.created_at.to_s + ' America/Mexico_City'
+      tr do 
+        td :id => 'ticket_left_cell' do 
+          text "NSN Engineer's call handle time ends at"
+        end
+        td :id => 'ticket_right_cell' do 
+          rawtext version.reify.created_at.to_s + ' America/Mexico_City'
+        end
       end
-    end
     tr do 
       td :id => 'ticket_left_cell' do 
         text 'Call handle time'

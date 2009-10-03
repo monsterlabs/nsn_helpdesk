@@ -129,7 +129,6 @@ class Views::Tickets::CurrentData < Erector::RailsWidget
         rawtext ticket.created_at.to_s + ' America/Mexico_City'
       end
     end
-    
     tr do 
       td :id => 'ticket_left_cell' do 
         text 'Call handle time'
