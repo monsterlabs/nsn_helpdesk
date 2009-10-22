@@ -21,7 +21,6 @@ class Views::Layouts::Application < Views::Layouts::Page
   include DashboardHelper
   
   def body_content
-    div :id => "feedback"
     div :class => "container_16" do
       ## Create the layout
       header_bar
@@ -78,14 +77,14 @@ class Views::Layouts::Application < Views::Layouts::Page
     end
   end
 
-  def who_has_changed_it(user_id)
-     user = User.find(user_id) if user_id != 0
-     unless user.nil?
-       fullname =  user.person.nil? ? 'admin' : user.person.fullname
-       "#{fullname} <#{user.email}>"
-     else
-       "admin"
-     end
+  def who_has_changed_it(id)
+    if User.exists?(id.to_i)
+      user = User.find(id.to_i)
+      fullname =  user.person.nil? ? 'admin' : user.person.fullname
+      "#{fullname} <#{user.email}>"
+    else
+      "admin"
+    end
    end
   
   def controller_title
