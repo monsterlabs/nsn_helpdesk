@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   skip_before_filter :filter_access_filter
   skip_before_filter :require_user
 
-  ssl_required :create, :new
+  ssl_required :create, :new, :recover_password
   caches_action :new, :recover_password
 
   def new
@@ -28,13 +28,14 @@ class SessionsController < ApplicationController
   
   def recover_password
     if request.post?
-      u= User.find_by_email(params[:email])
+      u = User.find_by_email(params[:email])
       if u and u.send_random_password
         flash[:message]  = "A new password has been sent by email."
       else
         flash[:warning]  = "Couldn't send password"
       end
-      redirect_to :action => 'new'
+      @session = UserSession.new
+      render :action => 'new'
     end
   end
 end

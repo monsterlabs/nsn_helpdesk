@@ -100,7 +100,9 @@ class Views::Sessions::New < Views::Layouts::Application
           text "Forgot your password?" 
         end
       }
-      rawtext flash[:warning] || flash[:message]
+      p {
+        rawtext flash[:warning] || flash[:message]
+      }
     end
    end
 end
