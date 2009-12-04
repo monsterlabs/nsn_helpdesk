@@ -16,9 +16,6 @@
 [submodule "vendor/plugins/jclock"]
 	path = vendor/plugins/jclock
 	url = git://github.com/dsparling/jclock.git
-[submodule "vendor/plugins/auto_complete_jquery"]
-	path = vendor/plugins/auto_complete_jquery
-	url = git://github.com/alexjr85/auto_complete_jquery.git
 [submodule "vendor/plugins/open_flash_chart"]
 	path = vendor/plugins/open_flash_chart
 	url = git://github.com/pullmonkey/open_flash_chart.git
@@ -30,4 +27,7 @@
 	url = git://github.com/rails/ssl_requirement.git
 [submodule "vendor/plugins/mail_queue"]
 	path = vendor/plugins/mail_queue
-	url = git://github.com/alexjr85/mail_queue.git
+	url = git://github.com/alecz/mail_queue.git
+[submodule "vendor/plugins/auto_complete_jquery"]
+	path = vendor/plugins/auto_complete_jquery
+	url = git://github.com/alecz/auto_complete_jquery.git
