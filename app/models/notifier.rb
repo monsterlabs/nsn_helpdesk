@@ -37,9 +37,9 @@ class Notifier < ActionMailer::Base
     attachment :content_type => "text/html", :disposition => :inline, :body => render_message('reminder_notification', :ticket => ticket)
   end
 
-  def ticket_closed_notification(ticket)
+  def ticket_status_changed_notification(ticket)
     setup
-    @subject    = "#{@subject_prefix} Ticket closed"
+    @subject    = "#{@subject_prefix} Ticket #{ticket.status.name.downcase}"
     @recipients = User.field_managers.collect { |user| user.email }
     attachment :content_type => "text/html", :disposition => :inline, :body => render_message('ticket_closed_notification', :ticket => ticket)
   end

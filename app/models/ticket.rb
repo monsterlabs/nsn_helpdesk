@@ -59,7 +59,7 @@ class Ticket < ActiveRecord::Base
   def prepare_case_id
     date = Date.today.strftime "%d%m%Y"
     last = Ticket.daily.last
-    serial = last.case_id.match(/.{13}(.*)/)[1].next if last
+    serial = last.case_id.match(/.{13}(.*)/)[1].next if !last.nil? and last.case_id.length > 13
     serial ||= 1 
     self.case_id = "NSNCT#{date}#{serial}"
   end
@@ -129,4 +129,7 @@ class Ticket < ActiveRecord::Base
       Ticket.search(search).all.paginate(:page => page, :per_page => per_page)
   end
 
+  def status_changed?
+     versions.size > 0 and status_id != versions.reverse.first.reify.status_id
+  end
 end

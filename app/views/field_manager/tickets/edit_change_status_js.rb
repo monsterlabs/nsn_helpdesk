@@ -29,7 +29,7 @@ class Views::FieldManager::Tickets::EditChangeStatusJs < Views::Layouts::Applica
             div :class => 'field' do
               mylabel = (@status.id == 2 ? 'Assigned to: ' : "#{@status.name} by: ")
               b mylabel
-              rawtext select :ticket, :assigned_to_id, User.field_managers_collection.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --", :selected => current_user.id
+              rawtext select :ticket, :assigned_to_id, User.field_managers.collect {|record| [record.person.fullname, record.id]}, :prompt => "-- Select Field Manager --", :selected => current_user.id
             end
             
             if @status.id == 4 

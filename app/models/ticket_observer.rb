@@ -21,6 +21,6 @@ class TicketObserver < ActiveRecord::Observer
   end
 
   def after_update(ticket)
-    Notifier.queue(:ticket_closed_notification, ticket) if ticket.status.name == 'Closed'
+    Notifier.queue(:ticket_status_changed_notification, ticket) if  ticket.status_changed?
   end
 end
