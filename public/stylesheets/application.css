@@ -4,7 +4,6 @@ html {
 	font-size: 14px;
 }
 
-
 /* for use with ui_style(:button) */
 .button, .button:visited{	
 	display: block;
@@ -95,9 +94,8 @@ div.container_16 {
 div#header {
 	background: url("../images/header.png") no-repeat;
 	float:left;
-	padding-top:20px;
-	height: 90px;
-	
+	margin-top:20px;
+	height: 110px;
 }
 
 div#browserWarning {
