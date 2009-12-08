@@ -23,7 +23,7 @@ Has been reported a <%= @ticket.reported_priority.name.downcase %> priority case
 <br/>
 <b>Customer's Contact e-mail:</b>                <%= @ticket.alternate_contact.email %><br/>
 <br/>
-<b>Customer's Contact Mobile Phone:</b>          <%= show_value(@ticket.alternate_contact.address, :business_phone) %><br/>
+<b>Customer's Contact Mobile Phone:</b>          <%= show_value(@ticket.alternate_contact.address, :mobile_phone) %><br/>
 <br/>
 <% end %>
 <b>Case ID:</b>                                  <%= @ticket.case_id %><br/>
