@@ -49,7 +49,7 @@ class TicketsController < ApplicationController
 
   def mine
     params[:filter] ||= {}
-    @collection = Ticket.search_and_paginate(params[:filter].merge!({:attended_by_id_equals => current_user.id}), params[:page] || 1)
+    @collection = Ticket.search_and_paginate(params[:filter].merge!({:assigned_to_id_equals => current_user.id}), params[:page] || 1)
      respond_to do |format|
        format.html { render 'tickets/index' }
        format.js { render 'tickets/list_js'}
