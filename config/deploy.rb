@@ -39,6 +39,11 @@ namespace :deploy do
     run "ruby #{current_path}/script/runner #{current_path}/tools/mail_sender.rb start"
   end
   
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{current_path} && whenever --update-crontab #{application}"
+  end
+
   [:start, :stop].each do |t|
       desc "#{t} task is a no-op with mod_rails"
       task t, :roles => :app do ; end
