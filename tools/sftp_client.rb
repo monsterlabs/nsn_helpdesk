@@ -1,3 +1,4 @@
+#!/usr/bin/env script/runner
 require 'rubygems'
 require 'net/sftp'
 local_file = ARGV[0]
