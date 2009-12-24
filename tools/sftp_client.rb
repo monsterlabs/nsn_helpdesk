@@ -8,5 +8,5 @@ if File.exist? local_file
     remote_file = File.join(remote_dir, "#{Time.now.strftime('%Y%m%d%H%M%S')}_#{filename}")
     sftp.upload! local_file, remote_file
   end
-  File.rm local_file
+  File.delete local_file  
 end
