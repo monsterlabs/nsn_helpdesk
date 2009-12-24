@@ -18,7 +18,8 @@ class MailDaemon < SimpleDaemon::Base
     log_message "Stoping Mail Sender at"
   end
   
-  def log_message(msg)
+  private
+  def self.log_message(msg)
     puts "#{msg} #{Time.now.to_s}"
   end
 end
