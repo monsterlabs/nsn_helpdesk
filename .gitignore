@@ -12,3 +12,4 @@ public/system
 .DS_Store
 vendor/gems
 *_flymake*
+mkmf.log
