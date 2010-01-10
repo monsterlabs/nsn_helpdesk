@@ -1,4 +1,4 @@
-#!/usr/bin/env script/runner
+#!/usr/bin/env ruby
 require 'rubygems'
 require 'net/sftp'
 require 'date'
