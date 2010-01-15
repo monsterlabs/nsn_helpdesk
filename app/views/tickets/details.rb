@@ -57,7 +57,8 @@ class Views::Tickets::Details < Erector::RailsWidget
               :update => {:success => "add_edit_dialog"}, 
               :success => '$("#add_edit_dialog").dialog({
                 bgiframe: true,
-                height: 280,
+                height: 360,
+                width: 450,
                 modal: true,
                 autoOpen: false,
                 draggable: false,

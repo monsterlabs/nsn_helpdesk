@@ -20,7 +20,7 @@ authorization do
     has_permission_on :feedbacks, :to => :write
     has_permission_on :mobile_messages, :to => :read
     has_permission_on [:user_settings, :change_passwords], :to => :read_and_update
-    has_permission_on [:companies, :failures, :links, :priorities, :products, :regions, :roles, :statuses, :ticket_types], :to => :manage
+    has_permission_on [:companies, :failures, :cities, :links, :priorities, :products, :regions, :roles, :statuses, :ticket_types], :to => :manage
   end
 
   # Permissions for admin here

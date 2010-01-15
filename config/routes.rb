@@ -26,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :priorities
     admin.resources :regions
     admin.resources :failures
+    admin.resources :cities
     admin.resources :ticket_types
     admin.resources :alarm_types
     admin.resources :companies
