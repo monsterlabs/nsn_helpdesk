@@ -14,7 +14,7 @@ set :user, "deployer"
 ##
 # Git
 ##
-set :repository, "git@github.com:alecz/helpdesk.git"
+set :repository, "git@github.com:monsterlabs/helpdesk.git"
 set :scm, :git
 set :branch, "master"
 set :deploy_via, :remote_cache

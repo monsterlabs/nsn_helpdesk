@@ -1,0 +1,6 @@
+host: domain.com
+username: user
+password: password
+
+remote_dir: /var/alex/backups/nsn/casetracker
+time_limit: 30.days.ago

@@ -1,0 +1,10 @@
+settings:
+  :address:        domain.com
+  :domain:         domain.com
+  :port:           27
+  :user_name:      user
+  :password:       password
+  :authentication: :plain
+ 
+method: smtp
+charset: utf-8

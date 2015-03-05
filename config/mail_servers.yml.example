@@ -1,0 +1,26 @@
+config: &config
+  :tls:            true
+  :address:        smtp.gmail.com
+  :port:           587
+  :enable_starttls_auto: true
+  :authentication: :plain
+
+noreply1:
+  :user_name:      noreply1.company@gmail.com
+  :password:       password
+  <<: *config
+  
+noreply2:
+  :user_name:      noreply2.company@gmail.com
+  :password:       password
+  <<: *config
+  
+noreply3:
+  :user_name:      noreply3.company@gmail.com
+  :password:       password
+  <<: *config
+  
+noreply4:
+  :user_name:      noreply4.company@gmail.com
+  :password:       password
+  <<: *config
